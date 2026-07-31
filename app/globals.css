@@ -2,25 +2,42 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #091a23;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Brand palette, sourced from the Megatec Figma design */
+  --color-ink: #002428;
+  --color-body: #4a5565;
+  --color-text: #091a23;
+  --color-accent: #d6eaf5;
+  --color-accent-soft: #bbe7f6;
+  --color-muted: #e8e8ea;
+  --color-navy: #00182c;
+  --color-navy-text: #d6eaf5;
+  --color-border: #d1d5dc;
+  --color-surface-soft: #f7f7f7;
+  --color-leaf: #22c55e;
+  --color-leaf-dark: #16a34a;
+  --color-sky: #4a9fd8;
+  --color-sky-dark: #3a8ec8;
+  --color-hero-tint: #eaf3f8;
+
+  --font-sans: var(--font-sans);
+  --font-accent: var(--font-accent);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .form-input {
+    @apply w-full rounded-none border border-ink/80 p-3 text-base text-ink placeholder:text-ink/50 focus:outline-none focus:ring-1 focus:ring-ink;
+  }
 }

@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# raw design reference screenshots (not used at runtime; kept locally only)
+/public/figma/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
