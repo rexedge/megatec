@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
+import { SpecSheetLink } from "@/components/ui/spec-sheet-button";
 
 export function ProductCard({
   image,
@@ -40,14 +41,12 @@ export function ProductCard({
             Enquire about this on WhatsApp
           </WhatsappButton>
           {specSheetHref && (
-            <a
+            <SpecSheetLink
               href={specSheetHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-center text-sm font-medium text-ink underline underline-offset-2"
+              description={`Download the full technical datasheet for the ${title}.`}
             >
               Download spec sheet
-            </a>
+            </SpecSheetLink>
           )}
         </div>
       </div>

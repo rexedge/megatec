@@ -46,6 +46,10 @@ export function ContactSection() {
           <form
             onSubmit={(event) => {
               event.preventDefault();
+              // TODO(backend): this form is not wired to anything — the entered
+              // details are discarded, yet the confirmation below tells the user
+              // the team will reach out. Point it at the CRM / form service (or
+              // route it through WhatsApp like the Get a Quote modal) before launch.
               setSubmitted(true);
             }}
             className="flex flex-col gap-6 rounded-2xl border border-ink/80 p-8"

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
+import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
 import { ProductHero } from "@/components/sections/product-hero";
 import { ProductCard } from "@/components/sections/product-card";
 import { ContactSection } from "@/components/sections/contact-section";
@@ -193,13 +193,13 @@ export default function EvChargersPage() {
           <p className="mt-4 max-w-xl text-body">
             Download the full technical datasheets for our EV charger range.
           </p>
-          <Button
+          <SpecSheetButton
             href="/spec-sheets/EV_Commercial_DC_Fast_Charger_60KW.pdf"
-            variant="secondary"
+            description="Download the full technical datasheet for our EV charger range."
             className="mt-6"
           >
             Download product specs
-          </Button>
+          </SpecSheetButton>
         </Container>
       </section>
 

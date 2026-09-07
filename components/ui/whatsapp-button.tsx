@@ -1,7 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-
-const WHATSAPP_NUMBER = "2348062968640";
+import { useEnquiry } from "@/components/ui/enquiry-modal";
 
 export function WhatsappButton({
   message,
@@ -14,9 +15,7 @@ export function WhatsappButton({
   className?: string;
   children?: React.ReactNode;
 }) {
-  const href = message
-    ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
-    : `https://wa.me/${WHATSAPP_NUMBER}`;
+  const { openQuote } = useEnquiry();
 
   const iconSrc =
     variant === "dark"
@@ -27,9 +26,10 @@ export function WhatsappButton({
 
   return (
     <Button
-      href={href}
+      type="button"
       variant={variant}
       className={className}
+      onClick={() => openQuote({ message })}
       icon={<Image src={iconSrc} alt="" width={24} height={24} className="h-6 w-6" />}
     >
       {children}

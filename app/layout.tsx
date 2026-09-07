@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Google_Sans_Flex, Inter_Tight } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { EnquiryProvider } from "@/components/ui/enquiry-modal";
 import "./globals.css";
 
 const googleSansFlex = Google_Sans_Flex({
@@ -31,9 +32,11 @@ export default function RootLayout({
       className={`${googleSansFlex.variable} ${interTight.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-ink">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <EnquiryProvider>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </EnquiryProvider>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
+import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
 import { ProductHero } from "@/components/sections/product-hero";
 import { ProductCard } from "@/components/sections/product-card";
 import { ContactSection } from "@/components/sections/contact-section";
@@ -180,9 +180,13 @@ export default function LpgPage() {
           <p className="mt-4 max-w-xl text-body">
             Download the full technical datasheet for our LPG equipment range.
           </p>
-          <Button href="/spec-sheets/LPG_Dispenser_Single_Nozzle.pdf" variant="secondary" className="mt-6">
+          <SpecSheetButton
+            href="/spec-sheets/LPG_Dispenser_Single_Nozzle.pdf"
+            description="Download the full technical datasheet for our LPG equipment range."
+            className="mt-6"
+          >
             Download product specs
-          </Button>
+          </SpecSheetButton>
         </Container>
       </section>
 
