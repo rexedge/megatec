@@ -23,15 +23,10 @@ const BADGES = [
   },
 ];
 
-const CARD_IMAGES = [
-  "/images/products/fuel-dispenser-hero.png",
-  "/images/landing/rectangle-installation.png",
-  "/images/landing/rectangle-fuel-dispensers.png",
-];
-
 const PRODUCTS = [
   {
     title: "MT PLUS – Single Nozzle (TB)",
+    image: "/images/factory/mt-plus-single-tb/mt-plus-tb-3.png",
     specs: [
       "Flow rate: 5–50 L/min · ±0.3% accuracy",
       "Bennett meter · Tokheim unit",
@@ -42,6 +37,7 @@ const PRODUCTS = [
   },
   {
     title: "MT PRO – Double Nozzle (TB-D1)",
+    image: "/images/factory/mtr-pro-d1tb/mt-pro-d1-tb6.png",
     specs: [
       "Flow rate: 5–50 L/min · ±0.3% accuracy",
       "Bennett meter · Tokheim unit",
@@ -51,6 +47,7 @@ const PRODUCTS = [
   },
   {
     title: "MT PRO – Single Nozzle (TT)",
+    image: "/images/factory/mtr-pro-single/mtr-pro-single-5.png",
     specs: [
       "Flow rate: 5–50 L/min · ±0.3% accuracy",
       "Tokheim meter & unit",
@@ -60,6 +57,7 @@ const PRODUCTS = [
   },
   {
     title: "MT PLUS – Single Nozzle (BB)",
+    image: "/images/factory/bb-single-mt-pro/bb-single-mt-pro-7.png",
     specs: [
       "Flow rate: 5–50 L/min · ±0.3% accuracy",
       "Bennett meter & unit",
@@ -69,6 +67,7 @@ const PRODUCTS = [
   },
   {
     title: "MT PLUS SUBMERSIBLE – Dual Nozzle",
+    image: "/images/factory/submersible-mt-plus-d1/submersible-mt-plus-d1-2.png",
     specs: [
       "For submersible (STP) systems · ±0.3% accuracy",
       "Bennett meter · solenoid valve · CPU control",
@@ -78,6 +77,7 @@ const PRODUCTS = [
   },
   {
     title: "GEAR PUMP – Single Nozzle",
+    image: "/images/factory/oil-dispenser/oil-dispenser-5.png",
     specs: [
       "High flow rate: 5–100 L/min · ±0.3% accuracy",
       "Self-priming gear pump · oil separator",
@@ -146,7 +146,7 @@ export default function FuelDispensersPage() {
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {PRODUCTS.map((product, index) => (
+            {PRODUCTS.map((product) => (
               <div
                 key={product.title}
                 className={cn(
@@ -155,7 +155,7 @@ export default function FuelDispensersPage() {
                 )}
               >
                 <ProductCard
-                  image={CARD_IMAGES[index % CARD_IMAGES.length]}
+                  image={product.image}
                   title={product.title}
                   specs={product.specs}
                   whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.title} fuel dispenser.`}

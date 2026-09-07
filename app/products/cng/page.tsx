@@ -50,15 +50,10 @@ const SYSTEM_COMPONENTS = [
   },
 ];
 
-const CARD_IMAGES = [
-  "/images/landing/rectangle-cng.png",
-  "/images/products/cng-hero.png",
-  "/images/landing/rectangle-installation.png",
-];
-
 const PRODUCTS = [
   {
     title: "CNG Dispenser",
+    image: "/images/factory/cng-double/cng-double-3.png",
     specs: [
       "Single or double-nozzle options",
       "Flow range 2 to 30 kg/min, ±0.5% accuracy",
@@ -69,6 +64,7 @@ const PRODUCTS = [
   },
   {
     title: "CNG Daughter Station",
+    image: "/images/factory/cng-double/cng-double-1.png",
     specs: [
       "Complete station that works without a gas pipeline",
       "Includes compressor, storage cylinders, dispensers, alarm and PLC control",
@@ -78,6 +74,7 @@ const PRODUCTS = [
   },
   {
     title: "CNG Storage Tubes (40ft)",
+    image: "/images/factory/cng-single/cng-single-2.png",
     specs: [
       "12-tube container, up to 7,800 Nm³ capacity under 25MPa",
       "Working pressure 20 to 25MPa, tested to 33.4MPa",
@@ -87,6 +84,7 @@ const PRODUCTS = [
   },
   {
     title: "CNG Vehicle Conversion Kit",
+    image: "/images/factory/cng-single/cng-single-4.png",
     specs: [
       "Converts petrol vehicles to run on CNG",
       "For fleets and individual vehicles",
@@ -95,6 +93,7 @@ const PRODUCTS = [
   },
   {
     title: "CNG Control & Monitoring Panel",
+    image: "/images/factory/cng-double/cng-double-4.png",
     specs: [
       "Industrial HMI display",
       "Remote connectivity option",
@@ -185,10 +184,10 @@ export default function CngPage() {
             </p>
           </div>
           <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {PRODUCTS.map((product, index) => (
+            {PRODUCTS.map((product) => (
               <div key={product.title} className={product.bestSeller ? "rounded-2xl ring-2 ring-leaf" : undefined}>
                 <ProductCard
-                  image={CARD_IMAGES[index % CARD_IMAGES.length]}
+                  image={product.image}
                   title={product.title}
                   specs={product.specs}
                   whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.title}.`}

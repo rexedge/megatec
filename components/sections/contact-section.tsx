@@ -34,19 +34,13 @@ export function ContactSection() {
 
         <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div className="relative min-h-[420px] overflow-hidden rounded-2xl lg:min-h-full">
-            <Image
-              src="/images/landing/map.png"
-              alt="Megatec head office location map"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+            <iframe
+              title="Megatec head office location map"
+              src="https://www.google.com/maps?q=9E+LSDPC+Apapa-Oshodi+Expressway+Mile+2+Lagos+Nigeria&output=embed"
+              className="absolute inset-0 h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
-            <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-[calc(50%+14px)] flex-col items-center">
-              <span className="whitespace-nowrap rounded-lg bg-[rgba(15,15,20,0.88)] px-3 py-1.5 text-xs text-white">
-                9E LSDPC, Apapa-Oshodi Expressway, Lagos
-              </span>
-              <span className="mt-1 h-3 w-3 rotate-45 bg-[rgba(15,15,20,0.88)]" />
-            </div>
           </div>
 
           <form

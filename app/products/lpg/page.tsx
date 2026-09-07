@@ -29,6 +29,7 @@ const SYSTEMS = [
 const PRODUCTS = [
   {
     title: "LPG Dispenser – Single Nozzle",
+    image: "/images/factory/lpg-single/lpg-single-5.png",
     specs: [
       "Single nozzle · ±0.3% meter accuracy",
       "Air separator · standard meter",
@@ -39,6 +40,7 @@ const PRODUCTS = [
   },
   {
     title: "LPG Dispenser – Double Nozzle",
+    image: "/images/factory/lpg-double/lpg-double-4.png",
     specs: [
       "Two nozzles · ±0.3% meter accuracy",
       "Dual meters · dual air separators",
@@ -139,7 +141,7 @@ export default function LpgPage() {
                 className={product.bestSeller ? "rounded-2xl ring-2 ring-leaf" : undefined}
               >
                 <ProductCard
-                  image="/images/landing/rectangle-lpg.png"
+                  image={product.image}
                   title={product.title}
                   specs={product.specs}
                   whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.title}.`}

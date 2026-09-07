@@ -2,15 +2,6 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 
-const CLIENT_LOGOS = [
-  { src: "/images/landing/logo-1.svg", width: 124, height: 34 },
-  { src: "/images/landing/logo-2.svg", width: 85, height: 28 },
-  { src: "/images/landing/logo-3.svg", width: 73, height: 27 },
-  { src: "/images/landing/logo-4.svg", width: 96, height: 20 },
-  { src: "/images/landing/logo-5.svg", width: 71, height: 31 },
-  { src: "/images/landing/logo-6.svg", width: 123, height: 20 },
-];
-
 export function Hero() {
   return (
     <section className="bg-hero-tint pt-16 pb-20 lg:pt-24 lg:pb-28">
@@ -33,19 +24,6 @@ export function Hero() {
           <WhatsappButton variant="sky">Talk to our team on whatsapp</WhatsappButton>
         </div>
 
-        <div className="mt-20 flex w-full flex-wrap items-center justify-center gap-x-16 gap-y-6">
-          {CLIENT_LOGOS.map((logo) => (
-            <Image
-              key={logo.src}
-              src={logo.src}
-              alt=""
-              width={logo.width}
-              height={logo.height}
-              className="h-6 w-auto opacity-70 grayscale sm:h-7"
-            />
-          ))}
-        </div>
-
         <div className="relative mt-16 aspect-video w-full overflow-hidden rounded-3xl bg-surface-soft">
           <Image
             src="/images/landing/rectangle-fuel-dispensers.png"
@@ -55,14 +33,6 @@ export function Hero() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-            <Image
-              src="/images/landing/play-button.svg"
-              alt="Play video"
-              width={64}
-              height={64}
-            />
-          </div>
         </div>
       </Container>
     </section>
