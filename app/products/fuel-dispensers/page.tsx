@@ -4,6 +4,7 @@ import { RangeLink } from "@/components/ui/range-link";
 import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
 import { ProductHero } from "@/components/sections/product-hero";
 import { ProductCard } from "@/components/sections/product-card";
+import { ProductProjects } from "@/components/sections/product-projects";
 import { ContactSection } from "@/components/sections/contact-section";
 import { ShieldIcon, PinIcon, WrenchIcon, AwardIcon } from "@/components/icons/badge-icons";
 import { catalogueHref, productsIn } from "@/lib/catalogue";
@@ -49,21 +50,24 @@ const INSTALL_STEPS = [
   },
 ];
 
-const TESTIMONIALS = [
+const PROJECTS = [
   {
-    quote:
+    title: "Nepal Energies, Nationwide",
+    description:
       "300+ dispensers and 30 LPG units supplied across repeat contracts, delivering smoother operations and reduced downtime across their stations.",
-    attribution: "Nepal Energies, Nationwide",
+    image: "/images/factory/mt-plus-d1tt/mt-plus-d1tt-double-nozzle-2.png",
   },
   {
-    quote:
+    title: "An electric charging station in Abuja",
+    description:
       "24/7 technical assistance and proactive system monitoring ensure smooth operations and immediate troubleshooting.",
-    attribution: "An electric charging station in Abuja",
+    image: "/images/landing/project-abuja-ev.png",
   },
   {
-    quote:
+    title: "Sterling Oil & Gas, Lagos, Akwa Ibom & PH",
+    description:
       "Dispenser supply with professionally handled installation and calibration, operating efficiently since commissioning.",
-    attribution: "Sterling Oil & Gas, Lagos, Akwa Ibom & PH",
+    image: "/images/factory/mt-pro-d2-bb/mt-pro-d2-bb-4.png",
   },
 ];
 
@@ -177,27 +181,7 @@ export default function FuelDispensersPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
-        <Container>
-          <p className="text-sm font-medium tracking-tight text-body">Our portfolio</p>
-          <h2 className="mt-2 text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
-            Real world projects
-          </h2>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
-            {TESTIMONIALS.map((testimonial) => (
-              <div
-                key={testimonial.attribution}
-                className="flex flex-col gap-6 rounded-2xl border border-border/70 p-8"
-              >
-                <p className="text-body leading-relaxed">&ldquo;{testimonial.quote}&rdquo;</p>
-                <p className="mt-auto text-sm font-medium tracking-tight text-ink">
-                  {testimonial.attribution}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <ProductProjects projects={PROJECTS} />
 
       <ContactSection />
     </>

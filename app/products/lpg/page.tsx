@@ -4,6 +4,7 @@ import { RangeLink } from "@/components/ui/range-link";
 import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
 import { ProductHero } from "@/components/sections/product-hero";
 import { ProductCard } from "@/components/sections/product-card";
+import { ProductProjects } from "@/components/sections/product-projects";
 import { ContactSection } from "@/components/sections/contact-section";
 import { ShieldIcon, PinIcon, WrenchIcon, AwardIcon } from "@/components/icons/badge-icons";
 import { catalogueHref, productsIn } from "@/lib/catalogue";
@@ -61,20 +62,23 @@ const WORKFLOW = [
   },
 ];
 
-const TESTIMONIALS = [
+const PROJECTS = [
   {
-    quote: "30 LPG dispenser units supplied as part of a multi-contract partnership.",
-    attribution: "Nepal Energies, Nationwide",
+    title: "Nepal Energies, Nationwide",
+    description: "30 LPG dispenser units supplied as part of a multi-contract partnership.",
+    image: "/images/factory/lpg-single/lpg-single-1.png",
   },
   {
-    quote:
+    title: "An electric charging station in Abuja",
+    description:
       "24/7 technical assistance and proactive system monitoring ensure smooth operations and immediate troubleshooting.",
-    attribution: "An electric charging station in Abuja",
+    image: "/images/landing/project-abuja-ev.png",
   },
   {
-    quote:
+    title: "Lagos Metro Fuel Hub",
+    description:
       "Cost-effective, transparent, and flexible pricing makes world-class fuel tech accessible to businesses of all sizes.",
-    attribution: "Lagos Metro Fuel Hub",
+    image: "/images/landing/project-lagos-metro.png",
   },
 ];
 
@@ -208,27 +212,7 @@ export default function LpgPage() {
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
-        <Container>
-          <p className="text-sm font-medium tracking-tight text-body">Our portfolio</p>
-          <h2 className="mt-2 text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
-            Real world projects
-          </h2>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
-            {TESTIMONIALS.map((testimonial) => (
-              <div
-                key={testimonial.attribution}
-                className="flex flex-col gap-6 rounded-2xl border border-border/70 p-8"
-              >
-                <p className="text-body leading-relaxed">&ldquo;{testimonial.quote}&rdquo;</p>
-                <p className="mt-auto text-sm font-medium tracking-tight text-ink">
-                  {testimonial.attribution}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <ProductProjects projects={PROJECTS} />
 
       <ContactSection />
     </>
