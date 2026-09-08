@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { PRODUCTS, SERVICES } from "@/lib/nav";
 import { Container } from "@/components/ui/container";
+import { SearchDialog } from "@/components/ui/search-dialog";
 import { cn } from "@/lib/cn";
 
 const NAV_LINKS = [
@@ -16,13 +17,17 @@ const NAV_LINKS = [
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const isOverlay = pathname?.startsWith("/products/") ?? false;
+  // Product landing pages open on a full-bleed hero, so the header sits over it.
+  // Their catalogue pages (/products/<slug>/all) start on white and must not.
+  const segments = pathname?.split("/") ?? [];
+  const isOverlay = segments[1] === "products" && segments.length === 3;
   const isHome = pathname === "/";
 
   const [openMenu, setOpenMenu] = useState<"products" | "services" | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState<"products" | "services" | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -51,6 +56,23 @@ export function SiteHeader() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key.toLowerCase() === "k" && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        setSearchOpen(true);
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  function openSearch() {
+    setMobileOpen(false);
+    setOpenMenu(null);
+    setSearchOpen(true);
+  }
 
   const solid = !isOverlay || scrolled;
   const linkClass = solid ? "text-body hover:text-ink" : "text-white/90 hover:text-white";
@@ -172,9 +194,12 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <button
             type="button"
+            onClick={openSearch}
             className={cn(
-              "hidden items-center gap-2 rounded-lg border px-4 py-3 text-sm md:flex",
-              solid ? "border-border/70 text-body" : "border-white/40 text-white"
+              "hidden items-center gap-2 rounded-lg border px-4 py-3 text-sm transition-colors md:flex",
+              solid
+                ? "border-border/70 text-body hover:border-ink hover:text-ink"
+                : "border-white/40 text-white hover:border-white"
             )}
           >
             <SearchIcon />
@@ -210,7 +235,8 @@ export function SiteHeader() {
           <Container className="flex flex-col gap-2 pb-10">
             <button
               type="button"
-              className="mb-4 flex items-center gap-2 rounded-lg bg-surface-soft px-4 py-3 text-body"
+              onClick={openSearch}
+              className="bg-surface-soft text-body mb-4 flex items-center gap-2 rounded-lg px-4 py-3"
             >
               <SearchIcon />
               Global search
@@ -288,6 +314,8 @@ export function SiteHeader() {
           </Container>
         </div>
       )}
+
+      {searchOpen && <SearchDialog onClose={() => setSearchOpen(false)} />}
     </header>
   );
 }
