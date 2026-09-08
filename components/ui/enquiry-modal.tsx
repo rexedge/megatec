@@ -15,6 +15,11 @@ import { cn } from "@/lib/cn";
 
 const WHATSAPP_NUMBER = "2348062968640";
 
+/** Builds the wa.me deep link for a pre-composed message. */
+export function whatsappHref(lines: string[]) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+}
+
 const RESPONSE_NOTE =
   "We respond within 24 hours. No commitment required — just straightforward advice from our technical team.";
 
@@ -212,11 +217,7 @@ function QuoteModal({ message, onClose }: { message?: string; onClose: () => voi
       lines.push(`What I need: ${needs.join(", ")}`);
     }
 
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
+    window.open(whatsappHref(lines), "_blank", "noopener,noreferrer");
 
     onClose();
   };

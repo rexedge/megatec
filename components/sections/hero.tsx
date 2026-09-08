@@ -2,14 +2,15 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 
-// TODO: placeholder marks pending the updated portfolio list from the Figma screens.
+/** Clients shown in the Figma landing page, extracted from the design export. */
 const CLIENT_LOGOS = [
-  { src: "/images/landing/logo-1.svg", width: 124, height: 34 },
-  { src: "/images/landing/logo-2.svg", width: 85, height: 28 },
-  { src: "/images/landing/logo-3.svg", width: 73, height: 27 },
-  { src: "/images/landing/logo-4.svg", width: 96, height: 20 },
-  { src: "/images/landing/logo-5.svg", width: 71, height: 31 },
-  { src: "/images/landing/logo-6.svg", width: 123, height: 20 },
+  { name: "Northwest Petroleum & Gas", src: "/images/clients/northwest.png", width: 300, height: 240 },
+  { name: "Mikano International", src: "/images/clients/mikano.png", width: 300, height: 154 },
+  { name: "MRS", src: "/images/clients/mrs.png", width: 280, height: 300 },
+  { name: "Eterna", src: "/images/clients/eterna.png", width: 287, height: 300 },
+  { name: "Flour Mills of Nigeria", src: "/images/clients/fmn.png", width: 300, height: 233 },
+  { name: "Enyo Retail and Supply", src: "/images/clients/enyo.png", width: 300, height: 83 },
+  { name: "Dangote", src: "/images/clients/dangote.png", width: 300, height: 167 },
 ];
 
 export function Hero() {
@@ -45,15 +46,15 @@ export function Hero() {
           />
         </div>
 
-        <div className="mt-16 flex w-full flex-wrap items-center justify-center gap-x-16 gap-y-6">
+        <div className="mt-16 flex w-full flex-wrap items-center justify-center gap-x-12 gap-y-8 lg:gap-x-16">
           {CLIENT_LOGOS.map((logo) => (
             <Image
               key={logo.src}
               src={logo.src}
-              alt=""
+              alt={logo.name}
               width={logo.width}
               height={logo.height}
-              className="h-6 w-auto opacity-70 grayscale sm:h-7"
+              className="max-h-11 w-auto max-w-24 object-contain opacity-80 grayscale sm:max-h-14 sm:max-w-28"
             />
           ))}
         </div>

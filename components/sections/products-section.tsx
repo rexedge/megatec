@@ -8,6 +8,7 @@ const CARD_IMAGES: Record<string, string> = {
   "/products/cng": "/images/landing/rectangle-cng.png",
   "/products/lpg": "/images/landing/rectangle-lpg.png",
   "/products/ev-chargers": "/images/landing/rectangle-ev-charger.png",
+  "/products/station-accessories": "/images/landing/rectangle-station-accessories.png",
 };
 
 export function ProductsSection() {
@@ -25,7 +26,7 @@ export function ProductsSection() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {PRODUCTS.map((product) => (
             <Link key={product.href} href={product.href} className="group flex flex-col gap-6">
               <div className="border-t border-border pt-6">
@@ -36,11 +37,11 @@ export function ProductsSection() {
                   src={CARD_IMAGES[product.href]}
                   alt={product.title}
                   fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex flex-col items-start gap-6">
                 <p className="text-body">{product.description}</p>
                 <ArrowCircle />
               </div>

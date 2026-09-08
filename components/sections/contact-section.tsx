@@ -3,26 +3,75 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/ui/container";
+import { whatsappHref } from "@/components/ui/enquiry-modal";
 import { PRODUCTS } from "@/lib/nav";
 
 const MESSAGE_LIMIT = 280;
 
+const HEAD_OFFICE =
+  "HEAD OFFICE: 9E LSDPC, Apapa-Oshodi Expressway, (by Jakande bus stop) Mile 2, Lagos, Nigeria.";
+
+const DIAL_CODES = [
+  { country: "Nigeria", code: "+234" },
+  { country: "Ghana", code: "+233" },
+  { country: "Benin", code: "+229" },
+  { country: "Cameroon", code: "+237" },
+  { country: "Côte d'Ivoire", code: "+225" },
+  { country: "Kenya", code: "+254" },
+  { country: "South Africa", code: "+27" },
+  { country: "United Kingdom", code: "+44" },
+  { country: "United States", code: "+1" },
+  { country: "United Arab Emirates", code: "+971" },
+  { country: "China", code: "+86" },
+  { country: "India", code: "+91" },
+];
+
 export function ContactSection() {
+  const [dialCode, setDialCode] = useState("+234");
   const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const get = (key: string) => String(data.get(key) ?? "").trim();
+
+    const lines = [
+      "Hi Megatec, I'd like to discuss a project.",
+      "",
+      `Name: ${get("fullName")}`,
+      `Phone: ${dialCode} ${get("phone")}`,
+    ];
+
+    const company = get("company");
+    if (company) lines.push(`Company: ${company}`);
+
+    const product = get("product");
+    if (product) lines.push(`Product: ${product}`);
+
+    const email = get("email");
+    if (email) lines.push(`Email: ${email}`);
+
+    const body = get("message");
+    if (body) lines.push("", body);
+
+    window.open(whatsappHref(lines), "_blank", "noopener,noreferrer");
+  }
 
   return (
     <section id="contact" className="scroll-mt-24 py-20 lg:py-28">
       <Container>
-        <div className="max-w-2xl">
-          <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
-            Get in touch with us
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-body">
-            HEAD OFFICE: 9E LSDPC, Apapa-Oshodi Expressway, (by Jakande bus stop) Mile 2, Lagos,
-            Nigeria.
-          </p>
-          <div className="mt-6 flex flex-col gap-1 text-lg font-medium text-ink">
+        <span className="bg-sky flex h-12 w-12 items-center justify-center rounded-full text-white">
+          <PencilIcon />
+        </span>
+
+        <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-2xl">
+            <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
+              Get in touch with us
+            </h2>
+            <p className="text-body mt-6 text-lg leading-relaxed">{HEAD_OFFICE}</p>
+          </div>
+          <div className="text-ink flex flex-col gap-1 text-lg font-medium lg:items-end">
             <a href="mailto:info@megatecpumps.com" className="hover:underline">
               info@megatecpumps.com
             </a>
@@ -33,7 +82,7 @@ export function ContactSection() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div className="relative min-h-[420px] overflow-hidden rounded-2xl lg:min-h-full">
+          <div className="relative min-h-105 overflow-hidden rounded-2xl lg:min-h-full">
             <iframe
               title="Megatec head office location map"
               src="https://www.google.com/maps?q=9E+LSDPC+Apapa-Oshodi+Expressway+Mile+2+Lagos+Nigeria&output=embed"
@@ -43,39 +92,27 @@ export function ContactSection() {
             />
           </div>
 
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              // TODO(backend): this form is not wired to anything — the entered
-              // details are discarded, yet the confirmation below tells the user
-              // the team will reach out. Point it at the CRM / form service (or
-              // route it through WhatsApp like the Get a Quote modal) before launch.
-              setSubmitted(true);
-            }}
-            className="flex flex-col gap-6 rounded-2xl border border-ink/80 p-8"
-          >
-            <div className="grid grid-cols-2 gap-4">
-              <Field label="First Name">
-                <input required className="form-input" name="firstName" />
-              </Field>
-              <Field label="Last Name">
-                <input required className="form-input" name="lastName" />
-              </Field>
-            </div>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <Field label="Full name">
+              <input
+                required
+                name="fullName"
+                className="form-input"
+                placeholder="Enter your full name"
+              />
+            </Field>
 
             <Field label="Company name">
               <input
-                className="form-input"
                 name="company"
+                className="form-input"
                 placeholder="Enter your company name"
               />
             </Field>
 
             <Field label="Select a product">
-              <select className="form-input" name="product" defaultValue="">
-                <option value="" disabled>
-                  Select one...
-                </option>
+              <select name="product" className="form-input" defaultValue="">
+                <option value="">Select one</option>
                 {PRODUCTS.map((product) => (
                   <option key={product.href} value={product.title}>
                     {product.title}
@@ -86,57 +123,65 @@ export function ContactSection() {
             </Field>
 
             <Field label="Phone number">
-              <input
-                className="form-input"
-                type="tel"
-                name="phone"
-                placeholder="+234 808 8789 7665"
-              />
+              <div className="flex gap-3">
+                <select
+                  aria-label="Country dialling code"
+                  value={dialCode}
+                  onChange={(event) => setDialCode(event.target.value)}
+                  className="form-input w-40 shrink-0"
+                >
+                  {DIAL_CODES.map((entry) => (
+                    <option key={entry.code} value={entry.code}>
+                      {entry.country} {entry.code}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  required
+                  type="tel"
+                  name="phone"
+                  className="form-input"
+                  placeholder="000 - 0000 - 0000"
+                />
+              </div>
             </Field>
 
-            <Field label="Your email address">
+            <Field label="Email">
               <input
-                required
-                className="form-input"
                 type="email"
                 name="email"
-                placeholder="company@email.com"
+                className="form-input"
+                placeholder="you@company.com"
               />
             </Field>
 
-            <Field label="About">
+            <Field label="Message body">
               <textarea
-                className="form-input h-[140px] resize-none"
                 name="message"
+                className="form-input h-35 resize-none"
                 maxLength={MESSAGE_LIMIT}
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
                 placeholder="Type your message..."
               />
-              <p className="text-sm text-body">
+              <p className="text-body text-sm">
                 {MESSAGE_LIMIT - message.length} characters left
               </p>
             </Field>
 
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-3 rounded-lg bg-accent px-8 py-4 font-accent text-base font-medium text-text transition-colors hover:bg-accent-soft"
+              className="bg-sky hover:bg-sky-dark font-accent inline-flex items-center justify-center gap-3 rounded-lg px-8 py-4 text-base font-medium text-white transition-colors"
             >
               <Image
-                src="/images/landing/icon-whatsapp.svg"
+                src="/images/landing/icon-whatsapp-alt.svg"
                 alt=""
                 width={24}
                 height={24}
                 className="h-6 w-6"
               />
-              Send us a message
+              Discuss your project on WhatsApp
             </button>
-
-            {submitted && (
-              <p className="text-sm text-body">
-                Thanks — your message has been noted. Our team will reach out shortly.
-              </p>
-            )}
           </form>
         </div>
       </Container>
@@ -146,9 +191,27 @@ export function ContactSection() {
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <label className="flex flex-col gap-2 text-sm font-medium text-ink">
+    <label className="text-ink flex flex-col gap-2 text-base font-medium">
       {label}
       {children}
     </label>
+  );
+}
+
+function PencilIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4z" />
+      <path d="M14.5 5.5l4 4" />
+    </svg>
   );
 }
