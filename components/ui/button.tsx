@@ -8,7 +8,7 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   secondary: "bg-muted text-text hover:bg-border/60",
   dark: "bg-navy text-navy-text hover:bg-[#002846]",
   leaf: "bg-leaf text-white hover:bg-leaf-dark",
-  sky: "bg-sky text-text hover:bg-sky-dark",
+  sky: "bg-sky text-white hover:bg-sky-dark",
   "outline-light": "border border-white/70 text-white hover:bg-white/10",
 };
 

@@ -17,12 +17,12 @@ export function WhatsappButton({
 }) {
   const { openQuote } = useEnquiry();
 
+  // Every variant but `primary` sits on a dark or saturated ground, so it takes
+  // the light icon; the dark one would disappear into it.
   const iconSrc =
-    variant === "dark"
-      ? "/images/landing/icon-whatsapp-alt.svg"
-      : variant === "leaf"
-        ? "/images/landing/icon-whatsapp-alt.svg"
-        : "/images/landing/icon-whatsapp.svg";
+    variant === "primary"
+      ? "/images/landing/icon-whatsapp.svg"
+      : "/images/landing/icon-whatsapp-alt.svg";
 
   return (
     <Button

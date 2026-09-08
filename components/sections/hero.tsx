@@ -37,7 +37,7 @@ export function Hero() {
 
         <div className="relative mt-16 aspect-video w-full overflow-hidden rounded-3xl bg-surface-soft">
           <Image
-            src="/images/landing/rectangle-fuel-dispensers.png"
+            src="/images/landing/hero-dispenser.png"
             alt="Megatec fuel dispensing equipment"
             fill
             sizes="(min-width: 1280px) 1280px, 100vw"
