@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
+import { RangeLink } from "@/components/ui/range-link";
 import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
 import { ProductHero } from "@/components/sections/product-hero";
 import { ProductCard } from "@/components/sections/product-card";
 import { ContactSection } from "@/components/sections/contact-section";
 import { ShieldIcon, PinIcon, WrenchIcon, AwardIcon } from "@/components/icons/badge-icons";
+import { catalogueHref, productsIn } from "@/lib/catalogue";
 
 export const metadata: Metadata = {
   title: "LPG Solutions | Megatec",
@@ -26,28 +28,14 @@ const SYSTEMS = [
   { title: "Safety valves & shutdowns", description: "Relief & emergency systems." },
 ];
 
-const PRODUCTS = [
-  {
-    title: "LPG Dispenser – Single Nozzle",
-    image: "/images/factory/lpg-single/lpg-single-5.png",
-    specs: [
-      "Single nozzle · ±0.3% meter accuracy",
-      "Air separator · standard meter",
-      "7-yr memory · 10-min backup",
-    ],
-    spec: "LPG_Dispenser_Single_Nozzle.pdf",
-    bestSeller: true,
-  },
-  {
-    title: "LPG Dispenser – Double Nozzle",
-    image: "/images/factory/lpg-double/lpg-double-4.png",
-    specs: [
-      "Two nozzles · ±0.3% meter accuracy",
-      "Dual meters · dual air separators",
-      "7-yr memory · 10-min backup",
-    ],
-    spec: "LPG_Dispenser_Double_Nozzle.pdf",
-  },
+/** The units featured on the landing page; the rest live in the catalogue. */
+const FEATURED = ["lpg-dispenser-single", "lpg-dispenser-double"];
+
+const SAFETY_POINTS = [
+  "Proper earthing, grounding and bonding on all Mega Tec installations.",
+  "Pressure relief valves and emergency shutoff systems as standard.",
+  "Calibrated dispensers that protect both your customers and your revenue.",
+  "NMDPRA documentation and compliance support throughout the project.",
 ];
 
 const WORKFLOW = [
@@ -91,6 +79,13 @@ const TESTIMONIALS = [
 ];
 
 export default function LpgPage() {
+  const catalogue = productsIn("lpg");
+  const featured = FEATURED.map((id) => {
+    const product = catalogue.find((item) => item.id === id);
+    if (!product) throw new Error(`Unknown LPG product: ${id}`);
+    return product;
+  });
+
   return (
     <>
       <ProductHero
@@ -103,10 +98,10 @@ export default function LpgPage() {
         badges={BADGES}
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-20 lg:py-28">
         <Container>
           <div className="text-center">
-            <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
+            <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
               LPG systems we supply
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-body">
@@ -117,9 +112,9 @@ export default function LpgPage() {
             {SYSTEMS.map((system, index) => (
               <div
                 key={system.title}
-                className="flex items-center gap-6 rounded-xl border border-border/70 p-6"
+                className="flex items-center gap-6 rounded-xl bg-white p-6"
               >
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-lg font-semibold text-ink">
+                <span className="bg-sky flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg font-semibold text-white">
                   {index + 1}
                 </span>
                 <div>
@@ -132,40 +127,63 @@ export default function LpgPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-20 lg:py-28">
+      <section className="py-20 lg:py-28">
         <Container>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-            {PRODUCTS.map((product) => (
-              <div
-                key={product.title}
-                className={product.bestSeller ? "rounded-2xl ring-2 ring-leaf" : undefined}
-              >
-                <ProductCard
-                  image={product.image}
-                  title={product.title}
-                  specs={product.specs}
-                  whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.title}.`}
-                  specSheetHref={`/spec-sheets/${product.spec}`}
-                />
-              </div>
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 sm:grid-cols-2">
+            {featured.map((product) => (
+              <ProductCard
+                key={product.id}
+                image={product.image}
+                title={product.name}
+                specs={product.specs}
+                bestSeller={product.bestSeller}
+                nmdpra={product.nmdpra}
+                whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.name}.`}
+                specSheetHref={
+                  product.specSheet ? `/spec-sheets/${product.specSheet}` : undefined
+                }
+              />
             ))}
           </div>
+
+          <RangeLink href={catalogueHref("lpg")}>See full LPG equipment range</RangeLink>
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
-        <Container className="text-center">
-          <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
+      <section className="pb-20 lg:pb-28">
+        <Container className="max-w-4xl">
+          <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
+            LPG infrastructure failures are expensive, dangerous, and entirely preventable
+          </h2>
+          <ul className="mt-8 flex flex-col gap-4">
+            {SAFETY_POINTS.map((point) => (
+              <li key={point} className="text-body flex gap-3 text-lg leading-relaxed">
+                <span className="bg-leaf mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full" />
+                {point}
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      <section className="bg-navy py-20 lg:py-28">
+        <Container>
+          <h2 className="text-navy-text text-4xl font-semibold tracking-tight lg:text-5xl">
             Deployment workflow
           </h2>
-          <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-12 flex flex-col gap-4">
             {WORKFLOW.map((step, index) => (
-              <div key={step.title} className="flex flex-col items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent text-base font-semibold text-ink">
+              <div
+                key={step.title}
+                className="flex items-start gap-5 rounded-2xl bg-white p-6 lg:p-7"
+              >
+                <span className="bg-sky flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white">
                   {index + 1}
                 </span>
-                <p className="font-medium tracking-tight text-ink">{step.title}</p>
-                <p className="text-sm text-body">{step.description}</p>
+                <div>
+                  <p className="text-ink text-lg font-medium tracking-tight">{step.title}</p>
+                  <p className="text-body mt-1">{step.description}</p>
+                </div>
               </div>
             ))}
           </div>

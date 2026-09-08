@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
+import { RangeLink } from "@/components/ui/range-link";
 import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
 import { ProductHero } from "@/components/sections/product-hero";
 import { ProductCard } from "@/components/sections/product-card";
 import { ContactSection } from "@/components/sections/contact-section";
 import { ShieldIcon, PinIcon, WrenchIcon, AwardIcon } from "@/components/icons/badge-icons";
-import { cn } from "@/lib/cn";
+import { catalogueHref, productsIn } from "@/lib/catalogue";
 
 export const metadata: Metadata = {
   title: "Fuel Dispensers | Megatec",
@@ -23,68 +24,14 @@ const BADGES = [
   },
 ];
 
-const PRODUCTS = [
-  {
-    title: "MT PLUS – Single Nozzle (TB)",
-    image: "/images/factory/mt-plus-single-tb/mt-plus-tb-3.png",
-    specs: [
-      "Flow rate: 5–50 L/min · ±0.3% accuracy",
-      "Bennett meter · Tokheim unit",
-      "Single nozzle · PMS, AGO or DPK",
-    ],
-    spec: "MT_PLUS_Single_Nozzle_TB.pdf",
-    bestSeller: true,
-  },
-  {
-    title: "MT PRO – Double Nozzle (TB-D1)",
-    image: "/images/factory/mtr-pro-d1tb/mt-pro-d1-tb6.png",
-    specs: [
-      "Flow rate: 5–50 L/min · ±0.3% accuracy",
-      "Bennett meter · Tokheim unit",
-      "Serves two vehicles · PMS, AGO or DPK",
-    ],
-    spec: "MT_PRO_Double_Nozzle_TB_D1.pdf",
-  },
-  {
-    title: "MT PRO – Single Nozzle (TT)",
-    image: "/images/factory/mtr-pro-single/mtr-pro-single-5.png",
-    specs: [
-      "Flow rate: 5–50 L/min · ±0.3% accuracy",
-      "Tokheim meter & unit",
-      "Single nozzle · PMS, AGO or DPK",
-    ],
-    spec: "MT_PRO_Single_Nozzle_TT.pdf",
-  },
-  {
-    title: "MT PLUS – Single Nozzle (BB)",
-    image: "/images/factory/bb-single-mt-pro/bb-single-mt-pro-7.png",
-    specs: [
-      "Flow rate: 5–50 L/min · ±0.3% accuracy",
-      "Bennett meter & unit",
-      "7-yr memory · 10-min backup",
-    ],
-    spec: "MT_PLUS_Single_Nozzle_BB.pdf",
-  },
-  {
-    title: "MT PLUS SUBMERSIBLE – Dual Nozzle",
-    image: "/images/factory/submersible-mt-plus-d1/submersible-mt-plus-d1-2.png",
-    specs: [
-      "For submersible (STP) systems · ±0.3% accuracy",
-      "Bennett meter · solenoid valve · CPU control",
-      "Dual nozzle · PMS, AGO or DPK",
-    ],
-    spec: "MT_PLUS_Submersible_Double_Nozzle.pdf",
-  },
-  {
-    title: "GEAR PUMP – Single Nozzle",
-    image: "/images/factory/oil-dispenser/oil-dispenser-5.png",
-    specs: [
-      "High flow rate: 5–100 L/min · ±0.3% accuracy",
-      "Self-priming gear pump · oil separator",
-      "Single nozzle · built for depots",
-    ],
-    spec: "Gear_Pump_Single_Nozzle.pdf",
-  },
+/** The six units featured on the landing page; the rest live in the catalogue. */
+const FEATURED = [
+  "mt-plus-single-tb",
+  "mt-pro-double-tb-d1",
+  "mt-pro-single-tt",
+  "mt-plus-single-bb",
+  "mt-plus-submersible-double",
+  "gear-pump-single",
 ];
 
 const INSTALL_STEPS = [
@@ -121,6 +68,13 @@ const TESTIMONIALS = [
 ];
 
 export default function FuelDispensersPage() {
+  const catalogue = productsIn("fuel-dispensers");
+  const featured = FEATURED.map((id) => {
+    const product = catalogue.find((item) => item.id === id);
+    if (!product) throw new Error(`Unknown fuel dispenser: ${id}`);
+    return product;
+  });
+
   return (
     <>
       <ProductHero
@@ -146,24 +100,23 @@ export default function FuelDispensersPage() {
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {PRODUCTS.map((product) => (
-              <div
-                key={product.title}
-                className={cn(
-                  "rounded-2xl",
-                  product.bestSeller && "ring-2 ring-leaf"
-                )}
-              >
-                <ProductCard
-                  image={product.image}
-                  title={product.title}
-                  specs={product.specs}
-                  whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.title} fuel dispenser.`}
-                  specSheetHref={`/spec-sheets/${product.spec}`}
-                />
-              </div>
+            {featured.map((product) => (
+              <ProductCard
+                key={product.id}
+                image={product.image}
+                title={product.name}
+                specs={product.specs}
+                bestSeller={product.bestSeller}
+                nmdpra={product.nmdpra}
+                whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.name} fuel dispenser.`}
+                specSheetHref={
+                  product.specSheet ? `/spec-sheets/${product.specSheet}` : undefined
+                }
+              />
             ))}
           </div>
+
+          <RangeLink href={catalogueHref("fuel-dispensers")}>See full product range</RangeLink>
         </Container>
       </section>
 

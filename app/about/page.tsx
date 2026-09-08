@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
+import { AboutCarousel } from "@/components/sections/about-carousel";
 import { StatsCta } from "@/components/sections/stats-cta";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 
@@ -118,9 +119,11 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <AboutCarousel />
+
       <section className="pb-20 lg:pb-28">
         <Container>
-          <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
+          <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
             What We Do: Expertise in Action
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2">

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import { RangeLink } from "@/components/ui/range-link";
+import { WhatsappButton } from "@/components/ui/whatsapp-button";
 import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
 import { ProductHero } from "@/components/sections/product-hero";
 import { ProductCard } from "@/components/sections/product-card";
@@ -14,6 +17,7 @@ import {
   DisplayIcon,
   ScaleIcon,
 } from "@/components/icons/badge-icons";
+import { catalogueHref } from "@/lib/catalogue";
 
 export const metadata: Metadata = {
   title: "Electric Car Chargers | Megatec",
@@ -67,6 +71,42 @@ const RESIDENTIAL_FEATURES = [
   },
 ];
 
+const PATHS = [
+  {
+    tag: "Commercial / Industrial",
+    tagClass: "bg-leaf text-white",
+    image: "/images/factory/commercial-ev/commercial-ev-1.png",
+    title: "60KW DC dual-gun fast charger",
+    chargeTime: "Charge time: 40–60 minutes",
+    audience: [
+      "Hotels",
+      "Estates",
+      "Filling Stations",
+      "Corporate Campuses",
+      "Fleet Depots",
+    ],
+    cta: "Discuss Commercial Installation",
+    message:
+      "Hi Megatec, I'd like to discuss a commercial EV charging installation (60KW dual-gun).",
+  },
+  {
+    tag: "Residential / Personal",
+    tagClass: "bg-surface-soft text-ink",
+    image: "/images/factory/residential-ev/residential-ev-3.png",
+    title: "40KW DC wall-mounted fast charger",
+    chargeTime: "Charge time: 30–60 minutes",
+    audience: [
+      "Private homes",
+      "Estates",
+      "Small offices",
+      "Small commercial sites with three-phase power",
+    ],
+    cta: "Enquire on this on whatsapp",
+    message:
+      "Hi Megatec, I'd like to enquire about the 40KW wall-mounted EV charger for a home or estate.",
+  },
+];
+
 const BUSINESS_CASE = [
   "Hotels with EV charging attract international guests and corporate travel accounts who now expect it.",
   "Estates and developments with charging infrastructure command premium pricing and attract higher-income residents.",
@@ -88,7 +128,66 @@ export default function EvChargersPage() {
 
       <section className="py-20 lg:py-28">
         <Container>
-          <p className="text-sm font-medium tracking-tight text-body">Commercial</p>
+          <div className="text-center">
+            <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
+              Which solution is right for you?
+            </h2>
+            <p className="text-body mx-auto mt-4 max-w-2xl text-lg">
+              Two distinct paths — pick yours to start the right conversation.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
+            {PATHS.map((path) => (
+              <div
+                key={path.title}
+                className="border-border/70 flex flex-col gap-5 rounded-2xl border bg-white p-6"
+              >
+                <div className="bg-surface-soft relative aspect-16/10 overflow-hidden rounded-xl">
+                  <Image
+                    src={path.image}
+                    alt={path.title}
+                    fill
+                    sizes="(min-width: 768px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                  <span
+                    className={`absolute top-4 left-4 rounded-md px-3 py-1 text-xs font-medium ${path.tagClass}`}
+                  >
+                    {path.tag}
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-ink text-xl font-medium tracking-tight">{path.title}</h3>
+                  <p className="text-body mt-1 text-sm">{path.chargeTime}</p>
+                </div>
+
+                <ul className="flex flex-col gap-1.5">
+                  {path.audience.map((item) => (
+                    <li key={item} className="text-body flex gap-2">
+                      <span className="bg-leaf mt-2.5 h-1 w-1 shrink-0 rounded-full" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-auto pt-2">
+                  <WhatsappButton variant="leaf" message={path.message} className="w-full">
+                    {path.cta}
+                  </WhatsappButton>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <RangeLink href={catalogueHref("ev-chargers")}>See full EV charging range</RangeLink>
+        </Container>
+      </section>
+
+      <section className="bg-surface-soft/60 py-20 lg:py-28">
+        <Container>
+          <p className="text-body text-sm font-medium tracking-tight">Commercial</p>
           <h2 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             Industrial EV charging for high-traffic commercial sites
           </h2>
@@ -114,7 +213,7 @@ export default function EvChargersPage() {
               tag="Commercial / Industrial"
               image="/images/products/ev-commercial-charger.png"
               title="MT EV — Commercial DC Fast Charger"
-              subtitle="Charge time: 30–60 minutes"
+              subtitle="Charge time: 40–60 minutes"
               specs={[
                 "60KW · dual gun · 200–1000VDC output",
                 "Floor-standing (about 70 × 60 × 170cm)",
@@ -127,9 +226,9 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-20 lg:py-28">
+      <section className="py-20 lg:py-28">
         <Container>
-          <p className="text-sm font-medium tracking-tight text-body">Residential</p>
+          <p className="text-body text-sm font-medium tracking-tight">Residential</p>
           <h2 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             Fast home and estate EV charging, compact and professionally installed
           </h2>

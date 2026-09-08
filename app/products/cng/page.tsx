@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
+import { RangeLink } from "@/components/ui/range-link";
 import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
 import { ProductHero } from "@/components/sections/product-hero";
 import { ProductCard } from "@/components/sections/product-card";
 import { ContactSection } from "@/components/sections/contact-section";
-import { ShieldIcon, PinIcon, WrenchIcon, AwardIcon } from "@/components/icons/badge-icons";
+import {
+  ShieldIcon,
+  PinIcon,
+  WrenchIcon,
+  AwardIcon,
+  BuildingIcon,
+  TruckIcon,
+  ChartIcon,
+} from "@/components/icons/badge-icons";
+import { catalogueHref, productsIn } from "@/lib/catalogue";
 
 export const metadata: Metadata = {
   title: "CNG Systems | Megatec",
@@ -50,72 +60,61 @@ const SYSTEM_COMPONENTS = [
   },
 ];
 
-const PRODUCTS = [
-  {
-    title: "CNG Dispenser",
-    image: "/images/factory/cng-double/cng-double-3.png",
-    specs: [
-      "Single or double-nozzle options",
-      "Flow range 2 to 30 kg/min, ±0.5% accuracy",
-      "Working pressure up to 25MPa",
-    ],
-    spec: "CNG_Dispenser_Single_Nozzle.pdf",
-    bestSeller: true,
-  },
-  {
-    title: "CNG Daughter Station",
-    image: "/images/factory/cng-double/cng-double-1.png",
-    specs: [
-      "Complete station that works without a gas pipeline",
-      "Includes compressor, storage cylinders, dispensers, alarm and PLC control",
-      "Receives, stores and dispenses gas brought in by truck",
-    ],
-    spec: "CNG_Daughter_Station.pdf",
-  },
-  {
-    title: "CNG Storage Tubes (40ft)",
-    image: "/images/factory/cng-single/cng-single-2.png",
-    specs: [
-      "12-tube container, up to 7,800 Nm³ capacity under 25MPa",
-      "Working pressure 20 to 25MPa, tested to 33.4MPa",
-      "Built for a 20-year working life",
-    ],
-    spec: "CNG_Storage_Tubes_40ft.pdf",
-  },
-  {
-    title: "CNG Vehicle Conversion Kit",
-    image: "/images/factory/cng-single/cng-single-4.png",
-    specs: [
-      "Converts petrol vehicles to run on CNG",
-      "For fleets and individual vehicles",
-      "Cuts running cost compared to petrol",
-    ],
-  },
-  {
-    title: "CNG Control & Monitoring Panel",
-    image: "/images/factory/cng-double/cng-double-4.png",
-    specs: [
-      "Industrial HMI display",
-      "Remote connectivity option",
-      "Multi-point alarm capability",
-    ],
-  },
+/** The units featured on the landing page; the rest live in the catalogue. */
+const FEATURED = [
+  "cng-dispenser-single",
+  "cng-daughter-station",
+  "cng-storage-tubes",
+  "cng-conversion-kit",
+  "cng-control-panel",
 ];
 
 const TRUST_POINTS = [
-  "Pressure integrity testing standards on all installations.",
-  "Emergency shutoff and blowdown systems as standard.",
-  "Full NMDPRA compliance requirements for CNG stations.",
-  "Certified installation technicians — not subcontracted labour.",
+  {
+    title: "Pressure integrity testing standards on all installations.",
+    description:
+      "From wellhead to dispenser, Mega Tec manages gas sourcing and connection design.",
+  },
+  {
+    title: "Emergency shutoff and blowdown systems as standard.",
+    description: "Scalable compression for growing demand.",
+  },
+  {
+    title: "Full NMDPRA compliance requirements for CNG stations.",
+    description: "Optimized for your station's needs.",
+  },
+  {
+    title: "Certified installation technicians — not subcontracted labour.",
+    description: "Precise metering for accurate billing.",
+  },
 ];
 
 const AUDIENCES = [
-  { title: "Filling station owners", description: "Adding CNG to an existing forecourt." },
-  { title: "Fleet operators", description: "Building a private CNG refuelling facility." },
-  { title: "New station investors", description: "CNG-first infrastructure from scratch." },
+  {
+    title: "Filling station owners",
+    description: "Adding CNG to an existing forecourt.",
+    icon: <BuildingIcon />,
+  },
+  {
+    title: "Fleet operators",
+    description: "Building a private CNG refuelling facility.",
+    icon: <TruckIcon />,
+  },
+  {
+    title: "New station investors",
+    description: "CNG-first infrastructure from scratch.",
+    icon: <ChartIcon />,
+  },
 ];
 
 export default function CngPage() {
+  const catalogue = productsIn("cng");
+  const featured = FEATURED.map((id) => {
+    const product = catalogue.find((item) => item.id === id);
+    if (!product) throw new Error(`Unknown CNG product: ${id}`);
+    return product;
+  });
+
   return (
     <>
       <ProductHero
@@ -184,49 +183,68 @@ export default function CngPage() {
             </p>
           </div>
           <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {PRODUCTS.map((product) => (
-              <div key={product.title} className={product.bestSeller ? "rounded-2xl ring-2 ring-leaf" : undefined}>
-                <ProductCard
-                  image={product.image}
-                  title={product.title}
-                  specs={product.specs}
-                  whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.title}.`}
-                  specSheetHref={product.spec ? `/spec-sheets/${product.spec}` : undefined}
-                />
-              </div>
+            {featured.map((product) => (
+              <ProductCard
+                key={product.id}
+                image={product.image}
+                title={product.name}
+                specs={product.specs}
+                bestSeller={product.bestSeller}
+                nmdpra={product.nmdpra}
+                whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.name}.`}
+                specSheetHref={
+                  product.specSheet ? `/spec-sheets/${product.specSheet}` : undefined
+                }
+              />
             ))}
           </div>
+
+          <RangeLink href={catalogueHref("cng")}>See full CNG equipment range</RangeLink>
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-20 lg:py-28">
-        <Container className="max-w-3xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-ink lg:text-4xl">
+      <section className="bg-navy py-20 lg:py-28">
+        <Container>
+          <h2 className="text-navy-text max-w-4xl text-3xl font-semibold tracking-tight lg:text-4xl">
             CNG infrastructure runs at very high pressure. There is no room for shortcuts.
           </h2>
-          <ul className="mt-10 flex flex-col gap-6">
+          <ul className="mt-12 flex flex-col gap-4">
             {TRUST_POINTS.map((point, index) => (
-              <li key={point} className="flex items-start gap-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-semibold text-ink">
+              <li
+                key={point.title}
+                className="flex items-start gap-5 rounded-2xl bg-white p-6 lg:p-7"
+              >
+                <span className="bg-sky flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white">
                   {index + 1}
                 </span>
-                <p className="pt-1 text-lg text-ink">{point}</p>
+                <div>
+                  <p className="text-ink text-lg font-medium tracking-tight">{point.title}</p>
+                  <p className="text-body mt-1">{point.description}</p>
+                </div>
               </li>
             ))}
           </ul>
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-20 lg:py-28">
         <Container>
-          <h2 className="text-center text-3xl font-semibold tracking-tight text-ink lg:text-4xl">
+          <h2 className="text-ink text-center text-3xl font-semibold tracking-tight lg:text-4xl">
             Who this is for
           </h2>
           <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {AUDIENCES.map((audience) => (
-              <div key={audience.title} className="text-center">
-                <p className="text-xl font-medium tracking-tight text-ink">{audience.title}</p>
-                <p className="mt-2 text-body">{audience.description}</p>
+              <div
+                key={audience.title}
+                className="border-border/70 flex flex-col items-center gap-4 rounded-2xl border bg-white p-8 text-center"
+              >
+                <span className="bg-sky flex h-11 w-11 items-center justify-center rounded-full text-white">
+                  {audience.icon}
+                </span>
+                <div>
+                  <p className="text-ink text-xl font-medium tracking-tight">{audience.title}</p>
+                  <p className="text-body mt-2">{audience.description}</p>
+                </div>
               </div>
             ))}
           </div>
