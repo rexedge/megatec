@@ -68,18 +68,6 @@ const PROJECTS = [
     description: "30 LPG dispenser units supplied as part of a multi-contract partnership.",
     image: "/images/factory/lpg-single/lpg-single-1.png",
   },
-  {
-    title: "An electric charging station in Abuja",
-    description:
-      "24/7 technical assistance and proactive system monitoring ensure smooth operations and immediate troubleshooting.",
-    image: "/images/landing/project-abuja-ev.png",
-  },
-  {
-    title: "Lagos Metro Fuel Hub",
-    description:
-      "Cost-effective, transparent, and flexible pricing makes world-class fuel tech accessible to businesses of all sizes.",
-    image: "/images/landing/project-lagos-metro.png",
-  },
 ];
 
 export default function LpgPage() {

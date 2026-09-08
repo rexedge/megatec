@@ -58,12 +58,6 @@ const PROJECTS = [
     image: "/images/factory/mt-plus-d1tt/mt-plus-d1tt-double-nozzle-2.png",
   },
   {
-    title: "An electric charging station in Abuja",
-    description:
-      "24/7 technical assistance and proactive system monitoring ensure smooth operations and immediate troubleshooting.",
-    image: "/images/landing/project-abuja-ev.png",
-  },
-  {
     title: "Sterling Oil & Gas, Lagos, Akwa Ibom & PH",
     description:
       "Dispenser supply with professionally handled installation and calibration, operating efficiently since commissioning.",

@@ -2,25 +2,29 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/cn";
 
+/**
+ * Only real, named engagements belong here. The three entries this replaced
+ * ("Port Harcourt Bulk Terminal", "Lagos Metro Fuel Hub", "An electric charging
+ * station in Abuja") were illustrated with AI-generated renders and appear in no
+ * client list Megatec has supplied. Copy below is verbatim from the Core Site
+ * Pages document, Projects §2; imagery is of the equipment actually supplied.
+ *
+ * TODO(assets): both cards need a real installation photograph, and Megatec must
+ * confirm the details are accurate and client-approved. Asset request items 1-2.
+ */
 const PROJECTS = [
   {
-    title: "Port Harcourt Bulk Terminal",
+    title: "Nepal Energies, Nationwide",
     description:
-      "Redundancy, resilience, and 24/7 monitoring ensure maximum uptime and uninterrupted service for mission-critical fuel operations.",
-    image: "/images/landing/project-port-harcourt.png",
+      "A multi-contract partnership beginning with a major 200-dispenser supply, and continued through repeat orders over several years.",
+    image: "/images/factory/mt-plus-d1tt/mt-plus-d1tt-double-nozzle-2.png",
   },
   {
-    title: "Lagos Metro Fuel Hub",
+    title: "Sterling Oil & Gas, Lagos, Akwa Ibom & Port Harcourt",
     description:
-      "Cost-effective, transparent, and flexible pricing makes world-class fuel tech accessible to businesses of all sizes.",
-    image: "/images/landing/project-lagos-metro.png",
+      "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
+    image: "/images/factory/mt-pro-d2-bb/mt-pro-d2-bb-4.png",
     offset: true,
-  },
-  {
-    title: "An electric charging station in Abuja",
-    description:
-      "24/7 technical assistance and proactive system monitoring ensure smooth operations and immediate troubleshooting.",
-    image: "/images/landing/project-abuja-ev.png",
   },
 ];
 
@@ -42,7 +46,7 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        <div className="mt-16 grid w-full grid-cols-1 items-start gap-8 sm:grid-cols-3">
+        <div className="mt-16 grid w-full grid-cols-1 items-start gap-8 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.title} className={cn(project.offset && "sm:mt-24")}>
               <div className="bg-surface-soft relative aspect-9/8 w-full overflow-hidden rounded-2xl">

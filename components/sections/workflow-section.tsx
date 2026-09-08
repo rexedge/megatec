@@ -12,7 +12,7 @@ const STEPS = [
   },
   {
     title: "Installation",
-    description: "Precise mechanical integration by ISO-certified field engineers.",
+    description: "Precise mechanical integration by calibration-certified field engineers.",
   },
   {
     title: "Ongoing support",

@@ -1,18 +1,15 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
+import { EMAIL, HEAD_OFFICE, PHONE_PRIMARY } from "@/lib/contact";
 
 const STATS = [
-  { value: "15+", label: "YEARS" },
-  { value: "500+", label: "PROJECTS" },
-  { value: "Africa", label: "REACH" },
-  { value: "ISO", label: "CERTIFIED" },
+  { value: "2012", label: "FOUNDED" },
+  { value: "1,500+", label: "STATIONS" },
+  { value: "3,500+", label: "CLIENTS" },
+  { value: "80+", label: "ENGINEERS" },
 ];
 
-const HEAD_OFFICE =
-  "9E LSDPC, Apapa-Oshodi Expressway, (by Jakande bus stop) Mile 2, Lagos, Nigeria.";
-const PHONE = "(+234) 8062 9686 40";
-const EMAIL = "info@megatecpumps.com";
 
 export function StatsCta({
   title = "Ready to enhance your infrastructure",
@@ -40,8 +37,8 @@ export function StatsCta({
                 </ContactLine>
                 <ContactLine icon={<PhoneIcon />}>
                   Call For Immediate Assistance:{" "}
-                  <a href="tel:+2348062968640" className="hover:underline">
-                    {PHONE}
+                  <a href={`tel:${PHONE_PRIMARY.tel}`} className="hover:underline">
+                    {PHONE_PRIMARY.display}
                   </a>
                 </ContactLine>
                 <ContactLine icon={<MailIcon />}>
@@ -56,7 +53,7 @@ export function StatsCta({
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <WhatsappButton variant="sky" />
               <Button href="/#contact" variant="secondary">
-                Get an instant quote
+                Send us a message
               </Button>
             </div>
           </div>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
 import localFont from "next/font/local";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -20,9 +19,17 @@ const googleSansFlex = localFont({
   declarations: [{ prop: "font-stretch", value: "100%" }],
 });
 
-const interTight = Inter_Tight({
+// Also loaded from disk. Inter Tight does have fallback metrics in Next's table,
+// so this is not the Google Sans Flex problem — it is that next/font/google
+// fetches from fonts.googleapis.com at build time, and that fetch failed often
+// enough to block builds outright ("Failed to fetch `Inter Tight`"). Reading the
+// file from disk makes the build independent of the network. OFL, see
+// ./fonts/OFL-Inter-Tight.txt.
+const interTight = localFont({
+  src: "./fonts/inter-tight-latin.woff2",
   variable: "--font-accent",
-  subsets: ["latin"],
+  weight: "100 900",
+  display: "swap",
 });
 
 export const metadata: Metadata = {

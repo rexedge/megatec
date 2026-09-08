@@ -20,8 +20,8 @@ const GALLERY = [
   "/images/landing/rectangle-ev-charger.png",
   "/images/landing/rectangle-installation.png",
   "/images/landing/rectangle-maintenance.png",
-  "/images/landing/project-port-harcourt.png",
-  "/images/landing/project-lagos-metro.png",
+  "/images/operations/assembly-line.jpg",
+  "/images/operations/engineering-team.jpg",
 ];
 
 const EXPERTISE = [

@@ -134,9 +134,9 @@ export function Catalogue({ category }: { category: CategorySlug }) {
                 specs={product.specs}
                 bestSeller={product.bestSeller}
                 nmdpra={product.nmdpra}
-                ctaLabel="Request a quote"
+                ctaLabel="Enquire on WhatsApp"
                 ctaVariant="dark"
-                whatsappMessage={`Hi Megatec, I'd like to request a quote for the ${product.name}.`}
+                whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.name}.`}
                 specSheetHref={
                   product.specSheet ? `/spec-sheets/${product.specSheet}` : undefined
                 }

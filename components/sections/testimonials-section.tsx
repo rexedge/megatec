@@ -5,39 +5,43 @@ import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/cn";
 
 /**
- * TODO(content): these are the delivery records already published elsewhere on
- * the site, written in Megatec's own voice. The Figma calls for attributed
- * customer quotes with a headshot and client logo — swap these entries out once
- * the quotes have been collected and approved by the clients named.
+ * Customer quotes, verbatim from the Core Site Pages document, Homepage §5.
+ *
+ * These replaced five entries that named projects Megatec has never claimed —
+ * "Lagos Metro Fuel Hub", "Port Harcourt Bulk Terminal" and an Abuja charging
+ * hub — written in Megatec's own voice rather than a customer's.
+ *
+ * TODO(assets): quotes 1-3 name a company but no person, and 4-5 carry no
+ * attribution at all. The Projects page brief is explicit that only real,
+ * permission-cleared quotes may be used; the same standard should apply here.
+ * Collect name, role and consent for each before launch. Asset request item 9.
  */
 const TESTIMONIALS = [
   {
-    project: "Nepal Energies",
-    sector: "Nationwide",
-    text: "300+ dispensers and 30 LPG units supplied across repeat contracts, delivering smoother operations and reduced downtime across their stations.",
+    quote:
+      "Since the installation of the new dispensers, we have experienced smoother operations, reduced downtime, and better customer satisfaction at our station.",
+    company: "Nepal Energies",
+    role: "Technical Director",
   },
   {
-    project: "Sterling Oil & Gas",
-    sector: "Lagos, Akwa Ibom & Port Harcourt",
-    text: "Dispenser supply with professionally handled installation and calibration, operating efficiently since commissioning.",
+    quote:
+      "We now have a modern dispensing setup that meets our daily operational demands with excellent accuracy and consistency.",
+    company: "Masters Energy",
   },
   {
-    project: "Lagos Metro Fuel Hub",
-    sector: "Retail infrastructure",
-    text: "Cost-effective, transparent, and flexible pricing makes world-class fuel tech accessible to businesses of all sizes.",
+    quote:
+      "The installation and calibration were professionally handled, and the dispensers have been operating efficiently since commissioning.",
+    company: "Sterling Oil & Gas",
   },
   {
-    project: "Port Harcourt Bulk Terminal",
-    sector: "LPG storage & distribution",
-    text: "Redundancy, resilience, and 24/7 monitoring ensure maximum uptime and uninterrupted service for mission-critical fuel operations.",
+    quote:
+      "Five years of use and we've had almost no need for maintenance. That's why we keep coming back.",
   },
   {
-    project: "Abuja Electric Charging Hub",
-    sector: "EV charging",
-    text: "24/7 technical assistance and proactive system monitoring ensure smooth operations and immediate troubleshooting.",
+    quote:
+      "We left a far more expensive brand because it kept giving us problems. The MEGA-TEC pumps just work.",
   },
 ];
-
 export function TestimonialsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
@@ -96,14 +100,18 @@ export function TestimonialsSection() {
             >
               {TESTIMONIALS.map((item) => (
                 <figure
-                  key={item.project}
+                  key={item.quote}
                   className="bg-accent flex w-[300px] shrink-0 snap-start flex-col gap-6 rounded-2xl p-8 sm:w-[360px]"
                 >
-                  <blockquote className="text-body leading-relaxed">{item.text}</blockquote>
-                  <figcaption className="mt-auto">
-                    <p className="text-ink font-medium tracking-tight">{item.project}</p>
-                    <p className="text-body text-sm">{item.sector}</p>
-                  </figcaption>
+                  <blockquote className="text-body leading-relaxed">
+                    &ldquo;{item.quote}&rdquo;
+                  </blockquote>
+                  {item.company && (
+                    <figcaption className="mt-auto">
+                      <p className="text-ink font-medium tracking-tight">{item.company}</p>
+                      {item.role && <p className="text-body text-sm">{item.role}</p>}
+                    </figcaption>
+                  )}
                 </figure>
               ))}
             </div>
@@ -128,7 +136,7 @@ export function TestimonialsSection() {
           <div className="flex gap-2">
             {TESTIMONIALS.map((item, dot) => (
               <button
-                key={item.project}
+                key={item.quote}
                 type="button"
                 onClick={() => scrollToCard(dot)}
                 aria-label={`Show testimonial ${dot + 1}`}

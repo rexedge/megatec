@@ -20,8 +20,7 @@ The branch is 395 files / +3,581 / −664, of which 38 are code files.
 
 ### Before any merge to `main`
 
-1. **The WhatsApp number is wrong on every page.** Code uses `2348062968640`; the Contact
-   build document specifies `2349043154982`. Six files. This is a live bug, not a rebuild task.
+1. ~~The WhatsApp number is wrong on every page.~~ Fixed in Phase 0.
 2. Decide whether to merge at all — the branch contains the `/products/` tree that the new
    copy documents replace (see Decision 2 below).
 
@@ -65,15 +64,33 @@ These determine whether finished work is kept, moved or deleted. Cheaper to answ
 
 Nothing below waits on Mega-Tec. Sequenced so foundations land before the pages that use them.
 
-### Phase 0 — live bugs and decided removals
+### Phase 0 — live bugs and decided removals — **DONE**
 
-- [ ] WhatsApp number to `2349043154982` (`enquiry-modal.tsx`, `contact-section.tsx`, `stats-cta.tsx`)
-- [ ] Phone display to `+234 904 315 4982` / `+234 913 821 0191`
-- [ ] Strip quote wording: `enquiry-modal.tsx:227` "Get a Quote", `catalogue.tsx:137`
-      "Request a quote", `stats-cta.tsx:59` "Get an instant quote"
-- [ ] Delete the three AI-rendered project images (see Known traps)
-- [ ] Fix contradicted claims — drop "ISO CERTIFIED" (unsubstantiated, absent from both
-      documents), "15+ years" to founded 2012, "500+ projects" to 1,500+ stations
+- [x] WhatsApp number to `2349043154982`. Contact details now live in `lib/contact.ts` —
+      a single source of truth, since duplication across six files is what let the number
+      go stale in the first place. Never inline them in a component again
+- [x] Phone display to `+234 904 315 4982`; the second published number
+      `+234 913 821 0191` added to the contact block
+- [x] Quote wording stripped: modal title is now "Talk to our team", catalogue CTA is
+      "Enquire on WhatsApp", the stats CTA is "Send us a message". Two WhatsApp pre-fill
+      messages also said "request a quote" and were reworded
+- [x] Three AI-rendered project images deleted, and the fabricated projects they
+      illustrated removed with them. The homepage portfolio now carries the two real
+      engagements — Nepal Energies and Sterling Oil & Gas — using Paul's copy verbatim
+- [x] Contradicted claims fixed. "ISO CERTIFIED" dropped from the stat block, and a second
+      ISO claim found in `workflow-section.tsx` ("ISO-certified field engineers") reworded.
+      Stats are now Founded 2012 / 1,500+ stations / 3,500+ clients / 80+ engineers,
+      all from the Core Site Pages document, About §3
+- [x] Four real workshop photographs promoted out of the misnamed `staff/` folder into
+      `public/images/operations/` with meaningful names
+- [x] Homepage testimonials replaced. The carousel was still quoting the same three
+      fabricated projects in text form, which the image cleanup missed because those cards
+      carry no image. Now runs Paul's five quotes verbatim (Core Site Pages, Homepage §5);
+      three are attributed, two render without attribution pending item 9
+- [x] Inter Tight self-hosted alongside Google Sans Flex. `next/font/google` fetches from
+      `fonts.googleapis.com` at build time, and that fetch failed six times during this
+      phase, each failure taking the whole build down. Both faces now load from
+      `app/fonts/`, so builds no longer depend on the network
 
 ### Phase 1 — shared foundations
 
@@ -150,18 +167,18 @@ Things that have already cost time. Read before touching assets.
 - **Many `public/images/factory/` files are equipment nameplates**, not product photographs —
   metal serial-number plates that look plausible by aspect ratio. Always view an image before
   wiring it into a page. Contact sheets are the fast way to check a folder.
-- **Three project images are AI renders**, not real installations: `project-abuja-ev.png`,
-  `project-lagos-metro.png`, `project-port-harcourt.png`. Unbranded equipment, scenery that
-  doesn't match the named locations. They must not carry into `/projects/`, where they would sit
-  under real client names.
+- **Three project images were AI renders** — `project-abuja-ev.png`, `project-lagos-metro.png`,
+  `project-port-harcourt.png`. Deleted in Phase 0, along with the invented projects they
+  illustrated. If anything resembling them reappears, it is not a real installation. Real
+  installation photography is asset request item 1 and has not arrived yet.
 - **`rectangle-*.png` are the design's own product photography.** An earlier pass overwrote three
   of them assuming they were stock; they were restored from `b0702c6`. Don't re-overwrite them.
   The hero has its own `hero-dispenser.png` so it no longer shares a file with the product tile.
-- **Google Sans Flex is self-hosted** from `app/fonts/` via `next/font/local`, because Next has no
-  fallback metrics for it. See `app/fonts/README.md` — there is an outstanding OFL licence-text
-  TODO there.
-- **`next/font/google` can fail the build on a network blip** (`Failed to fetch Inter Tight`).
-  It is transient; retry. Moving Inter Tight local too would remove the failure mode.
+- **Both webfonts are self-hosted** from `app/fonts/` via `next/font/local` — Google Sans Flex
+  because Next has no fallback metrics for it, Inter Tight because the build-time fetch from
+  `fonts.googleapis.com` kept failing. Do not move either back to `next/font/google`.
+  `app/fonts/README.md` explains both, and carries an outstanding OFL licence-text TODO for
+  Google Sans Flex (Inter Tight's OFL text is in the folder).
 - **`AGENTS.md` rule:** this Next.js version has breaking changes. Read the relevant guide in
   `node_modules/next/dist/docs/` before writing code.
 

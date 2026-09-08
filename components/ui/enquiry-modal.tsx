@@ -12,8 +12,7 @@ import {
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
-
-const WHATSAPP_NUMBER = "2348062968640";
+import { WHATSAPP_NUMBER } from "@/lib/contact";
 
 /** Builds the wa.me deep link for a pre-composed message. */
 export function whatsappHref(lines: string[]) {
@@ -207,7 +206,7 @@ function QuoteModal({ message, onClose }: { message?: string; onClose: () => voi
     event.preventDefault();
 
     const lines = [
-      message ?? "Hi Megatec, I'd like to request a quote.",
+      message ?? "Hi Megatec, I'd like to talk to your team.",
       "",
       `Name: ${name.trim()}`,
       `Phone: ${phone.trim()}`,
@@ -224,7 +223,7 @@ function QuoteModal({ message, onClose }: { message?: string; onClose: () => voi
 
   return (
     <ModalShell
-      title="Get a Quote"
+      title="Talk to our team"
       description="Fill in your details and we'll get back to you on WhatsApp."
       onClose={onClose}
     >

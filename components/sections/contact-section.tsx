@@ -5,11 +5,17 @@ import { useState } from "react";
 import { Container } from "@/components/ui/container";
 import { whatsappHref } from "@/components/ui/enquiry-modal";
 import { PRODUCTS } from "@/lib/nav";
+import {
+  EMAIL,
+  HEAD_OFFICE as OFFICE_ADDRESS,
+  MAP_QUERY,
+  PHONE_PRIMARY,
+  PHONE_SECONDARY,
+} from "@/lib/contact";
 
 const MESSAGE_LIMIT = 280;
 
-const HEAD_OFFICE =
-  "HEAD OFFICE: 9E LSDPC, Apapa-Oshodi Expressway, (by Jakande bus stop) Mile 2, Lagos, Nigeria.";
+const HEAD_OFFICE = `HEAD OFFICE: ${OFFICE_ADDRESS}`;
 
 const DIAL_CODES = [
   { country: "Nigeria", code: "+234" },
@@ -72,11 +78,14 @@ export function ContactSection() {
             <p className="text-body mt-6 text-lg leading-relaxed">{HEAD_OFFICE}</p>
           </div>
           <div className="text-ink flex flex-col gap-1 text-lg font-medium lg:items-end">
-            <a href="mailto:info@megatecpumps.com" className="hover:underline">
-              info@megatecpumps.com
+            <a href={`mailto:${EMAIL}`} className="hover:underline">
+              {EMAIL}
             </a>
-            <a href="tel:+2348062968640" className="hover:underline">
-              (+234) 8062 9686 40
+            <a href={`tel:${PHONE_PRIMARY.tel}`} className="hover:underline">
+              {PHONE_PRIMARY.display}
+            </a>
+            <a href={`tel:${PHONE_SECONDARY.tel}`} className="hover:underline">
+              {PHONE_SECONDARY.display}
             </a>
           </div>
         </div>
@@ -85,7 +94,7 @@ export function ContactSection() {
           <div className="relative min-h-105 overflow-hidden rounded-2xl lg:min-h-full">
             <iframe
               title="Megatec head office location map"
-              src="https://www.google.com/maps?q=9E+LSDPC+Apapa-Oshodi+Expressway+Mile+2+Lagos+Nigeria&output=embed"
+              src={`https://www.google.com/maps?q=${MAP_QUERY}&output=embed`}
               className="absolute inset-0 h-full w-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
