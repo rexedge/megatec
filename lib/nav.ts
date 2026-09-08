@@ -39,6 +39,13 @@ export const PRODUCTS: NavProduct[] = [
     href: "/products/ev-chargers",
     icon: "/images/brand/icon-ev-charger.svg",
   },
+  {
+    title: "Station Accessories",
+    description:
+      "Comprehensive station accessories to enhance functionality and safety.",
+    href: "/products/station-accessories",
+    icon: "/images/brand/icon-station.png",
+  },
 ];
 
 export const SERVICES: NavService[] = [
