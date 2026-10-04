@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/container";
 import { whatsappHref } from "@/components/ui/enquiry-modal";
 import { PRODUCTS } from "@/lib/nav";
 import {
+  BRANCHES,
   EMAIL,
   HEAD_OFFICE as OFFICE_ADDRESS,
   MAP_QUERY,
@@ -32,7 +33,15 @@ const DIAL_CODES = [
   { country: "India", code: "+91" },
 ];
 
-export function ContactSection() {
+export function ContactSection({
+  showBranches = false,
+  email = EMAIL,
+}: {
+  /** List the branch offices too — only where this section stands in for a contact page. */
+  showBranches?: boolean;
+  /** The address to publish here; the after-sales pages pass the support one. */
+  email?: string;
+}) {
   const [dialCode, setDialCode] = useState("+234");
   const [message, setMessage] = useState("");
 
@@ -78,8 +87,8 @@ export function ContactSection() {
             <p className="text-body mt-6 text-lg leading-relaxed">{HEAD_OFFICE}</p>
           </div>
           <div className="text-ink flex flex-col gap-1 text-lg font-medium lg:items-end">
-            <a href={`mailto:${EMAIL}`} className="hover:underline">
-              {EMAIL}
+            <a href={`mailto:${email}`} className="hover:underline">
+              {email}
             </a>
             <a href={`tel:${PHONE_PRIMARY.tel}`} className="hover:underline">
               {PHONE_PRIMARY.display}
@@ -89,6 +98,22 @@ export function ContactSection() {
             </a>
           </div>
         </div>
+
+        {showBranches && (
+          <div className="border-border/70 mt-12 border-t pt-10">
+            <h3 className="text-ink text-xl font-medium tracking-tight">Branches</h3>
+            <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+              {BRANCHES.map((branch) => (
+                <li key={branch.city}>
+                  <p className="text-ink font-medium">{branch.city}</p>
+                  <address className="text-body mt-1 leading-relaxed not-italic">
+                    {branch.address}
+                  </address>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div className="relative min-h-105 overflow-hidden rounded-2xl lg:min-h-full">

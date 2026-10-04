@@ -14,6 +14,7 @@ export function ProductHero({
   imageAlt,
   whatsappMessage,
   whatsappLabel = "Chat on WhatsApp",
+  email,
   badges,
 }: {
   title: string;
@@ -22,6 +23,8 @@ export function ProductHero({
   imageAlt: string;
   whatsappMessage: string;
   whatsappLabel?: string;
+  /** Offered beside the WhatsApp button, for pages where an email address is the brief. */
+  email?: string;
   badges?: ProductHeroBadge[];
 }) {
   return (
@@ -36,15 +39,25 @@ export function ProductHero({
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />
+        {/* The header overlays this hero with white links; keep them legible over bright skies. */}
+        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/60 to-transparent" />
         <Container className="relative py-16">
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white lg:text-6xl">
             {title}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/90">{description}</p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
             <WhatsappButton variant="leaf" message={whatsappMessage}>
               {whatsappLabel}
             </WhatsappButton>
+            {email && (
+              <a
+                href={`mailto:${email}`}
+                className="text-white/90 underline underline-offset-4 hover:text-white"
+              >
+                or email {email}
+              </a>
+            )}
           </div>
         </Container>
       </div>

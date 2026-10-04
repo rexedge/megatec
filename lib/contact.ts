@@ -22,24 +22,71 @@ export const PHONE_SECONDARY = {
 };
 
 /**
- * TODO(confirm): the two build documents give different head offices — the
- * landing pages document says "9E LSDPC, Apapa-Oshodi Expressway", the core
- * pages document says "Texlon House, opposite Fatgbems filling station". Both
- * sit by Jakande bus stop in Mile 2, but they are different buildings, and this
- * string also drives the map embed. Asset request item 4.
+ * Confirmed by the flyer Mega-Tec supplied in October 2026 (asset request item
+ * 4), which agrees with the core pages document. The landing pages document's
+ * "9E LSDPC, Apapa-Oshodi Expressway" is superseded.
  */
 export const HEAD_OFFICE =
-  "9E LSDPC, Apapa-Oshodi Expressway, (by Jakande bus stop) Mile 2, Lagos, Nigeria.";
-
-/** Query string for the Google Maps embed, kept in step with HEAD_OFFICE. */
-export const MAP_QUERY =
-  "9E+LSDPC+Apapa-Oshodi+Expressway+Mile+2+Lagos+Nigeria";
+  "Texlon House, opposite Fatgbems filling station, Jakande bus stop, Mile 2, Lagos, Nigeria.";
 
 /**
- * TODO(confirm): the core pages document marks the public email as pending.
- * This is the address the site has always shown — confirm it is monitored, or
- * replace it. Asset request item 5.
+ * Query string for the Google Maps embed. Google cannot resolve "Texlon House"
+ * (or the old "9E LSDPC" string) and answers with pins scattered across Lagos,
+ * so this pins the bus stop the address is given by, which it does resolve.
+ *
+ * TODO(confirm): Google lists a "Mega Tec Pumps" a few hundred metres up the
+ * same expressway, under a differently worded address. If Mega-Tec confirm that
+ * listing is the head office, pin the business itself instead.
  */
-export const EMAIL = "info@megatecpumps.com";
+export const MAP_QUERY = "Jakande+Estate+Bus+Stop,+Mile+2,+Lagos,+Nigeria";
+
+/**
+ * Branch offices, from the same flyer (asset request item 12). Two typos on it
+ * are corrected against public listings: "Jelmot Plaze" and "Falgbems".
+ *
+ * TODO(confirm): the core pages document also names Enugu and Ibadan, which the
+ * flyer leaves out, and no branch has a phone number yet.
+ */
+export const BRANCHES = [
+  {
+    city: "Ilorin",
+    address: "Jelmot Plaza Complex, beside Saw-Mill, Offa Garage Road, Kwara State",
+  },
+  {
+    city: "Onitsha",
+    address:
+      "64 Limca Road, near Peoples Club Junction Old Road, former Kessy Filling Station, Nkpor",
+  },
+  {
+    city: "Abuja",
+    address: "Nepal Filling Station, Giri Junction, along Gwagwalada–Zuba Road",
+  },
+  { city: "Abakaliki", address: "62 Afikpo Road, Abakaliki, Ebonyi State" },
+  { city: "Aba", address: "29 Okigwe Road, Aba, Abia State" },
+  {
+    city: "Port Harcourt",
+    address: "Suite 07, Christy Plaza, by Bakery Junction, Ozuoba, Rivers State",
+  },
+];
+
+/**
+ * The public address: the contact line and the footer on every page. From
+ * Mega-Tec's "Email Formats and Where They Belong" (asset request item 5), in
+ * its Word revision of October 2026 — the PDF beside it was an older draft with
+ * a separate contact@.
+ *
+ * The same document puts sales@ behind every enquiry and spec-download form.
+ * The forms hand off to WhatsApp and send no email yet, so that half is unbuilt.
+ *
+ * TODO(setup): megatecpumps.com has no MX records, so nothing sent to either
+ * address below arrives until the Zoho mailboxes exist.
+ */
+export const EMAIL = "sales@megatecpumps.com";
+
+/**
+ * Shown in place of EMAIL on the after-sales pages: Maintenance & Repair,
+ * Technical Support, and Station Accessories.
+ */
+export const SUPPORT_EMAIL = "support@megatecpumps.com";
 
 export const RC_NUMBER = "RC 1071309";

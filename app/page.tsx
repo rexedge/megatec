@@ -15,7 +15,7 @@ export default function Home() {
       <ServicesSection />
       <WorkflowSection />
       <TestimonialsSection />
-      <ContactSection />
+      <ContactSection showBranches />
       <ProjectsSection />
       <StatsCta />
     </>

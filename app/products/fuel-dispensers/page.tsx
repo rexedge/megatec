@@ -55,13 +55,15 @@ const PROJECTS = [
     title: "Nepal Energies, Nationwide",
     description:
       "300+ dispensers and 30 LPG units supplied across repeat contracts, delivering smoother operations and reduced downtime across their stations.",
-    image: "/images/factory/mt-plus-d1tt/mt-plus-d1tt-double-nozzle-2.png",
+    image: "/images/projects/nepal-energies.jpg",
+    imagePosition: "top",
   },
+  // Replaced Sterling Oil & Gas at Megatec's request. The line only describes the
+  // photo until Megatec sends a location and outcome (asset request item 2).
   {
-    title: "Sterling Oil & Gas, Lagos, Akwa Ibom & PH",
-    description:
-      "Dispenser supply with professionally handled installation and calibration, operating efficiently since commissioning.",
-    image: "/images/factory/mt-pro-d2-bb/mt-pro-d2-bb-4.png",
+    title: "Canico",
+    description: "Megatec fuel dispensers in service on Canico's forecourt.",
+    image: "/images/projects/canico.jpg",
   },
 ];
 
@@ -78,8 +80,8 @@ export default function FuelDispensersPage() {
       <ProductHero
         title="Reliable fuel dispensers for Nigerian filling stations"
         description="Supply, installation, calibration and after-sales support. Assembled and tested in Nigeria. SON-certified. Available nationwide."
-        image="/images/products/fuel-dispenser-hero.png"
-        imageAlt="Megatec fuel dispenser at a Nigerian filling station"
+        image="/images/installations/nepal-umuola-forecourt-1.jpg"
+        imageAlt="Megatec fuel dispensers installed at a Nepal Energies filling station in Umuola"
         whatsappMessage="Hi Megatec, I'd like to discuss a fuel dispenser project."
         whatsappLabel="Discuss your project on WhatsApp"
         badges={BADGES}
@@ -163,11 +165,11 @@ export default function FuelDispensersPage() {
             Download product specifications
           </h2>
           <p className="mt-4 max-w-xl text-body">
-            Download the full technical datasheet for our fuel dispenser range.
+            Compare fuel dispensers, gear pumps, submersibles and compact units at a glance.
           </p>
           <SpecSheetButton
-            href="/spec-sheets/MT_PLUS_Single_Nozzle_TB.pdf"
-            description="Download the full technical datasheet for our fuel dispenser range."
+            href="/spec-sheets/Fuel_Range_Comparison.pdf"
+            description="Compare fuel dispensers, gear pumps, submersibles and compact units at a glance."
             className="mt-6"
           >
             Download product specs

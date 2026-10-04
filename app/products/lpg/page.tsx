@@ -188,11 +188,11 @@ export default function LpgPage() {
             Download product specifications
           </h2>
           <p className="mt-4 max-w-xl text-body">
-            Download the full technical datasheet for our LPG equipment range.
+            Compare LPG dispensers and the filling scale at a glance.
           </p>
           <SpecSheetButton
-            href="/spec-sheets/LPG_Dispenser_Single_Nozzle.pdf"
-            description="Download the full technical datasheet for our LPG equipment range."
+            href="/spec-sheets/LPG_Range_Comparison.pdf"
+            description="Compare LPG dispensers and the filling scale at a glance."
             className="mt-6"
           >
             Download product specs
