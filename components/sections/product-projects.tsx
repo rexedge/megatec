@@ -9,6 +9,8 @@ export type ProductProject = {
   title: string;
   description: string;
   image: string;
+  /** CSS object-position for the wide featured crop, when the subject isn't centred. */
+  imagePosition?: string;
 };
 
 /**
@@ -35,6 +37,7 @@ export function ProductProjects({ projects }: { projects: ProductProject[] }) {
               alt={project.title}
               fill
               sizes="(min-width: 1280px) 1200px, 100vw"
+              style={{ objectPosition: project.imagePosition }}
               className={cn(
                 "object-cover transition-opacity duration-500",
                 index === active ? "opacity-100" : "opacity-0"

@@ -2,15 +2,22 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 
-/** Clients shown in the Figma landing page, extracted from the design export. */
+/**
+ * The client logos Megatec supplied, in the order they numbered them. These
+ * replaced the seven in the Figma export, of which only MRS was a named client.
+ *
+ * TODO(assets): written permission to display each logo is still unconfirmed.
+ * Asset request item 3.
+ */
 const CLIENT_LOGOS = [
-  { name: "Northwest Petroleum & Gas", src: "/images/clients/northwest.png", width: 300, height: 240 },
-  { name: "Mikano International", src: "/images/clients/mikano.png", width: 300, height: 154 },
-  { name: "MRS", src: "/images/clients/mrs.png", width: 280, height: 300 },
-  { name: "Eterna", src: "/images/clients/eterna.png", width: 287, height: 300 },
-  { name: "Flour Mills of Nigeria", src: "/images/clients/fmn.png", width: 300, height: 233 },
-  { name: "Enyo Retail and Supply", src: "/images/clients/enyo.png", width: 300, height: 83 },
-  { name: "Dangote", src: "/images/clients/dangote.png", width: 300, height: 167 },
+  { name: "Lado Oil", src: "/images/clients/lado-oil.png", width: 243, height: 67 },
+  { name: "Masters Energy", src: "/images/clients/masters-energy.png", width: 446, height: 445 },
+  { name: "SEEPCO", src: "/images/clients/seepco.png", width: 143, height: 190 },
+  { name: "NIPCO Gas", src: "/images/clients/nipco.png", width: 341, height: 127 },
+  { name: "Nepal Energies", src: "/images/clients/nepal-energies.png", width: 410, height: 125 },
+  { name: "CRCC and CCECC", src: "/images/clients/crcc-ccecc.png", width: 341, height: 161 },
+  { name: "MRS", src: "/images/clients/mrs.png", width: 318, height: 339 },
+  { name: "United States Embassy", src: "/images/clients/us-embassy.png", width: 448, height: 446 },
 ];
 
 export function Hero() {

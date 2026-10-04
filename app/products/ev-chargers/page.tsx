@@ -290,11 +290,11 @@ export default function EvChargersPage() {
             Download product specifications
           </h2>
           <p className="mt-4 max-w-xl text-body">
-            Download the full technical datasheets for our EV charger range.
+            Compare the commercial and home/estate DC fast chargers at a glance.
           </p>
           <SpecSheetButton
-            href="/spec-sheets/EV_Commercial_DC_Fast_Charger_60KW.pdf"
-            description="Download the full technical datasheet for our EV charger range."
+            href="/spec-sheets/EV_Range_Comparison.pdf"
+            description="Compare the commercial and home/estate DC fast chargers at a glance."
             className="mt-6"
           >
             Download product specs

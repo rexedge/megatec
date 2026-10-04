@@ -7,6 +7,7 @@ import { ProductCard } from "@/components/sections/product-card";
 import { ContactSection } from "@/components/sections/contact-section";
 import { ShieldIcon, PinIcon, WrenchIcon, AwardIcon } from "@/components/icons/badge-icons";
 import { catalogueHref, productsIn } from "@/lib/catalogue";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Station Accessories | Megatec",
@@ -88,6 +89,7 @@ export default function StationAccessoriesPage() {
         imageAlt="Megatec dispenser control boards, displays and components"
         whatsappMessage="Hi Megatec, I'd like to enquire about station accessories and spare parts."
         whatsappLabel="Discuss your parts list on WhatsApp"
+        email={SUPPORT_EMAIL}
         badges={BADGES}
       />
 
@@ -194,7 +196,7 @@ export default function StationAccessoriesPage() {
         </Container>
       </section>
 
-      <ContactSection />
+      <ContactSection email={SUPPORT_EMAIL} />
     </>
   );
 }

@@ -6,24 +6,25 @@ import { cn } from "@/lib/cn";
  * Only real, named engagements belong here. The three entries this replaced
  * ("Port Harcourt Bulk Terminal", "Lagos Metro Fuel Hub", "An electric charging
  * station in Abuja") were illustrated with AI-generated renders and appear in no
- * client list Megatec has supplied. Copy below is verbatim from the Core Site
- * Pages document, Projects §2; imagery is of the equipment actually supplied.
+ * client list Megatec has supplied. Nepal's copy is verbatim from the Core Site
+ * Pages document, Projects §2. Canico replaced Sterling Oil & Gas at Megatec's
+ * request (October 2026); its line only describes the photo, because no project
+ * details came with it.
  *
- * TODO(assets): both cards need a real installation photograph, and Megatec must
- * confirm the details are accurate and client-approved. Asset request items 1-2.
+ * TODO(assets): Canico needs a location and a one-line outcome, and Megatec must
+ * confirm both cards are accurate and client-approved. Asset request item 2.
  */
 const PROJECTS = [
   {
     title: "Nepal Energies, Nationwide",
     description:
       "A multi-contract partnership beginning with a major 200-dispenser supply, and continued through repeat orders over several years.",
-    image: "/images/factory/mt-plus-d1tt/mt-plus-d1tt-double-nozzle-2.png",
+    image: "/images/projects/nepal-energies.jpg",
   },
   {
-    title: "Sterling Oil & Gas, Lagos, Akwa Ibom & Port Harcourt",
-    description:
-      "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
-    image: "/images/factory/mt-pro-d2-bb/mt-pro-d2-bb-4.png",
+    title: "Canico",
+    description: "Megatec fuel dispensers in service on Canico's forecourt.",
+    image: "/images/projects/canico.jpg",
     offset: true,
   },
 ];

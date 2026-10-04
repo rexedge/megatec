@@ -1,7 +1,7 @@
 /**
  * The full product catalogue behind the filterable "See full product range" pages.
  *
- * Every `image` here is a real photograph taken in the Megatec factory — the
+ * Every `image` here is a real photograph of the equipment, not a render — the
  * folders under /public/images/factory are named after the model they contain.
  * Several of those folders also hold close-ups of the equipment nameplate; those
  * are never used as a product image.
@@ -348,13 +348,13 @@ const FUEL_DISPENSERS: CatalogueProduct[] = [
     name: "Oil Dispenser Pump",
     category: "fuel-dispensers",
     image: "/images/factory/oil-dispenser/oil-dispenser-7.png",
-    flowRate: DEPOT_FLOW,
+    flowRate: PETROL_FLOW,
     nozzles: "1",
     application: "Depot & bulk",
     fuelType: "Lubricants",
     specs: [
       "Built for lubricants and heavy oils",
-      "Self-priming gear pump · inline filter",
+      "Self-priming vane pump · ±0.3% accuracy",
       "Digital preset with litre and price display",
     ],
     specSheet: "Oil_Dispenser_Pump.pdf",
@@ -414,16 +414,18 @@ const CNG: CatalogueProduct[] = [
   },
   {
     id: "cng-dispenser-double-double",
-    name: "CNG Refilling Dispenser – Double/Double",
+    // A second cabinet design for the double-nozzle unit, not a four-nozzle one:
+    // its datasheet and Mega-Tec's range comparison guide both give two nozzles.
+    name: "CNG Refilling Dispenser – Double Nozzle (2)",
     category: "cng",
     image: "/images/factory/cng-2-double/cng-2-double-2.png",
     flowRate: "2–30 kg/min",
-    nozzles: "4",
+    nozzles: "2",
     application: "Retail station",
     fuelType: "CNG",
     specs: [
-      "Four nozzles across two dispensing bays",
-      "Independent metering per bay · ±0.5% accuracy",
+      "Two nozzles · ±0.5% accuracy",
+      "Alternative body design, same performance",
       "Working pressure up to 25MPa",
     ],
     specSheet: "CNG_Dispenser_Double_Double.pdf",
@@ -434,13 +436,13 @@ const CNG: CatalogueProduct[] = [
     name: "CNG Offloading Dispenser",
     category: "cng",
     image: "/images/factory/cng-single/cng-single-3.png",
-    flowRate: "2–30 kg/min",
+    flowRate: "1–70 kg/min",
     nozzles: "1",
     application: "Depot & bulk",
     fuelType: "CNG",
     specs: [
       "Offloads trailered gas into station storage",
-      "High-pressure priority panel",
+      "Flow range 1 to 70 kg/min · ±1% accuracy",
       "Working pressure up to 25MPa",
     ],
     specSheet: "CNG_Offloading_Dispenser.pdf",
@@ -450,7 +452,7 @@ const CNG: CatalogueProduct[] = [
     id: "cng-daughter-station",
     name: "CNG Daughter Station (Skid Station)",
     category: "cng",
-    image: "/images/factory/cng-double/cng-double-1.png",
+    image: "/images/factory/cng-daughter-station/cng-daughter-station-2.jpg",
     flowRate: "2–30 kg/min",
     nozzles: "2",
     application: "New station build",

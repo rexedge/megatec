@@ -120,8 +120,8 @@ export default function CngPage() {
       <ProductHero
         title="CNG station infrastructure for Nigeria: supply, installation & technical consultation"
         description="As Nigeria moves quickly towards CNG, MEGA-TEC helps station investors and fleet operators build compliant, profitable CNG infrastructure from the ground up."
-        image="/images/products/cng-hero.png"
-        imageAlt="Megatec CNG filling station"
+        image="/images/products/cng-tube-trailer.jpg"
+        imageAlt="Megatec CNG tube trailer"
         whatsappMessage="Hi Megatec, I'd like to discuss a CNG station project."
         whatsappLabel="Discuss your CNG project on WhatsApp"
         badges={BADGES}
@@ -257,11 +257,11 @@ export default function CngPage() {
             Download product specifications
           </h2>
           <p className="mt-4 max-w-xl text-body">
-            Download the full technical datasheet for our CNG equipment range.
+            Compare CNG dispensers, the daughter station and storage tubes at a glance.
           </p>
           <SpecSheetButton
-            href="/spec-sheets/CNG_Dispenser_Single_Nozzle.pdf"
-            description="Download the full technical datasheet for our CNG equipment range."
+            href="/spec-sheets/CNG_Range_Comparison.pdf"
+            description="Compare CNG dispensers, the daughter station and storage tubes at a glance."
             className="mt-6"
           >
             Download product specs

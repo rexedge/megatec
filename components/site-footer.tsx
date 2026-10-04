@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { PRODUCTS, SOCIAL_LINKS } from "@/lib/nav";
+import { EMAIL } from "@/lib/contact";
 
 const COMPANY_LINKS = [
   { label: "Home", href: "/" },
@@ -19,10 +20,18 @@ export function SiteFooter() {
   return (
     <footer className="bg-navy py-16 lg:py-20">
       <Container className="flex flex-col gap-20">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
-          <p className="col-span-2 text-xl font-bold tracking-tight text-navy-text md:col-span-1">
-            MEGATEC
-          </p>
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4 lg:grid-cols-5">
+          {/* A five-column cell is too narrow for an email address until lg, so
+              below that the wordmark and address take a row of their own. */}
+          <div className="col-span-2 flex flex-col gap-3 md:col-span-4 lg:col-span-1">
+            <p className="text-xl font-bold tracking-tight text-navy-text">MEGATEC</p>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="text-sm text-navy-text/90 hover:text-navy-text hover:underline"
+            >
+              {EMAIL}
+            </a>
+          </div>
 
           <FooterColumn title="Company">
             {COMPANY_LINKS.map((link) => (

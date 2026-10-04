@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/container";
 import { ContactSection } from "@/components/sections/contact-section";
 import { StatsCta } from "@/components/sections/stats-cta";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Maintenance and Repair Services for Fueling Equipment | Megatec",
@@ -157,9 +158,10 @@ export default function MaintenanceAndRepairPage() {
         </Container>
       </section>
 
-      <ContactSection />
+      <ContactSection email={SUPPORT_EMAIL} />
       <WhyChooseUs />
       <StatsCta
+        email={SUPPORT_EMAIL}
         title="Keep Your Forecourt Pumping. Contact Us Today!"
         description="Let's discuss how Megatec's engineering solutions can drive efficiency and safety into your fuel distribution network."
       />

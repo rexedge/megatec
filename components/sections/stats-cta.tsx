@@ -15,10 +15,12 @@ export function StatsCta({
   title = "Ready to enhance your infrastructure",
   description = "Let's discuss how Megatec's engineering solutions can drive efficiency and safety into your fuel distribution network.",
   showContact = true,
+  email = EMAIL,
 }: {
   title?: string;
   description?: string;
   showContact?: boolean;
+  email?: string;
 }) {
   return (
     <section className="py-20 lg:py-28">
@@ -43,8 +45,8 @@ export function StatsCta({
                 </ContactLine>
                 <ContactLine icon={<MailIcon />}>
                   Email Our Service Desk:{" "}
-                  <a href={`mailto:${EMAIL}`} className="hover:underline">
-                    {EMAIL}
+                  <a href={`mailto:${email}`} className="hover:underline">
+                    {email}
                   </a>
                 </ContactLine>
               </div>

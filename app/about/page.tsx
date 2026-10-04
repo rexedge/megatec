@@ -116,6 +116,20 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+
+          <figure className="mt-12 flex items-center gap-5">
+            <Image
+              src="/images/team/ikenna-okpala-headshot.jpg"
+              alt="Portrait of Ikenna Okpala"
+              width={112}
+              height={112}
+              className="h-24 w-24 rounded-full object-cover lg:h-28 lg:w-28"
+            />
+            <figcaption>
+              <p className="text-xl font-medium tracking-tight text-ink">Ikenna Okpala</p>
+              <p className="mt-1 text-body">Founder &amp; CEO</p>
+            </figcaption>
+          </figure>
         </Container>
       </section>
 
