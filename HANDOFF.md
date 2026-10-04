@@ -10,19 +10,11 @@ _Last updated: 2026-10-04_
 
 | | |
 |---|---|
-| Branch | `chore/image-refresh-and-cleanup` — pushed, clean, in sync with origin |
-| `main` | `b0702c6` (31 Jul) — **15 commits behind the branch** |
-| Live site | Whatever `main` deploys. **None of this session's work is live.** |
+| Branch | `feat/asset-intake-oct-2026` — the October asset intake, open as PR #1 |
+| `main` | `1d1f25c` — Phase 0. `chore/image-refresh-and-cleanup` is fully merged into it |
+| Live site | Whatever `main` deploys. **The asset intake is not live until PR #1 merges.** |
 | Deploy config | None in the repo. No `vercel.json`, no workflows. Deployment target unconfirmed. |
-| Open PRs | None |
-
-The branch is 395 files / +3,581 / −664, of which 38 are code files.
-
-### Before any merge to `main`
-
-1. ~~The WhatsApp number is wrong on every page.~~ Fixed in Phase 0.
-2. Decide whether to merge at all — the branch contains the `/products/` tree that the new
-   copy documents replace (see Decision 2 below).
+| Open PRs | #1 — Bring in Mega-Tec's October asset delivery |
 
 ---
 
