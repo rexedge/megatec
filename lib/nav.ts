@@ -79,10 +79,22 @@ export const SERVICES: NavService[] = [
   },
 ];
 
+/**
+ * Mega-Tec's social profiles, handle @megatecpumps (punch list SW-11). Only
+ * accounts that exist are listed: X and LinkedIn stay hidden until Mega-Tec
+ * opens them, YouTube until they send its link. Their icons are already in
+ * /images/landing/ (icon-social-x.svg, icon-social-linkedin.svg,
+ * icon-social-youtube.svg).
+ */
 export const SOCIAL_LINKS = [
-  { label: "Facebook", href: "#", icon: "/images/landing/icon-social-facebook.svg" },
-  { label: "Instagram", href: "#", icon: "/images/landing/icon-social-instagram.svg" },
-  { label: "X", href: "#", icon: "/images/landing/icon-social-x.svg" },
-  { label: "LinkedIn", href: "#", icon: "/images/landing/icon-social-linkedin.svg" },
-  { label: "Youtube", href: "#", icon: "/images/landing/icon-social-youtube.svg" },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/megatecpumps",
+    icon: "/images/landing/icon-social-facebook.svg",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/megatecpumps/",
+    icon: "/images/landing/icon-social-instagram.svg",
+  },
 ];
