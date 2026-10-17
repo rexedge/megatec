@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { EnquiryProvider } from "@/components/ui/enquiry-modal";
+import { FloatingWhatsapp } from "@/components/ui/floating-whatsapp";
 import "./globals.css";
 
 // Loaded from disk rather than next/font/google: Next has no precalculated
@@ -53,6 +54,7 @@ export default function RootLayout({
           <SiteHeader />
           <main className="flex-1">{children}</main>
           <SiteFooter />
+          <FloatingWhatsapp />
         </EnquiryProvider>
       </body>
     </html>

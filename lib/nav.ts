@@ -48,6 +48,18 @@ export const PRODUCTS: NavProduct[] = [
   },
 ];
 
+/**
+ * The four Google Ads landing pages. They stay calm — no video, no heavy motion,
+ * and the floating WhatsApp button does not pulse on them (punch list MO-04, MO-11).
+ * ST-02 moves them to /solutions/…-nigeria/; update this list when it does.
+ */
+export const LANDING_PAGES = [
+  "/products/fuel-dispensers",
+  "/products/cng",
+  "/products/lpg",
+  "/products/ev-chargers",
+];
+
 export const SERVICES: NavService[] = [
   {
     title: "Installation and commissioning of fuel dispensers",
