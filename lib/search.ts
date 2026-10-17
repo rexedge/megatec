@@ -46,7 +46,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
 
   ...PRODUCTS.map((product) => ({
     title: product.title,
-    context: "Solutions",
+    context: "Products",
     href: product.href,
     keywords: product.description,
   })),

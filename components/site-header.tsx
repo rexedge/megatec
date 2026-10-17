@@ -124,12 +124,12 @@ export function SiteHeader() {
               onClick={() => setOpenMenu(openMenu === "products" ? null : "products")}
               className={triggerClass(openMenu === "products")}
             >
-              SOLUTIONS
+              PRODUCTS
               <ChevronDown />
             </button>
             {openMenu === "products" && (
               <div className="absolute left-1/2 top-full mt-4 w-[420px] -translate-x-1/2 rounded-xl border border-border/70 bg-white p-6 shadow-xl">
-                <p className="mb-4 text-sm text-body">Solutions</p>
+                <p className="mb-4 text-sm text-body">Products</p>
                 <ul className="flex flex-col gap-5">
                   {PRODUCTS.map((product) => (
                     <li key={product.href}>
@@ -147,7 +147,7 @@ export function SiteHeader() {
                         />
                         <span className="flex-1">
                           <span className="block font-semibold text-ink">{product.title}</span>
-                          <span className="block text-sm text-body">{product.description}</span>
+                          <span className="block text-sm text-body">{product.count} products</span>
                         </span>
                         <ArrowCircle />
                       </Link>
@@ -263,7 +263,7 @@ export function SiteHeader() {
               onClick={() => setMobileSection(mobileSection === "products" ? null : "products")}
               className="flex items-center justify-between border-b border-border/60 py-4 text-xl font-medium tracking-tight text-ink"
             >
-              SOLUTIONS
+              PRODUCTS
               <ChevronDown expanded={mobileSection === "products"} />
             </button>
             {mobileSection === "products" && (
@@ -273,9 +273,10 @@ export function SiteHeader() {
                     <Link
                       href={product.href}
                       onClick={() => setMobileOpen(false)}
-                      className="text-body"
+                      className="flex items-baseline justify-between gap-4 text-body"
                     >
                       {product.title}
+                      <span className="text-sm text-body/70">{product.count} products</span>
                     </Link>
                   </li>
                 ))}
