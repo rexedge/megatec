@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/ui/container";
-import { whatsappHref } from "@/components/ui/enquiry-modal";
+import { REASSURANCE_LINE, whatsappHref } from "@/components/ui/enquiry-modal";
 import { PRODUCTS } from "@/lib/nav";
 import {
   BRANCHES,
@@ -216,6 +216,8 @@ export function ContactSection({
               />
               Discuss your project on WhatsApp
             </button>
+
+            <p className="text-body text-center text-sm">{REASSURANCE_LINE}</p>
           </form>
         </div>
       </Container>

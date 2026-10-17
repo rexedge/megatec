@@ -19,8 +19,12 @@ export function whatsappHref(lines: string[]) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
 }
 
-const RESPONSE_NOTE =
-  "We respond within 24 hours. No commitment required — just straightforward advice from our technical team.";
+/**
+ * The line under every form button on the site, word for word (punch list SW-03).
+ * Change it here, never in one form alone.
+ */
+export const REASSURANCE_LINE =
+  "We reply within 24 hours. No pressure to buy, just honest, straightforward advice from our team.";
 
 export const NEED_OPTIONS = [
   "Fuel dispenser supply",
@@ -311,7 +315,7 @@ function QuoteModal({ message, onClose }: { message?: string; onClose: () => voi
           Send on WhatsApp
         </button>
 
-        <p className="text-center text-sm text-body">{RESPONSE_NOTE}</p>
+        <p className="text-center text-sm text-body">{REASSURANCE_LINE}</p>
       </form>
     </ModalShell>
   );
@@ -335,7 +339,7 @@ function SpecSheetModal({
 
     // TODO(backend): these details are collected but not delivered anywhere yet.
     // Wire { name, phone, company, sheet: href } to the CRM / form service, then
-    // the "we respond within 24 hours" note below becomes accurate. Until that
+    // the "We reply within 24 hours" line below becomes accurate. Until that
     // exists this form only gates the download.
     window.open(href, "_blank", "noopener,noreferrer");
     onClose();
@@ -386,7 +390,7 @@ function SpecSheetModal({
           Download specifications
         </button>
 
-        <p className="text-center text-sm text-body">{RESPONSE_NOTE}</p>
+        <p className="text-center text-sm text-body">{REASSURANCE_LINE}</p>
       </form>
     </ModalShell>
   );
