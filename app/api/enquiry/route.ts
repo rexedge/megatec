@@ -61,7 +61,9 @@ function clean(raw: unknown): Clean | null {
   };
   if (Object.values(lines).some((value) => value === null)) return null;
   const fields = lines as Record<keyof typeof lines, string>;
-  if (!fields.name || !fields.phone) return null;
+  if (!fields.name) return null;
+  // The spec download popup asks for an email (SW-10); the other two forms a phone number.
+  if (form === "spec-sheet" ? !EMAIL_SHAPE.test(fields.email) : !fields.phone) return null;
 
   let message = "";
   if (r.message !== undefined && r.message !== null) {
