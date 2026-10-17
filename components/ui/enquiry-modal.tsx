@@ -365,7 +365,7 @@ function SpecSheetModal({
   onClose: () => void;
 }) {
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -375,7 +375,7 @@ function SpecSheetModal({
     emailEnquiry({
       form: "spec-sheet",
       name: name.trim(),
-      phone: phone.trim(),
+      email: email.trim(),
       company: company.trim(),
       sheet: href,
       trap: trapValue(event.currentTarget),
@@ -403,14 +403,15 @@ function SpecSheetModal({
           />
         </Field>
 
-        <Field label="Phone Number">
+        <Field label="Email">
           <input
             required
-            type="tel"
-            name="phone"
-            value={phone}
-            onChange={(event) => setPhone(event.target.value)}
-            placeholder="Your phone number"
+            type="email"
+            name="email"
+            autoComplete="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="you@company.com"
             className={INPUT_CLASSES}
           />
         </Field>

@@ -8,9 +8,11 @@ export type EnquiryForm = "contact" | "quote" | "spec-sheet";
 export type Enquiry = {
   form: EnquiryForm;
   name: string;
-  phone: string;
-  company?: string;
+  /** Required by the contact form and the "Talk to our team" popup. */
+  phone?: string;
+  /** Required by the spec download popup (SW-10); optional on the contact form. */
   email?: string;
+  company?: string;
   product?: string;
   needs?: string[];
   message?: string;
