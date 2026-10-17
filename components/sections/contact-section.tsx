@@ -15,7 +15,7 @@ import {
   BRANCHES,
   EMAIL,
   HEAD_OFFICE as OFFICE_ADDRESS,
-  MAP_QUERY,
+  MAP_EMBED_SRC,
   PHONE_PRIMARY,
   PHONE_SECONDARY,
 } from "@/lib/contact";
@@ -134,8 +134,8 @@ export function ContactSection({
         <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div className="relative min-h-105 overflow-hidden rounded-2xl lg:min-h-full">
             <iframe
-              title="Megatec head office location map"
-              src={`https://www.google.com/maps?q=${MAP_QUERY}&output=embed`}
+              title="MEGA-TEC head office location map"
+              src={MAP_EMBED_SRC}
               className="absolute inset-0 h-full w-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
