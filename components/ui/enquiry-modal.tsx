@@ -13,6 +13,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
+import { emailEnquiry } from "@/lib/enquiry";
 
 /** Builds the wa.me deep link for a pre-composed message. */
 export function whatsappHref(lines: string[]) {
@@ -25,6 +26,30 @@ export function whatsappHref(lines: string[]) {
  */
 export const REASSURANCE_LINE =
   "We reply within 24 hours. No pressure to buy, just honest, straightforward advice from our team.";
+
+const TRAP_FIELD = "leave_empty";
+
+/**
+ * A field people never see or reach. Bots that fill in every input give
+ * themselves away, and /api/enquiry quietly drops what they send. The name is
+ * one no browser autofills, so a real visitor's enquiry is never mistaken for
+ * a bot's.
+ */
+export function TrapField() {
+  return (
+    <div aria-hidden className="absolute -left-[10000px] h-px w-px overflow-hidden">
+      <label>
+        Leave this field empty
+        <input type="text" name={TRAP_FIELD} tabIndex={-1} autoComplete="off" />
+      </label>
+    </div>
+  );
+}
+
+/** What a submitted form holds in its trap field ("" from a person). */
+export function trapValue(form: HTMLFormElement) {
+  return String(new FormData(form).get(TRAP_FIELD) ?? "");
+}
 
 export const NEED_OPTIONS = [
   "Fuel dispenser supply",
@@ -221,6 +246,14 @@ function QuoteModal({ message, onClose }: { message?: string; onClose: () => voi
     }
 
     window.open(whatsappHref(lines), "_blank", "noopener,noreferrer");
+    emailEnquiry({
+      form: "quote",
+      name: name.trim(),
+      phone: phone.trim(),
+      needs,
+      message,
+      trap: trapValue(event.currentTarget),
+    });
 
     onClose();
   };
@@ -232,6 +265,7 @@ function QuoteModal({ message, onClose }: { message?: string; onClose: () => voi
       onClose={onClose}
     >
       <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-6">
+        <TrapField />
         <Field label="Name">
           <input
             required
@@ -337,11 +371,15 @@ function SpecSheetModal({
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // TODO(backend): these details are collected but not delivered anywhere yet.
-    // Wire { name, phone, company, sheet: href } to the CRM / form service, then
-    // the "We reply within 24 hours" line below becomes accurate. Until that
-    // exists this form only gates the download.
     window.open(href, "_blank", "noopener,noreferrer");
+    emailEnquiry({
+      form: "spec-sheet",
+      name: name.trim(),
+      phone: phone.trim(),
+      company: company.trim(),
+      sheet: href,
+      trap: trapValue(event.currentTarget),
+    });
     onClose();
   };
 
@@ -352,6 +390,7 @@ function SpecSheetModal({
       onClose={onClose}
     >
       <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-6">
+        <TrapField />
         <Field label="Name">
           <input
             required

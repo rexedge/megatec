@@ -3,7 +3,13 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/ui/container";
-import { REASSURANCE_LINE, whatsappHref } from "@/components/ui/enquiry-modal";
+import {
+  REASSURANCE_LINE,
+  TrapField,
+  trapValue,
+  whatsappHref,
+} from "@/components/ui/enquiry-modal";
+import { emailEnquiry } from "@/lib/enquiry";
 import { PRODUCTS } from "@/lib/nav";
 import {
   BRANCHES,
@@ -70,6 +76,16 @@ export function ContactSection({
     if (body) lines.push("", body);
 
     window.open(whatsappHref(lines), "_blank", "noopener,noreferrer");
+    emailEnquiry({
+      form: "contact",
+      name: get("fullName"),
+      phone: `${dialCode} ${get("phone")}`,
+      company,
+      product,
+      email,
+      message: body,
+      trap: trapValue(event.currentTarget),
+    });
   }
 
   return (
@@ -127,6 +143,7 @@ export function ContactSection({
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <TrapField />
             <Field label="Full name">
               <input
                 required

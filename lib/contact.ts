@@ -75,11 +75,10 @@ export const BRANCHES = [
  * its Word revision of October 2026 — the PDF beside it was an older draft with
  * a separate contact@.
  *
- * The same document puts sales@ behind every enquiry and spec-download form.
- * The forms hand off to WhatsApp and send no email yet, so that half is unbuilt.
- *
- * TODO(setup): megatecpumps.com has no MX records, so nothing sent to either
- * address below arrives until the Zoho mailboxes exist.
+ * The same document puts sales@ behind every enquiry and spec-download form:
+ * all three forms email a copy of each submission there through /api/enquiry,
+ * which signs in to the website@ mailbox. The domain's mail is hosted at
+ * QServers (MX mail.megatecpumps.com), as of October 2026.
  */
 export const EMAIL = "sales@megatecpumps.com";
 
