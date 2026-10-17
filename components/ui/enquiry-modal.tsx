@@ -65,10 +65,15 @@ type Need = (typeof NEED_OPTIONS)[number];
 
 /** Pre-ticks the likeliest need based on the page the modal was opened from. */
 const NEED_BY_PATH: Record<string, Need> = {
-  "/products/fuel-dispensers": "Fuel dispenser supply",
-  "/products/lpg": "LPG equipment",
-  "/products/cng": "CNG equipment",
+  "/solutions/fuel-dispensers-nigeria": "Fuel dispenser supply",
+  "/solutions/lpg-equipment-nigeria": "LPG equipment",
+  "/solutions/cng-equipment-nigeria": "CNG equipment",
+  "/solutions/ev-chargers-nigeria": "EV Charger",
+  "/products/fuel-solutions": "Fuel dispenser supply",
+  "/products/lpg-solutions": "LPG equipment",
+  "/products/cng-solutions": "CNG equipment",
   "/products/ev-chargers": "EV Charger",
+  "/products/station-accessories": "Station accessories",
   "/services/installation-and-commissioning": "Fuel dispenser installation",
   "/services/maintenance-and-repair": "Maintenance & repairs",
 };

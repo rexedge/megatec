@@ -49,16 +49,19 @@ export const PRODUCTS: NavProduct[] = [
 ];
 
 /**
- * The four Google Ads landing pages. They stay calm — no video, no heavy motion,
- * and the floating WhatsApp button does not pulse on them (punch list MO-04, MO-11).
- * ST-02 moves them to /solutions/…-nigeria/; update this list when it does.
+ * The four Google Ads landing pages (punch list ST-02). They stay calm — no video,
+ * no heavy motion, and the floating WhatsApp button does not pulse on them
+ * (MO-04, MO-11) — and they open on a full-bleed hero the header sits over.
  */
 export const LANDING_PAGES = [
-  "/products/fuel-dispensers",
-  "/products/cng",
-  "/products/lpg",
-  "/products/ev-chargers",
+  "/solutions/fuel-dispensers-nigeria",
+  "/solutions/cng-equipment-nigeria",
+  "/solutions/lpg-equipment-nigeria",
+  "/solutions/ev-chargers-nigeria",
 ];
+
+/** Pages that open on a full-bleed hero, so the header is see-through over it. */
+export const HERO_PAGES = [...LANDING_PAGES, "/products/station-accessories"];
 
 export const SERVICES: NavService[] = [
   {

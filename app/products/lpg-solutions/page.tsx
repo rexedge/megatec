@@ -12,7 +12,7 @@ export default function LpgCataloguePage() {
   return (
     <>
       <Breadcrumbs
-        items={[{ label: "Products", href: "/products/lpg" }, { label: "LPG solutions" }]}
+        items={[{ label: "Home", href: "/" }, { label: "LPG Solutions" }]}
       />
       <Catalogue category="lpg" />
     </>

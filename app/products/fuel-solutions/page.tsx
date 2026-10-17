@@ -12,10 +12,7 @@ export default function FuelDispenserCataloguePage() {
   return (
     <>
       <Breadcrumbs
-        items={[
-          { label: "Products", href: "/products/fuel-dispensers" },
-          { label: "Fuel dispensers" },
-        ]}
+        items={[{ label: "Home", href: "/" }, { label: "Fuel Solutions" }]}
       />
       <Catalogue category="fuel-dispensers" />
     </>

@@ -12,7 +12,7 @@ export default function CngCataloguePage() {
   return (
     <>
       <Breadcrumbs
-        items={[{ label: "Products", href: "/products/cng" }, { label: "CNG systems" }]}
+        items={[{ label: "Home", href: "/" }, { label: "CNG Solutions" }]}
       />
       <Catalogue category="cng" />
     </>

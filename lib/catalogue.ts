@@ -35,55 +35,57 @@ export type CatalogueProduct = {
 
 export type CatalogueCategory = {
   slug: CategorySlug;
-  /** Page title, e.g. "Fuel dispensers". */
+  /** Page title, the category's name in the PRODUCTS menu (punch list ST-01). */
   title: string;
   description: string;
   /** Label used in the breadcrumb and the "See full … range" link. */
   rangeLabel: string;
-  /** The landing page this catalogue belongs to. */
-  landingHref: string;
+  /** The category page (ST-03). Landing pages link here from "See full range" (ST-04). */
+  href: string;
 };
 
 export const CATALOGUE_CATEGORIES: CatalogueCategory[] = [
   {
     slug: "fuel-dispensers",
-    title: "Fuel dispensers",
+    title: "Fuel Solutions",
     description:
       "Installation and commissioning of fuel dispensers and gas dispensing systems.",
     rangeLabel: "product",
-    landingHref: "/products/fuel-dispensers",
+    href: "/products/fuel-solutions",
   },
   {
     slug: "cng",
-    title: "CNG systems",
+    title: "CNG Solutions",
     description:
       "Reliable CNG solutions engineered for optimal performance and safety.",
     rangeLabel: "CNG equipment",
-    landingHref: "/products/cng",
+    href: "/products/cng-solutions",
   },
   {
     slug: "lpg",
-    title: "LPG solutions",
+    title: "LPG Solutions",
     description:
       "Innovative LPG solutions for seamless integration and maximum uptime.",
     rangeLabel: "LPG equipment",
-    landingHref: "/products/lpg",
+    href: "/products/lpg-solutions",
   },
   {
     slug: "ev-chargers",
-    title: "Electric car chargers",
+    title: "EV Chargers",
     description:
       "Durable EV charging infrastructure engineered for safe, high-uptime performance.",
     rangeLabel: "EV charging",
-    landingHref: "/products/ev-chargers",
+    href: "/products/ev-chargers",
   },
   {
     slug: "station-accessories",
-    title: "Station accessories",
+    title: "Station Accessories",
     description:
       "Comprehensive station accessories to enhance functionality and safety.",
     rangeLabel: "accessories",
-    landingHref: "/products/station-accessories",
+    // Stays on /all until PA-01 turns /products/station-accessories into the full
+    // parts list; that change also adds the /all redirect ST-06 asks for.
+    href: "/products/station-accessories/all",
   },
 ];
 
@@ -958,7 +960,7 @@ export function productsIn(slug: CategorySlug): CatalogueProduct[] {
   return CATALOGUE.filter((product) => product.category === slug);
 }
 
-/** Path to a category's filterable catalogue page. */
+/** Path to a category's page, which holds its filterable catalogue. */
 export function catalogueHref(slug: CategorySlug): string {
-  return `${getCategory(slug).landingHref}/all`;
+  return getCategory(slug).href;
 }
