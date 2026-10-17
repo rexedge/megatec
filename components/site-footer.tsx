@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { PRODUCTS, SOCIAL_LINKS } from "@/lib/nav";
-import { EMAIL } from "@/lib/contact";
+import { EMAIL, RC_NUMBER } from "@/lib/contact";
 
 const COMPANY_LINKS = [
   { label: "Home", href: "/" },
@@ -10,11 +10,8 @@ const COMPANY_LINKS = [
   { label: "Contact Us", href: "/#contact" },
 ];
 
-const LEGAL_LINKS = [
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms of Service", href: "#" },
-  { label: "Cookies Settings", href: "#" },
-];
+// Privacy Policy, Terms of Service and Cookies Settings stay out of the footer
+// until those pages exist (punch list SW-11).
 
 export function SiteFooter() {
   return (
@@ -25,7 +22,7 @@ export function SiteFooter() {
               overflows at 1024px), so below that the wordmark and address take a
               row of their own. */}
           <div className="col-span-2 flex flex-col gap-3 md:col-span-4 xl:col-span-1">
-            <p className="text-xl font-bold tracking-tight text-navy-text">MEGATEC</p>
+            <p className="text-xl font-bold tracking-tight text-navy-text">MEGA-TEC</p>
             <a
               href={`mailto:${EMAIL}`}
               className="text-sm text-navy-text/90 hover:text-navy-text hover:underline"
@@ -61,28 +58,24 @@ export function SiteFooter() {
 
           <FooterColumn title="Follow Us">
             {SOCIAL_LINKS.map((social) => (
-              <Link
+              <a
                 key={social.label}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 py-2 text-navy-text/90 hover:text-navy-text"
               >
                 <Image src={social.icon} alt="" width={24} height={24} className="h-6 w-6" />
                 {social.label}
-              </Link>
+              </a>
             ))}
           </FooterColumn>
         </div>
 
         <div className="flex flex-col gap-8 border-t border-white/15 pt-8">
           <div className="flex flex-col items-start justify-between gap-4 text-sm text-navy-text/80 md:flex-row md:items-center">
-            <p>© {new Date().getFullYear()} Megatec. All rights reserved.</p>
-            <div className="flex flex-wrap gap-6">
-              {LEGAL_LINKS.map((link) => (
-                <Link key={link.label} href={link.href} className="underline hover:text-navy-text">
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            <p>© {new Date().getFullYear()} MEGA-TEC. All rights reserved.</p>
+            <p>{RC_NUMBER}</p>
           </div>
         </div>
       </Container>
