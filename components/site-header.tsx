@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { PRODUCTS, SERVICES } from "@/lib/nav";
+import { HERO_PAGES, PRODUCTS, SERVICES } from "@/lib/nav";
 import { Container } from "@/components/ui/container";
 import { SearchDialog } from "@/components/ui/search-dialog";
 import { cn } from "@/lib/cn";
@@ -17,10 +17,9 @@ const NAV_LINKS = [
 
 export function SiteHeader() {
   const pathname = usePathname();
-  // Product landing pages open on a full-bleed hero, so the header sits over it.
-  // Their catalogue pages (/products/<slug>/all) start on white and must not.
-  const segments = pathname?.split("/") ?? [];
-  const isOverlay = segments[1] === "products" && segments.length === 3;
+  // Landing pages open on a full-bleed hero, so the header sits over it.
+  // Category pages start on white and must not.
+  const isOverlay = HERO_PAGES.includes(pathname);
   const isHome = pathname === "/";
 
   const [openMenu, setOpenMenu] = useState<"products" | "services" | null>(null);
