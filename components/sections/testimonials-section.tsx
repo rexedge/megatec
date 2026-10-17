@@ -78,9 +78,9 @@ export function TestimonialsSection() {
   }, []);
 
   return (
-    <section className="bg-hero-tint py-20 lg:py-28">
+    <section className="bg-hero-tint py-6 sm:py-20 lg:py-28">
       <Container>
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
               Customer testimonials

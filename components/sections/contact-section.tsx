@@ -89,7 +89,7 @@ export function ContactSection({
   }
 
   return (
-    <section id="contact" className="scroll-mt-24 py-20 lg:py-28">
+    <section id="contact" className="scroll-mt-24 py-6 sm:py-20 lg:py-28">
       <Container>
         <span className="bg-sky flex h-12 w-12 items-center justify-center rounded-full text-white">
           <PencilIcon />
@@ -116,7 +116,7 @@ export function ContactSection({
         </div>
 
         {showBranches && (
-          <div className="border-border/70 mt-12 border-t pt-10">
+          <div className="border-border/70 mt-8 border-t pt-6 sm:mt-12 sm:pt-10">
             <h3 className="text-ink text-xl font-medium tracking-tight">Branches</h3>
             <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
               {BRANCHES.map((branch) => (
@@ -131,7 +131,7 @@ export function ContactSection({
           </div>
         )}
 
-        <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div className="relative min-h-105 overflow-hidden rounded-2xl lg:min-h-full">
             <iframe
               title="MEGA-TEC head office location map"

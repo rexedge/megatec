@@ -90,7 +90,7 @@ export default function LpgPage() {
         badges={BADGES}
       />
 
-      <section className="bg-surface-soft/60 py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
         <Container>
           <div className="text-center">
             <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
@@ -100,7 +100,7 @@ export default function LpgPage() {
               Identify your requirement — tap any category below for details.
             </p>
           </div>
-          <div className="mx-auto mt-14 flex max-w-4xl flex-col gap-4">
+          <div className="mx-auto mt-8 sm:mt-14 flex max-w-4xl flex-col gap-4">
             {SYSTEMS.map((system, index) => (
               <div
                 key={system.title}
@@ -119,7 +119,7 @@ export default function LpgPage() {
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container>
           <div className="mx-auto grid max-w-4xl grid-cols-1 gap-3 min-[320px]:grid-cols-2 sm:gap-8">
             {featured.map((product) => (
@@ -142,7 +142,7 @@ export default function LpgPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container className="max-w-4xl">
           <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
             LPG infrastructure failures are expensive, dangerous, and entirely preventable
@@ -158,12 +158,12 @@ export default function LpgPage() {
         </Container>
       </section>
 
-      <section className="bg-navy py-20 lg:py-28">
+      <section className="bg-navy py-6 sm:py-20 lg:py-28">
         <Container>
           <h2 className="text-navy-text text-4xl font-semibold tracking-tight lg:text-5xl">
             Deployment workflow
           </h2>
-          <div className="mt-12 flex flex-col gap-4">
+          <div className="mt-8 sm:mt-12 flex flex-col gap-4">
             {WORKFLOW.map((step, index) => (
               <div
                 key={step.title}
@@ -182,7 +182,7 @@ export default function LpgPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
         <Container className="flex flex-col items-center text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-ink lg:text-4xl">
             Download product specifications

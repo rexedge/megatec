@@ -48,7 +48,7 @@ export default function ServicesPage() {
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
 
-      <section className="py-16 lg:py-20">
+      <section className="py-6 sm:py-16 lg:py-20">
         <Container>
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-6xl">
             Our Services
@@ -61,9 +61,9 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:gap-10 sm:grid-cols-2">
             {SERVICES.map((service) => (
               <Link
                 key={service.href}

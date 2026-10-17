@@ -93,7 +93,7 @@ export default function StationAccessoriesPage() {
         badges={BADGES}
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container>
           <div className="text-center">
             <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
@@ -103,7 +103,7 @@ export default function StationAccessoriesPage() {
               Comprehensive station accessories to enhance functionality and safety.
             </p>
           </div>
-          <div className="mt-14 grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2">
+          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-x-12 gap-y-6 sm:gap-y-10 lg:grid-cols-2">
             {CATEGORIES.map((item, index) => (
               <div key={item.title} className="flex gap-5">
                 <span className="bg-accent text-ink flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg font-semibold">
@@ -119,7 +119,7 @@ export default function StationAccessoriesPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
         <Container>
           <div className="text-center">
             <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
@@ -131,7 +131,7 @@ export default function StationAccessoriesPage() {
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-3 min-[320px]:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-3 min-[320px]:grid-cols-2 sm:gap-8 lg:grid-cols-3">
             {highlights.map((product) => (
               <ProductCard
                 key={product.id}
@@ -154,12 +154,12 @@ export default function StationAccessoriesPage() {
         </Container>
       </section>
 
-      <section className="bg-navy py-20 lg:py-28">
+      <section className="bg-navy py-6 sm:py-20 lg:py-28">
         <Container>
           <h2 className="text-navy-text max-w-4xl text-3xl font-semibold tracking-tight lg:text-4xl">
             The wrong spare part is more expensive than the right one
           </h2>
-          <div className="mt-12 flex flex-col gap-4">
+          <div className="mt-8 sm:mt-12 flex flex-col gap-4">
             {WHY.map((item, index) => (
               <div
                 key={item.title}
@@ -178,7 +178,7 @@ export default function StationAccessoriesPage() {
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container className="flex flex-col items-center text-center">
           <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-4xl">
             Download product specifications

@@ -127,7 +127,7 @@ export default function CngPage() {
         badges={BADGES}
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container className="max-w-3xl">
           <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             Nigeria&apos;s CNG opportunity is here — and it&apos;s moving fast
@@ -146,7 +146,7 @@ export default function CngPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
         <Container>
           <div className="text-center">
             <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
@@ -156,7 +156,7 @@ export default function CngPage() {
               Mega Tec delivers the full system — not just the equipment.
             </p>
           </div>
-          <div className="mt-14 grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2">
+          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-x-12 gap-y-6 sm:gap-y-10 lg:grid-cols-2">
             {SYSTEM_COMPONENTS.map((item, index) => (
               <div key={item.title} className="flex gap-5">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-lg font-semibold text-ink">
@@ -172,7 +172,7 @@ export default function CngPage() {
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container>
           <div className="text-center">
             <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
@@ -182,7 +182,7 @@ export default function CngPage() {
               Industrial infrastructure — enquire about the complete system.
             </p>
           </div>
-          <div className="mt-14 grid grid-cols-1 gap-3 min-[320px]:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-3 min-[320px]:grid-cols-2 sm:gap-8 lg:grid-cols-3">
             {featured.map((product) => (
               <ProductCard
                 key={product.id}
@@ -203,12 +203,12 @@ export default function CngPage() {
         </Container>
       </section>
 
-      <section className="bg-navy py-20 lg:py-28">
+      <section className="bg-navy py-6 sm:py-20 lg:py-28">
         <Container>
           <h2 className="text-navy-text max-w-4xl text-3xl font-semibold tracking-tight lg:text-4xl">
             CNG infrastructure runs at very high pressure. There is no room for shortcuts.
           </h2>
-          <ul className="mt-12 flex flex-col gap-4">
+          <ul className="mt-8 sm:mt-12 flex flex-col gap-4">
             {TRUST_POINTS.map((point, index) => (
               <li
                 key={point.title}
@@ -227,12 +227,12 @@ export default function CngPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
         <Container>
           <h2 className="text-ink text-center text-3xl font-semibold tracking-tight lg:text-4xl">
             Who this is for
           </h2>
-          <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
+          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {AUDIENCES.map((audience) => (
               <div
                 key={audience.title}
@@ -251,7 +251,7 @@ export default function CngPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container className="flex flex-col items-center text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-ink lg:text-4xl">
             Download product specifications

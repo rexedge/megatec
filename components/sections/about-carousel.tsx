@@ -68,7 +68,7 @@ export function AboutCarousel() {
   }, []);
 
   return (
-    <section className="pb-20 lg:pb-28">
+    <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
       <Container>
         <div
           ref={trackRef}

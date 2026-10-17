@@ -59,7 +59,7 @@ export default function InstallationAndCommissioningPage() {
         ]}
       />
 
-      <section className="py-16 lg:py-20">
+      <section className="py-6 sm:py-16 lg:py-20">
         <Container>
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-6xl">
             Installation and commissioning of fuel dispensers
@@ -81,12 +81,12 @@ export default function InstallationAndCommissioningPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
           <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             What We Do: Expertise in Action
           </h2>
-          <div className="mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_1.2fr_1fr]">
+          <div className="mt-6 sm:mt-10 grid grid-cols-1 items-center gap-6 sm:gap-10 lg:grid-cols-[1fr_1.2fr_1fr]">
             <div className="relative aspect-3/4 overflow-hidden rounded-xl bg-surface-soft">
               <Image
                 src="/images/landing/rectangle-installation.png"
@@ -127,7 +127,7 @@ export default function InstallationAndCommissioningPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
           <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             Our Comprehensive Installation &amp; Commissioning Services
@@ -138,7 +138,7 @@ export default function InstallationAndCommissioningPage() {
             industrial facilities across Nigeria.
           </p>
 
-          <div className="mt-14 grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2">
+          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-x-12 gap-y-6 sm:gap-y-10 lg:grid-cols-2">
             {SERVICE_GROUPS.map((group) => (
               <div key={group.title}>
                 <h3 className="text-xl font-medium tracking-tight text-ink">{group.title}</h3>
@@ -154,7 +154,7 @@ export default function InstallationAndCommissioningPage() {
             ))}
           </div>
 
-          <div className="mt-10">
+          <div className="mt-6 sm:mt-10">
             <WhatsappButton message="Hi Megatec, I'd like to discuss installation and commissioning for my fuelling station.">
               Discuss your project on WhatsApp
             </WhatsappButton>

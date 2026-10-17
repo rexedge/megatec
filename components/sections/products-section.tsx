@@ -13,7 +13,7 @@ const CARD_IMAGES: Record<string, string> = {
 
 export function ProductsSection() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-6 sm:py-20 lg:py-28">
       <Container>
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <h2 className="max-w-md text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
@@ -26,7 +26,7 @@ export function ProductsSection() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {PRODUCTS.map((product) => (
             <Link key={product.href} href={product.href} className="group flex flex-col gap-6">
               <div className="border-t border-border pt-6">

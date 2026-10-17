@@ -15,9 +15,9 @@ const COMPANY_LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-navy py-16 lg:py-20">
-      <Container className="flex flex-col gap-20">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-4 xl:grid-cols-5">
+    <footer className="bg-navy py-10 sm:py-16 lg:py-20">
+      <Container className="flex flex-col gap-10 sm:gap-20">
+        <div className="grid grid-cols-2 gap-8 sm:gap-10 md:grid-cols-4 xl:grid-cols-5">
           {/* A five-column cell is too narrow for an email address until xl (it
               overflows at 1024px), so below that the wordmark and address take a
               row of their own. */}

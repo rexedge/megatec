@@ -41,7 +41,7 @@ export function ProductHero({
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />
         {/* The header overlays this hero with white links; keep them legible over bright skies. */}
         <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/60 to-transparent" />
-        <Container className="relative py-16">
+        <Container className="relative py-8 sm:py-16">
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white lg:text-6xl">
             {title}
           </h1>
@@ -63,7 +63,7 @@ export function ProductHero({
       </div>
 
       {badges && badges.length > 0 && (
-        <div className="bg-surface-soft py-10">
+        <div className="bg-surface-soft py-6 sm:py-10">
           <Container>
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
               {badges.map((badge) => (

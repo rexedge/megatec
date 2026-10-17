@@ -22,14 +22,14 @@ export function ProductProjects({ projects }: { projects: ProductProject[] }) {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-6 sm:py-20 lg:py-28">
       <Container>
         <p className="text-body text-sm font-medium tracking-tight">Our portfolio</p>
         <h2 className="text-ink mt-2 text-4xl font-semibold tracking-tight lg:text-5xl">
           Real world projects
         </h2>
 
-        <div className="bg-surface-soft relative mt-12 aspect-16/7 w-full overflow-hidden rounded-2xl">
+        <div className="bg-surface-soft relative mt-8 sm:mt-12 aspect-16/7 w-full overflow-hidden rounded-2xl">
           {projects.map((project, index) => (
             <Image
               key={project.title}
@@ -58,7 +58,7 @@ export function ProductProjects({ projects }: { projects: ProductProject[] }) {
           ))}
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
+        <div className="mt-6 sm:mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
           {projects.map((project, index) => (
             <button
               key={project.title}

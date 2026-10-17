@@ -118,7 +118,7 @@ export default function TrainingPage() {
         ]}
       />
 
-      <section className="py-16 lg:py-20">
+      <section className="py-6 sm:py-16 lg:py-20">
         <Container>
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-6xl">
             Training and capacity building for operators
@@ -131,13 +131,13 @@ export default function TrainingPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
-          <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-8 sm:gap-16">
             {MODULES.map((module, index) => {
               const imageFirst = index % 2 === 0;
               return (
-                <div key={module.title} className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+                <div key={module.title} className="grid grid-cols-1 items-center gap-6 sm:gap-10 lg:grid-cols-2">
                   <div
                     className={cn(
                       "relative aspect-4/3 overflow-hidden rounded-xl bg-surface-soft",
@@ -175,12 +175,12 @@ export default function TrainingPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
           <p className="text-sm font-medium tracking-tight text-body">
             The Megatec Pumps Training Advantage
           </p>
-          <div className="mt-6 grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-x-12 gap-y-6 sm:gap-y-10 sm:grid-cols-3">
             {ADVANTAGES.map((item) => (
               <div key={item.title}>
                 <h3 className="text-2xl font-semibold tracking-tight text-ink">{item.title}</h3>
@@ -188,7 +188,7 @@ export default function TrainingPage() {
               </div>
             ))}
           </div>
-          <div className="mt-14 grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
+          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-x-12 gap-y-6 sm:gap-y-10 sm:grid-cols-2">
             {MORE_ADVANTAGES.map((item) => (
               <div key={item.title}>
                 <h3 className="text-2xl font-semibold tracking-tight text-ink">{item.title}</h3>
