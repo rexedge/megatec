@@ -121,7 +121,7 @@ export default function LpgPage() {
 
       <section className="py-20 lg:py-28">
         <Container>
-          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 sm:grid-cols-2">
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-3 min-[320px]:grid-cols-2 sm:gap-8">
             {featured.map((product) => (
               <ProductCard
                 key={product.id}
