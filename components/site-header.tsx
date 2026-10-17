@@ -76,9 +76,15 @@ export function SiteHeader() {
 
   const solid = !isOverlay || scrolled;
   const linkClass = solid ? "text-body hover:text-ink" : "text-white/90 hover:text-white";
+  // Every top-level item gets the dropdowns' underline box (a 2px border plus
+  // padding), transparent unless a menu is open. Without it the dropdown
+  // buttons stand taller than the plain links and their labels ride higher.
+  const navItem = "border-b-2 pb-1 text-sm font-medium tracking-tight";
+  const linkItemClass = cn(navItem, "border-transparent", linkClass);
   const triggerClass = (open: boolean) =>
     cn(
-      "flex items-center gap-1 border-b-2 pb-1 text-sm font-medium tracking-tight",
+      "flex items-center gap-1",
+      navItem,
       open
         ? solid
           ? "border-ink text-ink"
@@ -109,7 +115,7 @@ export function SiteHeader() {
         </Link>
 
         <nav ref={navRef} className="hidden items-center gap-8 md:flex">
-          <Link href="/" className={cn("text-sm font-medium tracking-tight", linkClass)}>
+          <Link href="/" className={linkItemClass}>
             HOME
           </Link>
 
@@ -183,10 +189,10 @@ export function SiteHeader() {
             )}
           </div>
 
-          <Link href="/about" className={cn("text-sm font-medium tracking-tight", linkClass)}>
+          <Link href="/about" className={linkItemClass}>
             ABOUT US
           </Link>
-          <Link href="/#contact" className={cn("text-sm font-medium tracking-tight", linkClass)}>
+          <Link href="/#contact" className={linkItemClass}>
             CONTACT
           </Link>
         </nav>
