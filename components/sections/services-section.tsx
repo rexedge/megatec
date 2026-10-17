@@ -41,7 +41,7 @@ const SERVICES = [
 
 export function ServicesSection() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-6 sm:py-20 lg:py-28">
       <Container>
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <h2 className="text-ink max-w-md text-4xl font-semibold tracking-tight lg:text-5xl">
@@ -54,7 +54,7 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="mt-14 flex flex-col gap-10">
+        <div className="mt-8 sm:mt-14 flex flex-col gap-6 sm:gap-10">
           {SERVICES.map((service, index) => {
             const imageFirst = index % 2 === 1;
             return (

@@ -104,7 +104,7 @@ export default function TechnicalSupportPage() {
         ]}
       />
 
-      <section className="py-16 lg:py-20">
+      <section className="py-6 sm:py-16 lg:py-20">
         <Container>
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-6xl">
             Technical support and troubleshooting
@@ -117,7 +117,7 @@ export default function TechnicalSupportPage() {
             revenue.
           </p>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {GALLERY.map((src) => (
               <div key={src} className="relative aspect-square overflow-hidden rounded-xl bg-surface-soft">
                 <Image src={src} alt="" fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
@@ -127,7 +127,7 @@ export default function TechnicalSupportPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
           <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             Our Technical Support and Troubleshooting Services
@@ -137,7 +137,7 @@ export default function TechnicalSupportPage() {
             cost-effective solution for your specific problem.
           </p>
 
-          <div className="mt-14 flex flex-col">
+          <div className="mt-8 sm:mt-14 flex flex-col">
             {SUPPORT_TIERS.map((tier) => (
               <details
                 key={tier.number}
@@ -173,7 +173,7 @@ export default function TechnicalSupportPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
           <h2 className="max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             Common Fuelling Equipment Problems We Diagnose &amp; Solve
@@ -184,14 +184,14 @@ export default function TechnicalSupportPage() {
             us immediately:
           </p>
 
-          <div className="mt-16 flex flex-col gap-16">
+          <div className="mt-8 sm:mt-16 flex flex-col gap-8 sm:gap-16">
             {PROBLEMS.map((problem, index) => {
               const imageFirst = index % 2 === 0;
               return (
                 <div
                   key={problem.title}
                   className={cn(
-                    "grid grid-cols-1 items-center gap-10 lg:grid-cols-2",
+                    "grid grid-cols-1 items-center gap-6 sm:gap-10 lg:grid-cols-2",
                   )}
                 >
                   <div

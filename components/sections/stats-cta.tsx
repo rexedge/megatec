@@ -23,9 +23,9 @@ export function StatsCta({
   email?: string;
 }) {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-6 sm:py-20 lg:py-28">
       <Container>
-        <div className="bg-accent grid grid-cols-1 gap-12 rounded-3xl p-10 lg:grid-cols-2 lg:gap-8 lg:p-16">
+        <div className="bg-accent grid grid-cols-1 gap-8 rounded-3xl p-6 sm:gap-12 sm:p-10 lg:grid-cols-2 lg:gap-8 lg:p-16">
           <div>
             <h2 className="text-text text-3xl font-semibold tracking-tight lg:text-5xl">
               {title}
@@ -60,7 +60,7 @@ export function StatsCta({
             </div>
           </div>
 
-          <div className="grid grid-cols-2 content-center gap-x-8 gap-y-10">
+          <div className="grid grid-cols-2 content-center gap-x-8 gap-y-6 sm:gap-y-10">
             {STATS.map((stat) => (
               <div key={stat.label} className="flex flex-col gap-1">
                 <p className="text-text text-5xl font-semibold tracking-tight lg:text-6xl">

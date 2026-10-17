@@ -90,7 +90,7 @@ export default function MaintenanceAndRepairPage() {
         ]}
       />
 
-      <section className="py-16 lg:py-20">
+      <section className="py-6 sm:py-16 lg:py-20">
         <Container>
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-6xl">
             Maintenance and repair services for fueling equipment
@@ -110,9 +110,9 @@ export default function MaintenanceAndRepairPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.4fr]">
+          <div className="grid grid-cols-1 gap-6 sm:gap-10 lg:grid-cols-[1fr_1.4fr]">
             <div className="relative aspect-3/4 overflow-hidden rounded-xl bg-surface-soft lg:sticky lg:top-28 lg:h-fit">
               <Image
                 src="/images/landing/rectangle-maintenance.png"

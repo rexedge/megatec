@@ -126,7 +126,7 @@ export default function EvChargersPage() {
         badges={BADGES}
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container>
           <div className="text-center">
             <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
@@ -137,7 +137,7 @@ export default function EvChargersPage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="mx-auto mt-8 sm:mt-14 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
             {PATHS.map((path) => (
               <div
                 key={path.title}
@@ -185,14 +185,14 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
         <Container>
           <p className="text-body text-sm font-medium tracking-tight">Commercial</p>
           <h2 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             Industrial EV charging for high-traffic commercial sites
           </h2>
 
-          <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 gap-6 sm:gap-10 lg:grid-cols-2">
             <div className="flex flex-col gap-4">
               {COMMERCIAL_FEATURES.map((feature) => (
                 <div
@@ -226,14 +226,14 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container>
           <p className="text-body text-sm font-medium tracking-tight">Residential</p>
           <h2 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             Fast home and estate EV charging, compact and professionally installed
           </h2>
 
-          <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 gap-6 sm:gap-10 lg:grid-cols-2">
             <div className="flex flex-col gap-4">
               {RESIDENTIAL_FEATURES.map((feature, index) => (
                 <div key={feature.lead} className="flex items-center gap-4">
@@ -263,12 +263,12 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container className="text-center">
           <h2 className="mx-auto max-w-2xl text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             EV charging is now a competitive differentiator for Nigerian businesses
           </h2>
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {BUSINESS_CASE.map((reason, index) => (
               <div
                 key={reason}
@@ -284,7 +284,7 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container className="flex flex-col items-center text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-ink lg:text-4xl">
             Download product specifications

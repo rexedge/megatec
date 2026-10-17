@@ -48,7 +48,7 @@ export function Catalogue({ category }: { category: CategorySlug }) {
   const active = CATALOGUE_FACETS.filter(({ key }) => selection[key] !== ALL);
 
   return (
-    <section className="py-12 lg:py-16">
+    <section className="py-6 sm:py-12 lg:py-16">
       <Container>
         <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-6xl">
           {title}

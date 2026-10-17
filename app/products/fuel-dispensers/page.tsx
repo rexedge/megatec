@@ -87,7 +87,7 @@ export default function FuelDispensersPage() {
         badges={BADGES}
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container>
           <div className="text-center">
             <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
@@ -99,7 +99,7 @@ export default function FuelDispensersPage() {
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-3 min-[320px]:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-3 min-[320px]:grid-cols-2 sm:gap-8 lg:grid-cols-3">
             {featured.map((product) => (
               <ProductCard
                 key={product.id}
@@ -120,7 +120,7 @@ export default function FuelDispensersPage() {
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container className="max-w-3xl">
           <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             A poorly calibrated dispenser costs your station money every single day
@@ -138,12 +138,12 @@ export default function FuelDispensersPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
         <Container className="text-center">
           <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             Our installation process
           </h2>
-          <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-3">
+          <div className="mt-8 sm:mt-16 grid grid-cols-1 gap-8 sm:gap-12 sm:grid-cols-3">
             {INSTALL_STEPS.map((step, index) => (
               <div key={step.title} className="flex flex-col items-center gap-4">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-lg font-semibold text-ink">
@@ -159,7 +159,7 @@ export default function FuelDispensersPage() {
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container className="flex flex-col items-center text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-ink lg:text-4xl">
             Download product specifications

@@ -22,7 +22,7 @@ const STEPS = [
 
 export function WorkflowSection() {
   return (
-    <section className="bg-surface-soft/60 py-20 lg:py-28">
+    <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
       <Container className="flex flex-col items-center text-center">
         <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
           Purchasing your needs are easy and fast
@@ -31,7 +31,7 @@ export function WorkflowSection() {
           OUR ENGINEERING WORKFLOW
         </p>
 
-        <div className="mt-16 grid w-full grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="mt-8 sm:mt-16 grid w-full grid-cols-1 gap-8 sm:gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {STEPS.map((step, index) => {
             const imageFirst = index % 2 === 0;
             return (

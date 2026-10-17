@@ -29,7 +29,7 @@ const WHY_CHOOSE = [
 
 export function WhyChooseUs() {
   return (
-    <section className="pb-20 lg:pb-28">
+    <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
       <Container>
         <p className="text-sm font-medium tracking-tight text-body">
           Precision, Innovation, and Reliability in Every Drop
@@ -37,7 +37,7 @@ export function WhyChooseUs() {
         <h2 className="mt-2 text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
           Why Choose Megatec Pumps?
         </h2>
-        <div className="mt-10 grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2">
+        <div className="mt-6 sm:mt-10 grid grid-cols-1 gap-x-12 gap-y-6 sm:gap-y-10 lg:grid-cols-2">
           {WHY_CHOOSE.map((item) => (
             <div key={item.number} className="flex gap-6 border-t border-border pt-6">
               <span className="text-3xl font-semibold tracking-tight text-ink">

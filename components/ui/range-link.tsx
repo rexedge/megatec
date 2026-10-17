@@ -3,7 +3,7 @@ import Link from "next/link";
 /** The "See full product range ›" link that sits under every product grid. */
 export function RangeLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <div className="mt-12 flex justify-center">
+    <div className="mt-8 sm:mt-12 flex justify-center">
       <Link
         href={href}
         className="inline-flex items-center gap-3 text-base font-medium text-ink underline underline-offset-4 transition-colors hover:text-sky"

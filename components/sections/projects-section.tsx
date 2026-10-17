@@ -31,7 +31,7 @@ const PROJECTS = [
 
 export function ProjectsSection() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-6 sm:py-20 lg:py-28">
       <Container>
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
@@ -47,7 +47,7 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        <div className="mt-16 grid w-full grid-cols-1 items-start gap-8 sm:grid-cols-2">
+        <div className="mt-8 sm:mt-16 grid w-full grid-cols-1 items-start gap-8 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.title} className={cn(project.offset && "sm:mt-24")}>
               <div className="bg-surface-soft relative aspect-9/8 w-full overflow-hidden rounded-2xl">

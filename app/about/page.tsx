@@ -52,7 +52,7 @@ export default function AboutPage() {
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About us" }]} />
 
-      <section className="py-16 lg:py-20">
+      <section className="py-6 sm:py-16 lg:py-20">
         <Container>
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-6xl">
             About Megatec Pumps: Our Story and Mission
@@ -71,7 +71,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {GALLERY.map((src) => (
@@ -83,12 +83,12 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
           <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
             Our Journey
           </h2>
-          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="mt-6 sm:mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
             <div className="flex flex-col gap-6 text-lg leading-relaxed text-body">
               <p>
                 Founded by a team of industry veterans, Megatec Pumps was born from a clear
@@ -117,7 +117,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <figure className="mt-12 flex items-center gap-5">
+          <figure className="mt-8 sm:mt-12 flex items-center gap-5">
             <Image
               src="/images/team/ikenna-okpala-headshot.jpg"
               alt="Portrait of Ikenna Okpala"
@@ -135,12 +135,12 @@ export default function AboutPage() {
 
       <AboutCarousel />
 
-      <section className="pb-20 lg:pb-28">
+      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
           <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
             What We Do: Expertise in Action
           </h2>
-          <div className="mt-10 grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2">
+          <div className="mt-6 sm:mt-10 grid grid-cols-1 gap-x-12 gap-y-6 sm:gap-y-10 lg:grid-cols-2">
             {EXPERTISE.map((item) => (
               <div key={item.title}>
                 <h3 className="text-xl font-medium tracking-tight text-ink">{item.title}</h3>
