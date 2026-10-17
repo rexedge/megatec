@@ -30,15 +30,19 @@ export const HEAD_OFFICE =
   "Texlon House, opposite Fatgbems filling station, Jakande bus stop, Mile 2, Lagos, Nigeria.";
 
 /**
- * Query string for the Google Maps embed. Google cannot resolve "Texlon House"
- * (or the old "9E LSDPC" string) and answers with pins scattered across Lagos,
- * so this pins the bus stop the address is given by, which it does resolve.
+ * Google Maps embed for every contact section, pinned to the head office
+ * (punch list SW-12). Google knows the building as "Texlon", plus code
+ * F879+J8V, Coker: on the Apapa–Oworonshoki Expressway directly across from
+ * Fatgbems Gas and Petrol Station at the Jakande bus stop, which is exactly
+ * the address above. Naming the plus code keeps the pin exact even if the
+ * listing is renamed, and zoom 17 keeps Fatgbems and the bus stop in view.
  *
- * TODO(confirm): Google lists a "Mega Tec Pumps" a few hundred metres up the
- * same expressway, under a differently worded address. If Mega-Tec confirm that
- * listing is the head office, pin the business itself instead.
+ * Google also has a "Mega Tec Pumps" listing about 600 m north-east, at "Plot 4
+ * Apapa/Oshodi Expressway, beside Globespin, Coker". It is not this address;
+ * Mega-Tec may want to correct or claim it.
  */
-export const MAP_QUERY = "Jakande+Estate+Bus+Stop,+Mile+2,+Lagos,+Nigeria";
+export const MAP_EMBED_SRC =
+  "https://www.google.com/maps?q=Texlon,+F879%2BJ8V,+Coker,+Lagos,+Nigeria&z=17&output=embed";
 
 /**
  * Branch offices, from the same flyer (asset request item 12). Two typos on it
