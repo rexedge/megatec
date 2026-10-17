@@ -84,8 +84,9 @@ export const BRANCHES = [
 export const EMAIL = "sales@megatecpumps.com";
 
 /**
- * Shown in place of EMAIL on the after-sales pages: Maintenance & Repair,
- * Technical Support, and Station Accessories.
+ * Shown in place of EMAIL on the two after-sales pages only: Maintenance &
+ * Repair and Technical Support (punch list SW-05). Station Accessories shows
+ * sales@ (PA-01).
  */
 export const SUPPORT_EMAIL = "support@megatecpumps.com";
 
