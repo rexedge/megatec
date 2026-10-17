@@ -1,8 +1,12 @@
+import { getCategory, productsIn, type CategorySlug } from "@/lib/catalogue";
+
 export type NavProduct = {
   title: string;
   description: string;
   href: string;
   icon: string;
+  /** Products in the category, shown in the menu (punch list ST-01's "18 products"). */
+  count: number;
 };
 
 export type NavService = {
@@ -10,42 +14,22 @@ export type NavService = {
   href: string;
 };
 
+function category(slug: CategorySlug, href: string, icon: string): NavProduct {
+  const { title, description } = getCategory(slug);
+  return { title, description, href, icon, count: productsIn(slug).length };
+}
+
+/**
+ * The PRODUCTS menu (ST-01): the five category pages, which the footer's
+ * Products list and Home's product cards link to as well (ST-05). Landing pages
+ * never appear here: they are for Google Ads only (ST-02).
+ */
 export const PRODUCTS: NavProduct[] = [
-  {
-    title: "Fuel Dispensers",
-    description:
-      "Installation and commissioning of fuel dispensers and gas dispensing systems.",
-    href: "/products/fuel-dispensers",
-    icon: "/images/brand/icon-fuel-dispensers.png",
-  },
-  {
-    title: "CNG Systems",
-    description:
-      "Reliable CNG solutions engineered for optimal performance and safety.",
-    href: "/products/cng",
-    icon: "/images/brand/icon-cng.png",
-  },
-  {
-    title: "LPG Solutions",
-    description:
-      "Innovative LPG solutions for seamless integration and maximum uptime.",
-    href: "/products/lpg",
-    icon: "/images/brand/icon-lpg.png",
-  },
-  {
-    title: "Electric Car Chargers",
-    description:
-      "Durable EV charging infrastructure engineered for safe, high-uptime performance.",
-    href: "/products/ev-chargers",
-    icon: "/images/brand/icon-ev-charger.svg",
-  },
-  {
-    title: "Station Accessories",
-    description:
-      "Comprehensive station accessories to enhance functionality and safety.",
-    href: "/products/station-accessories",
-    icon: "/images/brand/icon-station.png",
-  },
+  category("fuel-dispensers", "/products/fuel-solutions", "/images/brand/icon-fuel-dispensers.png"),
+  category("cng", "/products/cng-solutions", "/images/brand/icon-cng.png"),
+  category("lpg", "/products/lpg-solutions", "/images/brand/icon-lpg.png"),
+  category("ev-chargers", "/products/ev-chargers", "/images/brand/icon-ev-charger.svg"),
+  category("station-accessories", "/products/station-accessories", "/images/brand/icon-station.png"),
 ];
 
 /**

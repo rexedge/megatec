@@ -4,9 +4,9 @@ import { Container } from "@/components/ui/container";
 import { PRODUCTS } from "@/lib/nav";
 
 const CARD_IMAGES: Record<string, string> = {
-  "/products/fuel-dispensers": "/images/landing/rectangle-fuel-dispensers.png",
-  "/products/cng": "/images/landing/rectangle-cng.png",
-  "/products/lpg": "/images/landing/rectangle-lpg.png",
+  "/products/fuel-solutions": "/images/landing/rectangle-fuel-dispensers.png",
+  "/products/cng-solutions": "/images/landing/rectangle-cng.png",
+  "/products/lpg-solutions": "/images/landing/rectangle-lpg.png",
   "/products/ev-chargers": "/images/landing/rectangle-ev-charger.png",
   "/products/station-accessories": "/images/landing/rectangle-station-accessories.png",
 };
