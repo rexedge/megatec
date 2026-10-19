@@ -1,24 +1,7 @@
 import Image from "next/image";
+import { ClientLogos } from "@/components/sections/client-logos";
 import { Container } from "@/components/ui/container";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
-
-/**
- * The client logos Megatec supplied, in the order they numbered them. These
- * replaced the seven in the Figma export, of which only MRS was a named client.
- *
- * TODO(assets): written permission to display each logo is still unconfirmed.
- * Asset request item 3.
- */
-const CLIENT_LOGOS = [
-  { name: "Lado Oil", src: "/images/clients/lado-oil.png", width: 243, height: 67 },
-  { name: "Masters Energy", src: "/images/clients/masters-energy.png", width: 446, height: 445 },
-  { name: "SEEPCO", src: "/images/clients/seepco.png", width: 143, height: 190 },
-  { name: "NIPCO Gas", src: "/images/clients/nipco.png", width: 341, height: 127 },
-  { name: "Nepal Energies", src: "/images/clients/nepal-energies.png", width: 410, height: 125 },
-  { name: "CRCC and CCECC", src: "/images/clients/crcc-ccecc.png", width: 341, height: 161 },
-  { name: "MRS", src: "/images/clients/mrs.png", width: 318, height: 339 },
-  { name: "United States Embassy", src: "/images/clients/us-embassy.png", width: 448, height: 446 },
-];
 
 export function Hero() {
   return (
@@ -52,20 +35,9 @@ export function Hero() {
             priority
           />
         </div>
-
-        <div className="mt-8 sm:mt-16 flex w-full flex-wrap items-center justify-center gap-x-12 gap-y-8 lg:gap-x-16">
-          {CLIENT_LOGOS.map((logo) => (
-            <Image
-              key={logo.src}
-              src={logo.src}
-              alt={logo.name}
-              width={logo.width}
-              height={logo.height}
-              className="max-h-11 w-auto max-w-24 object-contain opacity-80 grayscale sm:max-h-14 sm:max-w-28"
-            />
-          ))}
-        </div>
       </Container>
+
+      <ClientLogos className="mt-8 sm:mt-16" />
     </section>
   );
 }

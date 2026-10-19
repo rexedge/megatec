@@ -42,6 +42,14 @@
       opacity: 0;
     }
   }
+
+  /* The client logo strip drifts left by one copy of itself, then starts over unseen. */
+  --animate-marquee: marquee 40s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 body {
