@@ -1,16 +1,5 @@
-"use client";
-
-import Image from "next/image";
-import { useState } from "react";
+import { EnquiryForm } from "@/components/sections/enquiry-form";
 import { Container } from "@/components/ui/container";
-import {
-  REASSURANCE_LINE,
-  TrapField,
-  trapValue,
-  whatsappHref,
-} from "@/components/ui/enquiry-modal";
-import { emailEnquiry } from "@/lib/enquiry";
-import { PRODUCTS } from "@/lib/nav";
 import {
   BRANCHES,
   EMAIL,
@@ -20,24 +9,7 @@ import {
   PHONE_SECONDARY,
 } from "@/lib/contact";
 
-const MESSAGE_LIMIT = 280;
-
 const HEAD_OFFICE = `HEAD OFFICE: ${OFFICE_ADDRESS}`;
-
-const DIAL_CODES = [
-  { country: "Nigeria", code: "+234" },
-  { country: "Ghana", code: "+233" },
-  { country: "Benin", code: "+229" },
-  { country: "Cameroon", code: "+237" },
-  { country: "Côte d'Ivoire", code: "+225" },
-  { country: "Kenya", code: "+254" },
-  { country: "South Africa", code: "+27" },
-  { country: "United Kingdom", code: "+44" },
-  { country: "United States", code: "+1" },
-  { country: "United Arab Emirates", code: "+971" },
-  { country: "China", code: "+86" },
-  { country: "India", code: "+91" },
-];
 
 export function ContactSection({
   showBranches = false,
@@ -48,46 +20,6 @@ export function ContactSection({
   /** The address to publish here; the after-sales pages pass the support one. */
   email?: string;
 }) {
-  const [dialCode, setDialCode] = useState("+234");
-  const [message, setMessage] = useState("");
-
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const get = (key: string) => String(data.get(key) ?? "").trim();
-
-    const lines = [
-      "Hi Megatec, I'd like to discuss a project.",
-      "",
-      `Name: ${get("fullName")}`,
-      `Phone: ${dialCode} ${get("phone")}`,
-    ];
-
-    const company = get("company");
-    if (company) lines.push(`Company: ${company}`);
-
-    const product = get("product");
-    if (product) lines.push(`Product: ${product}`);
-
-    const email = get("email");
-    if (email) lines.push(`Email: ${email}`);
-
-    const body = get("message");
-    if (body) lines.push("", body);
-
-    window.open(whatsappHref(lines), "_blank", "noopener,noreferrer");
-    emailEnquiry({
-      form: "contact",
-      name: get("fullName"),
-      phone: `${dialCode} ${get("phone")}`,
-      company,
-      product,
-      email,
-      message: body,
-      trap: trapValue(event.currentTarget),
-    });
-  }
-
   return (
     <section id="contact" className="scroll-mt-24 py-6 sm:py-20 lg:py-28">
       <Container>
@@ -142,112 +74,10 @@ export function ContactSection({
             />
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            <TrapField />
-            <Field label="Full name">
-              <input
-                required
-                name="fullName"
-                className="form-input"
-                placeholder="Enter your full name"
-              />
-            </Field>
-
-            <Field label="Company name">
-              <input
-                name="company"
-                className="form-input"
-                placeholder="Enter your company name"
-              />
-            </Field>
-
-            <Field label="Select a product">
-              <select name="product" className="form-input" defaultValue="">
-                <option value="">Select one</option>
-                {PRODUCTS.map((product) => (
-                  <option key={product.href} value={product.title}>
-                    {product.title}
-                  </option>
-                ))}
-                <option value="Other">Other</option>
-              </select>
-            </Field>
-
-            <Field label="Phone number">
-              <div className="flex gap-3">
-                <select
-                  aria-label="Country dialling code"
-                  value={dialCode}
-                  onChange={(event) => setDialCode(event.target.value)}
-                  className="form-input w-40 shrink-0"
-                >
-                  {DIAL_CODES.map((entry) => (
-                    <option key={entry.code} value={entry.code}>
-                      {entry.country} {entry.code}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  required
-                  type="tel"
-                  name="phone"
-                  className="form-input"
-                  placeholder="000 - 0000 - 0000"
-                />
-              </div>
-            </Field>
-
-            <Field label="Email">
-              <input
-                type="email"
-                name="email"
-                className="form-input"
-                placeholder="you@company.com"
-              />
-            </Field>
-
-            <Field label="Message body">
-              <textarea
-                name="message"
-                className="form-input h-35 resize-none"
-                maxLength={MESSAGE_LIMIT}
-                value={message}
-                onChange={(event) => setMessage(event.target.value)}
-                placeholder="Type your message..."
-              />
-              <p className="text-body text-sm">
-                {MESSAGE_LIMIT - message.length} characters left
-              </p>
-            </Field>
-
-            <button
-              type="submit"
-              className="bg-sky hover:bg-sky-dark font-accent inline-flex items-center justify-center gap-3 rounded-lg px-8 py-4 text-base font-medium text-white transition-colors"
-            >
-              <Image
-                src="/images/landing/icon-whatsapp-alt.svg"
-                alt=""
-                width={24}
-                height={24}
-                className="h-6 w-6"
-              />
-              Discuss your project on WhatsApp
-            </button>
-
-            <p className="text-body text-center text-sm">{REASSURANCE_LINE}</p>
-          </form>
+          <EnquiryForm />
         </div>
       </Container>
     </section>
-  );
-}
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <label className="text-ink flex flex-col gap-2 text-base font-medium">
-      {label}
-      {children}
-    </label>
   );
 }
 
