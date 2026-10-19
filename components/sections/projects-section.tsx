@@ -6,15 +6,25 @@ import { cn } from "@/lib/cn";
  * Only real, named engagements belong here. The three entries this replaced
  * ("Port Harcourt Bulk Terminal", "Lagos Metro Fuel Hub", "An electric charging
  * station in Abuja") were illustrated with AI-generated renders and appear in no
- * client list Megatec has supplied. Nepal's copy is verbatim from the Core Site
- * Pages document, Projects §2. Canico replaced Sterling Oil & Gas at Megatec's
- * request (October 2026); its line only describes the photo, because no project
- * details came with it.
+ * client list Mega-Tec has supplied. The Nepal and Sterling copy is verbatim from
+ * the Core Site Pages document, Projects §2, and the Canico wording is from its
+ * Global Rules. Canico took Sterling Oil & Gas's place in October 2026 and
+ * Sterling came back beside it (punch list HM-11).
  *
- * TODO(assets): Canico needs a location and a one-line outcome, and Megatec must
- * confirm both cards are accurate and client-approved. Asset request item 2.
+ * TODO(assets): Sterling has no photo yet, so its card is text only: give its
+ * entry an `image` once Mega-Tec supplies one. Canico needs a location and a
+ * one-line outcome, and Mega-Tec must confirm all three cards are accurate and
+ * client-approved. Asset request item 2.
  */
-const PROJECTS = [
+type Project = {
+  title: string;
+  description: string;
+  image?: string;
+  /** Sits lower than its neighbours on a wide screen, for the staggered look. */
+  offset?: boolean;
+};
+
+const PROJECTS: Project[] = [
   {
     title: "Nepal Energies, Nationwide",
     description:
@@ -23,9 +33,14 @@ const PROJECTS = [
   },
   {
     title: "Canico",
-    description: "Megatec fuel dispensers in service on Canico's forecourt.",
+    description: "MEGA-TEC fuel dispensers in service on Canico's forecourt.",
     image: "/images/projects/canico.jpg",
     offset: true,
+  },
+  {
+    title: "Sterling Oil & Gas, Lagos, Akwa Ibom & Port Harcourt",
+    description:
+      "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
   },
 ];
 
@@ -43,24 +58,35 @@ export function ProjectsSection() {
           <p className="text-body max-w-2xl text-lg leading-relaxed">
             We combine reliability, competitive pricing, and an innovation culture to deliver
             solutions that grow with your business. Our proven experience across diverse
-            industries and 24/7 support ensure your success at every stage.
+            industries ensures your success at every stage.
           </p>
         </div>
 
-        <div className="mt-8 sm:mt-16 grid w-full grid-cols-1 items-start gap-8 sm:grid-cols-2">
+        <div className="mt-8 sm:mt-16 grid w-full grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((project) => (
-            <div key={project.title} className={cn(project.offset && "sm:mt-24")}>
-              <div className="bg-surface-soft relative aspect-9/8 w-full overflow-hidden rounded-2xl">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(min-width: 640px) 33vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="text-ink mt-6 text-xl font-medium tracking-tight">{project.title}</p>
-              <p className="text-body mt-2 leading-relaxed">{project.description}</p>
+            <div key={project.title} className={cn(project.offset && "lg:mt-24")}>
+              {project.image ? (
+                <>
+                  <div className="bg-surface-soft relative aspect-9/8 w-full overflow-hidden rounded-2xl">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="text-ink mt-6 text-xl font-medium tracking-tight">
+                    {project.title}
+                  </p>
+                  <p className="text-body mt-2 leading-relaxed">{project.description}</p>
+                </>
+              ) : (
+                <div className="bg-accent flex aspect-9/8 w-full flex-col justify-center rounded-2xl p-8">
+                  <p className="text-ink text-xl font-medium tracking-tight">{project.title}</p>
+                  <p className="text-body mt-2 leading-relaxed">{project.description}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
