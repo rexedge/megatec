@@ -46,14 +46,14 @@ export function SiteFooter() {
           <FooterColumn title="Services">
             <FooterLink
               href="/services/installation-and-commissioning"
-              label="Installation & commissioning"
+              label="Installation & Commissioning"
             />
-            <FooterLink href="/services/maintenance-and-repair" label="Maintenance & repair" />
+            <FooterLink href="/services/maintenance-and-repair" label="Maintenance & Repair" />
             <FooterLink
               href="/services/technical-support"
-              label="Technical support & troubleshooting"
+              label="Technical Support & Troubleshooting"
             />
-            <FooterLink href="/services/training" label="Training & capacity building" />
+            <FooterLink href="/services/training" label="Training & Capacity Building" />
           </FooterColumn>
 
           <FooterColumn title="Follow Us">
