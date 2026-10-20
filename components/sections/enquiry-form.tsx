@@ -25,15 +25,29 @@ const NEEDS = [
 
 const MESSAGE_LIMIT = 280;
 
+/** What /api/enquiry accepts for the need; the short form's free text must fit. */
+const NEED_LIMIT = 200;
+
 /**
  * The standard enquiry form (punch list HM-10; the Installation page, SV-05,
  * uses it too): name, phone and what they need, then an optional email and
  * message. The button opens WhatsApp with the Core Site Pages document's opening
  * line, adds the email and message only if the visitor wrote them, and emails a
  * copy to sales@ through /api/enquiry.
+ *
+ * The "short" variant is the closing form the documents put at the foot of About
+ * and Projects (AB-08): name, phone and what they need, the last typed in the
+ * visitor's own words instead of picked from the list.
  */
-export function EnquiryForm({ buttonLabel = "Send on WhatsApp" }: { buttonLabel?: string }) {
+export function EnquiryForm({
+  buttonLabel = "Send on WhatsApp",
+  variant = "full",
+}: {
+  buttonLabel?: string;
+  variant?: "full" | "short";
+}) {
   const [message, setMessage] = useState("");
+  const short = variant === "short";
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -92,39 +106,53 @@ export function EnquiryForm({ buttonLabel = "Send on WhatsApp" }: { buttonLabel?
       </Field>
 
       <Field label="What do you need?">
-        <select required name="need" className="form-input" defaultValue="">
-          <option value="" disabled>
-            Select one
-          </option>
-          {NEEDS.map((need) => (
-            <option key={need} value={need}>
-              {need}
+        {short ? (
+          <input
+            required
+            name="need"
+            maxLength={NEED_LIMIT}
+            className="form-input"
+            placeholder="e.g. two LPG dispensers for a new station"
+          />
+        ) : (
+          <select required name="need" className="form-input" defaultValue="">
+            <option value="" disabled>
+              Select one
             </option>
-          ))}
-        </select>
+            {NEEDS.map((need) => (
+              <option key={need} value={need}>
+                {need}
+              </option>
+            ))}
+          </select>
+        )}
       </Field>
 
-      <Field label="Email (optional)">
-        <input
-          type="email"
-          name="email"
-          autoComplete="email"
-          className="form-input"
-          placeholder="you@company.com"
-        />
-      </Field>
+      {!short && (
+        <>
+          <Field label="Email (optional)">
+            <input
+              type="email"
+              name="email"
+              autoComplete="email"
+              className="form-input"
+              placeholder="you@company.com"
+            />
+          </Field>
 
-      <Field label="Your message (optional)">
-        <textarea
-          name="message"
-          className="form-input h-35 resize-none"
-          maxLength={MESSAGE_LIMIT}
-          value={message}
-          onChange={(event) => setMessage(event.target.value)}
-          placeholder="Type your message..."
-        />
-        <p className="text-body text-sm">{MESSAGE_LIMIT - message.length} characters left</p>
-      </Field>
+          <Field label="Your message (optional)">
+            <textarea
+              name="message"
+              className="form-input h-35 resize-none"
+              maxLength={MESSAGE_LIMIT}
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+              placeholder="Type your message..."
+            />
+            <p className="text-body text-sm">{MESSAGE_LIMIT - message.length} characters left</p>
+          </Field>
+        </>
+      )}
 
       <Button
         type="submit"
