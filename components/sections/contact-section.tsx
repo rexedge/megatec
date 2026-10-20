@@ -14,11 +14,14 @@ const HEAD_OFFICE = `HEAD OFFICE: ${OFFICE_ADDRESS}`;
 export function ContactSection({
   showBranches = false,
   email = EMAIL,
+  buttonLabel,
 }: {
   /** List the branch offices too — only where this section stands in for a contact page. */
   showBranches?: boolean;
   /** The address to publish here; the after-sales pages pass the support one. */
   email?: string;
+  /** The form button's wording, where a page's document sets its own. */
+  buttonLabel?: string;
 }) {
   return (
     <section id="contact" className="scroll-mt-24 py-6 sm:py-20 lg:py-28">
@@ -74,7 +77,7 @@ export function ContactSection({
             />
           </div>
 
-          <EnquiryForm />
+          <EnquiryForm buttonLabel={buttonLabel} />
         </div>
       </Container>
     </section>
