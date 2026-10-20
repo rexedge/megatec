@@ -2,50 +2,22 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
-import { WhatsappButton } from "@/components/ui/whatsapp-button";
 import { AboutCarousel } from "@/components/sections/about-carousel";
-import { StatsCta } from "@/components/sections/stats-cta";
-import { WhyChooseUs } from "@/components/sections/why-choose-us";
+import { ByTheNumbers } from "@/components/sections/by-the-numbers";
+import { ClosingCta } from "@/components/sections/closing-cta";
 
+/**
+ * Copy is verbatim from the Core Site Pages document, Page 2 "About" (punch list
+ * AB-01 to AB-08). It replaces the old text section by section: "Our Journey", "What
+ * We Do: Expertise in Action" and "Why Choose Megatec Pumps?" are gone, because
+ * they claimed R&D, IoT monitoring, marinas and "stringent international standards"
+ * that Mega-Tec has not confirmed.
+ */
 export const metadata: Metadata = {
-  title: "About Us | Megatec",
+  title: "About MEGA-TEC | Nigeria's Fuel & Energy Dispensing Company",
   description:
-    "Megatec Pumps is a leading manufacturer and supplier of advanced fuel and gas dispensing systems, engineered for efficiency, safety, and reliability.",
+    "MEGA-TEC assembles and installs fuel dispensers, LPG, CNG and EV charging infrastructure across Nigeria. Founded 2012. 1,500+ stations equipped. The story of how we got here.",
 };
-
-const GALLERY = [
-  "/images/landing/rectangle-fuel-dispensers.png",
-  "/images/landing/rectangle-cng.png",
-  "/images/landing/rectangle-lpg.png",
-  "/images/landing/rectangle-ev-charger.png",
-  "/images/landing/rectangle-installation.png",
-  "/images/landing/rectangle-maintenance.png",
-  "/images/operations/assembly-line.jpg",
-  "/images/operations/engineering-team.jpg",
-];
-
-const EXPERTISE = [
-  {
-    title: "Advanced Fuel Dispensing Systems",
-    description:
-      "We design, engineer, and manufacture a diverse range of fuel dispensers for retail forecourts, commercial fleets, marinas, and private fueling stations. Our systems are renowned for their measurement accuracy, durable construction, and user-friendly interfaces.",
-  },
-  {
-    title: "Integrated Technology",
-    description:
-      "Our products seamlessly integrate with modern payment systems, station automation software, and IoT-based monitoring tools, giving you complete control and valuable data insights.",
-  },
-  {
-    title: "Comprehensive Gas Dispensing Solutions",
-    description:
-      "We are at the forefront of providing safe and efficient solutions for a variety of gases, including Compressed Natural Gas (CNG), Liquefied Petroleum Gas (LPG), and other alternative fuels. Our expertise ensures compliance with the strictest safety protocols.",
-  },
-  {
-    title: "Unmatched Support and Service",
-    description:
-      "A Megatec pump is a long-term investment. We stand behind our products with comprehensive after-sales support, maintenance services, and a ready supply of genuine spare parts to ensure minimal downtime and peak performance.",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -54,106 +26,161 @@ export default function AboutPage() {
 
       <section className="py-6 sm:py-16 lg:py-20">
         <Container>
-          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-6xl">
-            About Megatec Pumps: Our Story and Mission
+          <span className="bg-accent-soft text-text inline-flex items-center rounded-full px-3 py-2 text-sm">
+            Founded 2012 · 1,500+ stations equipped
+          </span>
+          <h1 className="text-ink mt-6 max-w-4xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            We didn&apos;t just import Nigeria&apos;s fuel dispensers. We learned to build them
+            here.
           </h1>
-          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-body">
-            Welcome to Megatec Pumps, a leading manufacturer and supplier of advanced fuel
-            dispensing systems and comprehensive gas dispensing solutions. Our journey began
-            with a passion for innovation and an unwavering commitment to delivering
-            high-quality products that meet the dynamic needs of our customers across the
-            globe. We are not just manufacturers; we are architects of efficiency, safety, and
-            reliability for the energy distribution industry.
+          <p className="text-body mt-6 max-w-3xl text-lg leading-relaxed">
+            MEGA-TEC is a Nigerian-owned energy dispensing company supplying fuel, LPG, CNG and EV
+            charging infrastructure, assembled and tested locally, installed nationwide.
           </p>
-          <div className="mt-8">
-            <WhatsappButton />
-          </div>
-        </Container>
-      </section>
 
-      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
-        <Container>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-            {GALLERY.map((src) => (
-              <div key={src} className="relative aspect-3/4 overflow-hidden rounded-xl bg-surface-soft">
-                <Image src={src} alt="" fill sizes="(min-width: 640px) 25vw, 50vw" className="object-cover" />
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
-        <Container>
-          <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
-            Our Journey
-          </h2>
-          <div className="mt-6 sm:mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <div className="flex flex-col gap-6 text-lg leading-relaxed text-body">
-              <p>
-                Founded by a team of industry veterans, Megatec Pumps was born from a clear
-                vision: to revolutionize the way fuel and gas are dispensed. We saw a need in
-                the market for equipment that was not only robust and accurate but also
-                intelligent and adaptable to future technologies.
-              </p>
-              <p>
-                Today, our commitment extends beyond mere functionality. We strive to create
-                sustainable solutions that minimize environmental impact and maximize
-                operational lifespan, ensuring a greener future for generations to come.
-              </p>
-            </div>
-            <div className="flex flex-col gap-6 text-lg leading-relaxed text-body">
-              <p>
-                From our very first design to our current state-of-the-art product line, this
-                founding principle has been our guiding light. Over the years, we have grown
-                from a dedicated workshop into a trusted global name, known for our
-                engineering excellence and customer-centric approach.
-              </p>
-              <p>
-                Our mission is to empower businesses with the most reliable, efficient, and
-                innovative fuel and gas dispensing technologies. We envision a world where
-                energy distribution is seamless, safe, and environmentally responsible.
-              </p>
-            </div>
-          </div>
-
-          <figure className="mt-8 sm:mt-12 flex items-center gap-5">
+          <div className="bg-surface-soft relative mt-8 aspect-4/3 overflow-hidden rounded-3xl sm:mt-12 sm:aspect-3/2 lg:aspect-2/1">
             <Image
-              src="/images/team/ikenna-okpala-headshot.jpg"
-              alt="Portrait of Ikenna Okpala"
-              width={112}
-              height={112}
-              className="h-24 w-24 rounded-full object-cover lg:h-28 lg:w-28"
+              src="/images/operations/assembly-floor.jpg"
+              alt="MEGA-TEC technicians assembling fuel dispensers on the assembly floor"
+              fill
+              loading="eager"
+              quality={90}
+              sizes="(min-width: 1280px) 1200px, 100vw"
+              className="object-cover object-[50%_45%]"
             />
-            <figcaption>
-              <p className="text-xl font-medium tracking-tight text-ink">Ikenna Okpala</p>
-              <p className="mt-1 text-body">Founder &amp; CEO</p>
-            </figcaption>
-          </figure>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-6 sm:py-16 lg:py-20">
+        <Container>
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.7fr] lg:gap-16">
+            <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:sticky lg:top-28 lg:self-start lg:text-5xl">
+              From a simple question to Nigeria&apos;s assembly floor
+            </h2>
+
+            <div className="text-body flex flex-col gap-6 text-lg leading-relaxed">
+              <p>
+                Our founder spent two years in the UK working for a company that sold fuel
+                dispensers to African markets. Their model was straightforward: buy the equipment
+                from China, certify it, rebrand it, and sell it on to Africa at a premium. One
+                question stayed with him. Why should Nigerians travel to the UK to buy equipment
+                made in China, when they could buy it from China directly? That question became
+                MEGA-TEC.
+              </p>
+              <p>
+                In the early years we imported our dispensers whole. Then the 2016 downturn hit,
+                the dollar surged, freight and clearing costs climbed, and profit all but
+                vanished. We had a choice: cut corners on quality like others did, or look
+                inwards. We chose to assemble the dispensers ourselves here in Nigeria, using a
+                Completely Knocked Down model (importing them as parts and assembling them here)
+                to control cost. It saved the business, and it did something bigger. For the first
+                time we could fully test every unit before it left our hands, and complaints
+                dropped by more than 80%. It also meant the jobs stayed here, employing Nigerian
+                engineers rather than being lost abroad.
+              </p>
+              <p>
+                There was one more decision that set us apart. The first serious dispensers in
+                Nigeria were built on components that nearly every dispenser engineer in the
+                country trained on from the 1960s onwards, the same components we use today. When
+                the downturn forced that original brand out, most brands switched to cheaper,
+                inferior parts to protect their margins. We kept the original standard, and
+                inherited the engineers who had mastered it. That is why MEGA-TEC pumps are
+                different in the way that matters most: no single supplier controls the spare
+                parts. Any engineer can service our pumps, and the parts are openly available in
+                the market. Even if we stopped producing tomorrow, your pump keeps running, while
+                imported brands that discontinue a model leave buyers replacing an entire working
+                pump over one unavailable part.
+              </p>
+
+              <figure className="mt-2 flex items-center gap-5">
+                <Image
+                  src="/images/team/ikenna-okpala-headshot.jpg"
+                  alt="Portrait of Ikenna Okpala"
+                  width={112}
+                  height={112}
+                  className="h-24 w-24 shrink-0 rounded-full object-cover lg:h-28 lg:w-28"
+                />
+                <figcaption>
+                  <p className="text-ink text-xl font-medium tracking-tight">Ikenna Okpala</p>
+                  <p className="text-body mt-1">Founder &amp; CEO, MEGA-TEC</p>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-surface-soft/60 py-6 sm:py-16 lg:py-20">
+        <Container>
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16">
+            <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-surface-soft">
+              <Image
+                src="/images/projects/nepal-energies.jpg"
+                alt="MEGA-TEC fuel dispensers at a Nepal Energies filling station"
+                fill
+                quality={90}
+                sizes="(min-width: 1024px) 600px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+                Nepal Energies, and the order that changed the company
+              </h2>
+              <div className="text-body mt-6 flex flex-col gap-6 text-lg leading-relaxed">
+                <p>
+                  After COVID, an order came in from Nepal Energies. They had bought pumps
+                  elsewhere, found them wanting, and were looking for better. It was a landmark
+                  order: 200 dispensers, 100 single and 100 double.
+                </p>
+                <p>
+                  They did their homework, checked our components, tested our quality, and
+                  interviewed our founder in person before committing. Then they placed the order
+                  and paid in full. We took it seriously and delivered all 200 units, with no
+                  complaints and no disputes. Then they ordered again. And again. It became a
+                  lasting partnership, and the repeat orders have never stopped.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <ByTheNumbers />
+
+      <section className="py-6 sm:py-16 lg:py-20">
+        <Container>
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+                Certified, compliant, and accountable
+              </h2>
+              <p className="text-body mt-6 text-lg leading-relaxed">
+                MEGA-TEC holds the SON (Standards Organisation of Nigeria) certificate and product
+                certification, the core certificates required to operate in Nigeria. Our
+                installations are NMDPRA-compliant. We are members of the Manufacturers
+                Association of Nigeria (MAN) and the Independent Petroleum Marketers Association of
+                Nigeria (IPMAN).
+              </p>
+            </div>
+            <div className="relative aspect-video overflow-hidden rounded-2xl bg-surface-soft">
+              <Image
+                src="/images/operations/engineering-team.jpg"
+                alt="MEGA-TEC engineers in company overalls"
+                fill
+                quality={90}
+                sizes="(min-width: 1024px) 600px, 100vw"
+                className="object-cover object-[50%_35%]"
+              />
+            </div>
+          </div>
         </Container>
       </section>
 
       <AboutCarousel />
 
-      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
-        <Container>
-          <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
-            What We Do: Expertise in Action
-          </h2>
-          <div className="mt-6 sm:mt-10 grid grid-cols-1 gap-x-12 gap-y-6 sm:gap-y-10 lg:grid-cols-2">
-            {EXPERTISE.map((item) => (
-              <div key={item.title}>
-                <h3 className="text-xl font-medium tracking-tight text-ink">{item.title}</h3>
-                <p className="mt-3 text-body leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <WhyChooseUs />
-
-      <StatsCta />
+      <ClosingCta title="Want to work with a company that stands behind its equipment?" />
     </>
   );
 }

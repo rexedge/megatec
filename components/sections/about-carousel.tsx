@@ -16,7 +16,7 @@ const SLIDES = [
   },
   {
     image: "/images/factory/lpg-single/lpg-single-1.png",
-    caption: "LPG dispensers built and pressure-tested to NMDPRA safety standards.",
+    caption: "LPG dispensers, assembled and tested in Nigeria.",
   },
   {
     image: "/images/factory/cng-2-double/cng-2-double-1.png",
@@ -28,7 +28,7 @@ const SLIDES = [
   },
   {
     image: "/images/factory/mt-plus-complete-panel.png",
-    caption: "Genuine spares — boards, displays, meters and valves, held in stock.",
+    caption: "Genuine spares: boards, displays, meters and valves, held in stock.",
   },
 ];
 
