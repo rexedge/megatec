@@ -1,13 +1,15 @@
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { CountUp } from "@/components/ui/count-up";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 import { EMAIL, HEAD_OFFICE, PHONE_PRIMARY } from "@/lib/contact";
 
+/** These four count up once when they scroll into view (punch list MO-05). */
 const STATS = [
-  { value: "2012", label: "FOUNDED" },
-  { value: "1,500+", label: "STATIONS" },
-  { value: "3,500+", label: "CLIENTS" },
-  { value: "80+", label: "ENGINEERS" },
+  { end: 2012, grouped: false, suffix: "", label: "FOUNDED" },
+  { end: 1500, grouped: true, suffix: "+", label: "STATIONS" },
+  { end: 3500, grouped: true, suffix: "+", label: "CLIENTS" },
+  { end: 80, grouped: true, suffix: "+", label: "ENGINEERS" },
 ];
 
 
@@ -64,7 +66,7 @@ export function StatsCta({
             {STATS.map((stat) => (
               <div key={stat.label} className="flex flex-col gap-1">
                 <p className="text-text text-5xl font-semibold tracking-tight lg:text-6xl">
-                  {stat.value}
+                  <CountUp end={stat.end} suffix={stat.suffix} grouped={stat.grouped} />
                 </p>
                 <p className="text-text text-sm font-medium tracking-tight">{stat.label}</p>
               </div>
