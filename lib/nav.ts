@@ -48,22 +48,10 @@ export const LANDING_PAGES = [
 export const HERO_PAGES = [...LANDING_PAGES, "/products/station-accessories"];
 
 export const SERVICES: NavService[] = [
-  {
-    title: "Installation and commissioning of fuel dispensers",
-    href: "/services/installation-and-commissioning",
-  },
-  {
-    title: "Maintenance and repair services for fueling equipment",
-    href: "/services/maintenance-and-repair",
-  },
-  {
-    title: "Technical support and troubleshooting",
-    href: "/services/technical-support",
-  },
-  {
-    title: "Training and capacity building for operators",
-    href: "/services/training",
-  },
+  { title: "Installation & Commissioning", href: "/services/installation-and-commissioning" },
+  { title: "Maintenance & Repair", href: "/services/maintenance-and-repair" },
+  { title: "Technical Support & Troubleshooting", href: "/services/technical-support" },
+  { title: "Training & Capacity Building", href: "/services/training" },
 ];
 
 /**

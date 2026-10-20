@@ -3,41 +3,43 @@ import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
-import { StatsCta } from "@/components/sections/stats-cta";
-import { WhyChooseUs } from "@/components/sections/why-choose-us";
+import { WhatsappButton } from "@/components/ui/whatsapp-button";
+import { ContactSection } from "@/components/sections/contact-section";
+import { TrustBar } from "@/components/sections/trust-bar";
 
+/** Copy is verbatim from the Services Pages document, "Category page: Services" (punch list SV-01). */
 export const metadata: Metadata = {
-  title: "Services | Megatec",
+  title: "Services | Installation, Maintenance & Support | MEGA-TEC",
   description:
-    "From installation to training, Megatec Pumps supports your fuel and gas dispensing infrastructure at every stage of its life.",
+    "MEGA-TEC provides installation, maintenance, technical support and training for fuel, LPG, CNG and EV equipment across Nigeria. Certified technicians, nationwide coverage.",
 };
 
+const TRUST_ITEMS = [
+  "Certified Technicians Nationwide",
+  "24-Hour Response Time",
+  "1-Year Warranty on All Dispensers",
+  "Spare Parts Always Available",
+];
+
+/** No Custom Integration tile: Mega-Tec has not supplied real detail for it yet. */
 const SERVICES = [
   {
-    title: "Installation and commissioning of fuel dispensers",
-    description:
-      "Expert installation and commissioning of fuel and gas dispensing systems in Nigeria — precision, safety, and regulatory compliance for your fuelling station.",
+    title: "Installation & Commissioning",
     href: "/services/installation-and-commissioning",
     image: "/images/landing/rectangle-installation.png",
   },
   {
-    title: "Maintenance and repair services for fueling equipment",
-    description:
-      "Keep your fuel retail business running smoothly with rapid-response maintenance and repair services across Nigeria.",
+    title: "Maintenance & Repair",
     href: "/services/maintenance-and-repair",
     image: "/images/landing/rectangle-maintenance.png",
   },
   {
-    title: "Technical support and troubleshooting",
-    description:
-      "Fast, reliable diagnosis and repair of fuel dispensers, pumps, and payment systems, minimizing downtime and protecting your revenue.",
+    title: "Technical Support & Troubleshooting",
     href: "/services/technical-support",
     image: "/images/landing/rectangle-technical-support.png",
   },
   {
-    title: "Training and capacity building for operators",
-    description:
-      "Expert-led training programs that boost safety, accuracy, and customer satisfaction for your forecourt team.",
+    title: "Training & Capacity Building",
     href: "/services/training",
     image: "/images/landing/rectangle-training.png",
   },
@@ -50,43 +52,63 @@ export default function ServicesPage() {
 
       <section className="py-6 sm:py-16 lg:py-20">
         <Container>
-          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-ink lg:text-6xl">
-            Our Services
+          <h1 className="text-ink max-w-4xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+            Full-service support, from installation to the lifetime of your equipment
           </h1>
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-body">
-            We support your fuel and gas dispensing infrastructure at every stage of its life
-            &mdash; from first installation, through certified maintenance and technical
-            support, to training the team that runs it every day.
+          <p className="text-body mt-6 max-w-3xl text-lg leading-relaxed">
+            Buying the right equipment is only half the job. MEGA-TEC installs it properly, keeps
+            it running, and supports your team for as long as you operate it, with certified
+            technicians available nationwide.
           </p>
+          <div className="mt-8">
+            <WhatsappButton
+              variant="leaf"
+              message="Hi MEGA-TEC, I'd like to talk to your team about your services."
+            >
+              Talk to Our Team on WhatsApp
+            </WhatsappButton>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-6 sm:pt-0 sm:pb-12">
+        <Container>
+          <TrustBar items={TRUST_ITEMS} />
         </Container>
       </section>
 
       <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
         <Container>
-          <div className="grid grid-cols-1 gap-6 sm:gap-10 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-10">
             {SERVICES.map((service) => (
               <Link
                 key={service.href}
                 href={service.href}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-border/70"
+                className="group border-border/70 flex flex-col overflow-hidden rounded-2xl border"
               >
-                <div className="relative aspect-video overflow-hidden bg-surface-soft">
+                <div className="bg-surface-soft relative aspect-video overflow-hidden">
                   <Image
                     src={service.image}
-                    alt={service.title}
+                    alt=""
                     fill
                     sizes="(min-width: 640px) 50vw, 100vw"
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
-                <div className="flex flex-1 flex-col gap-3 p-8">
-                  <h2 className="text-xl font-medium tracking-tight text-ink">
-                    {service.title}
-                  </h2>
-                  <p className="text-body leading-relaxed">{service.description}</p>
-                  <span className="mt-auto pt-4 text-sm font-medium tracking-tight text-ink">
-                    Learn more &rarr;
-                  </span>
+                <div className="flex items-center justify-between gap-4 p-6 sm:p-8">
+                  <h2 className="text-ink text-xl font-medium tracking-tight">{service.title}</h2>
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="text-ink h-5 w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
                 </div>
               </Link>
             ))}
@@ -94,8 +116,7 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <WhyChooseUs />
-      <StatsCta />
+      <ContactSection buttonLabel="Talk to Our Team on WhatsApp" />
     </>
   );
 }
