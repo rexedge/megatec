@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Punch list MO-07: station, project and hero photos are served at quality 90,
+  // not the default 75, which made them look soft. Next 16 only honours the
+  // qualities listed here, so a `quality={90}` on an Image needs 90 in this list.
+  images: {
+    qualities: [75, 90],
+  },
+
   // Punch list ST-06: the four landing pages moved to /solutions/ (Google Ads
   // only, ST-02) and the "/all" catalogues became the category pages (ST-03).
   // Permanent (308) so search engines and old links follow the move.
