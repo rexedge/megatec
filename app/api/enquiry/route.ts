@@ -75,7 +75,8 @@ function clean(raw: unknown): Clean | null {
   let needs: string[] = [];
   if (r.needs !== undefined && r.needs !== null) {
     if (!Array.isArray(r.needs) || r.needs.length > 10) return null;
-    if (r.needs.some((n) => typeof n !== "string" || n.length > 60)) return null;
+    // 200, not 60: the short closing forms let people type what they need in their own words.
+    if (r.needs.some((n) => typeof n !== "string" || n.length > 200)) return null;
     needs = (r.needs as string[]).map((n) => n.trim()).filter(Boolean);
   }
 
