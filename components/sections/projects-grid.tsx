@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
 
 export type ProjectCategory = "Fuel Dispensers" | "LPG" | "CNG" | "EV Chargers";
@@ -57,10 +58,9 @@ export function ProjectsGrid({ projects }: { projects: ProjectEntry[] }) {
       ) : (
         <ul className="mt-8 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
           {shown.map((project) => (
-            <li
-              key={project.name}
-              className="bg-surface-soft flex flex-col overflow-hidden rounded-2xl"
-            >
+            <li key={project.name}>
+            <Reveal className="h-full">
+            <div className="bg-surface-soft flex h-full flex-col overflow-hidden rounded-2xl">
               {project.image && (
                 <div className="relative aspect-4/3">
                   <Image
@@ -84,6 +84,8 @@ export function ProjectsGrid({ projects }: { projects: ProjectEntry[] }) {
                   {project.description}
                 </p>
               </div>
+            </div>
+            </Reveal>
             </li>
           ))}
         </ul>
