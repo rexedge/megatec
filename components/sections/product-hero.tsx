@@ -47,7 +47,7 @@ export function ProductHero({
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />
         {/* The header overlays this hero with white links; keep them legible over bright skies. */}
         <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/60 to-transparent" />
-        <Container className="relative pt-28 pb-8 sm:pb-16">
+        <Container className="relative pt-40 pb-8 sm:pb-16">
           {eyebrow && (
             <p className="bg-leaf-dark mb-6 inline-block max-w-full rounded-full px-4 py-2 text-sm font-medium text-white">
               {eyebrow}

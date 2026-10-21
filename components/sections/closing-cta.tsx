@@ -14,7 +14,7 @@ export function ClosingCta({
   buttonLabel?: string;
 }) {
   return (
-    <section id="contact" className="scroll-mt-24 py-6 sm:py-20 lg:py-28">
+    <section id="contact" className="scroll-mt-36 py-6 sm:py-20 lg:py-28">
       <Container>
         <div className="bg-accent grid grid-cols-1 gap-8 rounded-3xl p-6 sm:gap-12 sm:p-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:p-16">
           <h2 className="text-text text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">

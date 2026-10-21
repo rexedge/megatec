@@ -24,7 +24,7 @@ export function ContactSection({
   buttonLabel?: string;
 }) {
   return (
-    <section id="contact" className="scroll-mt-24 py-6 sm:py-20 lg:py-28">
+    <section id="contact" className="scroll-mt-36 py-6 sm:py-20 lg:py-28">
       <Container>
         <span className="bg-sky flex h-12 w-12 items-center justify-center rounded-full text-white">
           <PencilIcon />
