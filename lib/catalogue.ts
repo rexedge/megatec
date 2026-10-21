@@ -224,7 +224,7 @@ const FUEL_DISPENSERS: CatalogueProduct[] = [
   },
   {
     id: "mt-plus-submersible-double",
-    name: "MT PLUS SUBMERSIBLE – Dual Nozzle",
+    name: "MT PLUS SUBMERSIBLE – Double Nozzle",
     category: "fuel-dispensers",
     image: "/images/factory/submersible-mt-plus-d1/submersible-mt-plus-d1-2.png",
     flowRate: PETROL_FLOW,
@@ -234,7 +234,7 @@ const FUEL_DISPENSERS: CatalogueProduct[] = [
     specs: [
       "For submersible (STP) systems · ±0.3% accuracy",
       "Bennett meter · solenoid valve · CPU control",
-      "Dual nozzle · PMS, AGO or DPK",
+      "Double nozzle · PMS, AGO or DPK",
     ],
     specSheet: "MT_PLUS_Submersible_Double_Nozzle.pdf",
     nmdpra: true,
@@ -310,7 +310,7 @@ const FUEL_DISPENSERS: CatalogueProduct[] = [
   },
   {
     id: "mt-pro-submersible-double",
-    name: "MT PRO SUBMERSIBLE – Dual Nozzle",
+    name: "MT PRO SUBMERSIBLE – Double Nozzle",
     category: "fuel-dispensers",
     image:
       "/images/factory/mt-pro-submersible-d1/mt-pro-submersible-d1-double-nozzle-3.png",
@@ -321,7 +321,7 @@ const FUEL_DISPENSERS: CatalogueProduct[] = [
     specs: [
       "For submersible (STP) systems · ±0.3% accuracy",
       "Solenoid valve · CPU control",
-      "Dual nozzle · PMS, AGO or DPK",
+      "Double nozzle · PMS, AGO or DPK",
     ],
     specSheet: "MT_PRO_Submersible_Double_Nozzle.pdf",
     nmdpra: true,
@@ -471,7 +471,7 @@ const CNG: CatalogueProduct[] = [
     category: "cng",
     image: "/images/factory/cng-cylinder-75l.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Depot & bulk",
     fuelType: "CNG",
     specs: [
@@ -488,7 +488,7 @@ const CNG: CatalogueProduct[] = [
     category: "cng",
     image: "/images/factory/cng-kit.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Fleet & private site",
     fuelType: "CNG",
     specs: [
@@ -503,7 +503,7 @@ const CNG: CatalogueProduct[] = [
     category: "cng",
     image: "/images/factory/cng-cylinder-65l.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Fleet & private site",
     fuelType: "CNG",
     specs: [
@@ -544,7 +544,7 @@ const LPG: CatalogueProduct[] = [
     fuelType: "LPG",
     specs: [
       "Two nozzles · ±0.3% meter accuracy",
-      "Dual meters · dual air separators",
+      "Two meters · two air separators",
       "7-yr memory · 10-min backup",
     ],
     specSheet: "LPG_Dispenser_Double_Nozzle.pdf",
@@ -627,7 +627,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/nozzle-holder-plastic.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: "All",
     specs: [
@@ -642,7 +642,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/hose.png",
     flowRate: PETROL_FLOW,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: WHITE_PRODUCTS,
     specs: [
@@ -657,7 +657,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/hose-reel.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Depot & bulk",
     fuelType: "All",
     specs: [
@@ -672,7 +672,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/bennet-meter.png",
     flowRate: PETROL_FLOW,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: WHITE_PRODUCTS,
     specs: [
@@ -687,7 +687,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/2-inches-flow-meter.png",
     flowRate: DEPOT_FLOW,
-    nozzles: "—",
+    nozzles: "None",
     application: "Depot & bulk",
     fuelType: WHITE_PRODUCTS,
     specs: [
@@ -702,7 +702,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/3-inches-flow-meter.png",
     flowRate: DEPOT_FLOW,
-    nozzles: "—",
+    nozzles: "None",
     application: "Depot & bulk",
     fuelType: WHITE_PRODUCTS,
     specs: [
@@ -717,7 +717,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/filter.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: WHITE_PRODUCTS,
     specs: [
@@ -732,7 +732,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/bennet-filter.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: WHITE_PRODUCTS,
     specs: [
@@ -747,7 +747,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/fuel-solenoid-valve.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: WHITE_PRODUCTS,
     specs: [
@@ -762,7 +762,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/submersible-shut-off-valve.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: WHITE_PRODUCTS,
     specs: [
@@ -777,7 +777,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/electric-motor.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: "All",
     specs: [
@@ -807,7 +807,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/mt-plus-display.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: "All",
     specs: [
@@ -822,11 +822,11 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/complete-panel-mt2.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: "All",
     specs: [
-      "Full panel assembly — CPU, display, keypad and looms",
+      "Full panel assembly: CPU, display, keypad and looms",
       "Drop-in replacement for MT2 dispensers",
       "Tested before dispatch",
     ],
@@ -837,7 +837,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/power-board.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: "All",
     specs: [
@@ -852,7 +852,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/totalizer.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: "All",
     specs: [
@@ -867,7 +867,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/20l-measuring-can.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Retail station",
     fuelType: WHITE_PRODUCTS,
     specs: [
@@ -882,7 +882,7 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/lpg-hose.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Gas plant",
     fuelType: "LPG",
     specs: [
@@ -897,13 +897,13 @@ const STATION_ACCESSORIES: CatalogueProduct[] = [
     category: "station-accessories",
     image: "/images/factory/lpg-valve.png",
     flowRate: NOT_METERED,
-    nozzles: "—",
+    nozzles: "None",
     application: "Gas plant",
     fuelType: "LPG",
     specs: [
       "Pressure relief and isolation",
       "Cast body rated for LPG service",
-      "Fitted as standard on Megatec LPG installations",
+      "Fitted as standard on MEGA-TEC LPG installations",
     ],
   },
 ];

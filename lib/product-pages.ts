@@ -1722,7 +1722,7 @@ export const PRODUCT_CATEGORIES: Category[] = [
             "id": "lpg-dispenser-single",
             "name": "LPG Dispenser – Single Nozzle",
             "blurb": "Accurate single-nozzle LPG dispensing, calibrated to ±0.3% for fair, precise sales.",
-            "best": false,
+            "best": true,
             "tag": null,
             "badge": "NMDPRA compliant · MEGA-TEC supply & install",
             "cells": [
