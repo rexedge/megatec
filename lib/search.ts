@@ -1,4 +1,4 @@
-import { CATALOGUE, catalogueHref, getCategory } from "@/lib/catalogue";
+import { SPARE_PARTS } from "@/lib/spare-parts";
 import { PRODUCT_CATEGORIES } from "@/lib/product-pages";
 import { PRODUCTS, SERVICES } from "@/lib/nav";
 
@@ -65,8 +65,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
     keywords: "service support megatec",
   })),
 
-  // Fuel, CNG, LPG and EV products link to their sub-category page; the station
-  // accessories still come from the older catalogue until PA-01.
+  // Fuel, CNG, LPG and EV products link to their sub-category page; spare parts to the list.
   ...PRODUCT_CATEGORIES.flatMap((category) =>
     category.subs.flatMap((sub) =>
       sub.products.map((product) => ({
@@ -78,17 +77,11 @@ export const SEARCH_INDEX: SearchEntry[] = [
     )
   ),
 
-  ...CATALOGUE.filter((product) => product.category === "station-accessories").map((product) => ({
-    title: product.name,
-    context: getCategory(product.category).title,
-    href: catalogueHref(product.category),
-    keywords: [
-      ...product.specs,
-      product.flowRate,
-      product.nozzles,
-      product.application,
-      product.fuelType,
-    ].join(" "),
+  ...SPARE_PARTS.map((part) => ({
+    title: part.name,
+    context: "Spare parts",
+    href: part.href ?? "/products/station-accessories",
+    keywords: `${part.fit} ${part.group}`,
   })),
 ];
 

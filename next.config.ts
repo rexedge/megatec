@@ -12,7 +12,6 @@ const nextConfig: NextConfig = {
   // only, ST-02) and the "/all" catalogues became the category pages (ST-03).
   // Permanent (308) so search engines and old links follow the move.
   // /products/ev-chargers keeps its address: it is now the EV category page.
-  // /products/station-accessories/all moves with PA-01.
   redirects() {
     return [
       { source: "/products/fuel-dispensers", destination: "/solutions/fuel-dispensers-nigeria", permanent: true },
@@ -22,6 +21,7 @@ const nextConfig: NextConfig = {
       { source: "/products/cng/all", destination: "/products/cng-solutions", permanent: true },
       { source: "/products/lpg/all", destination: "/products/lpg-solutions", permanent: true },
       { source: "/products/ev-chargers/all", destination: "/products/ev-chargers", permanent: true },
+      { source: "/products/station-accessories/all", destination: "/products/station-accessories", permanent: true },
     ];
   },
 };

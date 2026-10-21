@@ -83,9 +83,7 @@ export const CATALOGUE_CATEGORIES: CatalogueCategory[] = [
     description:
       "Comprehensive station accessories to enhance functionality and safety.",
     rangeLabel: "accessories",
-    // Stays on /all until PA-01 turns /products/station-accessories into the full
-    // parts list; that change also adds the /all redirect ST-06 asks for.
-    href: "/products/station-accessories/all",
+    href: "/products/station-accessories",
   },
 ];
 
