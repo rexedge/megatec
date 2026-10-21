@@ -12,7 +12,7 @@ export function ProductCard({
   specSheetHref,
   bestSeller,
   nmdpra,
-  ctaLabel = "Enquire on this on WhatsApp",
+  ctaLabel = "Talk to Our Team on WhatsApp",
   ctaVariant = "leaf",
 }: {
   tag?: string;

@@ -13,7 +13,7 @@ export function ProductHero({
   image,
   imageAlt,
   whatsappMessage,
-  whatsappLabel = "Chat on WhatsApp",
+  whatsappLabel = "Talk to Our Team on WhatsApp",
   email,
   badges,
   eyebrow,

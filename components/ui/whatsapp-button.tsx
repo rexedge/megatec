@@ -9,7 +9,7 @@ export function WhatsappButton({
   variant = "primary",
   size = "md",
   className,
-  children = "Chat on whatsapp",
+  children = "Talk to Our Team on WhatsApp",
 }: {
   message?: string;
   variant?: "primary" | "dark" | "leaf" | "sky";

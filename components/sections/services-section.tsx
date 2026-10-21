@@ -11,7 +11,7 @@ const SERVICES = [
       "Expert installation and setup of MEGA-TEC systems, ensuring seamless integration and peak performance from day one. Every project follows the same disciplined process, whether it's a single dispenser or a full station.",
     href: "/services/installation-and-commissioning",
     image: "/images/landing/rectangle-installation.png",
-    message: "Hi Megatec, I'd like to discuss installation and commissioning.",
+    message: "Hi MEGA-TEC, I'd like to discuss installation and commissioning.",
   },
   {
     title: "Technical support and troubleshooting",
@@ -19,7 +19,7 @@ const SERVICES = [
       "When something goes wrong, you need answers fast. Our technical team responds within 24 hours, with technicians based nationwide so help is never far away.",
     href: "/services/technical-support",
     image: "/images/landing/rectangle-technical-support.png",
-    message: "Hi Megatec, I'd like to discuss technical support and troubleshooting.",
+    message: "Hi MEGA-TEC, I'd like to discuss technical support and troubleshooting.",
   },
   {
     title: "Expert and qualified maintenance and repair services",
@@ -27,7 +27,7 @@ const SERVICES = [
       "Certified technicians providing comprehensive maintenance and swift repairs, ensuring the longevity and reliability of your equipment. We stock the spare parts our dispensers run on, so a breakdown is never a long wait.",
     href: "/services/maintenance-and-repair",
     image: "/images/landing/rectangle-maintenance.png",
-    message: "Hi Megatec, I'd like to discuss maintenance and repair services.",
+    message: "Hi MEGA-TEC, I'd like to discuss maintenance and repair services.",
   },
   {
     title: "Training and capacity building for operators",
@@ -35,7 +35,7 @@ const SERVICES = [
       "New equipment is only as good as the people running it. MEGA-TEC trains station operators to use, maintain and troubleshoot their equipment safely and effectively, so your team is confident from day one.",
     href: "/services/training",
     image: "/images/landing/rectangle-training.png",
-    message: "Hi Megatec, I'd like to discuss operator training.",
+    message: "Hi MEGA-TEC, I'd like to discuss operator training.",
   },
 ];
 
@@ -76,7 +76,7 @@ export function ServicesSection() {
                   <p className="text-body max-w-md leading-relaxed">{service.description}</p>
                   <div>
                     <WhatsappButton variant="sky" message={service.message}>
-                      Chat on whatsapp
+                      Talk to Our Team on WhatsApp
                     </WhatsappButton>
                   </div>
                 </div>

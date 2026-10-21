@@ -401,7 +401,7 @@ function ChargerCard({
         </ul>
         <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-2">
           <WhatsappButton variant="leaf" message={message}>
-            Enquire on WhatsApp
+            Talk to Our Team on WhatsApp
           </WhatsappButton>
           <SpecSheetLink
             href={sheet}
