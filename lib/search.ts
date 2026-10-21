@@ -24,6 +24,12 @@ const PAGES: SearchEntry[] = [
     keywords: "our story mission journey expertise company history",
   },
   {
+    title: "Projects & Installations",
+    context: "Page",
+    href: "/projects",
+    keywords: "our installations completed work nepal energies sterling canico stations nationwide",
+  },
+  {
     title: "Contact",
     context: "Page",
     href: "/contact",
