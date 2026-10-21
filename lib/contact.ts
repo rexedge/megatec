@@ -59,13 +59,13 @@ export const BRANCHES = [
   {
     city: "Onitsha",
     address:
-      "64 Limca Road, near Peoples Club Junction Old Road, former Kessy Filling Station, Nkpor",
+      "64 Limca Road, near Peoples Club Junction, Old Road, former Kessy Filling Station, Nkpor",
   },
   {
     city: "Abuja",
-    address: "Nepal Filling Station, Giri Junction, along Gwagwalada–Zuba Road",
+    address: "Nepal Filling Station, Giri Junction, along Gwagwalada, Zuba Road",
   },
-  { city: "Abakaliki", address: "62 Afikpo Road, Abakaliki, Ebonyi State" },
+  { city: "Abakaliki (Ebonyi State)", address: "62 Afikpo Road, Abakaliki" },
   { city: "Aba", address: "29 Okigwe Road, Aba, Abia State" },
   {
     city: "Port Harcourt",
