@@ -40,8 +40,6 @@ export function EquipmentList({
           {items.map((item, index) => (
             <li
               key={item.title}
-              itemScope
-              itemType="https://schema.org/Product"
               className={cn(
                 "overflow-hidden rounded-2xl border bg-white",
                 item.bestSeller ? "border-leaf" : "border-border/70"
@@ -55,7 +53,6 @@ export function EquipmentList({
                     fill
                     sizes="(min-width: 640px) 256px, 100vw"
                     className="object-contain p-4"
-                    itemProp="image"
                   />
                   {item.bestSeller && (
                     <span className="absolute top-3 left-3 rounded-full bg-amber-400 px-3 py-1 text-xs font-medium text-ink">
@@ -64,11 +61,11 @@ export function EquipmentList({
                   )}
                 </div>
                 <div className="flex flex-col gap-4 p-5 sm:p-6">
-                  <h3 className="text-ink text-xl font-medium tracking-tight" itemProp="name">
+                  <h3 className="text-ink text-xl font-medium tracking-tight">
                     <span className="text-body mr-2">{index + 1}.</span>
                     {item.title}
                   </h3>
-                  <ul className="flex flex-col gap-2" itemProp="description">
+                  <ul className="flex flex-col gap-2">
                     {item.specs.map((spec) => (
                       <li key={spec} className="text-body flex gap-3 text-base">
                         <CheckIcon />

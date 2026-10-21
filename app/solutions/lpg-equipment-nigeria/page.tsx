@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd, productsJsonLd } from "@/components/ui/json-ld";
+import { absoluteUrl } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { RangeLink } from "@/components/ui/range-link";
 import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
@@ -115,6 +117,9 @@ export default function LpgPage() {
 
   return (
     <>
+      {productsJsonLd(dispensers.map(({ product, name, specs }) => ({ name, description: specs.join(". "), image: product.image, path: "/solutions/lpg-equipment-nigeria" })), absoluteUrl).map((data) => (
+        <JsonLd key={data.name} data={data} />
+      ))}
       <ProductHero
         eyebrow="Nigeria's No. 1 in fuel & LPG dispensing"
         title="LPG dispensing systems for gas plants & retail outlets in Nigeria"

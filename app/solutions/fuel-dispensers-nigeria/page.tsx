@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd, productsJsonLd } from "@/components/ui/json-ld";
+import { absoluteUrl } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { RangeLink } from "@/components/ui/range-link";
 import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
@@ -147,6 +149,9 @@ export default function FuelDispensersPage() {
 
   return (
     <>
+      {productsJsonLd(featured.map(({ product, name, specs }) => ({ name, description: specs.join(". "), image: product.image, path: "/solutions/fuel-dispensers-nigeria" })), absoluteUrl).map((data) => (
+        <JsonLd key={data.name} data={data} />
+      ))}
       <ProductHero
         eyebrow="Nigeria's No. 1 in Fuel & LPG dispensing"
         title="Reliable fuel dispensers for Nigerian filling stations"

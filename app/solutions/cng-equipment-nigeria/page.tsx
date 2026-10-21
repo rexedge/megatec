@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd, productsJsonLd } from "@/components/ui/json-ld";
+import { absoluteUrl } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { RangeLink } from "@/components/ui/range-link";
 import { SpecSheetButton, SpecSheetLink } from "@/components/ui/spec-sheet-button";
@@ -151,6 +153,9 @@ export default function CngPage() {
 
   return (
     <>
+      {productsJsonLd(items.map((item) => ({ name: item.title, description: item.specs.join(". "), image: item.image, path: "/solutions/cng-equipment-nigeria" })), absoluteUrl).map((data) => (
+        <JsonLd key={data.name} data={data} />
+      ))}
       <ProductHero
         eyebrow="1,500+ stations equipped across Nigeria"
         title="CNG station infrastructure for Nigeria: supply, installation & technical consultation"
