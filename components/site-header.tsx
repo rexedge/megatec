@@ -11,6 +11,7 @@ import { cn } from "@/lib/cn";
 
 const NAV_LINKS = [
   { label: "HOME", href: "/" },
+  { label: "PROJECTS & INSTALLATIONS", href: "/projects" },
   { label: "ABOUT US", href: "/about" },
   { label: "CONTACT", href: "/contact" },
 ];
@@ -188,6 +189,9 @@ export function SiteHeader() {
             )}
           </div>
 
+          <Link href="/projects" className={linkItemClass}>
+            PROJECTS &amp; INSTALLATIONS
+          </Link>
           <Link href="/about" className={linkItemClass}>
             ABOUT US
           </Link>

@@ -6,6 +6,7 @@ import { EMAIL, RC_NUMBER } from "@/lib/contact";
 
 const COMPANY_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Projects & Installations", href: "/projects" },
   { label: "About Us", href: "/about" },
   { label: "Contact Us", href: "/contact" },
 ];
