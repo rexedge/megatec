@@ -26,7 +26,7 @@ const PAGES: SearchEntry[] = [
   {
     title: "Contact",
     context: "Page",
-    href: "/#contact",
+    href: "/contact",
     keywords: "get in touch head office lagos phone email enquiry quote",
   },
   {
