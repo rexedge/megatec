@@ -7,6 +7,7 @@ import { CheckIcon } from "@/components/ui/check-icon";
 import { SpecSheetLink } from "@/components/ui/spec-sheet-button";
 import { useEnquiry } from "@/components/ui/enquiry-modal";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
+import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
 import type { PageProduct } from "@/lib/product-pages";
 
@@ -55,7 +56,9 @@ export function ProductGrid({
       <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
         {shown.map((product) => (
           <li key={product.id}>
-            <Card product={product} onOpen={() => setOpen(product)} />
+            <Reveal className="h-full">
+              <Card product={product} onOpen={() => setOpen(product)} />
+            </Reveal>
           </li>
         ))}
       </ul>
@@ -126,7 +129,7 @@ function Card({ product, onOpen }: { product: PageProduct; onOpen: () => void })
   return (
     <div
       className={cn(
-        "@container flex h-full flex-col overflow-hidden rounded-2xl border bg-white",
+        "@container flex h-full flex-col overflow-hidden rounded-2xl border bg-white transition-[translate,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-lg",
         product.best ? "border-leaf" : "border-border/70"
       )}
     >

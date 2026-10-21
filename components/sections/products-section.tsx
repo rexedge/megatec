@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 
 /**
  * Copy is from the Core Site Pages document, Homepage Section 2 (punch list HM-06).
@@ -40,7 +41,7 @@ const CARDS = [
 
 export function ProductsSection() {
   return (
-    <section id="products" className="scroll-mt-24 py-6 sm:py-20 lg:py-28">
+    <section id="products" className="scroll-mt-36 py-6 sm:py-20 lg:py-28">
       <Container>
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <h2 className="max-w-xl text-4xl font-semibold tracking-tight text-balance text-ink lg:text-5xl">
@@ -53,7 +54,8 @@ export function ProductsSection() {
 
         <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
           {CARDS.map((card) => (
-            <Link key={card.href} href={card.href} className="group flex flex-col gap-6">
+            <Reveal key={card.href}>
+            <Link href={card.href} className="group flex flex-col gap-6 transition-transform duration-200 hover:-translate-y-1">
               <div className="border-t border-border pt-6">
                 <h3 className="text-xl font-medium tracking-tight text-ink">{card.title}</h3>
               </div>
@@ -73,6 +75,7 @@ export function ProductsSection() {
                 </span>
               </div>
             </Link>
+            </Reveal>
           ))}
         </div>
       </Container>

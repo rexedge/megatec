@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
 import { PART_GROUPS, SPARE_PARTS, type SparePart } from "@/lib/spare-parts";
 
@@ -74,7 +75,9 @@ export function SparePartsList() {
         <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
           {shown.map((part) => (
             <li key={part.n}>
-              <PartCard part={part} />
+              <Reveal className="h-full">
+                <PartCard part={part} />
+              </Reveal>
             </li>
           ))}
         </ul>
@@ -136,7 +139,8 @@ function PartCard({ part }: { part: SparePart }) {
       </div>
     </>
   );
-  const frame = "border-border/70 block h-full overflow-hidden rounded-2xl border bg-white";
+  const frame =
+    "border-border/70 block h-full overflow-hidden rounded-2xl border bg-white transition-[translate,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-lg";
 
   return part.href ? (
     <Link href={part.href} className={cn(frame, "hover:border-ink transition-colors")}>
