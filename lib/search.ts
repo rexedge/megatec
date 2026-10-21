@@ -1,4 +1,5 @@
 import { CATALOGUE, catalogueHref, getCategory } from "@/lib/catalogue";
+import { PRODUCT_CATEGORIES } from "@/lib/product-pages";
 import { PRODUCTS, SERVICES } from "@/lib/nav";
 
 export type SearchEntry = {
@@ -64,7 +65,20 @@ export const SEARCH_INDEX: SearchEntry[] = [
     keywords: "service support megatec",
   })),
 
-  ...CATALOGUE.map((product) => ({
+  // Fuel, CNG, LPG and EV products link to their sub-category page; the station
+  // accessories still come from the older catalogue until PA-01.
+  ...PRODUCT_CATEGORIES.flatMap((category) =>
+    category.subs.flatMap((sub) =>
+      sub.products.map((product) => ({
+        title: product.name,
+        context: category.name,
+        href: `/products/${category.slug}/${sub.slug}`,
+        keywords: [product.blurb, ...product.cells.map(([, value]) => value)].join(" "),
+      }))
+    )
+  ),
+
+  ...CATALOGUE.filter((product) => product.category === "station-accessories").map((product) => ({
     title: product.name,
     context: getCategory(product.category).title,
     href: catalogueHref(product.category),

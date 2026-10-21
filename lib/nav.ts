@@ -1,4 +1,5 @@
 import { getCategory, productsIn, type CategorySlug } from "@/lib/catalogue";
+import { PRODUCT_CATEGORIES } from "@/lib/product-pages";
 
 export type NavProduct = {
   title: string;
@@ -7,6 +8,8 @@ export type NavProduct = {
   icon: string;
   /** Products in the category, shown in the menu (punch list ST-01's "18 products"). */
   count: number;
+  /** The category's sub-category pages (ST-01), for the menu to expand. */
+  subs: { title: string; href: string }[];
 };
 
 export type NavService = {
@@ -16,7 +19,16 @@ export type NavService = {
 
 function category(slug: CategorySlug, href: string, icon: string): NavProduct {
   const { title, description } = getCategory(slug);
-  return { title, description, href, icon, count: productsIn(slug).length };
+  // The four categories with sub-category pages count what those pages list.
+  const page = PRODUCT_CATEGORIES.find((c) => `/products/${c.slug}` === href);
+  const count = page
+    ? page.subs.reduce((total, sub) => total + sub.products.length, 0)
+    : productsIn(slug).length;
+  const subs = (page?.subs ?? []).map((sub) => ({
+    title: sub.name,
+    href: `${href}/${sub.slug}`,
+  }));
+  return { title, description, href, icon, count, subs };
 }
 
 /**
