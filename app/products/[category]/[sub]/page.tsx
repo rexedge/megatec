@@ -4,7 +4,9 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { ClosingCta } from "@/components/sections/closing-cta";
 import { ProductGrid } from "@/components/sections/product-grid";
+import { JsonLd, productsJsonLd } from "@/components/ui/json-ld";
 import { PRODUCT_CATEGORIES } from "@/lib/product-pages";
+import { absoluteUrl } from "@/lib/site";
 
 /**
  * A sub-category page (05 doc, "SUB-CATEGORY" sections): the two-up product grid
@@ -48,6 +50,18 @@ export default async function SubCategoryPage({ params }: Props) {
           { label: subPage.name },
         ]}
       />
+
+      {productsJsonLd(
+        subPage.products.map((product) => ({
+          name: product.name,
+          description: product.description,
+          image: product.image,
+          path: `/products/${page.slug}/${subPage.slug}`,
+        })),
+        absoluteUrl
+      ).map((data) => (
+        <JsonLd key={data.name} data={data} />
+      ))}
 
       <section className="py-6 sm:py-12 lg:py-16">
         <Container>

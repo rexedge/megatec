@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { JsonLd, productsJsonLd } from "@/components/ui/json-ld";
+import { absoluteUrl } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { SpecSheetButton, SpecSheetLink } from "@/components/ui/spec-sheet-button";
 import { TextLink } from "@/components/ui/text-link";
@@ -75,6 +77,9 @@ export default function EvChargersPage() {
 
   return (
     <>
+      {productsJsonLd([{ name: "MEGA-TEC EV – Commercial DC Fast Charger", description: "60KW dual gun DC fast charger, floor-standing, card and QR payment, IP55 weatherproof.", image: commercial.image, path: "/solutions/ev-chargers-nigeria" }, { name: "MEGA-TEC EV – Home & Estate DC Charger", description: "40KW single gun wall-mounted DC charger, three-phase 380V, IP55 weatherproof.", image: residential.image, path: "/solutions/ev-chargers-nigeria" }], absoluteUrl).map((data) => (
+        <JsonLd key={data.name} data={data} />
+      ))}
       {/* The render has its words baked in, so the headline sits beside it, never over it. */}
       <section className="bg-navy">
         <Container className="grid grid-cols-1 items-center gap-8 pt-40 pb-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:py-32">
@@ -370,8 +375,6 @@ function ChargerCard({
 }) {
   return (
     <div
-      itemScope
-      itemType="https://schema.org/Product"
       className={cn(
         "mt-8 grid grid-cols-1 overflow-hidden rounded-2xl border bg-white sm:mt-12 md:grid-cols-[20rem_1fr]",
         bestSeller ? "border-leaf" : "border-border/70"
@@ -384,14 +387,13 @@ function ChargerCard({
           fill
           sizes="(min-width: 768px) 320px, 100vw"
           className="object-contain p-4"
-          itemProp="image"
         />
       </div>
       <div className="flex flex-col gap-4 p-6 sm:p-8">
-        <h3 className="text-ink text-2xl font-medium tracking-tight" itemProp="name">
+        <h3 className="text-ink text-2xl font-medium tracking-tight">
           {title}
         </h3>
-        <ul className="flex flex-col gap-2" itemProp="description">
+        <ul className="flex flex-col gap-2">
           {specs.map((spec) => (
             <li key={spec} className="text-body flex gap-3">
               <CheckIcon />
