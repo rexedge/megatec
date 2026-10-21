@@ -1,50 +1,45 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { RangeLink } from "@/components/ui/range-link";
-import { SpecSheetButton } from "@/components/ui/spec-sheet-button";
+import { SpecSheetButton, SpecSheetLink } from "@/components/ui/spec-sheet-button";
+import { CheckIcon } from "@/components/ui/check-icon";
 import { ProductHero } from "@/components/sections/product-hero";
-import { ProductCard } from "@/components/sections/product-card";
-import { ContactSection } from "@/components/sections/contact-section";
-import {
-  ShieldIcon,
-  PinIcon,
-  WrenchIcon,
-  AwardIcon,
-  BuildingIcon,
-  TruckIcon,
-  ChartIcon,
-} from "@/components/icons/badge-icons";
+import { TrustSection } from "@/components/sections/trust-bar";
+import { EquipmentList } from "@/components/sections/equipment-list";
+import { LandingForm } from "@/components/sections/landing-form";
+import { BuildingIcon, TruckIcon, ChartIcon } from "@/components/icons/badge-icons";
 import { catalogueHref, productsIn } from "@/lib/catalogue";
 
+/** Copy is from the Landing Page Copy document, LP2 (punch list LC-01 to LC-03). */
 export const metadata: Metadata = {
-  title: "CNG Systems | Megatec",
+  title: "CNG Station Equipment Nigeria | Supply, Installation & Consultation | MEGA-TEC",
   description:
-    "Megatec supplies, installs and commissions complete CNG station infrastructure in Nigeria — compression, storage, dispensers, safety systems and NMDPRA compliance.",
+    "MEGA-TEC supplies and installs CNG station infrastructure in Nigeria, dispensers, daughter stations, storage and conversion kits. Built for the CNG transition. Talk to our technical team.",
 };
 
-const BADGES = [
-  { label: "NMDPRA Compliant Installations", icon: <ShieldIcon /> },
-  { label: "Full CNG Systems Integrator", icon: <AwardIcon /> },
-  { label: "Calibration-Certified Technicians", icon: <WrenchIcon /> },
-  { label: "Assembled & Tested in Nigeria", icon: <PinIcon /> },
+const TRUST = [
+  "Full CNG Systems Integrator",
+  "NMDPRA-Compliant Installations",
+  "NMDPRA-Certified Calibration & Metering",
+  "Assembled & Tested in Nigeria",
 ];
 
 const SYSTEM_COMPONENTS = [
   {
     title: "Gas supply & inlet connection",
-    description: "Mega Tec handles sourcing and connection design.",
+    description: "We handle sourcing and connection design.",
   },
   {
     title: "Compression system",
     description: "High-pressure compressors sized for your throughput.",
   },
   {
-    title: "High & medium pressure storage cylinder banks",
+    title: "High & medium pressure storage",
     description: "Cylinder banks and storage tubes configured to your capacity.",
   },
   {
     title: "CNG dispenser units",
-    description: "Accurate, calibrated, NMDPRA compliant.",
+    description: "Accurate, calibrated, NMDPRA-compliant.",
   },
   {
     title: "Safety & emergency shutdown systems",
@@ -60,33 +55,69 @@ const SYSTEM_COMPONENTS = [
   },
 ];
 
-/** The units featured on the landing page; the rest live in the catalogue. */
-const FEATURED = [
-  "cng-dispenser-single",
-  "cng-daughter-station",
-  "cng-storage-tubes",
-  "cng-conversion-kit",
-  "cng-control-panel",
+/** The five items, with the document's spec lines. Images come from the catalogue entry named by `id`. */
+const EQUIPMENT = [
+  {
+    id: "cng-dispenser-single",
+    title: "CNG Dispenser",
+    bestSeller: true,
+    specs: [
+      "Single or double-nozzle options, serves one or two vehicles",
+      "Flow range 2 to 30 kg/min, ±0.5% accuracy",
+      "Working pressure up to 25MPa",
+      "1-year warranty",
+    ],
+  },
+  {
+    id: "cng-daughter-station",
+    title: "CNG Daughter Station (Skid Station)",
+    specs: [
+      "Complete station that works without a gas pipeline",
+      "Includes compressor, storage cylinders, dispensers, alarm and PLC control",
+      "Receives, stores and dispenses gas brought in by truck",
+      "Comes with a warranty",
+    ],
+  },
+  {
+    id: "cng-storage-tubes",
+    title: "CNG Storage Tube (40ft)",
+    specs: [
+      "12-tube container, up to 7,800 Nm³ capacity under 25MPa",
+      "Working pressure 20 to 25MPa, tested to 33.4MPa",
+      "Built for a 20-year working life",
+      "Comes with a warranty",
+    ],
+  },
+  {
+    id: "cng-conversion-kit",
+    title: "CNG Conversion Kit",
+    specs: [
+      "Converts petrol vehicles to run on CNG, and petrol still works too",
+      "For fleets and individual vehicles",
+      "Cuts running cost compared to petrol",
+      "Includes pressure reducer, injectors, sensors, filler valve, gauge and fittings",
+      "Pairs with 65L and 75L vehicle cylinders",
+      "Comes with a warranty",
+    ],
+  },
+  {
+    id: "cng-cylinder-65l",
+    title: "CNG Vehicle Cylinders (65L and 75L)",
+    specs: [
+      "65L and 75L water-capacity options, for on-board gas storage in cars",
+      "Works with the MEGA-TEC CNG Conversion Kit",
+      "200 bar (20MPa) working pressure, the standard for vehicle cylinders",
+      "Full 65L holds about 16 cubic metres of gas, 75L about 19",
+      "Comes with a warranty",
+    ],
+  },
 ];
 
-const TRUST_POINTS = [
-  {
-    title: "Pressure integrity testing standards on all installations.",
-    description:
-      "From wellhead to dispenser, Mega Tec manages gas sourcing and connection design.",
-  },
-  {
-    title: "Emergency shutoff and blowdown systems as standard.",
-    description: "Scalable compression for growing demand.",
-  },
-  {
-    title: "Full NMDPRA compliance requirements for CNG stations.",
-    description: "Optimized for your station's needs.",
-  },
-  {
-    title: "Certified installation technicians — not subcontracted labour.",
-    description: "Precise metering for accurate billing.",
-  },
+const SAFETY = [
+  "Pressure integrity testing on all installations.",
+  "Emergency shutoff and blowdown systems fitted as standard.",
+  "Full NMDPRA compliance for CNG stations.",
+  "Certified installation technicians, not subcontracted labour.",
 ];
 
 const AUDIENCES = [
@@ -102,137 +133,120 @@ const AUDIENCES = [
   },
   {
     title: "New station investors",
-    description: "CNG-first infrastructure from scratch.",
+    description: "Building CNG-first infrastructure from scratch.",
     icon: <ChartIcon />,
   },
 ];
 
+const GUIDE = "/spec-sheets/CNG_Range_Comparison.pdf";
+const GUIDE_NOTE = "The CNG station setup guide, with the CNG range at a glance.";
+
 export default function CngPage() {
   const catalogue = productsIn("cng");
-  const featured = FEATURED.map((id) => {
-    const product = catalogue.find((item) => item.id === id);
-    if (!product) throw new Error(`Unknown CNG product: ${id}`);
-    return product;
+  const items = EQUIPMENT.map((item) => {
+    const product = catalogue.find((entry) => entry.id === item.id);
+    if (!product) throw new Error(`Unknown CNG product: ${item.id}`);
+    return { ...item, image: product.image };
   });
 
   return (
     <>
       <ProductHero
+        eyebrow="1,500+ stations equipped across Nigeria"
         title="CNG station infrastructure for Nigeria: supply, installation & technical consultation"
         description="As Nigeria moves quickly towards CNG, MEGA-TEC helps station investors and fleet operators build compliant, profitable CNG infrastructure from the ground up."
         image="/images/products/cng-tube-trailer.jpg"
-        imageAlt="Megatec CNG tube trailer"
-        whatsappMessage="Hi Megatec, I'd like to discuss a CNG station project."
-        whatsappLabel="Discuss your CNG project on WhatsApp"
-        badges={BADGES}
+        imageAlt="MEGA-TEC CNG tube trailer"
+        whatsappMessage="Hi MEGA-TEC, I'd like to discuss a CNG station project."
+        whatsappLabel="Discuss Your CNG Project on WhatsApp"
+        extra={
+          <SpecSheetLink
+            href={GUIDE}
+            description={GUIDE_NOTE}
+            className="text-white/90 underline underline-offset-4 hover:text-white"
+          >
+            Download Our CNG Station Setup Guide ↓
+          </SpecSheetLink>
+        }
       />
 
       <section className="py-6 sm:py-20 lg:py-28">
         <Container className="max-w-3xl">
-          <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
-            Nigeria&apos;s CNG opportunity is here — and it&apos;s moving fast
+          <h2 className="text-ink text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
+            Nigeria&apos;s CNG opportunity is here, and it&apos;s moving fast
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-body">
-            The removal of petrol subsidy has transformed the economics of CNG almost
-            overnight, making CNG far cheaper to run than petrol. With the government now
-            backing CNG expansion and a rapidly growing fleet of CNG-converted buses, taxis
-            and trucks already on Nigerian roads every month, demand for proper CNG refuelling
-            stations is quickly rising.
+          <p className="text-body mt-6 text-lg leading-relaxed">
+            The removal of petrol subsidy has transformed the economics of CNG almost overnight,
+            making CNG far cheaper to run than petrol. With the government now backing CNG
+            expansion and a rapidly growing fleet of CNG-converted buses, taxis and trucks already
+            on Nigerian roads every month, demand for proper CNG refuelling stations is quickly
+            rising.
           </p>
-          <p className="mt-8 text-xl font-medium tracking-tight text-ink">
-            &mdash; &ldquo;Mega Tec positions you ahead of this demand with infrastructure
-            built to last.&rdquo;
+          <p className="text-ink mt-8 text-xl font-medium tracking-tight">
+            MEGA-TEC positions you ahead of this demand, with infrastructure built to last.
           </p>
         </Container>
       </section>
+
+      <TrustSection items={TRUST} />
 
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
-        <Container>
-          <div className="text-center">
-            <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
-              What a complete CNG station requires
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-body">
-              Mega Tec delivers the full system — not just the equipment.
-            </p>
-          </div>
-          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-x-12 gap-y-6 sm:gap-y-10 lg:grid-cols-2">
+        <Container className="max-w-4xl">
+          <h2 className="text-ink text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
+            What a complete CNG station requires
+          </h2>
+          <p className="text-body mt-4 text-lg leading-relaxed">
+            A CNG station is a complete high-pressure system. MEGA-TEC delivers the full system,
+            not just the equipment.
+          </p>
+          <ol className="mt-8 flex flex-col gap-4 sm:mt-12">
             {SYSTEM_COMPONENTS.map((item, index) => (
-              <div key={item.title} className="flex gap-5">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-lg font-semibold text-ink">
+              <li key={item.title} className="flex items-start gap-5 rounded-2xl bg-white p-5 sm:p-6">
+                <span className="bg-accent text-ink flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg font-semibold">
                   {index + 1}
                 </span>
                 <div>
-                  <p className="text-lg font-medium tracking-tight text-ink">{item.title}</p>
-                  <p className="mt-1 text-body">{item.description}</p>
+                  <p className="text-ink text-lg font-medium tracking-tight">{item.title}</p>
+                  <p className="text-body mt-1">{item.description}</p>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </Container>
       </section>
 
-      <section className="py-6 sm:py-20 lg:py-28">
-        <Container>
-          <div className="text-center">
-            <h2 className="text-4xl font-semibold tracking-tight text-ink lg:text-5xl">
-              CNG equipment we supply &amp; install
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-body">
-              Industrial infrastructure — enquire about the complete system.
-            </p>
-          </div>
-          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-3 min-[320px]:grid-cols-2 sm:gap-8 lg:grid-cols-3">
-            {featured.map((product) => (
-              <ProductCard
-                key={product.id}
-                image={product.image}
-                title={product.name}
-                specs={product.specs}
-                bestSeller={product.bestSeller}
-                nmdpra={product.nmdpra}
-                whatsappMessage={`Hi Megatec, I'd like to enquire about the ${product.name}.`}
-                specSheetHref={
-                  product.specSheet ? `/spec-sheets/${product.specSheet}` : undefined
-                }
-              />
-            ))}
-          </div>
+      <EquipmentList
+        heading="CNG equipment we supply"
+        intro="The MEGA-TEC CNG range. Enquire about the equipment you need. Dispensers carry a 1-year warranty; all other CNG equipment comes with a warranty."
+        items={items}
+        messageFor={(title) => `Hi MEGA-TEC, I'd like to enquire about the ${title}.`}
+      />
+      <Container className="-mt-4 pb-6 sm:pb-12">
+        <RangeLink href={catalogueHref("cng")}>See Full CNG Equipment Range</RangeLink>
+      </Container>
 
-          <RangeLink href={catalogueHref("cng")}>See full CNG equipment range</RangeLink>
-        </Container>
-      </section>
-
-      <section className="bg-navy py-6 sm:py-20 lg:py-28">
-        <Container>
-          <h2 className="text-navy-text max-w-4xl text-3xl font-semibold tracking-tight lg:text-4xl">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+        <Container className="max-w-4xl">
+          <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance lg:text-4xl">
             CNG infrastructure runs at very high pressure. There is no room for shortcuts.
           </h2>
-          <ul className="mt-8 sm:mt-12 flex flex-col gap-4">
-            {TRUST_POINTS.map((point, index) => (
-              <li
-                key={point.title}
-                className="flex items-start gap-5 rounded-2xl bg-white p-6 lg:p-7"
-              >
-                <span className="bg-sky flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white">
-                  {index + 1}
-                </span>
-                <div>
-                  <p className="text-ink text-lg font-medium tracking-tight">{point.title}</p>
-                  <p className="text-body mt-1">{point.description}</p>
-                </div>
+          <ul className="mt-8 flex flex-col gap-4">
+            {SAFETY.map((point) => (
+              <li key={point} className="text-ink flex gap-3 text-lg leading-relaxed">
+                <CheckIcon />
+                {point}
               </li>
             ))}
           </ul>
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-28">
         <Container>
           <h2 className="text-ink text-center text-3xl font-semibold tracking-tight lg:text-4xl">
             Who this is for
           </h2>
-          <div className="mt-8 sm:mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-14 sm:grid-cols-3">
             {AUDIENCES.map((audience) => (
               <div
                 key={audience.title}
@@ -251,25 +265,43 @@ export default function CngPage() {
         </Container>
       </section>
 
-      <section className="py-6 sm:pt-0 sm:pb-20 lg:pb-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
         <Container className="flex flex-col items-center text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-ink lg:text-4xl">
-            Download product specifications
+          <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-4xl">
+            Get the full CNG station setup guide
           </h2>
-          <p className="mt-4 max-w-xl text-body">
-            Compare CNG dispensers, the daughter station and storage tubes at a glance.
-          </p>
-          <SpecSheetButton
-            href="/spec-sheets/CNG_Range_Comparison.pdf"
-            description="Compare CNG dispensers, the daughter station and storage tubes at a glance."
-            className="mt-6"
-          >
-            Download product specs
+          <SpecSheetButton href={GUIDE} description={GUIDE_NOTE} className="mt-6">
+            Download CNG Guide ↓
           </SpecSheetButton>
         </Container>
       </section>
 
-      <ContactSection />
+      <LandingForm
+        heading="Not sure where to start with CNG? That's exactly what our consultation is for."
+        buttonLabel="Talk to Our CNG Team on WhatsApp"
+        template="Hi MEGA-TEC, my name is {name}[ from {company}]. I'm exploring a CNG project[ in {location}][ ({stage})]. Please call me on {phone}."
+        fields={[
+          { key: "name", label: "Your Name", required: true, placeholder: "Enter your name" },
+          {
+            key: "phone",
+            label: "Phone Number",
+            required: true,
+            placeholder: "e.g. 0803 123 4567",
+          },
+          { key: "company", label: "Company / organization (optional)" },
+          {
+            key: "location",
+            label: "Project location",
+            placeholder: "Where is your project located?",
+          },
+          {
+            key: "stage",
+            label: "Project stage",
+            kind: "select",
+            options: ["Just exploring", "Have a site", "Ready to procure"],
+          },
+        ]}
+      />
     </>
   );
 }
