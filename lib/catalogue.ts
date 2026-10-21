@@ -381,7 +381,7 @@ const FUEL_DISPENSERS: CatalogueProduct[] = [
 const CNG: CatalogueProduct[] = [
   {
     id: "cng-dispenser-single",
-    name: "CNG Refilling Dispenser – Single Nozzle",
+    name: "CNG Dispenser – Single Nozzle",
     category: "cng",
     image: "/images/factory/cng-single/cng-single-2.png",
     flowRate: "2–30 kg/min",
@@ -399,7 +399,7 @@ const CNG: CatalogueProduct[] = [
   },
   {
     id: "cng-dispenser-double",
-    name: "CNG Refilling Dispenser – Double Nozzle",
+    name: "CNG Dispenser – Double Nozzle",
     category: "cng",
     image: "/images/factory/cng-double/cng-double-3.png",
     flowRate: "2–30 kg/min",
@@ -418,7 +418,7 @@ const CNG: CatalogueProduct[] = [
     id: "cng-dispenser-double-double",
     // A second cabinet design for the double-nozzle unit, not a four-nozzle one:
     // its datasheet and Mega-Tec's range comparison guide both give two nozzles.
-    name: "CNG Refilling Dispenser – Double Nozzle (2)",
+    name: "CNG Dispenser – Double Nozzle (2)",
     category: "cng",
     image: "/images/factory/cng-2-double/cng-2-double-2.png",
     flowRate: "2–30 kg/min",
@@ -514,21 +514,6 @@ const CNG: CatalogueProduct[] = [
       "Supplied with mounting brackets and valve",
     ],
   },
-  {
-    id: "cng-control-panel",
-    name: "CNG Control & Monitoring Panel",
-    category: "cng",
-    image: "/images/factory/cng-double/cng-double-4.png",
-    flowRate: NOT_METERED,
-    nozzles: "—",
-    application: "New station build",
-    fuelType: "CNG",
-    specs: [
-      "Industrial HMI display",
-      "Remote connectivity option",
-      "Multi-point alarm capability",
-    ],
-  },
 ];
 
 const LPG: CatalogueProduct[] = [
@@ -568,23 +553,6 @@ const LPG: CatalogueProduct[] = [
     nmdpra: true,
   },
   {
-    id: "lpg-dispenser-retail",
-    name: "LPG Retail Dispenser (Skid Mount)",
-    category: "lpg",
-    image: "/images/factory/lpg-single/lpg-single-1.png",
-    flowRate: PETROL_FLOW,
-    nozzles: "1",
-    application: "Retail station",
-    fuelType: "LPG",
-    specs: [
-      "Skid-mounted for retail forecourts",
-      "Emergency shutoff and pressure relief as standard",
-      "Calibrated and NMDPRA documented on commissioning",
-    ],
-    specSheet: "LPG_Dispenser_Single_Nozzle.pdf",
-    nmdpra: true,
-  },
-  {
     id: "lpg-filling-scale",
     name: "LPG Cylinder Filling Scale",
     category: "lpg",
@@ -606,7 +574,7 @@ const LPG: CatalogueProduct[] = [
 const EV_CHARGERS: CatalogueProduct[] = [
   {
     id: "ev-commercial-60kw",
-    name: "MT EV — Commercial DC Fast Charger",
+    name: "MEGA-TEC EV – Commercial DC Fast Charger",
     category: "ev-chargers",
     image: "/images/factory/commercial-ev/commercial-ev-1.png",
     flowRate: "60KW output",
@@ -623,7 +591,7 @@ const EV_CHARGERS: CatalogueProduct[] = [
   },
   {
     id: "ev-residential-40kw",
-    name: "MT EV — Home & Estate DC Charger",
+    name: "MEGA-TEC EV – Home & Estate DC Charger",
     category: "ev-chargers",
     image: "/images/factory/residential-ev/residential-ev-1.png",
     flowRate: "40KW output",

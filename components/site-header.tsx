@@ -25,6 +25,7 @@ export function SiteHeader() {
 
   const [openMenu, setOpenMenu] = useState<"products" | "services" | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileCategory, setMobileCategory] = useState<string | null>(null);
   const [mobileSection, setMobileSection] = useState<"products" | "services" | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -106,7 +107,7 @@ export function SiteHeader() {
         <Link href="/" className="flex shrink-0 items-center" onClick={() => setMobileOpen(false)}>
           <Image
             src="/logo-wordart.png"
-            alt="Megatec"
+            alt="MEGA-TEC"
             width={600}
             height={192}
             className="h-10 w-auto"
@@ -152,6 +153,21 @@ export function SiteHeader() {
                         </span>
                         <ArrowCircle />
                       </Link>
+                      {product.subs.length > 1 && (
+                        <ul className="mt-2 ml-12 flex flex-wrap gap-x-4 gap-y-1">
+                          {product.subs.map((sub) => (
+                            <li key={sub.href}>
+                              <Link
+                                href={sub.href}
+                                onClick={() => setOpenMenu(null)}
+                                className="text-sm text-body hover:text-ink hover:underline"
+                              >
+                                {sub.title}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -231,7 +247,7 @@ export function SiteHeader() {
       {mobileOpen && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-white md:hidden">
           <Container className="flex items-center justify-between py-6">
-            <Image src="/logo-wordart.png" alt="Megatec" width={600} height={192} className="h-9 w-auto" />
+            <Image src="/logo-wordart.png" alt="MEGA-TEC" width={600} height={192} className="h-9 w-auto" />
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
@@ -274,14 +290,40 @@ export function SiteHeader() {
               <ul className="flex flex-col gap-4 py-2 pl-2">
                 {PRODUCTS.map((product) => (
                   <li key={product.href}>
-                    <Link
-                      href={product.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="flex items-baseline justify-between gap-4 text-body"
-                    >
-                      {product.title}
-                      <span className="text-sm text-body/70">{product.count} products</span>
-                    </Link>
+                    <div className="flex items-baseline justify-between gap-4 text-body">
+                      <Link href={product.href} onClick={() => setMobileOpen(false)}>
+                        {product.title}
+                      </Link>
+                      {product.subs.length > 1 ? (
+                        <button
+                          type="button"
+                          aria-expanded={mobileCategory === product.href}
+                          onClick={() =>
+                            setMobileCategory(mobileCategory === product.href ? null : product.href)
+                          }
+                          className="text-sm text-body/70"
+                        >
+                          {product.count} products {mobileCategory === product.href ? "−" : "+"}
+                        </button>
+                      ) : (
+                        <span className="text-sm text-body/70">{product.count} products</span>
+                      )}
+                    </div>
+                    {mobileCategory === product.href && (
+                      <ul className="mt-3 flex flex-col gap-3 pl-4">
+                        {product.subs.map((sub) => (
+                          <li key={sub.href}>
+                            <Link
+                              href={sub.href}
+                              onClick={() => setMobileOpen(false)}
+                              className="text-sm text-body"
+                            >
+                              {sub.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
                 ))}
               </ul>
