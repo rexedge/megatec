@@ -56,7 +56,7 @@ export function StatsCta({
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <WhatsappButton variant="sky" />
-              <Button href="/#contact" variant="secondary">
+              <Button href="/contact" variant="secondary">
                 Send us a message
               </Button>
             </div>

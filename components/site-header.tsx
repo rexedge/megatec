@@ -12,7 +12,7 @@ import { cn } from "@/lib/cn";
 const NAV_LINKS = [
   { label: "HOME", href: "/" },
   { label: "ABOUT US", href: "/about" },
-  { label: "CONTACT", href: "/#contact" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
 export function SiteHeader() {
@@ -191,7 +191,7 @@ export function SiteHeader() {
           <Link href="/about" className={linkItemClass}>
             ABOUT US
           </Link>
-          <Link href="/#contact" className={linkItemClass}>
+          <Link href="/contact" className={linkItemClass}>
             CONTACT
           </Link>
         </nav>

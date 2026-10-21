@@ -7,7 +7,7 @@ import { EMAIL, RC_NUMBER } from "@/lib/contact";
 const COMPANY_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Contact Us", href: "/#contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 // Privacy Policy, Terms of Service and Cookies Settings stay out of the footer
