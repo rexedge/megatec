@@ -77,7 +77,7 @@ export default function EvChargersPage() {
     <>
       {/* The render has its words baked in, so the headline sits beside it, never over it. */}
       <section className="bg-navy">
-        <Container className="grid grid-cols-1 items-center gap-8 pt-28 pb-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:py-32">
+        <Container className="grid grid-cols-1 items-center gap-8 pt-40 pb-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:py-32">
           <div>
             <p className="bg-leaf-dark mb-6 inline-block max-w-full rounded-full px-4 py-2 text-sm font-medium text-white">
               Now installing EV charging infrastructure nationwide

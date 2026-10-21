@@ -8,6 +8,7 @@ import { HERO_PAGES, PRODUCTS, SERVICES } from "@/lib/nav";
 import { Container } from "@/components/ui/container";
 import { SearchDialog } from "@/components/ui/search-dialog";
 import { cn } from "@/lib/cn";
+import { PHONE_PRIMARY, WHATSAPP_NUMBER } from "@/lib/contact";
 
 const NAV_LINKS = [
   { label: "HOME", href: "/" },
@@ -103,6 +104,27 @@ export function SiteHeader() {
           : "border-transparent bg-transparent"
       )}
     >
+      {/* The slim contact bar (SW-01): it travels with the header, so it is always on screen. */}
+      <div className="bg-navy text-navy-text">
+        <Container className="flex h-10 items-center justify-between gap-3 text-sm">
+          <span className="font-bold tracking-tight">MEGA-TEC</span>
+          <a
+            href={`tel:${PHONE_PRIMARY.tel}`}
+            className="font-medium hover:underline"
+            aria-label={`Call ${PHONE_PRIMARY.display}`}
+          >
+            {PHONE_PRIMARY.display}
+          </a>
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-leaf hover:bg-leaf-dark rounded-md px-3 py-1 text-xs font-medium text-white transition-colors"
+          >
+            WhatsApp
+          </a>
+        </Container>
+      </div>
       <Container className="flex h-[88px] items-center justify-between gap-6">
         <Link href="/" className="flex shrink-0 items-center" onClick={() => setMobileOpen(false)}>
           <Image
