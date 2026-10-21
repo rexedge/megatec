@@ -1,4 +1,5 @@
 import { getCategory, productsIn, type CategorySlug } from "@/lib/catalogue";
+import { SPARE_PARTS } from "@/lib/spare-parts";
 import { PRODUCT_CATEGORIES } from "@/lib/product-pages";
 
 export type NavProduct = {
@@ -23,7 +24,9 @@ function category(slug: CategorySlug, href: string, icon: string): NavProduct {
   const page = PRODUCT_CATEGORIES.find((c) => `/products/${c.slug}` === href);
   const count = page
     ? page.subs.reduce((total, sub) => total + sub.products.length, 0)
-    : productsIn(slug).length;
+    : slug === "station-accessories"
+      ? SPARE_PARTS.length
+      : productsIn(slug).length;
   const subs = (page?.subs ?? []).map((sub) => ({
     title: sub.name,
     href: `${href}/${sub.slug}`,
@@ -57,7 +60,7 @@ export const LANDING_PAGES = [
 ];
 
 /** Pages that open on a full-bleed hero, so the header is see-through over it. */
-export const HERO_PAGES = [...LANDING_PAGES, "/products/station-accessories"];
+export const HERO_PAGES = LANDING_PAGES;
 
 export const SERVICES: NavService[] = [
   { title: "Installation & Commissioning", href: "/services/installation-and-commissioning" },
