@@ -240,7 +240,7 @@ function QuoteModal({ message, onClose }: { message?: string; onClose: () => voi
     event.preventDefault();
 
     const lines = [
-      message ?? "Hi Megatec, I'd like to talk to your team.",
+      message ?? "Hi MEGA-TEC, I'd like to talk to your team.",
       "",
       `Name: ${name.trim()}`,
       `Phone: ${phone.trim()}`,
