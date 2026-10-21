@@ -34,9 +34,9 @@ const interTight = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Megatec | Fuel Infrastructure Engineering",
+  title: "MEGA-TEC | Fuel Dispensers, LPG, CNG & EV Chargers in Nigeria",
   description:
-    "Megatec engineers fuel dispensers, CNG and LPG systems, and EV charging infrastructure, backed by installation, maintenance, and technical support services.",
+    "MEGA-TEC supplies, assembles, installs and maintains fuel dispensers, LPG systems, CNG infrastructure and EV chargers across Nigeria. 1,500+ stations equipped. Nationwide support.",
 };
 
 export default function RootLayout({

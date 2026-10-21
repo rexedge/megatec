@@ -20,8 +20,7 @@ const TESTIMONIALS = [
   {
     quote:
       "Since the installation of the new dispensers, we have experienced smoother operations, reduced downtime, and better customer satisfaction at our station.",
-    company: "Nepal Energies",
-    role: "Technical Director",
+    company: "Nepal Energies (Technical Director)",
   },
   {
     quote:
@@ -109,7 +108,6 @@ export function TestimonialsSection() {
                   {item.company && (
                     <figcaption className="mt-auto">
                       <p className="text-ink font-medium tracking-tight">{item.company}</p>
-                      {item.role && <p className="text-body text-sm">{item.role}</p>}
                     </figcaption>
                   )}
                 </figure>

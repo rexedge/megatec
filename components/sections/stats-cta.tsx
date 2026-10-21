@@ -15,7 +15,7 @@ const STATS = [
 
 export function StatsCta({
   title = "Ready to enhance your infrastructure",
-  description = "Let's discuss how Megatec's engineering solutions can drive efficiency and safety into your fuel distribution network.",
+  description = "Let's discuss how MEGA-TEC's engineering solutions can drive efficiency and safety into your fuel distribution network.",
   showContact = true,
   email = EMAIL,
 }: {
@@ -46,7 +46,7 @@ export function StatsCta({
                   </a>
                 </ContactLine>
                 <ContactLine icon={<MailIcon />}>
-                  Email Our Service Desk:{" "}
+                  Email Us:{" "}
                   <a href={`mailto:${email}`} className="hover:underline">
                     {email}
                   </a>
