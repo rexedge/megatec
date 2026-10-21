@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/cn";
+import { useReducedMotion } from "@/lib/use-in-view";
 
 /**
  * Customer quotes, verbatim from the Core Site Pages document, Homepage §5.
@@ -44,6 +45,8 @@ const TESTIMONIALS = [
 export function TestimonialsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
+  const paused = useRef(false);
+  const reducedMotion = useReducedMotion();
 
   const scrollToCard = useCallback((target: number) => {
     const track = trackRef.current;
@@ -51,6 +54,31 @@ export function TestimonialsSection() {
     const card = track.children[target] as HTMLElement | undefined;
     if (card) track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: "smooth" });
   }, []);
+
+  // The quotes move on by themselves every 6 seconds and loop (MO-02). They hold still
+  // while the visitor hovers, touches or focuses the carousel, and for anyone who asks
+  // for reduced motion.
+  useEffect(() => {
+    if (reducedMotion) return;
+    const timer = setInterval(() => {
+      if (paused.current) return;
+      const track = trackRef.current;
+      if (!track) return;
+      const cards = Array.from(track.children) as HTMLElement[];
+      const left = track.scrollLeft + track.offsetLeft;
+      let nearest = 0;
+      let smallest = Infinity;
+      cards.forEach((card, i) => {
+        const distance = Math.abs(card.offsetLeft - left);
+        if (distance < smallest) {
+          smallest = distance;
+          nearest = i;
+        }
+      });
+      scrollToCard((nearest + 1) % cards.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [reducedMotion, scrollToCard]);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -77,7 +105,15 @@ export function TestimonialsSection() {
   }, []);
 
   return (
-    <section className="bg-hero-tint py-6 sm:py-20 lg:py-28">
+    <section
+      className="bg-hero-tint py-6 sm:py-20 lg:py-28"
+      onMouseEnter={() => (paused.current = true)}
+      onMouseLeave={() => (paused.current = false)}
+      onFocus={() => (paused.current = true)}
+      onBlur={() => (paused.current = false)}
+      onTouchStart={() => (paused.current = true)}
+      onTouchEnd={() => setTimeout(() => (paused.current = false), 4000)}
+    >
       <Container>
         <div className="grid grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
