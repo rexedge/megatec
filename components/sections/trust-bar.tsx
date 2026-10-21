@@ -1,3 +1,4 @@
+import { Container } from "@/components/ui/container";
 import { CheckIcon } from "@/components/ui/check-icon";
 
 /**
@@ -17,5 +18,16 @@ export function TrustBar({ items }: { items: string[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+/** The trust bar as a band of its own, straight under a landing page's hero. */
+export function TrustSection({ items }: { items: string[] }) {
+  return (
+    <section className="py-6 sm:py-10">
+      <Container>
+        <TrustBar items={items} />
+      </Container>
+    </section>
   );
 }

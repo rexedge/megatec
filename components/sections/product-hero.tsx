@@ -16,6 +16,8 @@ export function ProductHero({
   whatsappLabel = "Chat on WhatsApp",
   email,
   badges,
+  eyebrow,
+  extra,
 }: {
   title: string;
   description: string;
@@ -26,6 +28,10 @@ export function ProductHero({
   /** Offered beside the WhatsApp button, for pages where an email address is the brief. */
   email?: string;
   badges?: ProductHeroBadge[];
+  /** Green pill above the headline (the landing pages' only credibility line, LE-03). */
+  eyebrow?: string;
+  /** A TEXT LINK under the button, e.g. "View Our Installations →". */
+  extra?: React.ReactNode;
 }) {
   return (
     <section>
@@ -41,7 +47,12 @@ export function ProductHero({
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />
         {/* The header overlays this hero with white links; keep them legible over bright skies. */}
         <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/60 to-transparent" />
-        <Container className="relative py-8 sm:py-16">
+        <Container className="relative pt-28 pb-8 sm:pb-16">
+          {eyebrow && (
+            <p className="bg-leaf-dark mb-6 inline-block max-w-full rounded-full px-4 py-2 text-sm font-medium text-white">
+              {eyebrow}
+            </p>
+          )}
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white lg:text-6xl">
             {title}
           </h1>
@@ -58,6 +69,7 @@ export function ProductHero({
                 or email {email}
               </a>
             )}
+            {extra}
           </div>
         </Container>
       </div>
