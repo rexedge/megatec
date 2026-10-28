@@ -57,7 +57,7 @@ const SYSTEM_COMPONENTS = [
   },
 ];
 
-/** The five items, with the document's spec lines. Images come from the catalogue entry named by `id`. */
+/** The four items (the vehicle cylinders are not shown here, R2-15), with the document's spec lines. Images come from the catalogue entry named by `id`. */
 const EQUIPMENT = [
   {
     id: "cng-dispenser-single",
@@ -99,17 +99,6 @@ const EQUIPMENT = [
       "Cuts running cost compared to petrol",
       "Includes pressure reducer, injectors, sensors, filler valve, gauge and fittings",
       "Pairs with 65L and 75L vehicle cylinders",
-      "Comes with a warranty",
-    ],
-  },
-  {
-    id: "cng-cylinder-65l",
-    title: "CNG Vehicle Cylinders (65L and 75L)",
-    specs: [
-      "65L and 75L water-capacity options, for on-board gas storage in cars",
-      "Works with the MEGA-TEC CNG Conversion Kit",
-      "200 bar (20MPa) working pressure, the standard for vehicle cylinders",
-      "Full 65L holds about 16 cubic metres of gas, 75L about 19",
       "Comes with a warranty",
     ],
   },
@@ -174,24 +163,6 @@ export default function CngPage() {
           </SpecSheetLink>
         }
       />
-
-      <section className="py-6 sm:py-20 lg:py-28">
-        <Container className="max-w-3xl">
-          <h2 className="text-ink text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
-            Nigeria&apos;s CNG opportunity is here, and it&apos;s moving fast
-          </h2>
-          <p className="text-body mt-6 text-lg leading-relaxed">
-            The removal of petrol subsidy has transformed the economics of CNG almost overnight,
-            making CNG far cheaper to run than petrol. With the government now backing CNG
-            expansion and a rapidly growing fleet of CNG-converted buses, taxis and trucks already
-            on Nigerian roads every month, demand for proper CNG refuelling stations is quickly
-            rising.
-          </p>
-          <p className="text-ink mt-8 text-xl font-medium tracking-tight">
-            MEGA-TEC positions you ahead of this demand, with infrastructure built to last.
-          </p>
-        </Container>
-      </section>
 
       <TrustSection items={TRUST} />
 
