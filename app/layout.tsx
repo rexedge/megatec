@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { EnquiryProvider } from "@/components/ui/enquiry-modal";
 import { FloatingWhatsapp } from "@/components/ui/floating-whatsapp";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 // Loaded from disk rather than next/font/google: Next has no precalculated
@@ -34,6 +35,10 @@ const interTight = localFont({
 });
 
 export const metadata: Metadata = {
+  // R2-05: every page names its own www address as canonical; "./" is resolved
+  // against each page's path.
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "./" },
   title: "MEGA-TEC | Fuel Dispensers, LPG, CNG & EV Chargers in Nigeria",
   description:
     "MEGA-TEC supplies, assembles, installs and maintains fuel dispensers, LPG systems, CNG infrastructure and EV chargers across Nigeria. 1,500+ stations equipped. Nationwide support.",

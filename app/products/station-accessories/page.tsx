@@ -58,14 +58,6 @@ export default function StationAccessoriesPage() {
 
       <section className="py-6 sm:py-12 lg:py-16">
         <Container>
-          <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
-            Dispenser spare parts, always in stock
-          </h2>
-          <p className="text-body mt-4 mb-8 max-w-3xl text-lg leading-relaxed sm:mb-12">
-            A working pump should never become scrap over one bad part. Because MEGA-TEC dispensers
-            run on openly available components, the part you need is always in the market and
-            always with us. Find it below, then message us and we&apos;ll sort it out.
-          </p>
           <SparePartsList />
           <WhatsappButton
             variant="leaf"
