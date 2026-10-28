@@ -903,8 +903,8 @@ export const PRODUCT_CATEGORIES: Category[] = [
             "sheet": "Gear_Pump_Single_Nozzle.pdf"
           },
           {
-            "id": "gear-pump-double-d1",
-            "name": "Gear Pump – Double Nozzle (D1)",
+            "id": "gear-pump-double",
+            "name": "Gear Pump – Double Nozzle",
             "blurb": "Twice the lines, the same high speed, high-flow dispensing across two nozzles for serious volume.",
             "best": false,
             "tag": null,
@@ -944,49 +944,6 @@ export const PRODUCT_CATEGORIES: Category[] = [
             "warranty": "1-year warranty.",
             "image": null,
             "sheet": "Gear_Pump_Double_Nozzle_D1.pdf"
-          },
-          {
-            "id": "gear-pump-double-d2",
-            "name": "Gear Pump – Double Nozzle (D2)",
-            "blurb": "Full twin-line power: two meters, two units, maximum throughput for the busiest depots.",
-            "best": false,
-            "tag": null,
-            "badge": "NMDPRA compliant · MEGA-TEC supply & install",
-            "cells": [
-              [
-                "Metering",
-                "Gear pump meter (2×), unit (2×)"
-              ],
-              [
-                "Nozzle config",
-                "Double nozzle"
-              ],
-              [
-                "Flow rate",
-                "60–100 L/min"
-              ],
-              [
-                "Fuel type",
-                "PMS, AGO or DPK"
-              ],
-              [
-                "Accuracy",
-                "±0.3%"
-              ],
-              [
-                "Compliance",
-                "NMDPRA-compliant installation"
-              ],
-              [
-                "Coverage",
-                "Nationwide"
-              ]
-            ],
-            "description": "Built for the busiest depots that never slow down. This full twin-line powerhouse runs two meters and two units, giving each side its own independent high-speed dispensing at up to 100 L/min. Self-priming, calibrated to ±0.3%, assembled and tested in Nigeria, and serviceable anywhere with parts always on hand.",
-            "extras": [],
-            "warranty": "1-year warranty.",
-            "image": null,
-            "sheet": "Gear_Pump_Double_Nozzle_D2.pdf"
           }
         ]
       },
