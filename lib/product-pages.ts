@@ -1562,7 +1562,7 @@ export const PRODUCT_CATEGORIES: Category[] = [
             "blurb": "Convert petrol vehicles to run on cheaper, cleaner CNG, with the reducer, injectors, wiring and fittings in one kit.",
             "best": false,
             "tag": null,
-            "badge": "NMDPRA compliant · MEGA-TEC supply & install",
+            "badge": "SON certified · MEGA-TEC supply & install",
             "cells": [
               [
                 "Purpose",
@@ -1618,7 +1618,7 @@ export const PRODUCT_CATEGORIES: Category[] = [
             "blurb": "On-board CNG cylinder, 65L water capacity, for gas storage in converted vehicles.",
             "best": false,
             "tag": null,
-            "badge": "NMDPRA compliant · MEGA-TEC supply & install",
+            "badge": "SON certified · MEGA-TEC supply & install",
             "cells": [
               [
                 "Capacity",
@@ -1657,7 +1657,7 @@ export const PRODUCT_CATEGORIES: Category[] = [
             "blurb": "Larger 75L on-board CNG cylinder for cars, carrying more gas for a longer range between fills.",
             "best": false,
             "tag": null,
-            "badge": "NMDPRA compliant · MEGA-TEC supply & install",
+            "badge": "SON certified · MEGA-TEC supply & install",
             "cells": [
               [
                 "Capacity",
