@@ -136,36 +136,6 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
-        <Container>
-          <div className="text-center">
-            <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
-              Which solution is right for you?
-            </h2>
-            <p className="text-body mx-auto mt-4 max-w-2xl text-lg">
-              Two distinct paths, pick yours to start the right conversation.
-            </p>
-          </div>
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:mt-14 lg:grid-cols-2 lg:gap-8">
-            <Panel
-              featured
-              title="60KW DC dual-gun fast charger"
-              audience="For: Hotels, Estates, Filling Stations, Corporate Campuses, Fleet Depots"
-              detail="Floor-standing · charges two vehicles at once · around 40 minutes to an hour for a typical EV"
-              button="Discuss Commercial Installation on WhatsApp"
-              message="Hi MEGA-TEC, I'd like to discuss a commercial EV charger installation."
-            />
-            <Panel
-              title="40KW DC wall-mounted fast charger"
-              audience="For: Homes, estates and small commercial sites with three-phase power"
-              detail="Compact · single gun · around 1 to 1.5 hours for a typical EV"
-              button="Discuss Home Installation on WhatsApp"
-              message="Hi MEGA-TEC, I'd like to discuss a home EV charger installation."
-            />
-          </div>
-        </Container>
-      </section>
-
       <section className="py-6 sm:py-20 lg:py-28">
         <Container>
           <h2 className="text-ink max-w-3xl text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
@@ -298,43 +268,6 @@ export default function EvChargersPage() {
   );
 }
 
-function Panel({
-  featured,
-  title,
-  audience,
-  detail,
-  button,
-  message,
-}: {
-  featured?: boolean;
-  title: string;
-  audience: string;
-  detail: string;
-  button: string;
-  message: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "relative flex flex-col gap-4 rounded-2xl border-2 bg-white p-6 sm:p-8",
-        featured ? "border-leaf" : "border-border/70"
-      )}
-    >
-      {featured && (
-        <span className="text-ink absolute -top-3 left-6 rounded-full bg-amber-400 px-3 py-1 text-xs font-medium">
-          Best Seller
-        </span>
-      )}
-      <h3 className="text-ink text-2xl font-semibold tracking-tight">{title}</h3>
-      <p className="text-ink font-medium">{audience}</p>
-      <p className="text-body leading-relaxed">{detail}</p>
-      <WhatsappButton variant="leaf" message={message} className="mt-auto w-full">
-        {button}
-      </WhatsappButton>
-    </div>
-  );
-}
-
 function Features({
   items,
 }: {
@@ -388,6 +321,11 @@ function ChargerCard({
           sizes="(min-width: 768px) 320px, 100vw"
           className="object-contain p-4"
         />
+        {bestSeller && (
+          <span className="text-ink absolute top-3 left-3 rounded-full bg-amber-400 px-3 py-1 text-xs font-medium">
+            Best Seller
+          </span>
+        )}
       </div>
       <div className="flex flex-col gap-4 p-6 sm:p-8">
         <h3 className="text-ink text-2xl font-medium tracking-tight">
