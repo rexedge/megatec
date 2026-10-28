@@ -82,7 +82,7 @@ export default function EvChargersPage() {
       ))}
       {/* The render has its words baked in, so the headline sits beside it, never over it. */}
       <section className="bg-navy">
-        <Container className="grid grid-cols-1 items-center gap-8 pt-40 pb-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:py-32">
+        <Container className="grid grid-cols-1 items-center gap-5 pt-40 pb-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:py-32 sm:gap-8">
           <div>
             <p className="bg-leaf-dark mb-6 inline-block max-w-full rounded-full px-4 py-2 text-sm font-medium text-white">
               Now installing EV charging infrastructure nationwide
@@ -90,7 +90,7 @@ export default function EvChargersPage() {
             <h1 className="text-navy-text text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
               EV charging infrastructure for Nigeria: commercial &amp; residential solutions
             </h1>
-            <p className="text-navy-text/90 mt-6 text-lg leading-relaxed">
+            <p className="text-navy-text/90 mt-6 text-base leading-normal sm:text-lg sm:leading-relaxed">
               Whether you&apos;re equipping a hotel, estate, corporate campus or your own home,
               MEGA-TEC supplies and installs the right EV charging solution with full technical
               support.
@@ -127,7 +127,7 @@ export default function EvChargersPage() {
 
       <section className="py-6 sm:py-20 lg:py-16">
         <Container className="max-w-4xl">
-          <p className="text-ink text-2xl leading-snug font-semibold tracking-tight text-balance sm:text-3xl">
+          <p className="text-ink text-xl leading-snug font-semibold tracking-tight text-balance sm:text-3xl">
             Nigeria&apos;s EV adoption is accelerating. Corporate fleets are converting. Hotels and
             luxury estates are adding charging as a standard amenity, and forward-looking filling
             stations are already capturing this new revenue stream. The infrastructure question is
@@ -138,7 +138,7 @@ export default function EvChargersPage() {
 
       <section className="py-6 sm:py-20 lg:py-16">
         <Container>
-          <h2 className="text-ink max-w-3xl text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
+          <h2 className="text-ink max-w-3xl text-3xl font-semibold tracking-tight text-balance lg:text-5xl sm:text-4xl">
             Industrial EV charging for high-traffic commercial sites
           </h2>
           <ul className="mt-6 flex flex-wrap gap-3">
@@ -174,10 +174,10 @@ export default function EvChargersPage() {
 
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container>
-          <h2 className="text-ink max-w-3xl text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
+          <h2 className="text-ink max-w-3xl text-3xl font-semibold tracking-tight text-balance lg:text-5xl sm:text-4xl">
             Fast home and estate EV charging, compact and professionally installed
           </h2>
-          <p className="text-body mt-6 max-w-3xl text-lg leading-relaxed">
+          <p className="text-body mt-6 max-w-3xl text-base leading-normal sm:text-lg sm:leading-relaxed">
             Upscale homes · Residential estates · Small offices and commercial sites with
             three-phase power
           </p>
@@ -203,16 +203,16 @@ export default function EvChargersPage() {
 
       <section className="py-6 sm:py-20 lg:py-16">
         <Container>
-          <h2 className="text-ink max-w-3xl text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
+          <h2 className="text-ink max-w-3xl text-3xl font-semibold tracking-tight text-balance lg:text-5xl sm:text-4xl">
             EV charging is now a competitive differentiator for Nigerian businesses
           </h2>
-          <ul className="mt-8 grid grid-cols-1 gap-6 sm:mt-12 md:grid-cols-3">
+          <ul className="mt-8 grid grid-cols-1 gap-4 sm:mt-12 md:grid-cols-3 sm:gap-6">
             {ROI.map((item) => (
-              <li key={item.text} className="bg-surface-soft flex flex-col gap-4 rounded-2xl p-6">
+              <li key={item.text} className="bg-surface-soft flex flex-col gap-3 rounded-2xl p-4 sm:p-6 sm:gap-4">
                 <span className="bg-accent-soft text-ink flex h-12 w-12 items-center justify-center rounded-xl">
                   {item.icon}
                 </span>
-                <p className="text-body leading-relaxed">{item.text}</p>
+                <p className="text-body leading-normal sm:leading-relaxed">{item.text}</p>
               </li>
             ))}
           </ul>
@@ -221,7 +221,7 @@ export default function EvChargersPage() {
 
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="flex flex-col items-center text-center">
-          <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-4xl">
+          <h2 className="text-ink text-2xl font-semibold tracking-tight lg:text-4xl sm:text-3xl">
             Get the full EV charger specifications
           </h2>
           <SpecSheetButton href={GUIDE} description={GUIDE_NOTE} className="mt-6">
@@ -274,14 +274,14 @@ function Features({
   items: { icon: React.ReactNode; title: string; text: string }[];
 }) {
   return (
-    <ul className="mt-8 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6">
+    <ul className="mt-8 grid grid-cols-1 gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-6">
       {items.map((item) => (
-        <li key={item.title} className="flex gap-4 rounded-2xl bg-white p-6">
+        <li key={item.title} className="flex gap-3 rounded-2xl bg-white p-4 sm:p-6 sm:gap-4">
           <span className="bg-accent-soft text-ink flex h-12 w-12 shrink-0 items-center justify-center rounded-xl">
             {item.icon}
           </span>
           <div>
-            <p className="text-ink text-lg font-medium tracking-tight">{item.title}</p>
+            <p className="text-ink text-base font-medium tracking-tight sm:text-lg">{item.title}</p>
             <p className="text-body mt-1">{item.text}</p>
           </div>
         </li>
@@ -327,8 +327,8 @@ function ChargerCard({
           </span>
         )}
       </div>
-      <div className="flex flex-col gap-4 p-6 sm:p-8">
-        <h3 className="text-ink text-2xl font-medium tracking-tight">
+      <div className="flex flex-col gap-3 p-4 sm:p-8 sm:gap-4">
+        <h3 className="text-ink text-xl font-medium tracking-tight sm:text-2xl">
           {title}
         </h3>
         <ul className="flex flex-col gap-2">

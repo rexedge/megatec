@@ -79,11 +79,11 @@ export function LandingForm({
   return (
     <section id="contact" className="bg-leaf-dark scroll-mt-36 py-10 sm:py-20 lg:py-16">
       <Container className="max-w-3xl">
-        <h2 className="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl lg:text-5xl">
+        <h2 className="text-2xl font-semibold tracking-tight text-balance text-white sm:text-4xl lg:text-5xl">
           {heading}
         </h2>
 
-        <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-6 sm:mt-12">
+        <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4 sm:mt-12 sm:gap-6">
           <TrapField />
           {fields.map((field) => (
             <label key={field.key} className="flex flex-col gap-2 text-base font-medium text-white">

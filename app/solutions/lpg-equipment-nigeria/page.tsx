@@ -143,10 +143,10 @@ export default function LpgPage() {
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container>
           <div className="text-center">
-            <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
+            <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-5xl sm:text-4xl">
               LPG systems we supply
             </h2>
-            <p className="text-body mx-auto mt-4 max-w-2xl text-lg">
+            <p className="text-body mx-auto mt-4 max-w-2xl text-base sm:text-lg">
               Identify your requirement. Tap any category below for details. All MEGA-TEC LPG
               dispensers come with a 1-year warranty.
             </p>
@@ -167,21 +167,21 @@ export default function LpgPage() {
             ))}
           </div>
 
-          <div className="mx-auto mt-8 max-w-4xl rounded-2xl bg-white p-6 sm:mt-12 sm:p-10">
-            <h3 className="text-ink text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
+          <div className="mx-auto mt-8 max-w-4xl rounded-2xl bg-white p-4 sm:mt-12 sm:p-10">
+            <h3 className="text-ink text-xl font-semibold tracking-tight text-balance sm:text-3xl">
               Built and sourced to fit your project requirement
             </h3>
-            <p className="text-body mt-4 text-lg leading-relaxed">
+            <p className="text-body mt-4 text-base leading-normal sm:text-lg sm:leading-relaxed">
               We supply the full LPG system, not just dispensers. Sourced and set up to suit your
               specific project:
             </p>
-            <ul className="mt-6 flex flex-col gap-5">
+            <ul className="mt-6 flex flex-col gap-4 sm:gap-5">
               {BUILT_TO_FIT.map((item) => (
-                <li key={item.title} className="flex gap-4">
+                <li key={item.title} className="flex gap-3 sm:gap-4">
                   <span className="bg-accent-soft text-ink flex h-12 w-12 shrink-0 items-center justify-center rounded-xl">
                     {item.icon}
                   </span>
-                  <p className="text-body self-center leading-relaxed">
+                  <p className="text-body self-center leading-normal sm:leading-relaxed">
                     <span className="text-ink font-medium">{item.title}</span>: {item.text}
                   </p>
                 </li>
@@ -202,12 +202,12 @@ export default function LpgPage() {
 
       <section className="py-6 sm:py-20 lg:py-16">
         <Container className="max-w-4xl">
-          <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance lg:text-4xl">
+          <h2 className="text-ink text-2xl font-semibold tracking-tight text-balance lg:text-4xl sm:text-3xl">
             LPG accidents are costly and dangerous, but they can be prevented
           </h2>
-          <ul className="mt-8 flex flex-col gap-4">
+          <ul className="mt-8 flex flex-col gap-3 sm:gap-4">
             {SAFETY.map((point) => (
-              <li key={point} className="text-ink flex gap-3 text-lg leading-relaxed">
+              <li key={point} className="text-ink flex gap-3 text-base leading-normal sm:text-lg sm:leading-relaxed">
                 <CheckIcon />
                 {point}
               </li>
@@ -218,17 +218,17 @@ export default function LpgPage() {
 
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="max-w-4xl">
-          <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
+          <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-5xl sm:text-4xl">
             Deployment workflow
           </h2>
-          <ol className="mt-8 flex flex-col gap-4 sm:mt-12">
+          <ol className="mt-8 flex flex-col gap-3 sm:mt-12 sm:gap-4">
             {WORKFLOW.map((step, index) => (
-              <li key={step.title} className="flex items-start gap-5 rounded-2xl bg-white p-5 sm:p-6">
-                <span className="bg-accent text-ink flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg font-semibold">
+              <li key={step.title} className="flex items-start gap-3 sm:gap-5 rounded-2xl bg-white p-3 sm:p-6">
+                <span className="bg-accent text-ink flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-base font-semibold sm:text-lg">
                   {index + 1}
                 </span>
                 <div>
-                  <p className="text-ink text-lg font-medium tracking-tight">{step.title}</p>
+                  <p className="text-ink text-base font-medium tracking-tight sm:text-lg">{step.title}</p>
                   <p className="text-body mt-1">{step.description}</p>
                 </div>
               </li>
@@ -239,7 +239,7 @@ export default function LpgPage() {
 
       <section className="py-6 sm:py-20 lg:py-16">
         <Container className="flex flex-col items-center text-center">
-          <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-4xl">
+          <h2 className="text-ink text-2xl font-semibold tracking-tight lg:text-4xl sm:text-3xl">
             Get the full LPG equipment specifications
           </h2>
           <SpecSheetButton

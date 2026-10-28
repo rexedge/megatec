@@ -168,21 +168,21 @@ export default function CngPage() {
 
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="max-w-4xl">
-          <h2 className="text-ink text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
+          <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance lg:text-5xl sm:text-4xl">
             What a complete CNG station requires
           </h2>
-          <p className="text-body mt-4 text-lg leading-relaxed">
+          <p className="text-body mt-4 text-base leading-normal sm:text-lg sm:leading-relaxed">
             A CNG station is a complete high-pressure system. MEGA-TEC delivers the full system,
             not just the equipment.
           </p>
-          <ol className="mt-8 flex flex-col gap-4 sm:mt-12">
+          <ol className="mt-8 flex flex-col gap-3 sm:mt-12 sm:gap-4">
             {SYSTEM_COMPONENTS.map((item, index) => (
-              <li key={item.title} className="flex items-start gap-5 rounded-2xl bg-white p-5 sm:p-6">
-                <span className="bg-accent text-ink flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg font-semibold">
+              <li key={item.title} className="flex items-start gap-3 sm:gap-5 rounded-2xl bg-white p-3 sm:p-6">
+                <span className="bg-accent text-ink flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-base font-semibold sm:text-lg">
                   {index + 1}
                 </span>
                 <div>
-                  <p className="text-ink text-lg font-medium tracking-tight">{item.title}</p>
+                  <p className="text-ink text-base font-medium tracking-tight sm:text-lg">{item.title}</p>
                   <p className="text-body mt-1">{item.description}</p>
                 </div>
               </li>
@@ -203,12 +203,12 @@ export default function CngPage() {
 
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="max-w-4xl">
-          <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance lg:text-4xl">
+          <h2 className="text-ink text-2xl font-semibold tracking-tight text-balance lg:text-4xl sm:text-3xl">
             CNG infrastructure runs at very high pressure. There is no room for shortcuts.
           </h2>
-          <ul className="mt-8 flex flex-col gap-4">
+          <ul className="mt-8 flex flex-col gap-3 sm:gap-4">
             {SAFETY.map((point) => (
-              <li key={point} className="text-ink flex gap-3 text-lg leading-relaxed">
+              <li key={point} className="text-ink flex gap-3 text-base leading-normal sm:text-lg sm:leading-relaxed">
                 <CheckIcon />
                 {point}
               </li>
@@ -219,20 +219,20 @@ export default function CngPage() {
 
       <section className="py-6 sm:py-20 lg:py-16">
         <Container>
-          <h2 className="text-ink text-center text-3xl font-semibold tracking-tight lg:text-4xl">
+          <h2 className="text-ink text-center text-2xl font-semibold tracking-tight lg:text-4xl sm:text-3xl">
             Who this is for
           </h2>
-          <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-14 sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:mt-14 sm:grid-cols-3 sm:gap-8">
             {AUDIENCES.map((audience) => (
               <div
                 key={audience.title}
-                className="border-border/70 flex flex-col items-center gap-4 rounded-2xl border bg-white p-8 text-center"
+                className="border-border/70 flex flex-col items-center gap-3 rounded-2xl border bg-white p-5 text-center sm:p-8 sm:gap-4"
               >
                 <span className="bg-sky flex h-11 w-11 items-center justify-center rounded-full text-white">
                   {audience.icon}
                 </span>
                 <div>
-                  <p className="text-ink text-xl font-medium tracking-tight">{audience.title}</p>
+                  <p className="text-ink text-lg font-medium tracking-tight sm:text-xl">{audience.title}</p>
                   <p className="text-body mt-2">{audience.description}</p>
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function CngPage() {
 
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="flex flex-col items-center text-center">
-          <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-4xl">
+          <h2 className="text-ink text-2xl font-semibold tracking-tight lg:text-4xl sm:text-3xl">
             Get the full CNG station setup guide
           </h2>
           <SpecSheetButton href={GUIDE} description={GUIDE_NOTE} className="mt-6">

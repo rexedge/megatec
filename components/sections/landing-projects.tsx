@@ -24,10 +24,10 @@ export function LandingProjects({
   return (
     <section className="py-6 sm:py-20 lg:py-16">
       <Container>
-        <h2 className="text-ink max-w-3xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+        <h2 className="text-ink max-w-3xl text-2xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
           {heading}
         </h2>
-        <ul className="mt-8 grid grid-cols-1 gap-6 sm:mt-12 sm:grid-cols-2 sm:gap-8">
+        <ul className="mt-8 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-8">
           {projects.map((project) => (
             <li key={project.title} className="bg-surface-soft overflow-hidden rounded-2xl">
               {project.image && (
@@ -42,9 +42,9 @@ export function LandingProjects({
                   />
                 </div>
               )}
-              <div className="p-6">
-                <h3 className="text-ink text-xl font-medium tracking-tight">{project.title}</h3>
-                <p className="text-body mt-2 leading-relaxed">{project.description}</p>
+              <div className="p-4 sm:p-6">
+                <h3 className="text-ink text-lg font-medium tracking-tight sm:text-xl">{project.title}</h3>
+                <p className="text-body mt-2 leading-normal sm:leading-relaxed">{project.description}</p>
               </div>
             </li>
           ))}

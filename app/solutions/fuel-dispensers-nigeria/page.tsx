@@ -175,10 +175,10 @@ export default function FuelDispensersPage() {
       <section className="py-6 sm:py-20 lg:py-16">
         <Container>
           <div className="text-center">
-            <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
+            <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-5xl sm:text-4xl">
               Best selling dispensers
             </h2>
-            <p className="text-body mx-auto mt-4 max-w-2xl text-lg">
+            <p className="text-body mx-auto mt-4 max-w-2xl text-base sm:text-lg">
               Our best-selling dispensers for Nigerian stations and depots, assembled, tested and
               calibrated before delivery, with a 1-year warranty.
             </p>
@@ -207,19 +207,19 @@ export default function FuelDispensersPage() {
 
       <section className="py-6 sm:py-20 lg:py-16">
         <Container className="max-w-3xl">
-          <h2 className="text-ink text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
+          <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance lg:text-5xl sm:text-4xl">
             A poorly calibrated dispenser costs your station money every single day
           </h2>
-          <p className="text-body mt-6 text-lg leading-relaxed">
+          <p className="text-body mt-6 text-base leading-normal sm:text-lg sm:leading-relaxed">
             Meter inaccuracy is revenue leaking out of your tanks. Even a 2% meter error on a busy
             station represents significant daily loss, multiplied across every nozzle, every
             shift.
           </p>
-          <p className="text-body mt-4 text-lg leading-relaxed">
+          <p className="text-body mt-4 text-base leading-normal sm:text-lg sm:leading-relaxed">
             Beyond lost revenue, NMDPRA sanctions for non-compliant equipment can escalate to
             licence review, a threat no station owner can afford to ignore.
           </p>
-          <p className="text-ink mt-8 text-xl font-medium tracking-tight">
+          <p className="text-ink mt-8 text-lg font-medium tracking-tight sm:text-xl">
             Every MEGA-TEC dispenser is calibrated before delivery and checked again on-site, so
             every litre is a litre you&apos;re paid for. Our calibration and metering process is
             NMDPRA-certified.
@@ -229,23 +229,23 @@ export default function FuelDispensersPage() {
 
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container>
-          <h2 className="text-ink max-w-3xl text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
+          <h2 className="text-ink max-w-3xl text-3xl font-semibold tracking-tight text-balance lg:text-5xl sm:text-4xl">
             One bad part should never turn your pump into scrap
           </h2>
-          <p className="text-body mt-6 max-w-3xl text-lg leading-relaxed">
+          <p className="text-body mt-6 max-w-3xl text-base leading-normal sm:text-lg sm:leading-relaxed">
             Many imported pumps get abandoned the day one part fails, and the brand that made it
             has stopped producing spare parts. MEGA-TEC is different. We assemble and test our
             pumps here in Nigeria, using parts that any engineer in this country can find and
             fix.
           </p>
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6">
+          <ul className="mt-8 grid grid-cols-1 gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-6">
             {WHY.map((item) => (
-              <li key={item.title} className="flex gap-4 rounded-2xl bg-white p-6">
+              <li key={item.title} className="flex gap-3 rounded-2xl bg-white p-4 sm:p-6 sm:gap-4">
                 <span className="bg-accent-soft text-ink flex h-12 w-12 shrink-0 items-center justify-center rounded-xl">
                   {item.icon}
                 </span>
                 <div>
-                  <p className="text-ink text-lg font-medium tracking-tight">{item.title}</p>
+                  <p className="text-ink text-base font-medium tracking-tight sm:text-lg">{item.title}</p>
                   <p className="text-body mt-1">{item.text}</p>
                 </div>
               </li>
@@ -256,17 +256,17 @@ export default function FuelDispensersPage() {
 
       <section className="py-6 sm:py-20 lg:py-16">
         <Container className="text-center">
-          <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
+          <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-5xl sm:text-4xl">
             Our installation process
           </h2>
-          <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-16 sm:grid-cols-3 sm:gap-12">
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:mt-16 sm:grid-cols-3 sm:gap-12">
             {INSTALL_STEPS.map((step, index) => (
-              <div key={step.title} className="flex flex-col items-center gap-4">
-                <span className="bg-accent text-ink flex h-12 w-12 items-center justify-center rounded-full text-lg font-semibold">
+              <div key={step.title} className="flex flex-col items-center gap-3 sm:gap-4">
+                <span className="bg-accent text-ink flex h-12 w-12 items-center justify-center rounded-full text-base font-semibold sm:text-lg">
                   {index + 1}
                 </span>
                 <div>
-                  <p className="text-ink text-xl font-medium tracking-tight">{step.title}</p>
+                  <p className="text-ink text-lg font-medium tracking-tight sm:text-xl">{step.title}</p>
                   <p className="text-body mt-2">{step.description}</p>
                 </div>
               </div>
@@ -277,7 +277,7 @@ export default function FuelDispensersPage() {
 
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="flex flex-col items-center text-center">
-          <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-4xl">
+          <h2 className="text-ink text-2xl font-semibold tracking-tight lg:text-4xl sm:text-3xl">
             Get the full dispenser specifications
           </h2>
           <SpecSheetButton
