@@ -52,12 +52,21 @@ export function SiteHeader() {
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
+  // The page behind stays put while the full-screen mobile menu or a desktop dropdown
+  // is open (R2-10). Taking the scrollbar away would shift the layout sideways, so its
+  // width is added back as padding.
+  const lockScroll = mobileOpen || openMenu !== null;
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    if (!lockScroll) return;
+    const { body, documentElement } = document;
+    const gap = window.innerWidth - documentElement.clientWidth;
+    body.style.overflow = "hidden";
+    if (gap > 0) body.style.paddingRight = `${gap}px`;
     return () => {
-      document.body.style.overflow = "";
+      body.style.overflow = "";
+      body.style.paddingRight = "";
     };
-  }, [mobileOpen]);
+  }, [lockScroll]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -152,7 +161,7 @@ export function SiteHeader() {
               <ChevronDown />
             </button>
             {openMenu === "products" && (
-              <div className="absolute left-1/2 top-full mt-4 w-[420px] -translate-x-1/2 rounded-xl border border-border/70 bg-white p-6 shadow-xl">
+              <div className="absolute left-1/2 top-full mt-4 max-h-[calc(100dvh-8.5rem)] w-[420px] -translate-x-1/2 overflow-y-auto overscroll-contain rounded-xl border border-border/70 bg-white p-6 shadow-xl">
                 <p className="mb-4 text-sm text-body">Products</p>
                 <ul className="flex flex-col gap-5">
                   {PRODUCTS.map((product) => (
@@ -207,7 +216,7 @@ export function SiteHeader() {
               <ChevronDown />
             </button>
             {openMenu === "services" && (
-              <div className="absolute left-1/2 top-full mt-4 w-[380px] -translate-x-1/2 rounded-xl border border-border/70 bg-white p-6 shadow-xl">
+              <div className="absolute left-1/2 top-full mt-4 max-h-[calc(100dvh-8.5rem)] w-[380px] -translate-x-1/2 overflow-y-auto overscroll-contain rounded-xl border border-border/70 bg-white p-6 shadow-xl">
                 <p className="mb-4 text-sm text-body">Services</p>
                 <ul className="flex flex-col gap-4">
                   {SERVICES.map((service) => (
