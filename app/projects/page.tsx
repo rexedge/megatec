@@ -7,8 +7,10 @@ import { ProjectsGrid, type ProjectEntry } from "@/components/sections/projects-
 /**
  * Copy is from the Core Site Pages document, Page 3 "Projects / Installations"
  * (punch list NP-01). The document builds eight card slots but keeps the ones
- * without details and photos unpublished: MRS, NIPCO and the CNG project wait
- * for MEGA-TEC, and the testimonials stay out until real, cleared quotes arrive.
+ * without details and photos unpublished: the CNG project waits for MEGA-TEC (the
+ * CNG tab keeps its empty message), and the testimonials stay out until real,
+ * cleared quotes arrive. NIPCO and Total were added in October 2026 (R2-14); Total
+ * took MRS's place.
  */
 export const metadata: Metadata = {
   title: "Our Installations | Fuel, LPG, CNG & EV Projects Across Nigeria | MEGA-TEC",
@@ -31,6 +33,21 @@ const PROJECTS: ProjectEntry[] = [
     categories: ["Fuel Dispensers"],
     description:
       "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
+  },
+  {
+    name: "NIPCO",
+    categories: ["Fuel Dispensers"],
+    description:
+      "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
+    image: "/images/projects/nipco.jpg",
+  },
+  {
+    name: "Total",
+    categories: ["Fuel Dispensers"],
+    description: "MEGA-TEC fuel dispensers in service at a Total station on New Yidi Road.",
+    image: "/images/projects/total.jpg",
+    // The photo is a wide panorama: keep the cropped card on the centre pump.
+    imagePosition: "52% 50%",
   },
 ];
 

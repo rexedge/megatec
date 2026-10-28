@@ -9,12 +9,11 @@ import { cn } from "@/lib/cn";
  * client list Mega-Tec has supplied. The Nepal and Sterling copy is verbatim from
  * the Core Site Pages document, Projects §2, and the Canico wording is from its
  * Global Rules. Canico took Sterling Oil & Gas's place in October 2026 and
- * Sterling came back beside it (punch list HM-11).
+ * Sterling came back beside it (punch list HM-11); NIPCO then took Sterling's
+ * place, keeping its description (R2-14).
  *
- * TODO(assets): Sterling has no photo yet, so its card is text only: give its
- * entry an `image` once Mega-Tec supplies one. Canico needs a location and a
- * one-line outcome, and Mega-Tec must confirm all three cards are accurate and
- * client-approved. Asset request item 2.
+ * TODO(assets): Canico needs a location and a one-line outcome, and Mega-Tec must
+ * confirm all three cards are accurate and client-approved. Asset request item 2.
  */
 type Project = {
   title: string;
@@ -38,9 +37,10 @@ const PROJECTS: Project[] = [
     offset: true,
   },
   {
-    title: "Sterling Oil & Gas, Lagos, Akwa Ibom & Port Harcourt",
+    title: "NIPCO",
     description:
       "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
+    image: "/images/projects/nipco.jpg",
   },
 ];
 
