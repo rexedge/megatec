@@ -25,10 +25,10 @@ const NEEDS = [
 
 /**
  * R2-01 asks for 1,000 if WhatsApp carries a full-length message through its link,
- * otherwise 500. 500 is the safe end of that range; raise it only after a real
- * 1,000-character message has opened and sent in full from a phone.
+ * otherwise 500. Set to 1,000 for testing on the preview: send a 1,000-character
+ * message from a phone, and drop this back to 500 if WhatsApp cuts it off.
  */
-const MESSAGE_LIMIT = 500;
+const MESSAGE_LIMIT = 1000;
 
 /** What /api/enquiry accepts for the need; the short form's free text must fit. */
 const NEED_LIMIT = 200;
