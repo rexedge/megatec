@@ -1,0 +1,47 @@
+# Local stand-ins for the services the admin needs, for development only:
+#   postgres  the content database (Neon in production)
+#   storage   S3-compatible file storage for photos and PDFs (Cloudflare R2 in production)
+#
+#   pnpm db:up          start both
+#   pnpm storage:setup  create the bucket
+#   pnpm db:migrate     create or update the tables
+#   pnpm db:seed        load the site's current content
+#
+# Ports avoid 5432/5433 and 9000, which other local projects often hold.
+name: megatec
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: megatec
+      POSTGRES_PASSWORD: megatec
+      POSTGRES_DB: megatec
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U megatec"]
+      interval: 5s
+      retries: 10
+
+  # S3-compatible, like Cloudflare R2. MinIO stopped publishing its images, so RustFS
+  # stands in. The bucket is created by `pnpm storage:setup`.
+  storage:
+    image: rustfs/rustfs:latest
+    restart: unless-stopped
+    environment:
+      RUSTFS_ACCESS_KEY: megatec
+      RUSTFS_SECRET_KEY: megatec-dev-only
+      RUSTFS_CONSOLE_ENABLE: "true"
+    ports:
+      - "9100:9000" # S3 API
+      - "9101:9001" # web console
+    volumes:
+      - storage:/data
+
+volumes:
+  postgres:
+  storage:

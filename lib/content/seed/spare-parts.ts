@@ -1,21 +1,22 @@
-// Generated from the Product Catalogue document (05_Product_Catalogue.md), the verified
-// spare parts list with fit tags (punch list PA-01). Edit here, not the document.
+// The verified spare parts list with fit tags (punch list PA-01), generated from the
+// Product Catalogue document (05_Product_Catalogue.md). `pnpm db:seed` loads it into the
+// database; until the site has one, the Station Accessories page reads it from here.
 
-export type SparePart = {
-  n: number;
-  name: string;
-  /** Which dispensers it fits. */
-  fit: string;
-  group: string;
-  /** null where there is no photo yet: the card shows the muted MEGA-TEC logo. */
-  image: string | null;
-  /** The CNG items link to their product page instead of being described here (PA-03). */
-  href?: string;
-};
+import type { PartGroup, SparePart } from "@/lib/content/types";
 
-export const PART_GROUPS = ["METERS & UNITS", "CPUs & BOARDS", "PRESET BOARDS & ENGINES", "VALVES", "MOTORS & PUMPS", "NOZZLES, HOSES & CONNECTORS", "CNG PARTS", "WIRING & SUNDRIES"] as const;
+/** The eight groups, in the document's order, with the filter pills' wording. */
+export const SEED_PART_GROUPS: PartGroup[] = [
+  { name: "METERS & UNITS", label: "Meters & Units" },
+  { name: "CPUs & BOARDS", label: "CPUs & Boards" },
+  { name: "PRESET BOARDS & ENGINES", label: "Preset Boards" },
+  { name: "VALVES", label: "Valves" },
+  { name: "MOTORS & PUMPS", label: "Motors & Pumps" },
+  { name: "NOZZLES, HOSES & CONNECTORS", label: "Nozzles & Hoses" },
+  { name: "CNG PARTS", label: "CNG Parts" },
+  { name: "WIRING & SUNDRIES", label: "Wiring & Sundries" },
+];
 
-export const SPARE_PARTS: SparePart[] = [
+export const SEED_SPARE_PARTS: SparePart[] = [
   {
     "n": 1,
     "name": "Bennett Meter",

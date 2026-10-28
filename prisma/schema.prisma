@@ -1,0 +1,158 @@
+// The content MEGA-TEC manages in the admin. Column for column, these hold what the
+// pages show (lib/content/types.ts); `sortOrder` sets the order on the page and
+// `published = false` hides a row without deleting it.
+//
+// After changing a model: `pnpm db:migrate --name <what-changed>` writes and applies the
+// migration and regenerates the client.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// The four product categories (Fuel, CNG, LPG, EV). Station Accessories is the parts list.
+model Category {
+  id              Int           @id @default(autoincrement())
+  slug            String        @unique
+  name            String
+  menuDescription String        @map("menu_description")
+  icon            String
+  title           String
+  meta            String
+  headline        String
+  intro           String
+  cta             String
+  /// string[]
+  bullets         Json
+  sortOrder       Int           @default(0) @map("sort_order")
+  updatedAt       DateTime      @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+  subcategories   Subcategory[]
+
+  @@map("categories")
+}
+
+model Subcategory {
+  id          Int       @id @default(autoincrement())
+  categoryId  Int       @map("category_id")
+  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  slug        String
+  name        String
+  title       String
+  meta        String
+  h1          String?
+  /// string[]
+  intro       Json
+  formHeading String    @map("form_heading")
+  /// Offers the Single/Double nozzle and Bennett/Tokheim meter filters (ST-08).
+  filters     Boolean   @default(false)
+  sortOrder   Int       @default(0) @map("sort_order")
+  published   Boolean   @default(true)
+  updatedAt   DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+  products    Product[]
+
+  @@unique([categoryId, slug])
+  @@map("subcategories")
+}
+
+model Product {
+  id            Int         @id @default(autoincrement())
+  subcategoryId Int         @map("subcategory_id")
+  subcategory   Subcategory @relation(fields: [subcategoryId], references: [id], onDelete: Restrict)
+  /// The product's address key, e.g. "mt-plus-single-tb".
+  slug          String      @unique
+  name          String
+  blurb         String
+  bestSeller    Boolean     @default(false) @map("best_seller")
+  tag           String?
+  badge         String
+  /// [label, value][]: the drawer's spec grid
+  cells         Json
+  description   String
+  /// { t: "p" | "h" | "li", x: string }[]
+  extras        Json        @default("[]")
+  warranty      String
+  image         String?
+  sheet         String?
+  sortOrder     Int         @default(0) @map("sort_order")
+  published     Boolean     @default(true)
+  createdAt     DateTime    @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt     DateTime    @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([subcategoryId])
+  @@map("products")
+}
+
+model PartGroup {
+  id        Int         @id @default(autoincrement())
+  /// As the 05 doc writes it, e.g. "METERS & UNITS".
+  name      String      @unique
+  /// The filter pill's wording, e.g. "Meters & Units".
+  label     String
+  sortOrder Int         @default(0) @map("sort_order")
+  parts     SparePart[]
+
+  @@map("part_groups")
+}
+
+model SparePart {
+  id        Int       @id @default(autoincrement())
+  groupId   Int       @map("group_id")
+  group     PartGroup @relation(fields: [groupId], references: [id], onDelete: Restrict)
+  number    Int
+  name      String
+  fit       String
+  image     String?
+  href      String?
+  sortOrder Int       @default(0) @map("sort_order")
+  published Boolean   @default(true)
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([groupId])
+  @@map("spare_parts")
+}
+
+model Project {
+  id             Int      @id @default(autoincrement())
+  name           String
+  location       String   @default("")
+  /// ("Fuel Dispensers" | "LPG" | "CNG" | "EV Chargers")[]
+  categories     Json
+  description    String
+  image          String?
+  imagePosition  String?  @map("image_position")
+  onHome         Boolean  @default(false) @map("on_home")
+  onProjectsPage Boolean  @default(true) @map("on_projects_page")
+  sortOrder      Int      @default(0) @map("sort_order")
+  published      Boolean  @default(true)
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("projects")
+}
+
+model Testimonial {
+  id        Int      @id @default(autoincrement())
+  quote     String
+  company   String?
+  sortOrder Int      @default(0) @map("sort_order")
+  published Boolean  @default(true)
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("testimonials")
+}
+
+model ClientLogo {
+  id        Int      @id @default(autoincrement())
+  name      String
+  image     String
+  width     Int
+  height    Int
+  sortOrder Int      @default(0) @map("sort_order")
+  published Boolean  @default(true)
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("client_logos")
+}

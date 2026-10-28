@@ -1,15 +1,7 @@
-import { SPARE_PARTS } from "@/lib/spare-parts";
-import { PRODUCT_CATEGORIES } from "@/lib/product-pages";
-import { PRODUCTS, SERVICES } from "@/lib/nav";
+import type { Category, NavProduct, SearchEntry, SparePart } from "@/lib/content/types";
+import { SERVICES } from "@/lib/nav";
 
-export type SearchEntry = {
-  title: string;
-  /** Where the result sits — shown under the title. */
-  context: string;
-  href: string;
-  /** Extra text matched against, but not displayed. */
-  keywords: string;
-};
+export type { SearchEntry };
 
 const PAGES: SearchEntry[] = [
   {
@@ -45,51 +37,58 @@ const PAGES: SearchEntry[] = [
 ];
 
 /**
- * A flat index built at module scope from the same data the pages render, so a
- * new product or service shows up in search without a second edit.
+ * The flat search index, built on the server from the same content the pages render
+ * (getSearchIndex in lib/content) and handed to the search dialog, so a product added
+ * in the admin is findable without a second edit.
  */
-export const SEARCH_INDEX: SearchEntry[] = [
-  ...PAGES,
+export function buildSearchIndex(
+  nav: NavProduct[],
+  catalog: Category[],
+  parts: SparePart[]
+): SearchEntry[] {
+  return [
+    ...PAGES,
 
-  ...PRODUCTS.map((product) => ({
-    title: product.title,
-    context: "Products",
-    href: product.href,
-    keywords: product.description,
-  })),
+    ...nav.map((product) => ({
+      title: product.title,
+      context: "Products",
+      href: product.href,
+      keywords: product.description,
+    })),
 
-  ...SERVICES.map((service) => ({
-    title: service.title,
-    context: "Services",
-    href: service.href,
-    keywords: "service support megatec",
-  })),
+    ...SERVICES.map((service) => ({
+      title: service.title,
+      context: "Services",
+      href: service.href,
+      keywords: "service support megatec",
+    })),
 
-  // Fuel, CNG, LPG and EV products link to their sub-category page; spare parts to the list.
-  ...PRODUCT_CATEGORIES.flatMap((category) =>
-    category.subs.flatMap((sub) =>
-      sub.products.map((product) => ({
-        title: product.name,
-        context: category.name,
-        href: `/products/${category.slug}/${sub.slug}`,
-        keywords: [product.blurb, ...product.cells.map(([, value]) => value)].join(" "),
-      }))
-    )
-  ),
+    // Fuel, CNG, LPG and EV products link to their sub-category page; spare parts to the list.
+    ...catalog.flatMap((category) =>
+      category.subs.flatMap((sub) =>
+        sub.products.map((product) => ({
+          title: product.name,
+          context: category.name,
+          href: `/products/${category.slug}/${sub.slug}`,
+          keywords: [product.blurb, ...product.cells.map(([, value]) => value)].join(" "),
+        }))
+      )
+    ),
 
-  ...SPARE_PARTS.map((part) => ({
-    title: part.name,
-    context: "Spare parts",
-    href: part.href ?? "/products/station-accessories",
-    keywords: `${part.fit} ${part.group}`,
-  })),
-];
+    ...parts.map((part) => ({
+      title: part.name,
+      context: "Spare parts",
+      href: part.href ?? "/products/station-accessories",
+      keywords: `${part.fit} ${part.group}`,
+    })),
+  ];
+}
 
-export function searchSite(query: string, limit = 8): SearchEntry[] {
+export function searchSite(index: SearchEntry[], query: string, limit = 8): SearchEntry[] {
   const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
   if (terms.length === 0) return [];
 
-  return SEARCH_INDEX.map((entry) => {
+  return index.map((entry) => {
     const title = entry.title.toLowerCase();
     const haystack = `${title} ${entry.context} ${entry.keywords}`.toLowerCase();
 

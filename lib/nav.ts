@@ -1,51 +1,21 @@
-import { getCategory, productsIn, type CategorySlug } from "@/lib/catalogue";
-import { SPARE_PARTS } from "@/lib/spare-parts";
-import { PRODUCT_CATEGORIES } from "@/lib/product-pages";
-
-export type NavProduct = {
-  title: string;
-  description: string;
-  href: string;
-  icon: string;
-  /** Products in the category, shown in the menu (punch list ST-01's "18 products"). */
-  count: number;
-  /** The category's sub-category pages (ST-01), for the menu to expand. */
-  subs: { title: string; href: string }[];
-};
+export type { NavProduct } from "@/lib/content/types";
 
 export type NavService = {
   title: string;
   href: string;
 };
 
-function category(slug: CategorySlug, href: string, icon: string): NavProduct {
-  const { title, description } = getCategory(slug);
-  // The four categories with sub-category pages count what those pages list.
-  const page = PRODUCT_CATEGORIES.find((c) => `/products/${c.slug}` === href);
-  const count = page
-    ? page.subs.reduce((total, sub) => total + sub.products.length, 0)
-    : slug === "station-accessories"
-      ? SPARE_PARTS.length
-      : productsIn(slug).length;
-  const subs = (page?.subs ?? []).map((sub) => ({
-    title: sub.name,
-    href: `${href}/${sub.slug}`,
-  }));
-  return { title, description, href, icon, count, subs };
-}
-
 /**
- * The PRODUCTS menu (ST-01): the five category pages, which the footer's
- * Products list and Home's product cards link to as well (ST-05). Landing pages
- * never appear here: they are for Google Ads only (ST-02).
+ * The PRODUCTS menu itself comes from the content layer (getNavProducts in
+ * lib/content), since MEGA-TEC can add sub-categories in the admin. This entry is
+ * the one category that is a page of its own, the spare parts list.
  */
-export const PRODUCTS: NavProduct[] = [
-  category("fuel-dispensers", "/products/fuel-solutions", "/images/brand/icon-fuel-dispensers.png"),
-  category("cng", "/products/cng-solutions", "/images/brand/icon-cng.png"),
-  category("lpg", "/products/lpg-solutions", "/images/brand/icon-lpg.png"),
-  category("ev-chargers", "/products/ev-chargers", "/images/brand/icon-ev-charger.svg"),
-  category("station-accessories", "/products/station-accessories", "/images/brand/icon-station.png"),
-];
+export const STATION_ACCESSORIES = {
+  title: "Station Accessories",
+  description: "Comprehensive station accessories to enhance functionality and safety.",
+  href: "/products/station-accessories",
+  icon: "/images/brand/icon-station.png",
+};
 
 /**
  * The four Google Ads landing pages (punch list ST-02). They stay calm — no video,
