@@ -172,7 +172,7 @@ export default function FuelDispensersPage() {
 
       <TrustSection items={TRUST} />
 
-      <section className="py-6 sm:py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-16">
         <Container>
           <div className="text-center">
             <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
@@ -205,7 +205,7 @@ export default function FuelDispensersPage() {
         </Container>
       </section>
 
-      <section className="py-6 sm:py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-16">
         <Container className="max-w-3xl">
           <h2 className="text-ink text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
             A poorly calibrated dispenser costs your station money every single day
@@ -227,7 +227,7 @@ export default function FuelDispensersPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container>
           <h2 className="text-ink max-w-3xl text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
             One bad part should never turn your pump into scrap
@@ -254,7 +254,7 @@ export default function FuelDispensersPage() {
         </Container>
       </section>
 
-      <section className="py-6 sm:py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-16">
         <Container className="text-center">
           <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
             Our installation process
@@ -275,7 +275,7 @@ export default function FuelDispensersPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="flex flex-col items-center text-center">
           <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-4xl">
             Get the full dispenser specifications

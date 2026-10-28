@@ -166,7 +166,7 @@ export default function CngPage() {
 
       <TrustSection items={TRUST} />
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="max-w-4xl">
           <h2 className="text-ink text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
             What a complete CNG station requires
@@ -201,7 +201,7 @@ export default function CngPage() {
         <RangeLink href={catalogueHref("cng")}>See Full CNG Equipment Range</RangeLink>
       </Container>
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="max-w-4xl">
           <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance lg:text-4xl">
             CNG infrastructure runs at very high pressure. There is no room for shortcuts.
@@ -217,7 +217,7 @@ export default function CngPage() {
         </Container>
       </section>
 
-      <section className="py-6 sm:py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-16">
         <Container>
           <h2 className="text-ink text-center text-3xl font-semibold tracking-tight lg:text-4xl">
             Who this is for
@@ -241,7 +241,7 @@ export default function CngPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="flex flex-col items-center text-center">
           <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-4xl">
             Get the full CNG station setup guide

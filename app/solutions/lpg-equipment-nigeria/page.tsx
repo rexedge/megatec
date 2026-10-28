@@ -140,7 +140,7 @@ export default function LpgPage() {
 
       <TrustSection items={TRUST} />
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container>
           <div className="text-center">
             <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
@@ -200,7 +200,7 @@ export default function LpgPage() {
         </Container>
       </section>
 
-      <section className="py-6 sm:py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-16">
         <Container className="max-w-4xl">
           <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance lg:text-4xl">
             LPG accidents are costly and dangerous, but they can be prevented
@@ -216,7 +216,7 @@ export default function LpgPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="max-w-4xl">
           <h2 className="text-ink text-4xl font-semibold tracking-tight lg:text-5xl">
             Deployment workflow
@@ -237,7 +237,7 @@ export default function LpgPage() {
         </Container>
       </section>
 
-      <section className="py-6 sm:py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-16">
         <Container className="flex flex-col items-center text-center">
           <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-4xl">
             Get the full LPG equipment specifications

@@ -22,7 +22,7 @@ export function LandingProjects({
   projects: LandingProject[];
 }) {
   return (
-    <section className="py-6 sm:py-20 lg:py-28">
+    <section className="py-6 sm:py-20 lg:py-16">
       <Container>
         <h2 className="text-ink max-w-3xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
           {heading}

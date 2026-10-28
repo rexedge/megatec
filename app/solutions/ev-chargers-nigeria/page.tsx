@@ -125,7 +125,7 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="py-6 sm:py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-16">
         <Container className="max-w-4xl">
           <p className="text-ink text-2xl leading-snug font-semibold tracking-tight text-balance sm:text-3xl">
             Nigeria&apos;s EV adoption is accelerating. Corporate fleets are converting. Hotels and
@@ -136,7 +136,7 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="py-6 sm:py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-16">
         <Container>
           <h2 className="text-ink max-w-3xl text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
             Industrial EV charging for high-traffic commercial sites
@@ -172,7 +172,7 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container>
           <h2 className="text-ink max-w-3xl text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
             Fast home and estate EV charging, compact and professionally installed
@@ -201,7 +201,7 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="py-6 sm:py-20 lg:py-28">
+      <section className="py-6 sm:py-20 lg:py-16">
         <Container>
           <h2 className="text-ink max-w-3xl text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
             EV charging is now a competitive differentiator for Nigerian businesses
@@ -219,7 +219,7 @@ export default function EvChargersPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-28">
+      <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container className="flex flex-col items-center text-center">
           <h2 className="text-ink text-3xl font-semibold tracking-tight lg:text-4xl">
             Get the full EV charger specifications

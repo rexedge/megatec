@@ -77,7 +77,7 @@ export function LandingForm({
   }
 
   return (
-    <section id="contact" className="bg-leaf-dark scroll-mt-36 py-10 sm:py-20 lg:py-28">
+    <section id="contact" className="bg-leaf-dark scroll-mt-36 py-10 sm:py-20 lg:py-16">
       <Container className="max-w-3xl">
         <h2 className="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl lg:text-5xl">
           {heading}

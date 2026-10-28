@@ -29,7 +29,7 @@ export function EquipmentList({
   messageFor: (title: string) => string;
 }) {
   return (
-    <section className="py-6 sm:py-20 lg:py-28">
+    <section className="py-6 sm:py-20 lg:py-16">
       <Container className="max-w-4xl">
         <h2 className="text-ink text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
           {heading}
