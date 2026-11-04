@@ -18,6 +18,22 @@ export const STATION_ACCESSORIES = {
 };
 
 /**
+ * A spare-part group's key in the address, e.g. "Meters & Units" → "meters-units": the
+ * spare parts list opens on the group its ?group= names.
+ */
+export function partGroupKey(label: string) {
+  return label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+/** The spare parts list opened on one group, scrolled to the list (the PRODUCTS menu's links). */
+export function partGroupHref(label: string) {
+  return `${STATION_ACCESSORIES.href}?group=${partGroupKey(label)}#parts`;
+}
+
+/**
  * The four Google Ads landing pages (punch list ST-02). They stay calm — no video,
  * no heavy motion, and the floating WhatsApp button does not pulse on them
  * (MO-04, MO-11) — and they open on a full-bleed hero the header sits over.

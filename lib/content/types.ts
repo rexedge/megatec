@@ -118,6 +118,8 @@ export type NavProduct = {
   count: number;
   /** The category's sub-category pages (ST-01), for the menu to expand. */
   subs: { title: string; href: string }[];
+  /** Station Accessories only: the spare parts list opened on each group, for the desktop menu. */
+  groups?: { title: string; href: string }[];
 };
 
 export type SearchEntry = {

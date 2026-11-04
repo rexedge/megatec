@@ -25,6 +25,9 @@
   --color-sky: #4a9fd8;
   --color-sky-dark: #3a8ec8;
   --color-hero-tint: #eaf3f8;
+  /* The PRODUCTS menu's deep blue (products-dropdown.html): icons, arrows and the
+     selected category. Dark enough for text on white, unlike sky. */
+  --color-sea: #165a8f;
 
   --font-sans: var(--font-sans);
   --font-accent: var(--font-accent);
@@ -48,6 +51,31 @@
   @keyframes marquee {
     to {
       transform: translateX(-50%);
+    }
+  }
+
+  /* The PRODUCTS menu. A category's panel slides in from the side the visitor moved
+     towards (--menu-dir: 1 going down the list, -1 going up), its links follow one after
+     another, and the mobile menu settles in from just above. */
+  --animate-menu-panel: menu-panel 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  @keyframes menu-panel {
+    from {
+      opacity: 0;
+      transform: translateY(calc(var(--menu-dir, 1) * 10px));
+    }
+  }
+  --animate-menu-item: menu-item 300ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  @keyframes menu-item {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+  --animate-menu-sheet: menu-sheet 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  @keyframes menu-sheet {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
     }
   }
 }

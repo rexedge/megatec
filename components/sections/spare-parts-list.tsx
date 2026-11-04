@@ -2,13 +2,30 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
 import type { PartGroup, SparePart } from "@/lib/content/types";
+import { partGroupKey } from "@/lib/nav";
+
+type ListProps = { groups: PartGroup[]; parts: SparePart[] };
 
 /** Parts shown at first, and added by each tap of "Show more" (R2-07). */
 const PAGE_SIZE = 20;
+
+/**
+ * The list opened on the group the address names (?group=valves), which is where the
+ * PRODUCTS menu's spare-part links land. Following a link for another group starts the
+ * list afresh on that group.
+ */
+export function SparePartsListFromUrl({ groups, parts }: ListProps) {
+  const key = useSearchParams().get("group");
+  const initialGroup = groups.find((g) => partGroupKey(g.label) === key)?.name ?? null;
+  return (
+    <SparePartsList key={key ?? ""} groups={groups} parts={parts} initialGroup={initialGroup} />
+  );
+}
 
 /**
  * The spare parts list (05 doc, punch list PA-01): scrollable category pills, a
@@ -16,8 +33,12 @@ const PAGE_SIZE = 20;
  * per-item buttons: one page-level WhatsApp button handles every enquiry. The
  * groups and parts come from the content layer (getSpareParts).
  */
-export function SparePartsList({ groups, parts }: { groups: PartGroup[]; parts: SparePart[] }) {
-  const [group, setGroup] = useState<string | null>(null);
+export function SparePartsList({
+  groups,
+  parts,
+  initialGroup = null,
+}: ListProps & { initialGroup?: string | null }) {
+  const [group, setGroup] = useState<string | null>(initialGroup);
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(PAGE_SIZE);
 

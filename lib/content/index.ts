@@ -2,7 +2,7 @@ import "server-only";
 import { unstable_cache } from "next/cache";
 import { cache } from "react";
 import { db, type Database } from "@/lib/db";
-import { STATION_ACCESSORIES } from "@/lib/nav";
+import { STATION_ACCESSORIES, partGroupHref } from "@/lib/nav";
 import { buildSearchIndex } from "@/lib/search";
 import * as seed from "@/lib/content/seed";
 import type {
@@ -202,9 +202,12 @@ export async function getProductsById(ids: string[]) {
   >;
 }
 
-/** The PRODUCTS menu: each category with its product count and sub-category pages (ST-01). */
+/**
+ * The PRODUCTS menu: each category with its product count and sub-category pages (ST-01),
+ * and for the spare parts list, a link to it opened on each group.
+ */
 export async function getNavProducts(): Promise<NavProduct[]> {
-  const [catalog, { parts }] = await Promise.all([getCatalog(), getSpareParts()]);
+  const [catalog, { groups, parts }] = await Promise.all([getCatalog(), getSpareParts()]);
   return [
     ...catalog.map((category) => {
       const href = `/products/${category.slug}`;
@@ -217,7 +220,12 @@ export async function getNavProducts(): Promise<NavProduct[]> {
         subs: category.subs.map((sub) => ({ title: sub.name, href: `${href}/${sub.slug}` })),
       };
     }),
-    { ...STATION_ACCESSORIES, count: parts.length, subs: [] },
+    {
+      ...STATION_ACCESSORIES,
+      count: parts.length,
+      subs: [],
+      groups: groups.map((group) => ({ title: group.label, href: partGroupHref(group.label) })),
+    },
   ];
 }
 
