@@ -78,6 +78,40 @@
       transform: translateY(-8px);
     }
   }
+
+  /* The 404 page's dispenser: its display stutters on like a pump powering up, and the
+     OUT OF SERVICE tag hanging from the nozzle sways. */
+  --animate-lcd-on: lcd-on 1.6s steps(1, end) 0.3s both;
+  @keyframes lcd-on {
+    0% {
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    18% {
+      opacity: 0.15;
+    }
+    30% {
+      opacity: 1;
+    }
+    36% {
+      opacity: 0.35;
+    }
+    44%,
+    100% {
+      opacity: 1;
+    }
+  }
+  --animate-tag-sway: tag-sway 3.2s ease-in-out infinite alternate;
+  @keyframes tag-sway {
+    from {
+      transform: rotate(-5deg);
+    }
+    to {
+      transform: rotate(4deg);
+    }
+  }
 }
 
 body {

@@ -441,8 +441,11 @@ const ICONS: Record<string, React.ReactNode> = {
   ),
 };
 
-/** The category's icon on a tinted tile; the selected category's tile turns deep blue. */
-function CategoryIcon({
+/**
+ * The category's icon on a tinted tile; the selected category's tile turns deep blue. The
+ * 404 page's product ranges use it too.
+ */
+export function CategoryIcon({
   product,
   selected = false,
   small = false,
