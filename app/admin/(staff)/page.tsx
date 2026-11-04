@@ -9,10 +9,11 @@ export const metadata: Metadata = { title: "Content" };
 export default async function AdminHome() {
   const { user } = await requireStaff();
   const database = db!;
-  const [products, subcategories, parts, projects, testimonials, logos] = await Promise.all([
+  const [products, subcategories, parts, partGroups, projects, testimonials, logos] = await Promise.all([
     database.product.count(),
     database.subcategory.count(),
     database.sparePart.count(),
+    database.partGroup.count(),
     database.project.count(),
     database.testimonial.count(),
     database.clientLogo.count(),
@@ -21,7 +22,7 @@ export default async function AdminHome() {
   // A section with an href has its editor; the rest are on their way.
   const sections: { title: string; detail: string; href?: string }[] = [
     { title: "Products", detail: `${products} products in ${subcategories} sub-categories` },
-    { title: "Spare parts", detail: `${parts} parts in 8 groups` },
+    { title: "Spare parts", detail: `${parts} parts in ${partGroups} groups on Station Accessories`, href: "/admin/spare-parts" },
     { title: "Projects", detail: `${projects} projects on the homepage and Projects page`, href: "/admin/projects" },
     { title: "Testimonials", detail: `${testimonials} quotes on the homepage`, href: "/admin/testimonials" },
     { title: "Client logos", detail: `${logos} logos under the homepage headline`, href: "/admin/client-logos" },
