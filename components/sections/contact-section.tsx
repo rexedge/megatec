@@ -52,7 +52,7 @@ export function ContactSection({
 
         {showBranches && (
           <div className="border-border/70 mt-8 border-t pt-6 sm:mt-12 sm:pt-10">
-            <h3 className="text-ink text-xl font-medium tracking-tight">Branches</h3>
+            <h3 className="text-ink text-xl font-medium tracking-tight">Find us nationwide</h3>
             <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
               {BRANCHES.map((branch) => (
                 <li key={branch.city}>

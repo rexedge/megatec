@@ -64,7 +64,7 @@ export default function ProjectsPage() {
           </h2>
           <p className="text-body mt-6 max-w-3xl text-lg leading-relaxed">
             MEGA-TEC has completed installations across 31 states and the FCT, supported by 80+
-            engineers and 8 regional branches.
+            engineers and 6 branches.
           </p>
         </Container>
       </section>

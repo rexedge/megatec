@@ -19,6 +19,9 @@ const PILLS = [
   "Wiring & Sundries",
 ];
 
+/** Parts shown at first, and added by each tap of "Show more" (R2-07). */
+const PAGE_SIZE = 20;
+
 /**
  * The spare parts list (05 doc, punch list PA-01): scrollable category pills, a
  * search box, and a photo, name and fit tag for each of the 84 parts. No drawers
@@ -27,6 +30,17 @@ const PILLS = [
 export function SparePartsList() {
   const [group, setGroup] = useState<string | null>(null);
   const [query, setQuery] = useState("");
+  const [visible, setVisible] = useState(PAGE_SIZE);
+
+  // A new pill or search starts again from the first page of its own list.
+  function chooseGroup(next: string | null) {
+    setGroup(next);
+    setVisible(PAGE_SIZE);
+  }
+  function search(next: string) {
+    setQuery(next);
+    setVisible(PAGE_SIZE);
+  }
 
   const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
   const shown = SPARE_PARTS.filter(
@@ -35,6 +49,8 @@ export function SparePartsList() {
       terms.every((term) => `${part.name} ${part.fit}`.toLowerCase().includes(term))
   );
 
+  const page = shown.slice(0, visible);
+
   return (
     <>
       <div
@@ -42,11 +58,11 @@ export function SparePartsList() {
         aria-label="Filter parts by category"
         className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:px-0"
       >
-        <Pill active={group === null} onClick={() => setGroup(null)}>
+        <Pill active={group === null} onClick={() => chooseGroup(null)}>
           All ({SPARE_PARTS.length})
         </Pill>
         {PART_GROUPS.map((name, index) => (
-          <Pill key={name} active={group === name} onClick={() => setGroup(name)}>
+          <Pill key={name} active={group === name} onClick={() => chooseGroup(name)}>
             {PILLS[index]}
           </Pill>
         ))}
@@ -57,30 +73,42 @@ export function SparePartsList() {
         <input
           type="search"
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => search(event.target.value)}
           placeholder="Search parts by name…"
           className="form-input"
         />
       </label>
 
-      <p className="text-body mt-6 text-sm" aria-live="polite">
-        Showing {shown.length} {shown.length === 1 ? "part" : "parts"}
-      </p>
-
       {shown.length === 0 ? (
-        <p className="text-body mt-6">
-          No part matches that. Message us on WhatsApp and we&apos;ll find it for you.
+        <p className="text-body mt-6" aria-live="polite">
+          We could not find that part here. Message us on WhatsApp and we&apos;ll find it for you.
         </p>
       ) : (
-        <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
-          {shown.map((part) => (
-            <li key={part.n}>
-              <Reveal className="h-full">
-                <PartCard part={part} />
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+        <>
+          <p className="text-body mt-6 text-sm" aria-live="polite">
+            Showing {page.length} of {shown.length}
+          </p>
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+            {page.map((part) => (
+              <li key={part.n}>
+                <Reveal className="h-full">
+                  <PartCard part={part} />
+                </Reveal>
+              </li>
+            ))}
+          </ul>
+          {page.length < shown.length && (
+            <div className="mt-8 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setVisible((count) => count + PAGE_SIZE)}
+                className="border-ink text-ink hover:bg-ink min-h-11 rounded-full border px-8 text-sm font-medium transition-colors hover:text-white"
+              >
+                Show more
+              </button>
+            </div>
+          )}
+        </>
       )}
     </>
   );
