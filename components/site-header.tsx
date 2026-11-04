@@ -161,7 +161,9 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav ref={navRef} className="hidden items-center gap-8 md:flex">
+        {/* Tighter gaps, and an icon-only search button, until the row has room (from
+            768px it would otherwise push the search button off the screen). */}
+        <nav ref={navRef} className="hidden items-center gap-5 md:flex lg:gap-8">
           <Link href="/" className={linkItemClass}>
             HOME
           </Link>
@@ -244,15 +246,16 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={openSearch}
+            aria-label="Global search"
             className={cn(
-              "hidden items-center gap-2 rounded-lg border px-4 py-3 text-sm transition-colors md:flex",
+              "hidden items-center gap-2 rounded-lg border px-3 py-3 text-sm transition-colors md:flex lg:px-4",
               solid
                 ? "border-border/70 text-body hover:border-ink hover:text-ink"
                 : "border-white/40 text-white hover:border-white"
             )}
           >
             <SearchIcon />
-            Global search
+            <span className="hidden lg:inline">Global search</span>
           </button>
           <button
             type="button"
