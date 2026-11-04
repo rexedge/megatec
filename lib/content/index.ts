@@ -136,7 +136,8 @@ export const getSpareParts = source<{ groups: PartGroup[]; parts: SparePart[] }>
       database.partGroup.findMany({ orderBy: { sortOrder: "asc" } }),
       database.sparePart.findMany({
         where: { published: true },
-        orderBy: order,
+        // Group by group, each in its own order: the admin orders parts within a group.
+        orderBy: [{ group: { sortOrder: "asc" } }, ...order],
         include: { group: { select: { name: true } } },
       }),
     ]);
