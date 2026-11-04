@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { FormMessage } from "@/components/admin/auth-card";
+import { EditorForm } from "@/components/admin/editor-form";
 import { Checkbox, Panel, TextArea, TextField } from "@/components/admin/fields";
 import { FormActions } from "@/components/admin/row-actions";
 import { saveTestimonial } from "./actions";
@@ -14,7 +15,7 @@ export function TestimonialForm({ id, values }: { id: number | null; values: Tes
 
   return (
     <Panel className="mt-8 max-w-2xl p-5 sm:p-6">
-      <form action={action} className="space-y-6">
+      <EditorForm action={action} className="space-y-6">
         <TextArea
           label="Quote"
           hint="As the customer said it, without quotation marks; the homepage adds them."
@@ -40,7 +41,7 @@ export function TestimonialForm({ id, values }: { id: number | null; values: Tes
         />
         {state?.error && <FormMessage tone="error">{state.error}</FormMessage>}
         <FormActions pending={pending} cancelHref="/admin/testimonials" saveLabel={id === null ? "Add the quote" : "Save changes"} />
-      </form>
+      </EditorForm>
     </Panel>
   );
 }

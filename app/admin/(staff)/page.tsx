@@ -22,9 +22,9 @@ export default async function AdminHome() {
   const sections: { title: string; detail: string; href?: string }[] = [
     { title: "Products", detail: `${products} products in ${subcategories} sub-categories` },
     { title: "Spare parts", detail: `${parts} parts in 8 groups` },
-    { title: "Projects", detail: `${projects} projects` },
+    { title: "Projects", detail: `${projects} projects on the homepage and Projects page`, href: "/admin/projects" },
     { title: "Testimonials", detail: `${testimonials} quotes on the homepage`, href: "/admin/testimonials" },
-    { title: "Client logos", detail: `${logos} logos` },
+    { title: "Client logos", detail: `${logos} logos under the homepage headline`, href: "/admin/client-logos" },
   ];
 
   return (
