@@ -11,6 +11,11 @@ export function checked(form: FormData, name: string) {
   return form.get(name) === "on";
 }
 
+/** A field posted once per row of a RowList: one entry per row, in the order shown. */
+export function texts(form: FormData, name: string) {
+  return form.getAll(name).map((value) => String(value).trim());
+}
+
 /** True while a photo on the form is still on its way to Cloudinary (PhotoField). */
 export function stillUploading(form: FormData) {
   return form.get("uploading") === "1";

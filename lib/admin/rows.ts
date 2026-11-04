@@ -10,7 +10,7 @@ import { ADMIN_ORDER, reorder, rowId } from "@/lib/admin/order";
  * Callers check the signed-in user first.
  */
 
-export type ListTable = "testimonial" | "clientLogo" | "project" | "sparePart" | "product";
+export type ListTable = "testimonial" | "clientLogo" | "project" | "sparePart" | "product" | "subcategory";
 type Where = Record<string, unknown>;
 
 // The few methods used here, which every one of these Prisma tables has.
