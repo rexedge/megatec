@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 import { TrustBar } from "@/components/sections/trust-bar";
-import { SparePartsList } from "@/components/sections/spare-parts-list";
+import {
+  SparePartsList,
+  SparePartsListFromUrl,
+} from "@/components/sections/spare-parts-list";
 import { ContactSection } from "@/components/sections/contact-section";
+import { getSpareParts } from "@/lib/content";
 
 /**
  * Copy is from the Product Catalogue document, "Station Accessories" and its
@@ -24,7 +29,9 @@ const TRUST = [
   "Nationwide Supply & Support",
 ];
 
-export default function StationAccessoriesPage() {
+export default async function StationAccessoriesPage() {
+  const { groups, parts } = await getSpareParts();
+
   return (
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Station Accessories" }]} />
@@ -56,9 +63,14 @@ export default function StationAccessoriesPage() {
         </Container>
       </section>
 
-      <section className="py-6 sm:py-12 lg:py-16">
+      {/* The PRODUCTS menu's spare-part links land here (#parts), below the header. */}
+      <section id="parts" className="scroll-mt-36 py-6 sm:py-12 lg:py-16">
         <Container>
-          <SparePartsList />
+          {/* The list reads ?group= in the browser, so the page itself stays static:
+              visitors without it, and search engines, get the full list. */}
+          <Suspense fallback={<SparePartsList groups={groups} parts={parts} />}>
+            <SparePartsListFromUrl groups={groups} parts={parts} />
+          </Suspense>
           <WhatsappButton
             variant="leaf"
             className="mt-10"

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { ClosingCta } from "@/components/sections/closing-cta";
-import { ProjectsGrid, type ProjectEntry } from "@/components/sections/projects-grid";
+import { ProjectsGrid } from "@/components/sections/projects-grid";
+import { getProjects } from "@/lib/content";
 
 /**
  * Copy is from the Core Site Pages document, Page 3 "Projects / Installations"
@@ -10,7 +11,7 @@ import { ProjectsGrid, type ProjectEntry } from "@/components/sections/projects-
  * without details and photos unpublished: the CNG project waits for MEGA-TEC (the
  * CNG tab keeps its empty message), and the testimonials stay out until real,
  * cleared quotes arrive. NIPCO and Total were added in October 2026 (R2-14); Total
- * took MRS's place.
+ * took MRS's place. The projects themselves are edited in the admin (/admin/projects).
  */
 export const metadata: Metadata = {
   title: "Our Installations | Fuel, LPG, CNG & EV Projects Across Nigeria | MEGA-TEC",
@@ -18,40 +19,9 @@ export const metadata: Metadata = {
     "See MEGA-TEC's completed fuel dispenser, LPG, CNG and EV installations across Nigeria. Real projects, real stations, nationwide.",
 };
 
-const PROJECTS: ProjectEntry[] = [
-  {
-    name: "Nepal Energies",
-    location: "Nationwide",
-    categories: ["Fuel Dispensers", "LPG"],
-    description:
-      "A multi-contract partnership beginning with a major 200-dispenser supply, and continued through repeat orders over several years.",
-    image: "/images/projects/nepal-energies.jpg",
-  },
-  {
-    name: "Sterling Oil & Gas",
-    location: "Lagos, Akwa Ibom & Port Harcourt",
-    categories: ["Fuel Dispensers"],
-    description:
-      "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
-  },
-  {
-    name: "NIPCO",
-    categories: ["Fuel Dispensers"],
-    description:
-      "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
-    image: "/images/projects/nipco.jpg",
-  },
-  {
-    name: "Total",
-    categories: ["Fuel Dispensers"],
-    description: "MEGA-TEC fuel dispensers in service at a Total station on New Yidi Road.",
-    image: "/images/projects/total.jpg",
-    // The photo is a wide panorama: keep the cropped card on the centre pump.
-    imagePosition: "52% 50%",
-  },
-];
+export default async function ProjectsPage() {
+  const projects = (await getProjects()).filter((project) => project.onProjectsPage);
 
-export default function ProjectsPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Projects & Installations" }]} />
@@ -70,7 +40,7 @@ export default function ProjectsPage() {
 
       <section className="py-6 sm:pt-0 sm:pb-16 lg:pb-20">
         <Container>
-          <ProjectsGrid projects={PROJECTS} />
+          <ProjectsGrid projects={projects} />
         </Container>
       </section>
 

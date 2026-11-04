@@ -9,7 +9,7 @@ import { useEnquiry } from "@/components/ui/enquiry-modal";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
-import type { PageProduct } from "@/lib/product-pages";
+import type { PageProduct } from "@/lib/content/types";
 
 const NOZZLES = ["All", "Single", "Double"] as const;
 const METERS = ["All", "Bennett", "Tokheim"] as const;

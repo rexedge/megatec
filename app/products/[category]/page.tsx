@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 import { TrustBar } from "@/components/sections/trust-bar";
-import { PRODUCT_CATEGORIES } from "@/lib/product-pages";
+import { getCatalog, getCategory } from "@/lib/content";
 
 /**
  * The four category pages (05 doc, "CATEGORY" sections): a signpost with trust
@@ -14,21 +14,21 @@ import { PRODUCT_CATEGORIES } from "@/lib/product-pages";
  */
 export const dynamicParams = false;
 
-export function generateStaticParams() {
-  return PRODUCT_CATEGORIES.map((category) => ({ category: category.slug }));
+export async function generateStaticParams() {
+  return (await getCatalog()).map((category) => ({ category: category.slug }));
 }
 
 type Props = { params: Promise<{ category: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category } = await params;
-  const page = PRODUCT_CATEGORIES.find((c) => c.slug === category);
+  const page = await getCategory(category);
   return page ? { title: page.title, description: page.meta } : {};
 }
 
 export default async function CategoryPage({ params }: Props) {
   const { category } = await params;
-  const page = PRODUCT_CATEGORIES.find((c) => c.slug === category);
+  const page = await getCategory(category);
   if (!page) notFound();
 
   return (

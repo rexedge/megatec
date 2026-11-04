@@ -1,55 +1,17 @@
-// Generated from the Product Catalogue document (05_Product_Catalogue.md): category and
-// sub-category pages, cards and drawers, word for word. Edit here, not the document.
+// The site's product content as first published, generated from the Product Catalogue
+// document (05_Product_Catalogue.md): category and sub-category pages, cards and drawers,
+// word for word. `pnpm db:seed` loads it into the database; after that, MEGA-TEC edits
+// it in the admin. Until the site has a database, the pages read it from here.
+//
+// The menu line, icon and filter switch are not in the document; lib/content/seed/index.ts
+// adds them.
 
-export type DrawerExtra = { t: "p" | "h" | "li"; x: string };
+import type { Category, SubCategory } from "@/lib/content/types";
 
-export type PageProduct = {
-  id: string;
-  name: string;
-  /** The italic line under the name on the card. */
-  blurb: string;
-  best: boolean;
-  /** The pill on the card image: "NMDPRA" for regulated dispensing equipment. */
-  tag: string | null;
-  /** The badge line at the top of the drawer. */
-  badge: string;
-  /** The drawer's spec grid: label, value. */
-  cells: [string, string][];
-  description: string;
-  /** Extra drawer copy after the description (conversion kit: how it works, what is in it). */
-  extras: DrawerExtra[];
-  warranty: string;
-  /** null where there is no photo yet: the card shows the muted MEGA-TEC logo. */
-  image: string | null;
-  /** Filename under /public/spec-sheets. */
-  sheet: string | null;
-};
+type SeedSubCategory = Omit<SubCategory, "filters">;
+type SeedCategory = Omit<Category, "menuDescription" | "icon" | "subs"> & { subs: SeedSubCategory[] };
 
-export type SubCategory = {
-  slug: string;
-  name: string;
-  title: string;
-  meta: string;
-  h1: string | null;
-  intro: string[];
-  /** The headline over the short form at the foot of the page. */
-  form: string;
-  products: PageProduct[];
-};
-
-export type Category = {
-  slug: string;
-  name: string;
-  title: string;
-  meta: string;
-  headline: string;
-  intro: string;
-  cta: string;
-  bullets: string[];
-  subs: SubCategory[];
-};
-
-export const PRODUCT_CATEGORIES: Category[] = [
+export const SEED_CATALOG: SeedCategory[] = [
   {
     "slug": "fuel-solutions",
     "name": "Fuel Solutions",
