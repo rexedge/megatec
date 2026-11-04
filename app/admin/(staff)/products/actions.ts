@@ -3,7 +3,7 @@
 import { revalidatePath, updateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireStaff } from "@/lib/auth";
-import { checked, photoAddress, stillUploading, text } from "@/lib/admin/form";
+import { checked, photoAddress, sheetAddress, stillUploading, text } from "@/lib/admin/form";
 import { rowId } from "@/lib/admin/order";
 import { deleteRow, moveRow, nextSortOrder, setRowPublished } from "@/lib/admin/rows";
 import { CONTENT_TAGS } from "@/lib/content";
@@ -23,8 +23,6 @@ export type ProductFormState = { error?: string } | null;
 const MAX_DETAILS = 12;
 const MAX_EXTRAS = 20;
 const EXTRA_KINDS: DrawerExtra["t"][] = ["p", "h", "li"];
-/** A datasheet shipped with the site, under /public/spec-sheets. */
-const SITE_SHEET = /^[\w\-.]+\.pdf$/;
 
 function changed() {
   updateTag(CONTENT_TAGS.catalog);
@@ -101,7 +99,7 @@ function readExtras(form: FormData): Read<DrawerExtra[]> {
 export async function saveProduct(id: number | null, _: ProductFormState, form: FormData): Promise<ProductFormState> {
   await requireStaff();
   if (id !== null && !rowId(id)) return { error: "This product can't be found." };
-  if (stillUploading(form)) return { error: "Wait for the photo to finish uploading, then save." };
+  if (stillUploading(form)) return { error: "Wait for the photo or spec sheet to finish uploading, then save." };
 
   const subcategoryId = rowId(text(form, "subcategory"));
   const name = text(form, "name");
@@ -111,7 +109,7 @@ export async function saveProduct(id: number | null, _: ProductFormState, form: 
   const description = text(form, "description");
   const warranty = text(form, "warranty");
   const image = photoAddress(text(form, "image"));
-  const sheet = text(form, "sheet");
+  const sheet = sheetAddress(text(form, "sheet"));
   const details = readDetails(form);
   const extras = readExtras(form);
 
@@ -132,7 +130,7 @@ export async function saveProduct(id: number | null, _: ProductFormState, form: 
   if ("error" in extras) return extras;
   if (!warranty) return { error: "Say what warranty it comes with, e.g. 1-year warranty." };
   if (warranty.length > 120) return { error: "Keep the warranty line under 120 characters." };
-  if (sheet && !SITE_SHEET.test(sheet)) return { error: "That spec sheet isn't one of the site's files." };
+  if (sheet === undefined) return { error: "That spec sheet isn't one uploaded here. Upload it again." };
 
   const twin = await database.product.findFirst({
     where: { subcategoryId: sub.id, name: { equals: name, mode: "insensitive" }, ...(id === null ? {} : { id: { not: id } }) },
@@ -152,7 +150,7 @@ export async function saveProduct(id: number | null, _: ProductFormState, form: 
     extras: extras.value,
     warranty,
     image,
-    sheet: sheet || null,
+    sheet,
     published: checked(form, "published"),
   };
   if (id === null) {

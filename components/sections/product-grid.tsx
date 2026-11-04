@@ -11,6 +11,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { StandInArt } from "@/components/ui/stand-in-art";
 import { cn } from "@/lib/cn";
 import type { PageProduct } from "@/lib/content/types";
+import { specSheetHref } from "@/lib/spec-sheets";
 
 const NOZZLES = ["All", "Single", "Double"] as const;
 const METERS = ["All", "Bennett", "Tokheim"] as const;
@@ -269,7 +270,7 @@ function Drawer({ product, category, onClose }: { product: PageProduct; category
 
           {product.sheet && (
             <SpecSheetLink
-              href={`/spec-sheets/${product.sheet}`}
+              href={specSheetHref(product.sheet)}
               description={`Download the full technical datasheet for the ${product.name}.`}
               className="text-ink text-left font-medium underline underline-offset-4"
             >

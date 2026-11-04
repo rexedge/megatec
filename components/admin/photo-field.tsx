@@ -3,41 +3,15 @@
 import { useId, useRef, useState } from "react";
 import { FormMessage } from "@/components/admin/auth-card";
 import { photoUploadTicket, type UploadFolder } from "@/app/admin/(staff)/uploads";
+import { sendToCloudinary, type UploadedFile } from "@/components/admin/cloudinary-upload";
 
-export type UploadedPhoto = { url: string; width: number; height: number };
+export type UploadedPhoto = UploadedFile;
 
 const MAX_BYTES = 10 * 1024 * 1024;
 const ACCEPT = "image/jpeg,image/png,image/webp,image/avif,image/svg+xml";
 
 const button =
   "border-border text-ink hover:border-ink inline-flex min-h-10 cursor-pointer items-center justify-center rounded-lg border bg-white px-4 text-sm font-medium transition-colors";
-
-/** Sends the file to Cloudinary with the server's signed fields, reporting progress. */
-function send(file: File, url: string, fields: Record<string, string>, onProgress: (percent: number) => void) {
-  return new Promise<UploadedPhoto>((resolve, reject) => {
-    const body = new FormData();
-    for (const [key, value] of Object.entries(fields)) body.append(key, value);
-    body.append("file", file);
-    const request = new XMLHttpRequest();
-    request.open("POST", url);
-    request.upload.onprogress = (event) => {
-      if (event.lengthComputable) onProgress(Math.round((event.loaded / event.total) * 100));
-    };
-    request.onerror = () => reject(new Error("The upload didn't go through. Check the connection and try again."));
-    request.onload = () => {
-      let reply: { secure_url?: string; width?: number; height?: number; error?: { message?: string } } = {};
-      try {
-        reply = JSON.parse(request.responseText);
-      } catch {}
-      if (request.status >= 200 && request.status < 300 && reply.secure_url) {
-        resolve({ url: reply.secure_url, width: reply.width ?? 0, height: reply.height ?? 0 });
-      } else {
-        reject(new Error(reply.error?.message ? `Cloudinary refused the file: ${reply.error.message}` : "The upload failed. Try again."));
-      }
-    };
-    request.send(body);
-  });
-}
 
 /**
  * A photo on a form: what is there now, and buttons to upload a new one or remove it. The
@@ -78,7 +52,7 @@ export function PhotoField({
     try {
       const ticket = await photoUploadTicket(folder);
       if ("error" in ticket) throw new Error(ticket.error);
-      const photo = await send(file, ticket.url, ticket.fields, setProgress);
+      const photo = await sendToCloudinary(file, ticket, setProgress);
       setUrl(photo.url);
       onChange?.(photo);
     } catch (problem) {
