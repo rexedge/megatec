@@ -80,6 +80,9 @@ export type SparePart = {
 
 export type ProjectCategory = "Fuel Dispensers" | "LPG" | "CNG" | "EV Chargers";
 
+/** The Projects page's filters, in their order; the admin offers the same four. */
+export const PROJECT_CATEGORIES: ProjectCategory[] = ["Fuel Dispensers", "LPG", "CNG", "EV Chargers"];
+
 export type Project = {
   name: string;
   /** Empty where MEGA-TEC has not supplied one yet. */
