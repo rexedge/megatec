@@ -98,9 +98,10 @@ export function TestimonialsSection({ items }: { items: Testimonial[] }) {
               ref={trackRef}
               className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-              {items.map((item) => (
+              {items.map((item, i) => (
                 <figure
-                  key={item.quote}
+                  // Two quotes can now have the same words, so the key includes the position.
+                  key={`${i}-${item.quote}`}
                   className="bg-accent flex w-[300px] shrink-0 snap-start flex-col gap-6 rounded-2xl p-8 sm:w-[360px]"
                 >
                   <blockquote className="text-body leading-relaxed">

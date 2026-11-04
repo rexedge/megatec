@@ -17,7 +17,8 @@ export default async function Home() {
       <ProductsSection />
       <ServicesSection />
       <WhyMegaTec />
-      <TestimonialsSection items={testimonials} />
+      {/* Every quote can be hidden in the admin; then the section stays out. */}
+      {testimonials.length > 0 && <TestimonialsSection items={testimonials} />}
       <ContactSection showBranches />
       <ProjectsSection />
       <StatsCta />
