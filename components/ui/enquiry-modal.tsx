@@ -84,7 +84,7 @@ type QuoteRequest = {
 };
 
 type SpecSheetRequest = {
-  /** Path to the PDF datasheet, served from /public/spec-sheets. */
+  /** The PDF datasheet: a path under /spec-sheets, or the address of one uploaded in the admin. */
   href: string;
   description?: string;
 };

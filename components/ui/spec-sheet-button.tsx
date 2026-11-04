@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useEnquiry } from "@/components/ui/enquiry-modal";
 
 type SpecSheetTriggerProps = {
-  /** Path to the PDF datasheet, served from /public/spec-sheets. */
+  /** The PDF datasheet: a path under /spec-sheets, or the address of one uploaded in the admin. */
   href: string;
   /** Shown as the modal subtitle, e.g. "…datasheet for our fuel dispenser range." */
   description?: string;

@@ -7,6 +7,7 @@ import { Checkbox, Panel, TextArea, TextField } from "@/components/admin/fields"
 import { PhotoField } from "@/components/admin/photo-field";
 import { FormActions } from "@/components/admin/row-actions";
 import { RowList } from "@/components/admin/row-list";
+import { SheetField } from "@/components/admin/sheet-field";
 import type { DrawerExtra } from "@/lib/content/types";
 import { saveProduct } from "./actions";
 
@@ -214,7 +215,7 @@ export function ProductForm({ id, values, pages }: { id: number | null; values: 
             maxLength={120}
             defaultValue={values.warranty}
           />
-          <SheetField defaultValue={values.sheet} />
+          <SheetField name="sheet" defaultValue={values.sheet} />
         </Section>
 
         <div className="space-y-6">
@@ -236,39 +237,5 @@ function Section({ title, intro, children }: { title: string; intro: string; chi
       </div>
       {children}
     </section>
-  );
-}
-
-/** The datasheet the details panel offers: the current one, which can be taken off. */
-function SheetField({ defaultValue }: { defaultValue: string | null }) {
-  const [sheet, setSheet] = useState(defaultValue ?? "");
-  return (
-    <div>
-      <p className="text-ink text-sm font-medium">
-        Spec sheet <span className="text-body/70 font-normal">(optional)</span>
-      </p>
-      <p className="text-body mt-0.5 mb-1.5 text-xs leading-relaxed">
-        The PDF behind “Download full specification”. Visitors leave their details before it opens.
-      </p>
-      <input type="hidden" name="sheet" value={sheet} />
-      <div className="bg-surface-soft flex flex-wrap items-center gap-3 rounded-xl p-4">
-        {sheet ? (
-          <>
-            <a href={`/spec-sheets/${sheet}`} target="_blank" rel="noreferrer" className="text-ink text-sm font-medium break-all underline">
-              {sheet}
-            </a>
-            <button
-              type="button"
-              onClick={() => setSheet("")}
-              className="border-border text-ink hover:border-ink inline-flex min-h-10 items-center rounded-lg border bg-white px-4 text-sm font-medium transition-colors"
-            >
-              Remove
-            </button>
-          </>
-        ) : (
-          <p className="text-body text-sm">No spec sheet. Uploading a PDF here is on its way.</p>
-        )}
-      </div>
-    </div>
   );
 }

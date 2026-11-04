@@ -25,7 +25,7 @@ export type PageProduct = {
   warranty: string;
   /** null where there is no photo yet: the card shows a stand-in picture (StandInArt). */
   image: string | null;
-  /** Filename under /public/spec-sheets, or a /media/ path once uploaded. */
+  /** A file name under /public/spec-sheets, or the Cloudinary address of one uploaded in the admin (specSheetHref). */
   sheet: string | null;
 };
 
