@@ -40,20 +40,30 @@ export const CONTENT_TAGS = {
  * Wraps a database read in the cross-request cache with its tag, and in React's
  * per-render cache so a page that asks twice queries once. Without a database it
  * returns the seed content.
+ *
+ * `key` names the cache entry and must be unique per read. (A function's own name will
+ * not do: the production build shortens names, and reads sharing a tag then shared one
+ * entry, so Home's projects and logos came back as testimonials.) The read's own source
+ * is part of the key too: the cache outlives deployments, so a deployment that changes
+ * how a read shapes its rows must not be handed what an older one stored.
  */
 function source<T>(
+  key: string,
   tag: string,
   fromDb: (database: Database) => Promise<T>,
   fromSeed: () => T
 ): () => Promise<T> {
   const database = db;
   if (!database) return cache(async () => fromSeed());
-  return cache(unstable_cache(() => fromDb(database), ["content", tag, fromDb.name], { tags: [tag] }));
+  return cache(
+    unstable_cache(() => fromDb(database), ["content", key, fromDb.toString()], { tags: [tag] })
+  );
 }
 
 const order = [{ sortOrder: "asc" as const }, { id: "asc" as const }];
 
 export const getCatalog = source<Category[]>(
+  "catalog",
   CONTENT_TAGS.catalog,
   async function catalog(database) {
     const categories = await database.category.findMany({
@@ -110,6 +120,7 @@ export const getCatalog = source<Category[]>(
 );
 
 export const getSpareParts = source<{ groups: PartGroup[]; parts: SparePart[] }>(
+  "spare-parts",
   CONTENT_TAGS.parts,
   async function spareParts(database) {
     const [groups, parts] = await Promise.all([
@@ -136,6 +147,7 @@ export const getSpareParts = source<{ groups: PartGroup[]; parts: SparePart[] }>
 );
 
 export const getProjects = source<Project[]>(
+  "projects",
   CONTENT_TAGS.showcase,
   async function projects(database) {
     const rows = await database.project.findMany({ where: { published: true }, orderBy: order });
@@ -154,6 +166,7 @@ export const getProjects = source<Project[]>(
 );
 
 export const getTestimonials = source<Testimonial[]>(
+  "testimonials",
   CONTENT_TAGS.showcase,
   async function testimonials(database) {
     const rows = await database.testimonial.findMany({
@@ -166,6 +179,7 @@ export const getTestimonials = source<Testimonial[]>(
 );
 
 export const getClientLogos = source<ClientLogo[]>(
+  "client-logos",
   CONTENT_TAGS.showcase,
   async function clientLogos(database) {
     const rows = await database.clientLogo.findMany({ where: { published: true }, orderBy: order });
