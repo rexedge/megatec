@@ -131,7 +131,7 @@ const PROJECTS = [
     image: "/images/projects/nepal-energies.jpg",
     imagePosition: "top",
   },
-  // No photo yet: Sterling's is still to be supplied, so the card is text only.
+  // No photo yet: Sterling's is still to be supplied, so the card shows a stand-in picture.
   {
     title: "Sterling Oil & Gas, Lagos, Akwa Ibom & PH",
     description:
@@ -290,7 +290,7 @@ export default function FuelDispensersPage() {
         </Container>
       </section>
 
-      <LandingProjects heading="Trusted by Nigeria's serious fuel operators" projects={PROJECTS} />
+      <LandingProjects category="fuel-solutions" heading="Trusted by Nigeria's serious fuel operators" projects={PROJECTS} />
 
       <LandingForm
         heading="Ready to set up your station? Let's talk."

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Reveal } from "@/components/ui/reveal";
+import { StandInArt, projectArtCategory } from "@/components/ui/stand-in-art";
 import { cn } from "@/lib/cn";
 
 export type ProjectCategory = "Fuel Dispensers" | "LPG" | "CNG" | "EV Chargers";
@@ -13,7 +14,7 @@ export type ProjectEntry = {
   location?: string;
   categories: ProjectCategory[];
   description: string;
-  /** Left out where the photo has not been supplied: the card shows text only. */
+  /** Left out where the photo has not been supplied: the card shows a stand-in picture. */
   image?: string;
   imagePosition?: string;
 };
@@ -62,8 +63,8 @@ export function ProjectsGrid({ projects }: { projects: ProjectEntry[] }) {
             <li key={project.name}>
             <Reveal className="h-full">
             <div className="bg-surface-soft flex h-full flex-col overflow-hidden rounded-2xl">
-              {project.image && (
-                <div className="relative aspect-4/3">
+              <div className="relative aspect-4/3 overflow-hidden">
+                {project.image ? (
                   <Image
                     src={project.image}
                     alt={`${project.name} installation`}
@@ -72,8 +73,11 @@ export function ProjectsGrid({ projects }: { projects: ProjectEntry[] }) {
                     style={{ objectPosition: project.imagePosition }}
                     className="object-cover"
                   />
-                </div>
-              )}
+                ) : (
+                  // No photo yet: the stand-in picture for its kind of work.
+                  <StandInArt seed={project.name} category={projectArtCategory(project.categories)} />
+                )}
+              </div>
               <div className="flex flex-1 flex-col gap-2 p-4 sm:p-6">
                 <h3 className="text-ink text-base font-medium tracking-tight sm:text-xl">
                   {project.name}
