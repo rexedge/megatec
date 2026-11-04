@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { EnquiryProvider } from "@/components/ui/enquiry-modal";
 import { FloatingWhatsapp } from "@/components/ui/floating-whatsapp";
+import { PublicOnly } from "@/components/ui/public-only";
 import { SITE_URL } from "@/lib/site";
 import { getNavProducts, getSearchIndex } from "@/lib/content";
 import "./globals.css";
@@ -59,10 +60,14 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-white text-ink">
         <EnquiryProvider>
-          <SiteHeader products={products} searchIndex={searchIndex} />
+          <PublicOnly>
+            <SiteHeader products={products} searchIndex={searchIndex} />
+          </PublicOnly>
           <main className="flex-1">{children}</main>
-          <SiteFooter products={products} />
-          <FloatingWhatsapp />
+          <PublicOnly>
+            <SiteFooter products={products} />
+            <FloatingWhatsapp />
+          </PublicOnly>
         </EnquiryProvider>
       </body>
     </html>

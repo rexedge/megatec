@@ -156,3 +156,88 @@ model ClientLogo {
 
   @@map("client_logos")
 }
+
+// ---------------------------------------------------------------------------------------
+// Admin sign-in (Better Auth, lib/auth.ts). Field names are the ones Better Auth expects;
+// the admin plugin adds role and the ban fields to users, impersonatedBy to sessions.
+
+/// A member of MEGA-TEC staff who can sign in to the admin. Accounts are created by an
+/// admin (there is no public sign-up); "admin" can also manage staff, "user" edits content.
+model User {
+  id            String    @id
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false) @map("email_verified")
+  image         String?
+  role          String?
+  banned        Boolean?  @default(false)
+  banReason     String?   @map("ban_reason")
+  banExpires    DateTime? @map("ban_expires") @db.Timestamptz
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt     DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+  sessions      Session[]
+  accounts      Account[]
+
+  @@map("users")
+}
+
+model Session {
+  id             String   @id
+  expiresAt      DateTime @map("expires_at") @db.Timestamptz
+  token          String   @unique
+  ipAddress      String?  @map("ip_address")
+  userAgent      String?  @map("user_agent")
+  userId         String   @map("user_id")
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  impersonatedBy String?  @map("impersonated_by")
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+/// How a user signs in. For staff this is the "credential" provider: `password` holds the
+/// password hash (never the password).
+model Account {
+  id                    String    @id
+  accountId             String    @map("account_id")
+  providerId            String    @map("provider_id")
+  userId                String    @map("user_id")
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?   @map("access_token")
+  refreshToken          String?   @map("refresh_token")
+  idToken               String?   @map("id_token")
+  accessTokenExpiresAt  DateTime? @map("access_token_expires_at") @db.Timestamptz
+  refreshTokenExpiresAt DateTime? @map("refresh_token_expires_at") @db.Timestamptz
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt             DateTime  @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([userId])
+  @@map("accounts")
+}
+
+/// Short-lived tokens, such as password-reset links.
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime @map("expires_at") @db.Timestamptz
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt  DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@index([identifier])
+  @@map("verifications")
+}
+
+/// Sign-in attempt counters, kept in the database so every server instance shares them.
+model RateLimit {
+  id          String @id
+  key         String @unique
+  count       Int
+  lastRequest BigInt @map("last_request")
+
+  @@map("rate_limits")
+}
