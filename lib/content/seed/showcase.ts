@@ -11,7 +11,7 @@ import type { ClientLogo, Project, Testimonial } from "@/lib/content/types";
  * In October 2026 (R2-14) NIPCO took Sterling's place on Home, keeping its description,
  * and NIPCO and Total joined the Projects page (Total in MRS's slot).
  *
- * TODO(assets): Sterling has no photo yet, so its card is text only. Canico needs a
+ * TODO(assets): Sterling has no photo yet, so its card shows a stand-in picture. Canico needs a
  * location and a one-line outcome; NIPCO needs its own description (it repeats
  * Sterling's). A CNG project waits for details and photos. MEGA-TEC must confirm every
  * card is client-approved.

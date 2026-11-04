@@ -23,7 +23,7 @@ export type PageProduct = {
   /** Extra drawer copy after the description (conversion kit: how it works, what is in it). */
   extras: DrawerExtra[];
   warranty: string;
-  /** null where there is no photo yet: the card shows the muted MEGA-TEC logo. */
+  /** null where there is no photo yet: the card shows a stand-in picture (StandInArt). */
   image: string | null;
   /** Filename under /public/spec-sheets, or a /media/ path once uploaded. */
   sheet: string | null;
@@ -72,7 +72,7 @@ export type SparePart = {
   /** Which dispensers it fits. */
   fit: string;
   group: string;
-  /** null where there is no photo yet: the card shows the muted MEGA-TEC logo. */
+  /** null where there is no photo yet: the card shows a stand-in picture (StandInArt). */
   image: string | null;
   /** The CNG items link to their product page instead of being described here (PA-03). */
   href?: string;
@@ -89,7 +89,7 @@ export type Project = {
   location: string;
   categories: ProjectCategory[];
   description: string;
-  /** Left out where the photo has not been supplied: the card shows text only. */
+  /** Left out where the photo has not been supplied: the card shows a stand-in picture. */
   image?: string;
   imagePosition?: string;
   /** Shown in Home's project section. */

@@ -76,7 +76,7 @@ export function ProjectForm({ id, values }: { id: number | null; values: Project
 
         <PhotoField
           label="Photo"
-          hint="A landscape photo of the installation. Without one, the card shows the words on a blue panel."
+          hint="A landscape photo of the installation. Without one, the card shows a drawn stand-in picture."
           name="image"
           folder="projects"
           defaultValue={values.image}

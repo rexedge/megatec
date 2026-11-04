@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import { StandInArt, projectArtCategory } from "@/components/ui/stand-in-art";
 import { cn } from "@/lib/cn";
 import { getProjects } from "@/lib/content";
 
@@ -38,28 +39,24 @@ export async function ProjectsSection() {
           {projects.map((project, index) => (
             // The middle card of each row of three sits lower on a wide screen.
             <div key={project.title} className={cn(index % 3 === 1 && "lg:mt-24")}>
-              {project.image ? (
-                <>
-                  <div className="bg-surface-soft relative aspect-9/8 w-full overflow-hidden rounded-2xl">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <p className="text-ink mt-6 text-xl font-medium tracking-tight">
-                    {project.title}
-                  </p>
-                  <p className="text-body mt-2 leading-relaxed">{project.description}</p>
-                </>
-              ) : (
-                <div className="bg-accent flex aspect-9/8 w-full flex-col justify-center rounded-2xl p-8">
-                  <p className="text-ink text-xl font-medium tracking-tight">{project.title}</p>
-                  <p className="text-body mt-2 leading-relaxed">{project.description}</p>
-                </div>
-              )}
+              <div className="bg-surface-soft relative aspect-9/8 w-full overflow-hidden rounded-2xl">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                ) : (
+                  // No photo yet: the stand-in picture for its kind of work.
+                  <StandInArt seed={project.name} category={projectArtCategory(project.categories)} />
+                )}
+              </div>
+              <p className="text-ink mt-6 text-xl font-medium tracking-tight">
+                {project.title}
+              </p>
+              <p className="text-body mt-2 leading-relaxed">{project.description}</p>
             </div>
           ))}
         </div>

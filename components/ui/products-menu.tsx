@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useEnquiry } from "@/components/ui/enquiry-modal";
 import { cn } from "@/lib/cn";
-import { STATION_ACCESSORIES as STATION_ACCESSORIES_PAGE, type NavProduct } from "@/lib/nav";
+import { CATEGORY_GLYPHS } from "@/components/ui/category-glyphs";
+import type { NavProduct } from "@/lib/nav";
 
 /**
  * The PRODUCTS menu, after products-dropdown.html: on desktop the mega menu (option B),
@@ -15,8 +16,6 @@ import { STATION_ACCESSORIES as STATION_ACCESSORIES_PAGE, type NavProduct } from
  * as cards. Both take their categories, counts and pages from the content layer
  * (getNavProducts), passed down by the header.
  */
-
-const STATION_ACCESSORIES = STATION_ACCESSORIES_PAGE.href;
 
 /** A category's pages; the spare parts list has none, so it offers the list opened on each group. */
 function linksFor(product: NavProduct) {
@@ -401,46 +400,6 @@ function Chevron({ className }: { className?: string }) {
   );
 }
 
-/** One outline set on a 24px grid (products-dropdown.html), by category page. */
-const ICONS: Record<string, React.ReactNode> = {
-  "/products/fuel-solutions": (
-    <>
-      <path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16" />
-      <path d="M3 21h12" />
-      <path d="M7 7h4v3H7z" />
-      <path d="M14 10h2a2 2 0 0 1 2 2v4.5a1.5 1.5 0 0 0 3 0V8l-3-3" />
-    </>
-  ),
-  "/products/cng-solutions": (
-    <>
-      <path d="M10 2.5h4" />
-      <path d="M12 2.5V5" />
-      <path d="M8 9a4 4 0 0 1 8 0v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2z" />
-      <path d="M8 12.5h8" />
-      <path d="M8 16.5h8" />
-    </>
-  ),
-  "/products/lpg-solutions": (
-    <>
-      <path d="M9 6V3.5h6V6" />
-      <path d="M5.5 10a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v9a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2z" />
-      <path d="M12 18.5c-1.3 0-2.2-.9-2.2-2 0-1.4 1.3-2 2.2-3.5.9 1.5 2.2 2.1 2.2 3.5 0 1.1-.9 2-2.2 2z" />
-    </>
-  ),
-  "/products/ev-chargers": (
-    <>
-      <path d="M9 2.5V6" />
-      <path d="M15 2.5V6" />
-      <path d="M6 6h12v4a6 6 0 0 1-12 0z" />
-      <path d="M12 16v5.5" />
-      <path d="M12.8 8l-2 3h2.4l-2 3" />
-    </>
-  ),
-  [STATION_ACCESSORIES]: (
-    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z" />
-  ),
-};
-
 /**
  * The category's icon on a tinted tile; the selected category's tile turns deep blue. The
  * 404 page's product ranges use it too.
@@ -454,7 +413,8 @@ export function CategoryIcon({
   selected?: boolean;
   small?: boolean;
 }) {
-  const paths = ICONS[product.href];
+  // The category's slug is the last part of its page address.
+  const paths = CATEGORY_GLYPHS[product.href.split("/").pop() ?? ""];
   return (
     <span
       className={cn(

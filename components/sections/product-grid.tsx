@@ -8,6 +8,7 @@ import { SpecSheetLink } from "@/components/ui/spec-sheet-button";
 import { useEnquiry } from "@/components/ui/enquiry-modal";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 import { Reveal } from "@/components/ui/reveal";
+import { StandInArt } from "@/components/ui/stand-in-art";
 import { cn } from "@/lib/cn";
 import type { PageProduct } from "@/lib/content/types";
 
@@ -18,13 +19,16 @@ const METERS = ["All", "Bennett", "Tokheim"] as const;
  * A sub-category's product grid (05 doc): two cards across even on a phone, each
  * with WhatsApp and "View details", which opens the product's drawer. With
  * `filters` it also offers the nozzle and meter filters the Fuel Dispensers page
- * calls for (punch list ST-08).
+ * calls for (punch list ST-08). `category` (its slug) picks the stand-in picture for
+ * products without a photo.
  */
 export function ProductGrid({
   products,
+  category,
   filters = false,
 }: {
   products: PageProduct[];
+  category: string;
   filters?: boolean;
 }) {
   const [nozzle, setNozzle] = useState<(typeof NOZZLES)[number]>("All");
@@ -57,13 +61,13 @@ export function ProductGrid({
         {shown.map((product) => (
           <li key={product.id}>
             <Reveal className="h-full">
-              <Card product={product} onOpen={() => setOpen(product)} />
+              <Card product={product} category={category} onOpen={() => setOpen(product)} />
             </Reveal>
           </li>
         ))}
       </ul>
 
-      {open && <Drawer product={open} onClose={() => setOpen(null)} />}
+      {open && <Drawer product={open} category={category} onClose={() => setOpen(null)} />}
     </>
   );
 }
@@ -104,28 +108,24 @@ function Pills<T extends string>({
 
 function Photo({
   product,
+  category,
   sizes,
   fit = "object-cover",
 }: {
   product: PageProduct;
+  category: string;
   sizes: string;
   fit?: string;
 }) {
   return product.image ? (
     <Image src={product.image} alt={product.name} fill sizes={sizes} className={fit} />
   ) : (
-    // No photo yet: the muted MEGA-TEC logo stands in, never another product's picture.
-    <Image
-      src="/images/brand/logo.png"
-      alt=""
-      fill
-      sizes={sizes}
-      className="object-contain p-[22%] opacity-25 grayscale"
-    />
+    // No photo yet: the category's stand-in picture, never another product's photo.
+    <StandInArt seed={product.name} category={category} />
   );
 }
 
-function Card({ product, onOpen }: { product: PageProduct; onOpen: () => void }) {
+function Card({ product, category, onOpen }: { product: PageProduct; category: string; onOpen: () => void }) {
   return (
     <div
       className={cn(
@@ -134,7 +134,7 @@ function Card({ product, onOpen }: { product: PageProduct; onOpen: () => void })
       )}
     >
       <div className="bg-surface-soft relative aspect-4/3 overflow-hidden">
-        <Photo product={product} sizes="(min-width: 1024px) 33vw, 50vw" />
+        <Photo product={product} category={category} sizes="(min-width: 1024px) 33vw, 50vw" />
         {product.best && (
           <span className="text-ink absolute top-2 left-2 rounded-full bg-amber-400 px-2 py-0.5 text-[10px] font-medium @2xs:top-4 @2xs:left-4 @2xs:px-3 @2xs:py-1 @2xs:text-xs">
             Best Seller
@@ -173,7 +173,7 @@ function Card({ product, onOpen }: { product: PageProduct; onOpen: () => void })
   );
 }
 
-function Drawer({ product, onClose }: { product: PageProduct; onClose: () => void }) {
+function Drawer({ product, category, onClose }: { product: PageProduct; category: string; onClose: () => void }) {
   const titleId = useId();
   const { openQuote } = useEnquiry();
 
@@ -219,7 +219,7 @@ function Drawer({ product, onClose }: { product: PageProduct; onClose: () => voi
         </button>
 
         <div className="bg-surface-soft relative aspect-16/10 shrink-0">
-          <Photo product={product} sizes="(min-width: 672px) 672px, 100vw" fit="object-contain" />
+          <Photo product={product} category={category} sizes="(min-width: 672px) 672px, 100vw" fit="object-contain" />
         </div>
 
         <div className="flex flex-col gap-6 p-6 sm:p-8">

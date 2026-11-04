@@ -77,6 +77,7 @@ export default async function SubCategoryPage({ params }: Props) {
           <div className="mt-8 sm:mt-12">
             <ProductGrid
               products={subPage.products}
+              category={page.slug}
               filters={subPage.filters}
             />
           </div>

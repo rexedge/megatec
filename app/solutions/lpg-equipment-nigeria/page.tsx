@@ -252,7 +252,7 @@ export default function LpgPage() {
         </Container>
       </section>
 
-      <LandingProjects heading="LPG projects we've delivered" projects={PROJECTS} />
+      <LandingProjects category="lpg-solutions" heading="LPG projects we've delivered" projects={PROJECTS} />
 
       <LandingForm
         heading="Building or upgrading an LPG plant? Let's make sure it's done right from the start."

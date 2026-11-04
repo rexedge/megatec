@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Reveal } from "@/components/ui/reveal";
+import { StandInArt } from "@/components/ui/stand-in-art";
 import { cn } from "@/lib/cn";
 import type { PartGroup, SparePart } from "@/lib/content/types";
 import { partGroupKey } from "@/lib/nav";
@@ -161,13 +162,8 @@ function PartCard({ part }: { part: SparePart }) {
             className="object-contain p-3"
           />
         ) : (
-          <Image
-            src="/images/brand/logo.png"
-            alt=""
-            fill
-            sizes="25vw"
-            className="object-contain p-[22%] opacity-25 grayscale"
-          />
+          // No photo yet: the spare parts stand-in picture.
+          <StandInArt seed={part.name} category="station-accessories" />
         )}
       </div>
       <div className="flex flex-col gap-1 p-3 sm:p-4">
