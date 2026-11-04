@@ -37,6 +37,13 @@ export const CONTENT_TAGS = {
 } as const;
 
 /**
+ * Raise by one whenever content is changed in the database outside the admin (a script
+ * or SQL), so the next deployment reads it afresh: the cache outlives deployments, and
+ * only the admin's own saves refresh it. 2: Round 2 content (R2-09, R2-14), Nov 2026.
+ */
+const CONTENT_VERSION = 2;
+
+/**
  * Wraps a database read in the cross-request cache with its tag, and in React's
  * per-render cache so a page that asks twice queries once. Without a database it
  * returns the seed content.
@@ -56,7 +63,9 @@ function source<T>(
   const database = db;
   if (!database) return cache(async () => fromSeed());
   return cache(
-    unstable_cache(() => fromDb(database), ["content", key, fromDb.toString()], { tags: [tag] })
+    unstable_cache(() => fromDb(database), ["content", `v${CONTENT_VERSION}`, key, fromDb.toString()], {
+      tags: [tag],
+    })
   );
 }
 
