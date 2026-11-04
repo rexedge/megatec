@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { FormMessage } from "@/components/admin/auth-card";
 import { HiddenPill, PageHeader, Panel } from "@/components/admin/fields";
 import { RowActions } from "@/components/admin/row-actions";
@@ -69,14 +70,19 @@ export default async function ProductsAdminPage({ searchParams }: { searchParams
                 {page.name}
                 {!page.published && <HiddenPill />}
               </h2>
-              <a
-                href={`/products/${category.slug}/${page.slug}`}
-                target="_blank"
-                rel="noreferrer"
-                className="text-sea text-sm font-semibold"
-              >
-                See the page ↗
-              </a>
+              <div className="flex gap-4">
+                <Link href={`/admin/product-pages/${page.id}`} className="text-sea text-sm font-semibold">
+                  Edit the page’s text
+                </Link>
+                <a
+                  href={`/products/${category.slug}/${page.slug}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sea text-sm font-semibold"
+                >
+                  See the page ↗
+                </a>
+              </div>
             </div>
             <Panel className="divide-border/70 mt-4 divide-y">
               {page.products.length === 0 && <p className="text-body p-6 text-sm">No products on this page.</p>}
