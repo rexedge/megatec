@@ -5,6 +5,7 @@ import { WhatsappButton } from "@/components/ui/whatsapp-button";
 import { TrustBar } from "@/components/sections/trust-bar";
 import { SparePartsList } from "@/components/sections/spare-parts-list";
 import { ContactSection } from "@/components/sections/contact-section";
+import { getSpareParts } from "@/lib/content";
 
 /**
  * Copy is from the Product Catalogue document, "Station Accessories" and its
@@ -24,7 +25,9 @@ const TRUST = [
   "Nationwide Supply & Support",
 ];
 
-export default function StationAccessoriesPage() {
+export default async function StationAccessoriesPage() {
+  const { groups, parts } = await getSpareParts();
+
   return (
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Station Accessories" }]} />
@@ -58,7 +61,7 @@ export default function StationAccessoriesPage() {
 
       <section className="py-6 sm:py-12 lg:py-16">
         <Container>
-          <SparePartsList />
+          <SparePartsList groups={groups} parts={parts} />
           <WhatsappButton
             variant="leaf"
             className="mt-10"

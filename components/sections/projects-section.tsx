@@ -1,50 +1,22 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/cn";
+import { getProjects } from "@/lib/content";
 
 /**
- * Only real, named engagements belong here. The three entries this replaced
- * ("Port Harcourt Bulk Terminal", "Lagos Metro Fuel Hub", "An electric charging
- * station in Abuja") were illustrated with AI-generated renders and appear in no
- * client list Mega-Tec has supplied. The Nepal and Sterling copy is verbatim from
- * the Core Site Pages document, Projects §2, and the Canico wording is from its
- * Global Rules. Canico took Sterling Oil & Gas's place in October 2026 and
- * Sterling came back beside it (punch list HM-11).
- *
- * TODO(assets): Sterling has no photo yet, so its card is text only: give its
- * entry an `image` once Mega-Tec supplies one. Canico needs a location and a
- * one-line outcome, and Mega-Tec must confirm all three cards are accurate and
- * client-approved. Asset request item 2.
+ * Home's project cards: the projects marked "show on Home" in the admin (lib/content).
+ * Only real, named engagements belong here; the seed content (lib/content/seed) notes
+ * what MEGA-TEC still owes for each.
  */
-type Project = {
-  title: string;
-  description: string;
-  image?: string;
-  /** Sits lower than its neighbours on a wide screen, for the staggered look. */
-  offset?: boolean;
-};
+export async function ProjectsSection() {
+  const projects = (await getProjects())
+    .filter((project) => project.onHome)
+    // Home names the place with the client, e.g. "Nepal Energies, Nationwide".
+    .map((project) => ({
+      ...project,
+      title: project.location ? `${project.name}, ${project.location}` : project.name,
+    }));
 
-const PROJECTS: Project[] = [
-  {
-    title: "Nepal Energies, Nationwide",
-    description:
-      "A multi-contract partnership beginning with a major 200-dispenser supply, and continued through repeat orders over several years.",
-    image: "/images/projects/nepal-energies.jpg",
-  },
-  {
-    title: "Canico",
-    description: "MEGA-TEC fuel dispensers in service on Canico's forecourt.",
-    image: "/images/projects/canico.jpg",
-    offset: true,
-  },
-  {
-    title: "Sterling Oil & Gas, Lagos, Akwa Ibom & Port Harcourt",
-    description:
-      "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
-  },
-];
-
-export function ProjectsSection() {
   return (
     <section className="py-6 sm:py-20 lg:py-28">
       <Container>
@@ -63,8 +35,9 @@ export function ProjectsSection() {
         </div>
 
         <div className="mt-8 sm:mt-16 grid w-full grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map((project) => (
-            <div key={project.title} className={cn(project.offset && "lg:mt-24")}>
+          {projects.map((project, index) => (
+            // The middle card of each row of three sits lower on a wide screen.
+            <div key={project.title} className={cn(index % 3 === 1 && "lg:mt-24")}>
               {project.image ? (
                 <>
                   <div className="bg-surface-soft relative aspect-9/8 w-full overflow-hidden rounded-2xl">

@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { HERO_PAGES, PRODUCTS, SERVICES } from "@/lib/nav";
+import { HERO_PAGES, SERVICES } from "@/lib/nav";
+import type { NavProduct, SearchEntry } from "@/lib/content/types";
 import { Container } from "@/components/ui/container";
 import { SearchDialog } from "@/components/ui/search-dialog";
 import { cn } from "@/lib/cn";
@@ -17,7 +18,14 @@ const NAV_LINKS = [
   { label: "CONTACT", href: "/contact" },
 ];
 
-export function SiteHeader() {
+/** The PRODUCTS menu and the search index come from the content layer, via the root layout. */
+export function SiteHeader({
+  products,
+  searchIndex,
+}: {
+  products: NavProduct[];
+  searchIndex: SearchEntry[];
+}) {
   const pathname = usePathname();
   // Landing pages open on a full-bleed hero, so the header sits over it.
   // Category pages start on white and must not.
@@ -164,7 +172,7 @@ export function SiteHeader() {
               <div className="absolute left-1/2 top-full mt-4 max-h-[calc(100dvh-8.5rem)] w-[420px] -translate-x-1/2 overflow-y-auto overscroll-contain rounded-xl border border-border/70 bg-white p-6 shadow-xl">
                 <p className="mb-4 text-sm text-body">Products</p>
                 <ul className="flex flex-col gap-5">
-                  {PRODUCTS.map((product) => (
+                  {products.map((product) => (
                     <li key={product.href}>
                       <Link
                         href={product.href}
@@ -319,7 +327,7 @@ export function SiteHeader() {
             </button>
             {mobileSection === "products" && (
               <ul className="flex flex-col gap-4 py-2 pl-2">
-                {PRODUCTS.map((product) => (
+                {products.map((product) => (
                   <li key={product.href}>
                     <div className="flex items-baseline justify-between gap-4 text-body">
                       <Link href={product.href} onClick={() => setMobileOpen(false)}>
@@ -398,7 +406,7 @@ export function SiteHeader() {
         </div>
       )}
 
-      {searchOpen && <SearchDialog onClose={() => setSearchOpen(false)} />}
+      {searchOpen && <SearchDialog index={searchIndex} onClose={() => setSearchOpen(false)} />}
     </header>
   );
 }

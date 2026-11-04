@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { PRODUCTS, SOCIAL_LINKS } from "@/lib/nav";
+import { SOCIAL_LINKS } from "@/lib/nav";
+import type { NavProduct } from "@/lib/content/types";
 import { EMAIL, RC_NUMBER } from "@/lib/contact";
 
 const COMPANY_LINKS = [
@@ -14,7 +15,7 @@ const COMPANY_LINKS = [
 // Privacy Policy, Terms of Service and Cookies Settings stay out of the footer
 // until those pages exist (punch list SW-11).
 
-export function SiteFooter() {
+export function SiteFooter({ products }: { products: NavProduct[] }) {
   return (
     <footer className="bg-navy py-10 sm:py-16 lg:py-20">
       <Container className="flex flex-col gap-10 sm:gap-20">
@@ -39,7 +40,7 @@ export function SiteFooter() {
           </FooterColumn>
 
           <FooterColumn title="Products">
-            {PRODUCTS.map((product) => (
+            {products.map((product) => (
               <FooterLink key={product.href} href={product.href} label={product.title} />
             ))}
           </FooterColumn>

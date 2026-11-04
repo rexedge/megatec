@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { EnquiryProvider } from "@/components/ui/enquiry-modal";
 import { FloatingWhatsapp } from "@/components/ui/floating-whatsapp";
 import { SITE_URL } from "@/lib/site";
+import { getNavProducts, getSearchIndex } from "@/lib/content";
 import "./globals.css";
 
 // Loaded from disk rather than next/font/google: Next has no precalculated
@@ -44,11 +45,13 @@ export const metadata: Metadata = {
     "MEGA-TEC supplies, assembles, installs and maintains fuel dispensers, LPG systems, CNG infrastructure and EV chargers across Nigeria. 1,500+ stations equipped. Nationwide support.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [products, searchIndex] = await Promise.all([getNavProducts(), getSearchIndex()]);
+
   return (
     <html
       lang="en"
@@ -56,9 +59,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-white text-ink">
         <EnquiryProvider>
-          <SiteHeader />
+          <SiteHeader products={products} searchIndex={searchIndex} />
           <main className="flex-1">{children}</main>
-          <SiteFooter />
+          <SiteFooter products={products} />
           <FloatingWhatsapp />
         </EnquiryProvider>
       </body>

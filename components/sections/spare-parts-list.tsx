@@ -5,29 +5,18 @@ import Link from "next/link";
 import { useState } from "react";
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
-import { PART_GROUPS, SPARE_PARTS, type SparePart } from "@/lib/spare-parts";
-
-/** The filter pills' wording from the 05 doc, in the order of the eight groups. */
-const PILLS = [
-  "Meters & Units",
-  "CPUs & Boards",
-  "Preset Boards",
-  "Valves",
-  "Motors & Pumps",
-  "Nozzles & Hoses",
-  "CNG Parts",
-  "Wiring & Sundries",
-];
+import type { PartGroup, SparePart } from "@/lib/content/types";
 
 /** Parts shown at first, and added by each tap of "Show more" (R2-07). */
 const PAGE_SIZE = 20;
 
 /**
  * The spare parts list (05 doc, punch list PA-01): scrollable category pills, a
- * search box, and a photo, name and fit tag for each of the 84 parts. No drawers
- * and no per-item buttons: one page-level WhatsApp button handles every enquiry.
+ * search box, and a photo, name and fit tag for each part. No drawers and no
+ * per-item buttons: one page-level WhatsApp button handles every enquiry. The
+ * groups and parts come from the content layer (getSpareParts).
  */
-export function SparePartsList() {
+export function SparePartsList({ groups, parts }: { groups: PartGroup[]; parts: SparePart[] }) {
   const [group, setGroup] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(PAGE_SIZE);
@@ -43,7 +32,7 @@ export function SparePartsList() {
   }
 
   const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-  const shown = SPARE_PARTS.filter(
+  const shown = parts.filter(
     (part) =>
       (group === null || part.group === group) &&
       terms.every((term) => `${part.name} ${part.fit}`.toLowerCase().includes(term))
@@ -59,11 +48,11 @@ export function SparePartsList() {
         className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:px-0"
       >
         <Pill active={group === null} onClick={() => chooseGroup(null)}>
-          All ({SPARE_PARTS.length})
+          All ({parts.length})
         </Pill>
-        {PART_GROUPS.map((name, index) => (
+        {groups.map(({ name, label }) => (
           <Pill key={name} active={group === name} onClick={() => chooseGroup(name)}>
-            {PILLS[index]}
+            {label}
           </Pill>
         ))}
       </div>
