@@ -7,6 +7,15 @@
 #   pnpm db:seed        load the site's current content
 #
 # The port avoids 5432/5433, which other local projects often hold.
+#
+# There is no password, so none is kept in the repository: the database listens only on
+# this computer (127.0.0.1) and holds a copy of the site's content and local test
+# accounts. In .env.local:
+#
+#   DATABASE_URL=postgres://megatec@localhost:5434/megatec
+#
+# A database created before this change keeps the password it was made with, and its
+# DATABASE_URL keeps working.
 name: megatec
 
 services:
@@ -15,10 +24,10 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: megatec
-      POSTGRES_PASSWORD: megatec
       POSTGRES_DB: megatec
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
-      - "5434:5432"
+      - "127.0.0.1:5434:5432"
     volumes:
       # Postgres 18 keeps its data in a versioned folder under this path.
       - postgres18:/var/lib/postgresql
