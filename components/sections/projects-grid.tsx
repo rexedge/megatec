@@ -9,7 +9,8 @@ export type ProjectCategory = "Fuel Dispensers" | "LPG" | "CNG" | "EV Chargers";
 
 export type ProjectEntry = {
   name: string;
-  location: string;
+  /** Left out where it is not known: the card then shows the categories alone. */
+  location?: string;
   categories: ProjectCategory[];
   description: string;
   /** Left out where the photo has not been supplied: the card shows text only. */
@@ -54,7 +55,7 @@ export function ProjectsGrid({ projects }: { projects: ProjectEntry[] }) {
       </div>
 
       {shown.length === 0 ? (
-        <p className="text-body mt-10">More {filter} projects are coming soon.</p>
+        <p className="text-body mt-10">{filter} projects are coming soon.</p>
       ) : (
         <ul className="mt-8 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
           {shown.map((project) => (
@@ -78,7 +79,8 @@ export function ProjectsGrid({ projects }: { projects: ProjectEntry[] }) {
                   {project.name}
                 </h3>
                 <p className="text-body text-xs sm:text-sm">
-                  {project.location} · {project.categories.join(" & ")}
+                  {project.location && `${project.location} · `}
+                  {project.categories.join(" & ")}
                 </p>
                 <p className="text-body text-sm leading-relaxed sm:text-base">
                   {project.description}

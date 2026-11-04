@@ -8,9 +8,13 @@ import type { ClientLogo, Project, Testimonial } from "@/lib/content/types";
  * the Core Site Pages document (Homepage §4, Projects §2); Canico is a confirmed client
  * named in its Global Rules.
  *
- * TODO(assets): Sterling has no photo yet, so its cards are text only. Canico needs a
- * location and a one-line outcome. MRS, NIPCO and a CNG project wait for details and
- * photos before they are added. MEGA-TEC must confirm every card is client-approved.
+ * In October 2026 (R2-14) NIPCO took Sterling's place on Home, keeping its description,
+ * and NIPCO and Total joined the Projects page (Total in MRS's slot).
+ *
+ * TODO(assets): Sterling has no photo yet, so its card is text only. Canico needs a
+ * location and a one-line outcome; NIPCO needs its own description (it repeats
+ * Sterling's). A CNG project waits for details and photos. MEGA-TEC must confirm every
+ * card is client-approved.
  */
 export const SEED_PROJECTS: Project[] = [
   {
@@ -38,7 +42,28 @@ export const SEED_PROJECTS: Project[] = [
     categories: ["Fuel Dispensers"],
     description:
       "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
+    onHome: false,
+    onProjectsPage: true,
+  },
+  {
+    name: "NIPCO",
+    location: "",
+    categories: ["Fuel Dispensers"],
+    description:
+      "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
+    image: "/images/projects/nipco.jpg",
     onHome: true,
+    onProjectsPage: true,
+  },
+  {
+    name: "Total",
+    location: "",
+    categories: ["Fuel Dispensers"],
+    description: "MEGA-TEC fuel dispensers in service at a Total station on New Yidi Road.",
+    image: "/images/projects/total.jpg",
+    // The photo is a wide panorama: keep the cropped card on the centre pump.
+    imagePosition: "52% 50%",
+    onHome: false,
     onProjectsPage: true,
   },
 ];

@@ -29,14 +29,14 @@ export function EquipmentList({
   messageFor: (title: string) => string;
 }) {
   return (
-    <section className="py-6 sm:py-20 lg:py-28">
+    <section className="py-6 sm:py-20 lg:py-16">
       <Container className="max-w-4xl">
-        <h2 className="text-ink text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
+        <h2 className="text-ink text-3xl font-semibold tracking-tight text-balance lg:text-5xl sm:text-4xl">
           {heading}
         </h2>
-        <p className="text-body mt-4 text-lg leading-relaxed">{intro}</p>
+        <p className="text-body mt-4 text-base leading-normal sm:text-lg sm:leading-relaxed">{intro}</p>
 
-        <ol className="mt-8 flex flex-col gap-6 sm:mt-12">
+        <ol className="mt-8 flex flex-col gap-4 sm:mt-12 sm:gap-6">
           {items.map((item, index) => (
             <li
               key={item.title}
@@ -60,8 +60,8 @@ export function EquipmentList({
                     </span>
                   )}
                 </div>
-                <div className="flex flex-col gap-4 p-5 sm:p-6">
-                  <h3 className="text-ink text-xl font-medium tracking-tight">
+                <div className="flex flex-col gap-3 p-4 sm:p-6 sm:gap-4">
+                  <h3 className="text-ink text-lg font-medium tracking-tight sm:text-xl">
                     <span className="text-body mr-2">{index + 1}.</span>
                     {item.title}
                   </h3>

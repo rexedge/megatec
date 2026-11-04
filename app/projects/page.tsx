@@ -8,8 +8,10 @@ import { getProjects } from "@/lib/content";
 /**
  * Copy is from the Core Site Pages document, Page 3 "Projects / Installations"
  * (punch list NP-01). The document builds eight card slots but keeps the ones
- * without details and photos unpublished: MRS, NIPCO and the CNG project wait
- * for MEGA-TEC, and the testimonials stay out until real, cleared quotes arrive.
+ * without details and photos unpublished: the CNG project waits for MEGA-TEC (the
+ * CNG tab keeps its empty message), and the testimonials stay out until real,
+ * cleared quotes arrive. NIPCO and Total were added in October 2026 (R2-14); Total
+ * took MRS's place. The projects themselves are edited in the admin (/admin/projects).
  */
 export const metadata: Metadata = {
   title: "Our Installations | Fuel, LPG, CNG & EV Projects Across Nigeria | MEGA-TEC",
