@@ -7,8 +7,12 @@ import { useEffect, useRef, useState } from "react";
 import { HERO_PAGES, PRODUCTS, SERVICES } from "@/lib/nav";
 import { Container } from "@/components/ui/container";
 import { SearchDialog } from "@/components/ui/search-dialog";
+import { ProductsMegaMenu, ProductsMenuMobile } from "@/components/ui/products-menu";
 import { cn } from "@/lib/cn";
 import { PHONE_PRIMARY, WHATSAPP_NUMBER } from "@/lib/contact";
+
+/** Where the full navbar takes over from the menu button (Tailwind's lg). */
+const WIDE = "(min-width: 1024px)";
 
 const NAV_LINKS = [
   { label: "HOME", href: "/" },
@@ -26,11 +30,37 @@ export function SiteHeader() {
 
   const [openMenu, setOpenMenu] = useState<"products" | "services" | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileCategory, setMobileCategory] = useState<string | null>(null);
   const [mobileSection, setMobileSection] = useState<"products" | "services" | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const productsTrigger = useRef<HTMLButtonElement>(null);
+  const servicesTrigger = useRef<HTMLButtonElement>(null);
+
+  // Escape closes an open dropdown and puts focus back on its button.
+  useEffect(() => {
+    if (openMenu === null) return;
+    const trigger = openMenu === "products" ? productsTrigger : servicesTrigger;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      setOpenMenu(null);
+      trigger.current?.focus();
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [openMenu]);
+
+  // Turning a tablet can cross 1024px with a menu open. That menu would vanish but keep
+  // the page locked, so whichever is open closes when the layout switches.
+  useEffect(() => {
+    const wide = window.matchMedia(WIDE);
+    function onChange() {
+      setMobileOpen(false);
+      setOpenMenu(null);
+    }
+    wide.addEventListener("change", onChange);
+    return () => wide.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     if (!isOverlay) return;
@@ -90,7 +120,7 @@ export function SiteHeader() {
   // Every top-level item gets the dropdowns' underline box (a 2px border plus
   // padding), transparent unless a menu is open. Without it the dropdown
   // buttons stand taller than the plain links and their labels ride higher.
-  const navItem = "border-b-2 pb-1 text-sm font-medium tracking-tight";
+  const navItem = "border-b-2 pb-1 text-sm font-medium tracking-tight whitespace-nowrap";
   const linkItemClass = cn(navItem, "border-transparent", linkClass);
   const triggerClass = (open: boolean) =>
     cn(
@@ -146,94 +176,75 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav ref={navRef} className="hidden items-center gap-8 md:flex">
+        {/* The full row shows from 1024px; below that, phones and tablets get the menu
+            button and the full-screen menu instead (see WIDE). Its labels never wrap, so
+            until 1280px the gaps are tighter, and until 1100px search is just its icon. */}
+        <nav ref={navRef} className="hidden items-center gap-6 lg:flex xl:gap-8">
           <Link href="/" className={linkItemClass}>
             HOME
           </Link>
 
-          <div className="relative">
+          {/* Not `relative`: the products menu hangs from the whole header, not this button. */}
+          <div>
             <button
+              ref={productsTrigger}
               type="button"
+              aria-expanded={openMenu === "products"}
+              aria-controls="products-menu"
               onClick={() => setOpenMenu(openMenu === "products" ? null : "products")}
               className={triggerClass(openMenu === "products")}
             >
               PRODUCTS
-              <ChevronDown />
+              <ChevronDown expanded={openMenu === "products"} />
             </button>
-            {openMenu === "products" && (
-              <div className="absolute left-1/2 top-full mt-4 max-h-[calc(100dvh-8.5rem)] w-[420px] -translate-x-1/2 overflow-y-auto overscroll-contain rounded-xl border border-border/70 bg-white p-6 shadow-xl">
-                <p className="mb-4 text-sm text-body">Products</p>
-                <ul className="flex flex-col gap-5">
-                  {PRODUCTS.map((product) => (
-                    <li key={product.href}>
-                      <Link
-                        href={product.href}
-                        onClick={() => setOpenMenu(null)}
-                        className="group flex items-start gap-4"
-                      >
-                        <Image
-                          src={product.icon}
-                          alt=""
-                          width={32}
-                          height={32}
-                          className="mt-0.5 h-8 w-8 shrink-0 object-contain"
-                        />
-                        <span className="flex-1">
-                          <span className="block font-semibold text-ink">{product.title}</span>
-                          <span className="block text-sm text-body">{product.count} products</span>
-                        </span>
-                        <ArrowCircle />
-                      </Link>
-                      {product.subs.length > 1 && (
-                        <ul className="mt-2 ml-12 flex flex-wrap gap-x-4 gap-y-1">
-                          {product.subs.map((sub) => (
-                            <li key={sub.href}>
-                              <Link
-                                href={sub.href}
-                                onClick={() => setOpenMenu(null)}
-                                className="text-sm text-body hover:text-ink hover:underline"
-                              >
-                                {sub.title}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            <ProductsMegaMenu
+              id="products-menu"
+              products={PRODUCTS}
+              open={openMenu === "products"}
+              onNavigate={() => setOpenMenu(null)}
+            />
           </div>
 
           <div className="relative">
             <button
+              ref={servicesTrigger}
               type="button"
+              aria-expanded={openMenu === "services"}
+              aria-controls="services-menu"
               onClick={() => setOpenMenu(openMenu === "services" ? null : "services")}
               className={triggerClass(openMenu === "services")}
             >
               SERVICES
-              <ChevronDown />
+              <ChevronDown expanded={openMenu === "services"} />
             </button>
-            {openMenu === "services" && (
-              <div className="absolute left-1/2 top-full mt-4 max-h-[calc(100dvh-8.5rem)] w-[380px] -translate-x-1/2 overflow-y-auto overscroll-contain rounded-xl border border-border/70 bg-white p-6 shadow-xl">
-                <p className="mb-4 text-sm text-body">Services</p>
-                <ul className="flex flex-col gap-4">
-                  {SERVICES.map((service) => (
-                    <li key={service.href}>
-                      <Link
-                        href={service.href}
-                        onClick={() => setOpenMenu(null)}
-                        className="flex items-center justify-between gap-4"
-                      >
-                        <span className="font-medium text-ink">{service.title}</span>
-                        <ArrowCircle />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            {/* Mounted throughout so it can fade out as well as in; inert while closed. */}
+            <div
+              id="services-menu"
+              inert={openMenu !== "services"}
+              className={cn(
+                "absolute left-1/2 top-full mt-4 max-h-[calc(100dvh-8.5rem)] w-[380px] -translate-x-1/2 overflow-y-auto overscroll-contain rounded-xl border border-border/70 bg-white p-6 shadow-xl",
+                "transition-[opacity,translate,visibility] duration-200 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none",
+                openMenu === "services"
+                  ? "visible translate-y-0 opacity-100"
+                  : "invisible -translate-y-1.5 opacity-0"
+              )}
+            >
+              <p className="mb-4 text-sm text-body">Services</p>
+              <ul className="flex flex-col gap-4">
+                {SERVICES.map((service) => (
+                  <li key={service.href}>
+                    <Link
+                      href={service.href}
+                      onClick={() => setOpenMenu(null)}
+                      className="flex items-center justify-between gap-4"
+                    >
+                      <span className="font-medium text-ink">{service.title}</span>
+                      <ArrowCircle />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <Link href="/projects" className={linkItemClass}>
@@ -251,21 +262,22 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={openSearch}
+            aria-label="Global search"
             className={cn(
-              "hidden items-center gap-2 rounded-lg border px-4 py-3 text-sm transition-colors md:flex",
+              "hidden items-center gap-2 rounded-lg border px-4 py-3 text-sm whitespace-nowrap transition-colors lg:flex",
               solid
                 ? "border-border/70 text-body hover:border-ink hover:text-ink"
                 : "border-white/40 text-white hover:border-white"
             )}
           >
             <SearchIcon />
-            Global search
+            <span className="hidden min-[1100px]:inline">Global search</span>
           </button>
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
             className={cn(
-              "flex items-center justify-center rounded-lg border p-2.5 md:hidden",
+              "flex items-center justify-center rounded-lg border p-2.5 lg:hidden",
               solid ? "border-border/70 text-ink" : "border-white/40 text-white"
             )}
             aria-label="Open menu"
@@ -276,7 +288,7 @@ export function SiteHeader() {
       </Container>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-white md:hidden">
+        <div className="animate-menu-sheet fixed inset-0 z-50 overflow-y-auto bg-white motion-reduce:animate-none lg:hidden">
           <Container className="flex items-center justify-between py-6">
             <Image src="/logo-wordart.png" alt="MEGA-TEC" width={600} height={192} className="h-9 w-auto" />
             <button
@@ -311,78 +323,47 @@ export function SiteHeader() {
 
             <button
               type="button"
+              aria-expanded={mobileSection === "products"}
+              aria-controls="mobile-products"
               onClick={() => setMobileSection(mobileSection === "products" ? null : "products")}
               className="flex items-center justify-between border-b border-border/60 py-4 text-xl font-medium tracking-tight text-ink"
             >
               PRODUCTS
               <ChevronDown expanded={mobileSection === "products"} />
             </button>
-            {mobileSection === "products" && (
-              <ul className="flex flex-col gap-4 py-2 pl-2">
-                {PRODUCTS.map((product) => (
-                  <li key={product.href}>
-                    <div className="flex items-baseline justify-between gap-4 text-body">
-                      <Link href={product.href} onClick={() => setMobileOpen(false)}>
-                        {product.title}
-                      </Link>
-                      {product.subs.length > 1 ? (
-                        <button
-                          type="button"
-                          aria-expanded={mobileCategory === product.href}
-                          onClick={() =>
-                            setMobileCategory(mobileCategory === product.href ? null : product.href)
-                          }
-                          className="text-sm text-body/70"
-                        >
-                          {product.count} products {mobileCategory === product.href ? "−" : "+"}
-                        </button>
-                      ) : (
-                        <span className="text-sm text-body/70">{product.count} products</span>
-                      )}
-                    </div>
-                    {mobileCategory === product.href && (
-                      <ul className="mt-3 flex flex-col gap-3 pl-4">
-                        {product.subs.map((sub) => (
-                          <li key={sub.href}>
-                            <Link
-                              href={sub.href}
-                              onClick={() => setMobileOpen(false)}
-                              className="text-sm text-body"
-                            >
-                              {sub.title}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            )}
+            <Collapse id="mobile-products" open={mobileSection === "products"}>
+              <ProductsMenuMobile
+                products={PRODUCTS}
+                play={mobileSection === "products"}
+                onNavigate={() => setMobileOpen(false)}
+              />
+            </Collapse>
 
             <button
               type="button"
+              aria-expanded={mobileSection === "services"}
+              aria-controls="mobile-services"
               onClick={() => setMobileSection(mobileSection === "services" ? null : "services")}
               className="flex items-center justify-between border-b border-border/60 py-4 text-xl font-medium tracking-tight text-ink"
             >
               SERVICES
               <ChevronDown expanded={mobileSection === "services"} />
             </button>
-            {mobileSection === "services" && (
-              <ul className="flex flex-col gap-4 py-2 pl-2">
+            <Collapse id="mobile-services" open={mobileSection === "services"}>
+              <ul className="flex flex-col py-2 pl-2">
                 {SERVICES.map((service) => (
                   <li key={service.href}>
                     <Link
                       href={service.href}
                       onClick={() => setMobileOpen(false)}
-                      className="text-body"
+                      className="flex min-h-11 items-center text-body"
                     >
                       {service.title}
                     </Link>
                   </li>
                 ))}
               </ul>
-            )}
+            </Collapse>
 
             {NAV_LINKS.slice(1).map((link) => (
               <Link
@@ -403,11 +384,34 @@ export function SiteHeader() {
   );
 }
 
+/**
+ * Opens and closes by animating its height (grid rows 0fr to 1fr), so a section of the
+ * mobile menu unfolds rather than appearing. It stays mounted to close smoothly too.
+ */
+function Collapse({ id, open, children }: { id: string; open: boolean; children: React.ReactNode }) {
+  return (
+    <div
+      id={id}
+      inert={!open}
+      className={cn(
+        "grid transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none",
+        open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+      )}
+    >
+      <div className="min-h-0 overflow-hidden">{children}</div>
+    </div>
+  );
+}
+
 function ChevronDown({ expanded }: { expanded?: boolean }) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className={cn("h-4 w-4 transition-transform", expanded && "rotate-180")}
+      aria-hidden="true"
+      className={cn(
+        "h-4 w-4 transition-transform duration-200 motion-reduce:transition-none",
+        expanded && "rotate-180"
+      )}
       fill="none"
       stroke="currentColor"
       strokeWidth={2}

@@ -15,6 +15,29 @@ export type SparePart = {
 
 export const PART_GROUPS = ["METERS & UNITS", "CPUs & BOARDS", "PRESET BOARDS & ENGINES", "VALVES", "MOTORS & PUMPS", "NOZZLES, HOSES & CONNECTORS", "CNG PARTS", "WIRING & SUNDRIES"] as const;
 
+/** Each group's filter pill wording from the 05 doc, in the order of PART_GROUPS. */
+export const PART_GROUP_LABELS = [
+  "Meters & Units",
+  "CPUs & Boards",
+  "Preset Boards",
+  "Valves",
+  "Motors & Pumps",
+  "Nozzles & Hoses",
+  "CNG Parts",
+  "Wiring & Sundries",
+];
+
+/**
+ * A group's key in the address, e.g. "Meters & Units" → "meters-units". The PRODUCTS
+ * menu links to /products/station-accessories?group=meters-units to open the list on it.
+ */
+export function partGroupKey(label: string) {
+  return label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 export const SPARE_PARTS: SparePart[] = [
   {
     "n": 1,
