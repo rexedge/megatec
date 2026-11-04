@@ -21,7 +21,7 @@ export default async function AdminHome() {
 
   // A section with an href has its editor; the rest are on their way.
   const sections: { title: string; detail: string; href?: string }[] = [
-    { title: "Products", detail: `${products} products in ${subcategories} sub-categories` },
+    { title: "Products", detail: `${products} products on ${subcategories} product pages`, href: "/admin/products" },
     { title: "Spare parts", detail: `${parts} parts in ${partGroups} groups on Station Accessories`, href: "/admin/spare-parts" },
     { title: "Projects", detail: `${projects} projects on the homepage and Projects page`, href: "/admin/projects" },
     { title: "Testimonials", detail: `${testimonials} quotes on the homepage`, href: "/admin/testimonials" },

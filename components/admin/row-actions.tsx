@@ -11,12 +11,13 @@ const button =
   "border-border text-ink hover:border-ink inline-flex min-h-9 min-w-9 items-center justify-center rounded-lg border px-3 text-sm font-medium transition-colors disabled:opacity-40 disabled:hover:border-border";
 
 /**
- * The buttons on a row of an admin list: edit, move up or down, hide or show on the site,
- * and remove (which asks first). The move, show and remove actions are server actions
- * already bound to the row.
+ * The buttons on a row of an admin list: edit, duplicate (where a list offers it), move up
+ * or down, hide or show on the site, and remove (which asks first). The move, show and
+ * remove actions are server actions already bound to the row.
  */
 export function RowActions({
   editHref,
+  copyHref,
   name,
   first,
   last,
@@ -26,6 +27,8 @@ export function RowActions({
   remove,
 }: {
   editHref: string;
+  /** A new-item form filled in from this row. */
+  copyHref?: string;
   /** How the row is called in the confirm button, e.g. "this quote". */
   name: string;
   first: boolean;
@@ -53,6 +56,11 @@ export function RowActions({
         <Link href={editHref} className={button}>
           Edit
         </Link>
+        {copyHref && (
+          <Link href={copyHref} className={button}>
+            Duplicate
+          </Link>
+        )}
         <button type="button" disabled={pending || first} className={button} onClick={() => run(() => move(-1))} aria-label="Move up">
           ↑
         </button>
