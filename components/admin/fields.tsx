@@ -107,6 +107,19 @@ export function PageHeader({
   );
 }
 
+/** A titled part of a long form, e.g. "The card" on the product form. */
+export function FormSection({ title, intro, children }: { title: string; intro: string; children: React.ReactNode }) {
+  return (
+    <section className="border-border/70 space-y-6 border-t pt-8 first:border-t-0 first:pt-0">
+      <div>
+        <h2 className="text-ink text-lg font-semibold tracking-tight">{title}</h2>
+        <p className="text-body mt-0.5 text-sm">{intro}</p>
+      </div>
+      {children}
+    </section>
+  );
+}
+
 /** The white card a form or list sits on. */
 export function Panel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <div className={`border-border/70 rounded-2xl border bg-white ${className}`}>{children}</div>;

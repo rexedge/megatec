@@ -3,7 +3,7 @@
 import { useActionState, useState } from "react";
 import { FormMessage } from "@/components/admin/auth-card";
 import { EditorForm } from "@/components/admin/editor-form";
-import { Checkbox, Panel, TextArea, TextField } from "@/components/admin/fields";
+import { Checkbox, FormSection, Panel, TextArea, TextField } from "@/components/admin/fields";
 import { PhotoField } from "@/components/admin/photo-field";
 import { FormActions } from "@/components/admin/row-actions";
 import { RowList } from "@/components/admin/row-list";
@@ -78,7 +78,7 @@ export function ProductForm({ id, values, pages }: { id: number | null; values: 
           </select>
         </div>
 
-        <Section title="The card" intro="What the product page lists: photo, name and a short line.">
+        <FormSection title="The card" intro="What the product page lists: photo, name and a short line.">
           <TextField
             label="Name"
             hint={
@@ -121,9 +121,9 @@ export function ProductForm({ id, values, pages }: { id: number | null; values: 
             name="best"
             defaultChecked={values.best}
           />
-        </Section>
+        </FormSection>
 
-        <Section title="The details panel" intro="What opens from “View details” on the card.">
+        <FormSection title="The details panel" intro="What opens from “View details” on the card.">
           <TextField
             label="Top line"
             hint="The pill above the name, e.g. “NMDPRA compliant · MEGA-TEC supply & install”."
@@ -216,7 +216,7 @@ export function ProductForm({ id, values, pages }: { id: number | null; values: 
             defaultValue={values.warranty}
           />
           <SheetField name="sheet" defaultValue={values.sheet} />
-        </Section>
+        </FormSection>
 
         <div className="space-y-6">
           <Checkbox label="Show on the site" hint="Untick to hide the product without deleting it." name="published" defaultChecked={values.published} />
@@ -225,17 +225,5 @@ export function ProductForm({ id, values, pages }: { id: number | null; values: 
         </div>
       </EditorForm>
     </Panel>
-  );
-}
-
-function Section({ title, intro, children }: { title: string; intro: string; children: React.ReactNode }) {
-  return (
-    <section className="border-border/70 space-y-6 border-t pt-8">
-      <div>
-        <h2 className="text-ink text-lg font-semibold tracking-tight">{title}</h2>
-        <p className="text-body mt-0.5 text-sm">{intro}</p>
-      </div>
-      {children}
-    </section>
   );
 }

@@ -5,11 +5,12 @@ import { db } from "@/lib/db";
 
 export const metadata: Metadata = { title: "Content" };
 
-/** The admin's home: what the site holds, section by section. The editors follow. */
+/** The admin's home: what the site holds, section by section, each with its editor. */
 export default async function AdminHome() {
   const { user } = await requireStaff();
   const database = db!;
-  const [products, subcategories, parts, partGroups, projects, testimonials, logos] = await Promise.all([
+  const [categories, products, subcategories, parts, partGroups, projects, testimonials, logos] = await Promise.all([
+    database.category.count(),
     database.product.count(),
     database.subcategory.count(),
     database.sparePart.count(),
@@ -19,9 +20,13 @@ export default async function AdminHome() {
     database.clientLogo.count(),
   ]);
 
-  // A section with an href has its editor; the rest are on their way.
-  const sections: { title: string; detail: string; href?: string }[] = [
+  const sections: { title: string; detail: string; href: string }[] = [
     { title: "Products", detail: `${products} products on ${subcategories} product pages`, href: "/admin/products" },
+    {
+      title: "Product pages",
+      detail: `The words on the ${categories} category pages and ${subcategories} product pages, and their Google listings`,
+      href: "/admin/product-pages",
+    },
     { title: "Spare parts", detail: `${parts} parts in ${partGroups} groups on Station Accessories`, href: "/admin/spare-parts" },
     { title: "Projects", detail: `${projects} projects on the homepage and Projects page`, href: "/admin/projects" },
     { title: "Testimonials", detail: `${testimonials} quotes on the homepage`, href: "/admin/testimonials" },
@@ -35,24 +40,16 @@ export default async function AdminHome() {
       <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {sections.map((section) => (
           <li key={section.title}>
-            {section.href ? (
-              <Link
-                href={section.href}
-                className="border-border/70 hover:border-sea group block h-full rounded-2xl border bg-white p-5 transition-colors"
-              >
-                <p className="text-ink group-hover:text-sea text-lg font-semibold tracking-tight transition-colors">
-                  {section.title}
-                </p>
-                <p className="text-body mt-1 text-sm">{section.detail}</p>
-                <p className="text-sea mt-4 text-sm font-semibold">Edit →</p>
-              </Link>
-            ) : (
-              <div className="border-border/70 h-full rounded-2xl border bg-white p-5">
-                <p className="text-ink text-lg font-semibold tracking-tight">{section.title}</p>
-                <p className="text-body mt-1 text-sm">{section.detail}</p>
-                <p className="text-body/70 mt-4 text-xs font-medium tracking-wide uppercase">Editor coming next</p>
-              </div>
-            )}
+            <Link
+              href={section.href}
+              className="border-border/70 hover:border-sea group block h-full rounded-2xl border bg-white p-5 transition-colors"
+            >
+              <p className="text-ink group-hover:text-sea text-lg font-semibold tracking-tight transition-colors">
+                {section.title}
+              </p>
+              <p className="text-body mt-1 text-sm">{section.detail}</p>
+              <p className="text-sea mt-4 text-sm font-semibold">Edit →</p>
+            </Link>
           </li>
         ))}
       </ul>

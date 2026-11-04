@@ -3,7 +3,8 @@
 import { revalidatePath, updateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireStaff } from "@/lib/auth";
-import { checked, photoAddress, sheetAddress, stillUploading, text } from "@/lib/admin/form";
+import { checked, photoAddress, sheetAddress, stillUploading, text, texts } from "@/lib/admin/form";
+import { firstFreeKey, keyFromName } from "@/lib/admin/keys";
 import { rowId } from "@/lib/admin/order";
 import { deleteRow, moveRow, nextSortOrder, setRowPublished } from "@/lib/admin/rows";
 import { CONTENT_TAGS } from "@/lib/content";
@@ -29,40 +30,18 @@ function changed() {
   revalidatePath(LIST);
 }
 
-/** The product's key on the site, from its name: "MT PLUS – Single Nozzle (TB)" → "mt-plus-single-nozzle-tb". */
-function keyFromName(name: string) {
-  return (
-    name
-      .toLowerCase()
-      .normalize("NFKD")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "")
-      .slice(0, 60)
-      .replace(/-$/, "") || "product"
-  );
-}
-
-/** The first free key from the name: the name's own, or with -2, -3… after it. */
+/** The product's key on the site: from its name, with -2, -3… after it if that is taken. */
 async function freeKey(name: string) {
-  const base = keyFromName(name);
-  const taken = new Set(
-    (await db!.product.findMany({ where: { slug: { startsWith: base } }, select: { slug: true } })).map((p) => p.slug)
-  );
-  let key = base;
-  for (let n = 2; taken.has(key); n++) key = `${base}-${n}`;
-  return key;
-}
-
-/** Lines posted as columns (FormData.getAll), one entry per row on the form. */
-function column(form: FormData, name: string) {
-  return form.getAll(name).map((value) => String(value).trim());
+  const base = keyFromName(name, "product");
+  const taken = await db!.product.findMany({ where: { slug: { startsWith: base } }, select: { slug: true } });
+  return firstFreeKey(base, new Set(taken.map((p) => p.slug)));
 }
 
 type Read<T> = { value: T } | { error: string };
 
 function readDetails(form: FormData): Read<[string, string][]> {
-  const labels = column(form, "detailLabel");
-  const values = column(form, "detailValue");
+  const labels = texts(form, "detailLabel");
+  const values = texts(form, "detailValue");
   const details: [string, string][] = [];
   for (let i = 0; i < labels.length; i++) {
     const [label, value] = [labels[i], values[i] ?? ""];
@@ -82,8 +61,8 @@ function readDetails(form: FormData): Read<[string, string][]> {
 }
 
 function readExtras(form: FormData): Read<DrawerExtra[]> {
-  const kinds = column(form, "extraKind");
-  const lines = column(form, "extraText");
+  const kinds = texts(form, "extraKind");
+  const lines = texts(form, "extraText");
   const extras: DrawerExtra[] = [];
   for (let i = 0; i < lines.length; i++) {
     if (!lines[i]) continue;
