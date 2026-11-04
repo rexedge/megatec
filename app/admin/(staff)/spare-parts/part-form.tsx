@@ -68,7 +68,7 @@ export function PartForm({
         />
         <PhotoField
           label="Photo"
-          hint="The part on a plain background; the card shows it square. Without one, the card shows the MEGA-TEC logo."
+          hint="The part on a plain background; the card shows it square. Without one, the card shows a drawn stand-in picture."
           name="image"
           folder="parts"
           defaultValue={values.image}
