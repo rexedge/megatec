@@ -11,8 +11,11 @@ import { getCatalog, getCategory } from "@/lib/content";
  * The four category pages (05 doc, "CATEGORY" sections): a signpost with trust
  * lines and a tile for each sub-category. No product grid and no form: the
  * visitor converts one click deeper (punch list PF-01, PC-01, PL-01, PE-01).
+ *
+ * An unknown address shows the not-found page because getCategory finds nothing. The page
+ * must not set `dynamicParams = false`: with it, every category page answered 404
+ * (NoFallbackError) once the admin refreshed the catalog after a save.
  */
-export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return (await getCatalog()).map((category) => ({ category: category.slug }));
