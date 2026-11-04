@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   // qualities listed here, so a `quality={90}` on an Image needs 90 in this list.
   images: {
     qualities: [75, 90],
+    // Photos uploaded in the admin are served from MEGA-TEC's Cloudinary account (lib/cloudinary).
+    remotePatterns: [new URL("https://res.cloudinary.com/j8chwt0u/image/upload/**")],
   },
 
   // Punch list ST-06: the four landing pages moved to /solutions/ (Google Ads
