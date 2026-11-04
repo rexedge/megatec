@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { HERO_PAGES, PRODUCTS, SERVICES } from "@/lib/nav";
+import { HERO_PAGES, SERVICES } from "@/lib/nav";
+import type { NavProduct, SearchEntry } from "@/lib/content/types";
 import { Container } from "@/components/ui/container";
 import { SearchDialog } from "@/components/ui/search-dialog";
 import { ProductsMegaMenu, ProductsMenuMobile } from "@/components/ui/products-menu";
@@ -21,7 +22,14 @@ const NAV_LINKS = [
   { label: "CONTACT", href: "/contact" },
 ];
 
-export function SiteHeader() {
+/** The PRODUCTS menu and the search index come from the content layer, via the root layout. */
+export function SiteHeader({
+  products,
+  searchIndex,
+}: {
+  products: NavProduct[];
+  searchIndex: SearchEntry[];
+}) {
   const pathname = usePathname();
   // Landing pages open on a full-bleed hero, so the header sits over it.
   // Category pages start on white and must not.
@@ -199,7 +207,7 @@ export function SiteHeader() {
             </button>
             <ProductsMegaMenu
               id="products-menu"
-              products={PRODUCTS}
+              products={products}
               open={openMenu === "products"}
               onNavigate={() => setOpenMenu(null)}
             />
@@ -333,7 +341,7 @@ export function SiteHeader() {
             </button>
             <Collapse id="mobile-products" open={mobileSection === "products"}>
               <ProductsMenuMobile
-                products={PRODUCTS}
+                products={products}
                 play={mobileSection === "products"}
                 onNavigate={() => setMobileOpen(false)}
               />
@@ -379,7 +387,7 @@ export function SiteHeader() {
         </div>
       )}
 
-      {searchOpen && <SearchDialog onClose={() => setSearchOpen(false)} />}
+      {searchOpen && <SearchDialog index={searchIndex} onClose={() => setSearchOpen(false)} />}
     </header>
   );
 }

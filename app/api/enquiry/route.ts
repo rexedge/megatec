@@ -1,10 +1,10 @@
-import { createTransport, type Transporter } from "nodemailer";
 import { EMAIL } from "@/lib/contact";
 import type { EnquiryForm } from "@/lib/enquiry";
+import { mailer } from "@/lib/mail";
 
 /**
  * Emails website form submissions to sales@ (punch list SW-05) by signing in
- * to the website@ mailbox on Mega-Tec's QServers mail server.
+ * to the website@ mailbox on Mega-Tec's QServers mail server (lib/mail).
  *
  * Environment — .env.local on a laptop, Vercel project settings when deployed:
  *   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS   the website@ mailbox, port 465
@@ -128,25 +128,6 @@ function compose(e: Clean, site: string) {
     subject: `${isDownload ? "Spec sheet download" : "Website enquiry"}: ${e.name}`,
     text: lines.join("\n"),
   };
-}
-
-let transporter: Transporter | undefined;
-
-function mailer() {
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS) return null;
-  const port = Number(SMTP_PORT);
-  transporter ??= createTransport({
-    host: SMTP_HOST,
-    port,
-    secure: port === 465,
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
-    // A stalled mail server must not hold the function open for minutes.
-    connectionTimeout: 10_000,
-    greetingTimeout: 10_000,
-    socketTimeout: 20_000,
-  });
-  return { transporter, from: SMTP_USER };
 }
 
 export async function POST(request: Request) {

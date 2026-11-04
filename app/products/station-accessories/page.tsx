@@ -9,6 +9,7 @@ import {
   SparePartsListFromUrl,
 } from "@/components/sections/spare-parts-list";
 import { ContactSection } from "@/components/sections/contact-section";
+import { getSpareParts } from "@/lib/content";
 
 /**
  * Copy is from the Product Catalogue document, "Station Accessories" and its
@@ -28,7 +29,9 @@ const TRUST = [
   "Nationwide Supply & Support",
 ];
 
-export default function StationAccessoriesPage() {
+export default async function StationAccessoriesPage() {
+  const { groups, parts } = await getSpareParts();
+
   return (
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Station Accessories" }]} />
@@ -65,8 +68,8 @@ export default function StationAccessoriesPage() {
         <Container>
           {/* The list reads ?group= in the browser, so the page itself stays static:
               visitors without it, and search engines, get the full list. */}
-          <Suspense fallback={<SparePartsList />}>
-            <SparePartsListFromUrl />
+          <Suspense fallback={<SparePartsList groups={groups} parts={parts} />}>
+            <SparePartsListFromUrl groups={groups} parts={parts} />
           </Suspense>
           <WhatsappButton
             variant="leaf"

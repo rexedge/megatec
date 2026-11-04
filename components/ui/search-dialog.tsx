@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { searchSite } from "@/lib/search";
+import { searchSite, type SearchEntry } from "@/lib/search";
 
-export function SearchDialog({ onClose }: { onClose: () => void }) {
+export function SearchDialog({ index, onClose }: { index: SearchEntry[]; onClose: () => void }) {
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const results = useMemo(() => searchSite(query), [query]);
+  const results = useMemo(() => searchSite(index, query), [index, query]);
 
   useEffect(() => {
     inputRef.current?.focus();

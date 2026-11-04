@@ -6,15 +6,18 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { ContactSection } from "@/components/sections/contact-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { StatsCta } from "@/components/sections/stats-cta";
+import { getTestimonials } from "@/lib/content";
 
-export default function Home() {
+export default async function Home() {
+  const testimonials = await getTestimonials();
+
   return (
     <>
       <Hero />
       <ProductsSection />
       <ServicesSection />
       <WhyMegaTec />
-      <TestimonialsSection />
+      <TestimonialsSection items={testimonials} />
       <ContactSection showBranches />
       <ProjectsSection />
       <StatsCta />

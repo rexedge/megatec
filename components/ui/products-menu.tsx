@@ -6,26 +6,21 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useEnquiry } from "@/components/ui/enquiry-modal";
 import { cn } from "@/lib/cn";
-import type { NavProduct } from "@/lib/nav";
-import { PART_GROUP_LABELS, partGroupKey } from "@/lib/spare-parts";
+import { STATION_ACCESSORIES as STATION_ACCESSORIES_PAGE, type NavProduct } from "@/lib/nav";
 
 /**
  * The PRODUCTS menu, after products-dropdown.html: on desktop the mega menu (option B),
  * a rail of categories beside the selected category's pages; on mobile the compact list
  * (option A), each category with its pages under it and the two single-page categories
- * as cards. Both take their categories, counts and pages from PRODUCTS (lib/nav).
+ * as cards. Both take their categories, counts and pages from the content layer
+ * (getNavProducts), passed down by the header.
  */
 
-const STATION_ACCESSORIES = "/products/station-accessories";
+const STATION_ACCESSORIES = STATION_ACCESSORIES_PAGE.href;
 
-/** The spare parts list has no sub-pages, so its panel offers the list opened on each group. */
-const PART_GROUP_LINKS = PART_GROUP_LABELS.map((label) => ({
-  title: label,
-  href: `${STATION_ACCESSORIES}?group=${partGroupKey(label)}#parts`,
-}));
-
+/** A category's pages; the spare parts list has none, so it offers the list opened on each group. */
 function linksFor(product: NavProduct) {
-  return product.href === STATION_ACCESSORIES ? PART_GROUP_LINKS : product.subs;
+  return product.groups ?? product.subs;
 }
 
 function countLabel(count: number) {

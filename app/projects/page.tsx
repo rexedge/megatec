@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { ClosingCta } from "@/components/sections/closing-cta";
-import { ProjectsGrid, type ProjectEntry } from "@/components/sections/projects-grid";
+import { ProjectsGrid } from "@/components/sections/projects-grid";
+import { getProjects } from "@/lib/content";
 
 /**
  * Copy is from the Core Site Pages document, Page 3 "Projects / Installations"
@@ -16,25 +17,9 @@ export const metadata: Metadata = {
     "See MEGA-TEC's completed fuel dispenser, LPG, CNG and EV installations across Nigeria. Real projects, real stations, nationwide.",
 };
 
-const PROJECTS: ProjectEntry[] = [
-  {
-    name: "Nepal Energies",
-    location: "Nationwide",
-    categories: ["Fuel Dispensers", "LPG"],
-    description:
-      "A multi-contract partnership beginning with a major 200-dispenser supply, and continued through repeat orders over several years.",
-    image: "/images/projects/nepal-energies.jpg",
-  },
-  {
-    name: "Sterling Oil & Gas",
-    location: "Lagos, Akwa Ibom & Port Harcourt",
-    categories: ["Fuel Dispensers"],
-    description:
-      "Supply, installation and calibration of fuel dispensers and flow meters across multiple sites.",
-  },
-];
+export default async function ProjectsPage() {
+  const projects = (await getProjects()).filter((project) => project.onProjectsPage);
 
-export default function ProjectsPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Projects & Installations" }]} />
@@ -53,7 +38,7 @@ export default function ProjectsPage() {
 
       <section className="py-6 sm:pt-0 sm:pb-16 lg:pb-20">
         <Container>
-          <ProjectsGrid projects={PROJECTS} />
+          <ProjectsGrid projects={projects} />
         </Container>
       </section>
 
