@@ -11,6 +11,9 @@ import { ProductsMegaMenu, ProductsMenuMobile } from "@/components/ui/products-m
 import { cn } from "@/lib/cn";
 import { PHONE_PRIMARY, WHATSAPP_NUMBER } from "@/lib/contact";
 
+/** Where the full navbar takes over from the menu button (Tailwind's lg). */
+const WIDE = "(min-width: 1024px)";
+
 const NAV_LINKS = [
   { label: "HOME", href: "/" },
   { label: "PROJECTS & INSTALLATIONS", href: "/projects" },
@@ -46,6 +49,18 @@ export function SiteHeader() {
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [openMenu]);
+
+  // Turning a tablet can cross 1024px with a menu open. That menu would vanish but keep
+  // the page locked, so whichever is open closes when the layout switches.
+  useEffect(() => {
+    const wide = window.matchMedia(WIDE);
+    function onChange() {
+      setMobileOpen(false);
+      setOpenMenu(null);
+    }
+    wide.addEventListener("change", onChange);
+    return () => wide.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     if (!isOverlay) return;
@@ -105,7 +120,7 @@ export function SiteHeader() {
   // Every top-level item gets the dropdowns' underline box (a 2px border plus
   // padding), transparent unless a menu is open. Without it the dropdown
   // buttons stand taller than the plain links and their labels ride higher.
-  const navItem = "border-b-2 pb-1 text-sm font-medium tracking-tight";
+  const navItem = "border-b-2 pb-1 text-sm font-medium tracking-tight whitespace-nowrap";
   const linkItemClass = cn(navItem, "border-transparent", linkClass);
   const triggerClass = (open: boolean) =>
     cn(
@@ -161,9 +176,10 @@ export function SiteHeader() {
           />
         </Link>
 
-        {/* Tighter gaps, and an icon-only search button, until the row has room (from
-            768px it would otherwise push the search button off the screen). */}
-        <nav ref={navRef} className="hidden items-center gap-5 md:flex lg:gap-8">
+        {/* The full row shows from 1024px; below that, phones and tablets get the menu
+            button and the full-screen menu instead (see WIDE). Its labels never wrap, so
+            until 1280px the gaps are tighter, and until 1100px search is just its icon. */}
+        <nav ref={navRef} className="hidden items-center gap-6 lg:flex xl:gap-8">
           <Link href="/" className={linkItemClass}>
             HOME
           </Link>
@@ -248,20 +264,20 @@ export function SiteHeader() {
             onClick={openSearch}
             aria-label="Global search"
             className={cn(
-              "hidden items-center gap-2 rounded-lg border px-3 py-3 text-sm transition-colors md:flex lg:px-4",
+              "hidden items-center gap-2 rounded-lg border px-4 py-3 text-sm whitespace-nowrap transition-colors lg:flex",
               solid
                 ? "border-border/70 text-body hover:border-ink hover:text-ink"
                 : "border-white/40 text-white hover:border-white"
             )}
           >
             <SearchIcon />
-            <span className="hidden lg:inline">Global search</span>
+            <span className="hidden min-[1100px]:inline">Global search</span>
           </button>
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
             className={cn(
-              "flex items-center justify-center rounded-lg border p-2.5 md:hidden",
+              "flex items-center justify-center rounded-lg border p-2.5 lg:hidden",
               solid ? "border-border/70 text-ink" : "border-white/40 text-white"
             )}
             aria-label="Open menu"
@@ -272,7 +288,7 @@ export function SiteHeader() {
       </Container>
 
       {mobileOpen && (
-        <div className="animate-menu-sheet fixed inset-0 z-50 overflow-y-auto bg-white motion-reduce:animate-none md:hidden">
+        <div className="animate-menu-sheet fixed inset-0 z-50 overflow-y-auto bg-white motion-reduce:animate-none lg:hidden">
           <Container className="flex items-center justify-between py-6">
             <Image src="/logo-wordart.png" alt="MEGA-TEC" width={600} height={192} className="h-9 w-auto" />
             <button

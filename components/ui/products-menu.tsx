@@ -123,7 +123,7 @@ export function ProductsMegaMenu({ id, products, open, onNavigate }: MegaMenuPro
       )}
     >
       <div className="border-border/70 mx-auto flex h-[30rem] max-h-[calc(100dvh-9.5rem)] w-full max-w-[952px] overflow-hidden rounded-2xl border bg-white shadow-[0_16px_40px_rgba(0,36,40,0.12)]">
-        <div className="border-border/50 w-[260px] shrink-0 overflow-y-auto overscroll-contain border-r p-3 lg:w-[300px]">
+        <div className="border-border/50 w-[300px] shrink-0 overflow-y-auto overscroll-contain border-r p-3">
           <p className="text-body px-3 pt-1 pb-2 text-xs font-semibold tracking-[0.08em] uppercase">
             Products
           </p>
