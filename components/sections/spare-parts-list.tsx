@@ -2,33 +2,39 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
-import { PART_GROUPS, SPARE_PARTS, type SparePart } from "@/lib/spare-parts";
-
-/** The filter pills' wording from the 05 doc, in the order of the eight groups. */
-const PILLS = [
-  "Meters & Units",
-  "CPUs & Boards",
-  "Preset Boards",
-  "Valves",
-  "Motors & Pumps",
-  "Nozzles & Hoses",
-  "CNG Parts",
-  "Wiring & Sundries",
-];
+import {
+  PART_GROUP_LABELS,
+  PART_GROUPS,
+  SPARE_PARTS,
+  partGroupKey,
+  type SparePart,
+} from "@/lib/spare-parts";
 
 /** Parts shown at first, and added by each tap of "Show more" (R2-07). */
 const PAGE_SIZE = 20;
+
+/**
+ * The list opened on the group the address names (?group=valves), which is where the
+ * PRODUCTS menu's spare-part links land. Following a link for another group starts the
+ * list afresh on that group.
+ */
+export function SparePartsListFromUrl() {
+  const key = useSearchParams().get("group");
+  const index = PART_GROUP_LABELS.findIndex((label) => partGroupKey(label) === key);
+  return <SparePartsList key={key ?? ""} initialGroup={PART_GROUPS[index] ?? null} />;
+}
 
 /**
  * The spare parts list (05 doc, punch list PA-01): scrollable category pills, a
  * search box, and a photo, name and fit tag for each of the 84 parts. No drawers
  * and no per-item buttons: one page-level WhatsApp button handles every enquiry.
  */
-export function SparePartsList() {
-  const [group, setGroup] = useState<string | null>(null);
+export function SparePartsList({ initialGroup = null }: { initialGroup?: string | null }) {
+  const [group, setGroup] = useState<string | null>(initialGroup);
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(PAGE_SIZE);
 
@@ -63,7 +69,7 @@ export function SparePartsList() {
         </Pill>
         {PART_GROUPS.map((name, index) => (
           <Pill key={name} active={group === name} onClick={() => chooseGroup(name)}>
-            {PILLS[index]}
+            {PART_GROUP_LABELS[index]}
           </Pill>
         ))}
       </div>
