@@ -24,7 +24,7 @@ const SLIDES = [
   },
   {
     image: "/images/factory/commercial-ev/commercial-ev-1.png",
-    caption: "60KW commercial DC fast chargers for hotels, estates and forecourts.",
+    caption: "120KW commercial DC fast chargers for hotels, estates and forecourts.",
   },
   {
     image: "/images/factory/mt-plus-complete-panel.png",

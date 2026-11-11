@@ -61,7 +61,7 @@ export default function AboutPage() {
 
             <div className="text-body flex flex-col gap-6 text-lg leading-relaxed">
               <p>
-                Our founder spent two years in the UK working for a company that sold fuel
+                Our founder spent two years studying how companies abroad sold fuel
                 dispensers to African markets. Their model was straightforward: buy the equipment
                 from China, certify it, rebrand it, and sell it on to Africa at a premium. One
                 question stayed with him. Why should Nigerians travel to the UK to buy equipment
@@ -160,8 +160,7 @@ export default function AboutPage() {
                 MEGA-TEC holds the SON (Standards Organisation of Nigeria) certificate and product
                 certification, the core certificates required to operate in Nigeria. Our
                 installations are NMDPRA-compliant. We are members of the Manufacturers
-                Association of Nigeria (MAN) and the Independent Petroleum Marketers Association of
-                Nigeria (IPMAN).
+                Association of Nigeria (MAN) and the Lagos Chamber of Commerce.
               </p>
             </div>
             <div className="relative aspect-video overflow-hidden rounded-2xl bg-surface-soft">
