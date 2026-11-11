@@ -45,8 +45,8 @@ export const LANDING_PAGES = [
   "/solutions/ev-chargers-nigeria",
 ];
 
-/** Pages that open on a full-bleed hero, so the header is see-through over it. */
-export const HERO_PAGES = LANDING_PAGES;
+/** Pages that open on a full-bleed hero, so the header is see-through over it. The Home page does since R2-13. */
+export const HERO_PAGES = [...LANDING_PAGES, "/"];
 
 export const SERVICES: NavService[] = [
   { title: "Installation & Commissioning", href: "/services/installation-and-commissioning" },
