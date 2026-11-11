@@ -80,14 +80,15 @@ export default function EvChargersPage() {
       {productsJsonLd([{ name: "MEGA-TEC EV – Commercial DC Fast Charger", description: "60KW dual gun DC fast charger, floor-standing, card and QR payment, IP55 weatherproof.", image: commercial.image, path: "/solutions/ev-chargers-nigeria" }, { name: "MEGA-TEC EV – Home & Estate DC Charger", description: "40KW single gun wall-mounted DC charger, three-phase 380V, IP55 weatherproof.", image: residential.image, path: "/solutions/ev-chargers-nigeria" }], absoluteUrl).map((data) => (
         <JsonLd key={data.name} data={data} />
       ))}
-      {/* The render has its words baked in, so the headline sits beside it, never over it. */}
-      <section className="bg-navy">
-        <Container className="grid grid-cols-1 items-center gap-5 pt-40 pb-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:py-32 sm:gap-8">
-          <div>
+      {/* R2-17: on a phone the charger photo fills the hero behind the text, under a dark
+          overlay; from 1024px it sits to the right of the text. */}
+      <section className="bg-navy relative overflow-hidden">
+        <Container className="grid grid-cols-1 items-center gap-5 pt-36 pb-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:py-32 sm:gap-8">
+          <div className="relative z-10">
             <p className="bg-leaf-dark mb-6 inline-block max-w-full rounded-full px-4 py-2 text-sm font-medium text-white">
               Now installing EV charging infrastructure nationwide
             </p>
-            <h1 className="text-navy-text text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
+            <h1 className="text-navy-text text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
               EV charging infrastructure for Nigeria: commercial &amp; residential solutions
             </h1>
             <p className="text-navy-text/90 mt-6 text-base leading-normal sm:text-lg sm:leading-relaxed">
@@ -111,16 +112,17 @@ export default function EvChargersPage() {
               </SpecSheetLink>
             </div>
           </div>
-          <div className="relative aspect-4/3 overflow-hidden rounded-2xl lg:aspect-16/10">
+          <div className="absolute inset-0 lg:relative lg:inset-auto lg:aspect-5/4 lg:overflow-hidden lg:rounded-2xl lg:bg-white">
             <Image
-              src="/images/products/ev-charger-render.jpg"
-              alt="MEGA-TEC DC fast charger on a city street at dusk"
+              src="/images/factory/commercial-ev/commercial-ev-1.png"
+              alt="MEGA-TEC commercial DC fast charger"
               fill
               priority
               quality={90}
               sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-cover object-[65%_50%] lg:object-center"
+              className="object-cover object-[50%_30%] lg:object-contain lg:p-4"
             />
+            <div aria-hidden className="bg-navy/80 absolute inset-0 lg:hidden" />
           </div>
         </Container>
       </section>
@@ -153,7 +155,7 @@ export default function EvChargersPage() {
           </ul>
           <Features items={COMMERCIAL_FEATURES} />
           <ChargerCard
-            image={commercial.image}
+            image="/images/factory/commercial-ev/commercial-ev-7.png"
             title="MEGA-TEC EV – Commercial DC Fast Charger"
             specs={[
               "60KW · dual gun · 200–1000VDC output",
