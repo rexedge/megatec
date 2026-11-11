@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { EnquiryProvider } from "@/components/ui/enquiry-modal";
 import { FloatingWhatsapp } from "@/components/ui/floating-whatsapp";
+import { GoogleTagManager } from "@/components/ui/google-tag-manager";
 import { PublicOnly } from "@/components/ui/public-only";
 import { SITE_URL } from "@/lib/site";
 import { getNavProducts, getSearchIndex } from "@/lib/content";
@@ -59,6 +60,7 @@ export default async function RootLayout({
       className={`${googleSansFlex.variable} ${interTight.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-ink">
+        <GoogleTagManager />
         <EnquiryProvider>
           <PublicOnly>
             <SiteHeader products={products} searchIndex={searchIndex} />

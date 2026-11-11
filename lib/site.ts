@@ -7,4 +7,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.megate
   ""
 );
 
+/** The site's Google Tag Manager container, from Mega-Tec (R2-23). */
+export const GTM_ID = "GTM-NFNFJVXX";
+
 export const absoluteUrl = (path: string) => (path.startsWith("http") ? path : SITE_URL + path);
