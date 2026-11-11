@@ -21,14 +21,16 @@ const CARDS = [
     description: "Dispensers, skid plants and storage, built to NMDPRA standards.",
     link: "Explore LPG Systems",
     href: "/products/lpg-solutions",
-    image: "/images/landing/rectangle-lpg.png",
+    image: "/images/factory/lpg-filling/lpg-filling.png",
+    position: "50% 15%",
   },
   {
     title: "CNG Infrastructure",
     description: "Complete stations, dispensers and daughter stations for Nigeria's move to CNG.",
     link: "Explore CNG Solutions",
     href: "/products/cng-solutions",
-    image: "/images/landing/rectangle-cng.png",
+    image: "/images/factory/cng-2-double/cng-2-double-1.png",
+    position: "50% 20%",
   },
   {
     title: "EV Chargers",
@@ -66,6 +68,7 @@ export function ProductsSection() {
                   fill
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  style={"position" in card ? { objectPosition: card.position } : undefined}
                 />
               </div>
               <div className="flex flex-col items-start gap-4">
