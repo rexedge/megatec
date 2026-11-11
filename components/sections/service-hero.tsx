@@ -7,11 +7,14 @@ export function ServiceHero({
   description,
   image,
   imageAlt,
+  imagePosition,
 }: {
   title: string;
   description: string;
   image: string;
   imageAlt: string;
+  /** Which part of the photo stays in the frame when it is cropped, e.g. "50% 35%". */
+  imagePosition?: string;
 }) {
   return (
     <section className="py-6 sm:py-16 lg:py-20">
@@ -31,6 +34,7 @@ export function ServiceHero({
               loading="eager"
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"
+              style={imagePosition ? { objectPosition: imagePosition } : undefined}
             />
           </div>
         </div>

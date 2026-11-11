@@ -45,8 +45,8 @@ export default function InstallationAndCommissioningPage() {
       <ServiceHero
         title="Expert installation and setup, from site assessment to sign-off"
         description="Expert installation and setup of MEGA-TEC systems, ensuring seamless integration and peak performance from day one. Every project follows the same disciplined process, whether it's a single dispenser or a full station."
-        image="/images/landing/rectangle-installation.png"
-        imageAlt="Technicians installing a fuel dispenser on a forecourt"
+        image="/images/installations/nepal-umuola-forecourt-3.jpg"
+        imageAlt="A filling station in Umuola with MEGA-TEC dispensers installed"
       />
 
       <section className="py-6 sm:pt-0 sm:pb-16 lg:pb-20">

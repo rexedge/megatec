@@ -39,8 +39,9 @@ export default function MaintenanceAndRepairPage() {
       <ServiceHero
         title="Certified maintenance and repair, wherever your station is"
         description="Certified technicians providing comprehensive maintenance and swift repairs, ensuring the longevity and reliability of your equipment. We stock the spare parts our dispensers run on, so a breakdown is never a long wait."
-        image="/images/landing/rectangle-maintenance.png"
-        imageAlt="Technicians servicing fuel dispenser equipment"
+        image="/images/installations/forecourt-night-yellow-canopy.jpg"
+        imageAlt="A forecourt with MEGA-TEC dispensers under its canopy lights at night"
+        imagePosition="50% 35%"
       />
 
       <section className="py-6 sm:pt-0 sm:pb-16 lg:pb-20">

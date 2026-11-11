@@ -26,22 +26,23 @@ const SERVICES = [
   {
     title: "Installation & Commissioning",
     href: "/services/installation-and-commissioning",
-    image: "/images/landing/rectangle-installation.png",
+    image: "/images/installations/nepal-umuola-forecourt-3.jpg",
   },
   {
     title: "Maintenance & Repair",
     href: "/services/maintenance-and-repair",
-    image: "/images/landing/rectangle-maintenance.png",
+    image: "/images/installations/forecourt-night-yellow-canopy.jpg",
+    position: "50% 40%",
   },
   {
     title: "Technical Support & Troubleshooting",
     href: "/services/technical-support",
-    image: "/images/landing/rectangle-technical-support.png",
+    image: "/images/installations/forecourt-night-pms-islands.jpg",
   },
   {
     title: "Training & Capacity Building",
     href: "/services/training",
-    image: "/images/landing/rectangle-training.png",
+    image: "/images/installations/nepal-launch-refuelling.jpg",
   },
 ];
 
@@ -93,6 +94,7 @@ export default function ServicesPage() {
                     fill
                     sizes="(min-width: 640px) 50vw, 100vw"
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    style={"position" in service ? { objectPosition: service.position } : undefined}
                   />
                 </div>
                 <div className="flex items-center justify-between gap-4 p-6 sm:p-8">

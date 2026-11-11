@@ -39,8 +39,8 @@ export default function TechnicalSupportPage() {
       <ServiceHero
         title="Technical support that responds within 24 hours"
         description="When something goes wrong, you need answers fast. Our technical team responds within 24 hours, with technicians based nationwide so help is never far away."
-        image="/images/landing/rectangle-technical-support.png"
-        imageAlt="Technicians reviewing a fault on a dispenser"
+        image="/images/installations/forecourt-night-pms-islands.jpg"
+        imageAlt="MEGA-TEC dispensers on the pump islands of a filling station at night"
       />
 
       <section className="py-6 sm:pt-0 sm:pb-16 lg:pb-20">
