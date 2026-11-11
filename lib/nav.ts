@@ -58,9 +58,8 @@ export const SERVICES: NavService[] = [
 /**
  * Mega-Tec's social profiles, handle @megatecpumps (punch list SW-11). Only
  * accounts that exist are listed: X and LinkedIn stay hidden until Mega-Tec
- * opens them, YouTube until they send its link. Their icons are already in
- * /images/landing/ (icon-social-x.svg, icon-social-linkedin.svg,
- * icon-social-youtube.svg).
+ * opens them. Their icons are already in /images/landing/ (icon-social-x.svg,
+ * icon-social-linkedin.svg).
  */
 export const SOCIAL_LINKS = [
   {
@@ -72,5 +71,10 @@ export const SOCIAL_LINKS = [
     label: "Instagram",
     href: "https://www.instagram.com/megatecpumps/",
     icon: "/images/landing/icon-social-instagram.svg",
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@megatecpumps",
+    icon: "/images/landing/icon-social-youtube.svg",
   },
 ];

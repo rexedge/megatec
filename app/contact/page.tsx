@@ -140,7 +140,7 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="border-border text-ink hover:border-ink inline-flex items-center gap-3 rounded-full border px-5 py-3 font-medium transition-colors"
                 >
-                  <Image src={social.icon} alt="" width={24} height={24} className="h-6 w-6 invert" />
+                  <Image src={social.icon} alt="" width={24} height={24} className="h-6 w-6 object-contain invert" />
                   {social.label}
                 </a>
               </li>
