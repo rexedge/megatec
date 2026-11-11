@@ -76,7 +76,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "This is the dispenser more Nigerian stations choose than any other in our range. It pairs a Bennett meter with a Tokheim unit, the combination our customers have trusted for years, and it's calibrated to ±0.3% before it ever reaches your forecourt, so every litre you dispense is a litre you're paid for. Assembled and tested here in Nigeria on openly available components, it can be serviced by any engineer nationwide, and spare parts are never a problem.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-plus-single-tb/mt-plus-tb-3.png",
+            "image": "/images/factory/mt-plus-single-tb/mt-plus-tb-4.png",
             "sheet": "MT_PLUS_Single_Nozzle_TB.pdf"
           },
           {
@@ -119,7 +119,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "A double-nozzle dispenser built for busy forecourts. It serves two vehicles at once with two Bennett meters and a shared Tokheim unit, cutting queue time on busy forecourts without compromising accuracy. Calibrated to ±0.3%, assembled and tested in Nigeria, and backed by spare parts that are always available.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-plus-d1-tb/mt-plus-d1-tb-6.png",
+            "image": "/images/factory/mt-plus-d1-tb/mt-plus-d1-tb-7.png",
             "sheet": "MT_PLUS_Double_Nozzle_TB_D1.pdf"
           },
           {
@@ -162,7 +162,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "This is our full twin-line unit: two Bennett meters, two Tokheim units and two motors, giving each side its own independent metering for the busiest, highest-volume stations. Calibrated to ±0.3%, assembled and tested in Nigeria, and serviceable anywhere with parts always on hand.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-plus-d2tb/mt-plus-d2tb-4.png",
+            "image": "/images/factory/mt-plus-d2tb/mt-plus-d2tb-5.png",
             "sheet": "MT_PLUS_Double_Nozzle_TB_D2.pdf"
           },
           {
@@ -205,7 +205,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Single (TB) delivers dependable single-nozzle performance in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mtr-pro-single/mtr-pro-single-5.png",
+            "image": "/images/factory/mtr-pro-single/mtr-pro-single-2.png",
             "sheet": "MT_PRO_Single_Nozzle_TB.pdf"
           },
           {
@@ -248,7 +248,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Double (TB-D1) serves two vehicles at once, keeping busy forecourts moving in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mtr-pro-d1tb/mt-pro-d1-tb6.png",
+            "image": "/images/factory/mtr-pro-d1tb/mt-pro-d1-tb3.png",
             "sheet": "MT_PRO_Double_Nozzle_TB_D1.pdf"
           },
           {
@@ -463,7 +463,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Single (TT) delivers dependable single-nozzle performance in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mtr-pro-single/mtr-pro-single-5.png",
+            "image": "/images/factory/mtr-pro-single/mtr-pro-single-4.png",
             "sheet": "MT_PRO_Single_Nozzle_TT.pdf"
           },
           {
@@ -592,7 +592,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PLUS Single (BB) delivers dependable single-nozzle performance. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/bb-single-mt-pro/bb-single-mt-pro-7.png",
+            "image": "/images/factory/mt-plus-single-tb/mt-plus-tb-3.png",
             "sheet": "MT_PLUS_Single_Nozzle_BB.pdf"
           },
           {
@@ -721,7 +721,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Single (BB) delivers dependable single-nozzle performance in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mtr-pro-single/mtr-pro-single-5.png",
+            "image": "/images/factory/bb-single-mt-pro/bb-single-mt-pro-7.png",
             "sheet": "MT_PRO_Single_Nozzle_BB.pdf"
           },
           {
@@ -764,7 +764,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Double (BB-D1) serves two vehicles at once, keeping busy forecourts moving in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-pro-d2-bb/mt-pro-d2-bb-4.png",
+            "image": "/images/factory/mt-pro-d2-bb/mt-pro-d2-bb-6.png",
             "sheet": "MT_PRO_Double_Nozzle_BB_D1.pdf"
           },
           {
@@ -807,7 +807,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Double (BB-D2) serves two vehicles at once, keeping busy forecourts moving in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-pro-d2-bb/mt-pro-d2-bb-4.png",
+            "image": "/images/factory/mt-pro-d2-bb/mt-pro-d2-bb-7.png",
             "sheet": "MT_PRO_Double_Nozzle_BB_D2.pdf"
           }
         ]
@@ -861,7 +861,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "When volume is the whole game, this is the pump you want. It delivers up to 100 litres a minute, about double the top flow of a standard dispenser, so depots and high-turnover sites move fuel faster and keep queues short. Self-priming with a built-in oil separator and air eliminator, calibrated to ±0.3%, assembled and tested in Nigeria, and serviceable anywhere with parts always available.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/oil-dispenser/oil-dispenser-5.png",
+            "image": "/images/factory/mt-plus-single-tb/mt-plus-tb-3.png",
             "sheet": "Gear_Pump_Single_Nozzle.pdf"
           },
           {
@@ -904,7 +904,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "Take the high-flow speed of our gear pump and put it on two lines. Two meters run from a single unit, delivering up to 100 L/min per line so you serve more customers, faster, without sacrificing accuracy. Self-priming, calibrated to ±0.3%, assembled and tested in Nigeria, and backed by parts that are always available.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": null,
+            "image": "/images/factory/mt-plus-d1-tb/mt-plus-d1-tb-6.png",
             "sheet": "Gear_Pump_Double_Nozzle_D1.pdf"
           }
         ]
@@ -962,7 +962,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT Plus Submersible Single is built for stations running submersible turbine pump (STP) systems, and built to last. It combines a Bennett meter, solenoid-valve control and a CPU-controlled board for reliable pressurised dispensing, calibrated to ±0.3%, with 7-year memory storage and 10-minute battery backup so you never lose data. Assembled and tested in Nigeria, serviceable anywhere with parts always available.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-plus-sub-single/mt-plus-sub-single-2.png",
+            "image": "/images/factory/mt-plus-sub-single/mt-plus-sub-single-3.png",
             "sheet": "MT_PLUS_Submersible_Single_Nozzle.pdf"
           },
           {
@@ -1299,7 +1299,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "Keep your CNG forecourt moving by serving two vehicles at once. The Double Nozzle dispenser brings the same trusted ±0.5% accuracy and 25MPa performance across two lines, cutting queue time as demand grows. Installed and commissioned by MEGA-TEC, built for the busiest CNG stations.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/cng-double/cng-double-3.png",
+            "image": "/images/factory/cng-double/cng-double-4.png",
             "sheet": "CNG_Dispenser_Double_Nozzle.pdf"
           },
           {
@@ -1415,7 +1415,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The daughter station is how you bring CNG to places the pipeline doesn't reach. This complete skid-mounted station receives high-pressure gas delivered by trailer, stores it on-site, and dispenses it to vehicles, no pipeline connection required. It comes as a full system: a 1200 Nm³/h compressor, cylinder-group and tube storage, refuelling dispensers, a leakage-alarm system and a PLC control system that runs the station automatically, all engineered to work together safely. For investors opening CNG sites ahead of the pipeline network, this is the fastest way to open your station.",
             "extras": [],
             "warranty": "Comes with a warranty.",
-            "image": "/images/factory/cng-daughter-station/cng-daughter-station-2.jpg",
+            "image": "/images/factory/cng-daughter-station/cng-daughter-station-1.jpg",
             "sheet": "CNG_Daughter_Station.pdf"
           }
         ]
@@ -1461,7 +1461,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "Reliable high-pressure storage is the backbone of any pipeline-free CNG station, and these 40ft tubes are built to last. Each 12-tube container holds up to 7,800 Nm³ of CNG at 20–25MPa, tested to 33.4MPa for safety, and engineered for a 20-year working life. Whether paired with a daughter station or expanding your existing storage, they keep your gas secure and your station running.",
             "extras": [],
             "warranty": "Comes with a warranty.",
-            "image": "/images/factory/cng-cylinder-75l.png",
+            "image": "/images/products/cng-tube-trailer.jpg",
             "sheet": "CNG_Storage_Tubes_40ft.pdf"
           }
         ]

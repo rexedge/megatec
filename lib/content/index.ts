@@ -40,8 +40,9 @@ export const CONTENT_TAGS = {
  * Raise by one whenever content is changed in the database outside the admin (a script
  * or SQL), so the next deployment reads it afresh: the cache outlives deployments, and
  * only the admin's own saves refresh it. 2: Round 2 content (R2-09, R2-14), Nov 2026.
+ * 3: the product pictures of Round 2 (picture rows 10 to 28, 37 and 39), Nov 2026.
  */
-const CONTENT_VERSION = 2;
+const CONTENT_VERSION = 3;
 
 /**
  * Wraps a database read in the cross-request cache with its tag, and in React's
