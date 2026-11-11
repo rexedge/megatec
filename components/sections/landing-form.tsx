@@ -114,7 +114,7 @@ export function LandingForm({
                     field.key === "name" ? "name" : field.key === "phone" ? "tel" : "off"
                   }
                   min={field.kind === "number" ? 1 : undefined}
-                  maxLength={field.key === "need" ? 200 : 100}
+                  maxLength={field.key === "need" ? 1000 : 100}
                   className="form-input"
                   placeholder={field.placeholder}
                 />
