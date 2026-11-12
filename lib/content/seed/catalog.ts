@@ -905,7 +905,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "extras": [],
             "warranty": "1-year warranty.",
             "image": "/images/factory/mt-plus-d1-tb/mt-plus-d1-tb-6.png",
-            "sheet": "Gear_Pump_Double_Nozzle_D1.pdf"
+            "sheet": "Gear_Pump_Double_Nozzle.pdf"
           }
         ]
       },
@@ -1814,7 +1814,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "extras": [],
             "warranty": "Comes with a warranty.",
             "image": "/images/factory/commercial-ev/commercial-ev-1.png",
-            "sheet": "EV_Commercial_DC_Fast_Charger_60KW.pdf"
+            "sheet": "EV_Commercial_DC_Fast_Charger_120KW.pdf"
           },
           {
             "id": "mega-tec-ev-home-estate-dc-charger",
@@ -1849,7 +1849,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "extras": [],
             "warranty": "Comes with a warranty.",
             "image": "/images/factory/residential-ev/residential-ev-1.png",
-            "sheet": "EV_Home_Estate_DC_Charger_40KW.pdf"
+            "sheet": "EV_Home_AC_Charger_7KW.pdf"
           }
         ]
       }

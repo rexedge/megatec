@@ -428,7 +428,7 @@ const CNG: CatalogueProduct[] = [
       "Alternative body design, same performance",
       "Working pressure up to 25MPa",
     ],
-    specSheet: "CNG_Dispenser_Double_Double.pdf",
+    specSheet: "CNG_Dispenser_Double_Nozzle_2.pdf",
     nmdpra: true,
   },
   {
@@ -584,7 +584,7 @@ const EV_CHARGERS: CatalogueProduct[] = [
       "Floor-standing (about 70 × 60 × 170cm)",
       "7-inch display · IP55 weatherproof",
     ],
-    specSheet: "EV_Commercial_DC_Fast_Charger_60KW.pdf",
+    specSheet: "EV_Commercial_DC_Fast_Charger_120KW.pdf",
     bestSeller: true,
   },
   {
@@ -601,7 +601,7 @@ const EV_CHARGERS: CatalogueProduct[] = [
       "Wall-mounted · three-phase 380V input",
       "7-inch touchscreen · IP55 weatherproof",
     ],
-    specSheet: "EV_Home_Estate_DC_Charger_40KW.pdf",
+    specSheet: "EV_Home_AC_Charger_7KW.pdf",
   },
 ];
 
