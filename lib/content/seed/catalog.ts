@@ -205,7 +205,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Single (TB) delivers dependable single-nozzle performance in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mtr-pro-single/mtr-pro-single-2.png",
+            "image": "/images/factory/final/mt-pro-single-tb-2.png",
             "sheet": "MT_PRO_Single_Nozzle_TB.pdf"
           },
           {
@@ -248,7 +248,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Double (TB-D1) serves two vehicles at once, keeping busy forecourts moving in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mtr-pro-d1tb/mt-pro-d1-tb3.png",
+            "image": "/images/factory/final/mt-pro-double-tb-d1-3.png",
             "sheet": "MT_PRO_Double_Nozzle_TB_D1.pdf"
           },
           {
@@ -291,7 +291,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Double (TB-D2) serves two vehicles at once, keeping busy forecourts moving in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mtr-pro-d1tb/mt-pro-d1-tb6.png",
+            "image": "/images/factory/final/mt-pro-double-tb-d1-2.png",
             "sheet": "MT_PRO_Double_Nozzle_TB_D2.pdf"
           },
           {
@@ -463,7 +463,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Single (TT) delivers dependable single-nozzle performance in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mtr-pro-single/mtr-pro-single-4.png",
+            "image": "/images/factory/final/mt-pro-single-tb-4.png",
             "sheet": "MT_PRO_Single_Nozzle_TT.pdf"
           },
           {
@@ -506,7 +506,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Double (TT-D1) serves two vehicles at once, keeping busy forecourts moving in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mtr-pro-d1tb/mt-pro-d1-tb6.png",
+            "image": "/images/factory/final/mt-pro-double-tb-d1-2.png",
             "sheet": "MT_PRO_Double_Nozzle_TT_D1.pdf"
           },
           {
@@ -549,7 +549,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Double (TT-D2) serves two vehicles at once, keeping busy forecourts moving in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mtr-pro-d1tb/mt-pro-d1-tb6.png",
+            "image": "/images/factory/final/mt-pro-double-tb-d1-2.png",
             "sheet": "MT_PRO_Double_Nozzle_TT_D2.pdf"
           },
           {
@@ -721,7 +721,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Single (BB) delivers dependable single-nozzle performance in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/bb-single-mt-pro/bb-single-mt-pro-7.png",
+            "image": "/images/factory/final/bb-single-mt-pro-7.png",
             "sheet": "MT_PRO_Single_Nozzle_BB.pdf"
           },
           {
@@ -764,7 +764,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Double (BB-D1) serves two vehicles at once, keeping busy forecourts moving in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-pro-d2-bb/mt-pro-d2-bb-6.png",
+            "image": "/images/factory/final/mt-pro-double-tb-d1-2.png",
             "sheet": "MT_PRO_Double_Nozzle_BB_D1.pdf"
           },
           {
@@ -807,7 +807,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT PRO Double (BB-D2) serves two vehicles at once, keeping busy forecourts moving in the MT Pro body. Calibrated to ±0.3% before delivery, assembled and tested in Nigeria on openly available parts, and serviceable by any engineer nationwide.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-pro-d2-bb/mt-pro-d2-bb-7.png",
+            "image": "/images/factory/final/mt-pro-d2-bb-7.png",
             "sheet": "MT_PRO_Double_Nozzle_BB_D2.pdf"
           }
         ]
@@ -962,7 +962,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "The MT Plus Submersible Single is built for stations running submersible turbine pump (STP) systems, and built to last. It combines a Bennett meter, solenoid-valve control and a CPU-controlled board for reliable pressurised dispensing, calibrated to ±0.3%, with 7-year memory storage and 10-minute battery backup so you never lose data. Assembled and tested in Nigeria, serviceable anywhere with parts always available.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-plus-sub-single/mt-plus-sub-single-3.png",
+            "image": "/images/factory/final/mt-plus-submersible-3.png",
             "sheet": "MT_PLUS_Submersible_Single_Nozzle.pdf"
           },
           {
@@ -1056,7 +1056,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "STP-ready dispensing in the refined MT Pro body. It brings together a Bennett meter, solenoid valve and CPU control for dependable pressurised delivery, calibrated to ±0.3% with 7-year memory and backup. Assembled and tested in Nigeria.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-pro-submersible-single/mt-pro-submersible-single-2.png",
+            "image": "/images/factory/final/mt-pro-submersible-single-6.png",
             "sheet": "MT_PRO_Submersible_Single_Nozzle.pdf"
           },
           {
@@ -1103,7 +1103,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "description": "Full two-vehicle service on pressurised systems, in the MT Pro body. It runs two Bennett meters, two solenoid valves and double CPU control for reliable high-use dispensing, calibrated to ±0.3% with 7-year memory and backup. Built and tested in Nigeria.",
             "extras": [],
             "warranty": "1-year warranty.",
-            "image": "/images/factory/mt-pro-submersible-d1/mt-pro-submersible-d1-double-nozzle-3.png",
+            "image": "/images/factory/final/mt-pro-submersible-double-3.png",
             "sheet": "MT_PRO_Submersible_Double_Nozzle.pdf"
           }
         ]

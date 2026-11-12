@@ -14,14 +14,15 @@ const CARDS = [
     description: "Single to multi-product units, supplied, installed and calibrated.",
     link: "Explore Fuel Dispensers",
     href: "/products/fuel-solutions",
-    image: "/images/landing/rectangle-fuel-dispensers.png",
+    image: "/images/factory/final/mt-pro-double-tb-d1-2.png",
+    position: "50% 18%",
   },
   {
     title: "LPG Systems",
     description: "Dispensers, skid plants and storage, built to NMDPRA standards.",
     link: "Explore LPG Systems",
     href: "/products/lpg-solutions",
-    image: "/images/factory/lpg-filling/lpg-filling.png",
+    image: "/images/factory/final/lpg-filling-1.png",
     position: "50% 15%",
   },
   {

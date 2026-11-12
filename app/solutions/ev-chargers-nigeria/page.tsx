@@ -114,7 +114,7 @@ export default function EvChargersPage() {
           </div>
           <div className="absolute inset-0 lg:relative lg:inset-auto lg:aspect-5/4 lg:overflow-hidden lg:rounded-2xl lg:bg-white">
             <Image
-              src="/images/factory/commercial-ev/commercial-ev-1.png"
+              src="/images/factory/final/commercial-ev-1.png"
               alt="MEGA-TEC commercial DC fast charger"
               fill
               priority
@@ -155,7 +155,7 @@ export default function EvChargersPage() {
           </ul>
           <Features items={COMMERCIAL_FEATURES} />
           <ChargerCard
-            image="/images/factory/commercial-ev/commercial-ev-7.png"
+            image="/images/factory/final/commercial-ev-7.png"
             title="MEGA-TEC EV – Commercial DC Fast Charger"
             specs={[
               "120KW · dual gun · 200–1000VDC output",
