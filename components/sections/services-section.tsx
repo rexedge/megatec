@@ -10,7 +10,8 @@ const SERVICES = [
     description:
       "Expert installation and setup of MEGA-TEC systems, ensuring seamless integration and peak performance from day one. Every project follows the same disciplined process, whether it's a single dispenser or a full station.",
     href: "/services/installation-and-commissioning",
-    image: "/images/landing/rectangle-installation.png",
+    image: "/images/factory/staff/new-folder/recup-dir2f14766784.jpg",
+    position: "50% 35%",
     message: "Hi MEGA-TEC, I'd like to discuss installation and commissioning.",
   },
   {
@@ -18,7 +19,8 @@ const SERVICES = [
     description:
       "When something goes wrong, you need answers fast. Our technical team responds within 24 hours, with technicians based nationwide so help is never far away.",
     href: "/services/technical-support",
-    image: "/images/landing/rectangle-technical-support.png",
+    image: "/images/factory/staff/new-folder/recup-dir2f15180544.jpg",
+    position: "50% 30%",
     message: "Hi MEGA-TEC, I'd like to discuss technical support and troubleshooting.",
   },
   {
@@ -26,7 +28,7 @@ const SERVICES = [
     description:
       "Certified technicians providing comprehensive maintenance and swift repairs, ensuring the longevity and reliability of your equipment. We stock the spare parts our dispensers run on, so a breakdown is never a long wait.",
     href: "/services/maintenance-and-repair",
-    image: "/images/landing/rectangle-maintenance.png",
+    image: "/images/factory/staff/new-folder/recup-dir2f18193408.jpg",
     message: "Hi MEGA-TEC, I'd like to discuss maintenance and repair services.",
   },
   {
@@ -34,7 +36,8 @@ const SERVICES = [
     description:
       "New equipment is only as good as the people running it. MEGA-TEC trains station operators to use, maintain and troubleshoot their equipment safely and effectively, so your team is confident from day one.",
     href: "/services/training",
-    image: "/images/landing/rectangle-training.png",
+    image: "/images/factory/staff/recup-dir1f15420928.jpg",
+    position: "50% 30%",
     message: "Hi MEGA-TEC, I'd like to discuss operator training.",
   },
 ];
@@ -93,6 +96,7 @@ export function ServicesSection() {
                     fill
                     sizes="(min-width: 768px) 50vw, 100vw"
                     className="object-cover"
+                    style={"position" in service ? { objectPosition: service.position } : undefined}
                   />
                 </div>
               </div>

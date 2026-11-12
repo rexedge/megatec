@@ -32,8 +32,8 @@ export default function TrainingPage() {
       <ServiceHero
         title="Training your team to get the most from your equipment"
         description="New equipment is only as good as the people running it. MEGA-TEC trains station operators to use, maintain and troubleshoot their equipment safely and effectively, so your team is confident from day one."
-        image="/images/landing/rectangle-training.png"
-        imageAlt="Station operators in a training session"
+        image="/images/installations/nepal-launch-refuelling.jpg"
+        imageAlt="Station attendants at a MEGA-TEC dispenser on launch day"
       />
 
       <section className="py-6 sm:pt-0 sm:pb-16 lg:pb-20">

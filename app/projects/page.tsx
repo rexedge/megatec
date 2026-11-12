@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { ClosingCta } from "@/components/sections/closing-cta";
+import { InstallationsGallery } from "@/components/sections/installations-gallery";
 import { ProjectsGrid } from "@/components/sections/projects-grid";
 import { getProjects } from "@/lib/content";
 
@@ -43,6 +44,8 @@ export default async function ProjectsPage() {
           <ProjectsGrid projects={projects} />
         </Container>
       </section>
+
+      <InstallationsGallery />
 
       <section className="bg-surface-soft/60 py-6 sm:py-16 lg:py-20">
         <Container>

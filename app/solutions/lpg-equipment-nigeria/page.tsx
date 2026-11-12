@@ -124,8 +124,8 @@ export default function LpgPage() {
         eyebrow="Nigeria's No. 1 in fuel & LPG dispensing"
         title="LPG dispensing systems for gas plants & retail outlets in Nigeria"
         description="From skid-mounted plants to retail dispenser setups, MEGA-TEC supplies, installs and sets up LPG systems that are safe, accurate and built to NMDPRA standards."
-        image="/images/products/lpg-hero.png"
-        imageAlt="MEGA-TEC LPG dispensing in Nigeria"
+        image="/images/installations/nepal-umuola-forecourt-1.jpg"
+        imageAlt="A Nepal Energies filling station in Umuola with MEGA-TEC dispensers"
         whatsappMessage="Hi MEGA-TEC, I'd like to discuss an LPG project."
         whatsappLabel="Discuss Your LPG Project on WhatsApp"
         extra={
