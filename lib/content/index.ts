@@ -43,7 +43,7 @@ export const CONTENT_TAGS = {
  * 3: the product pictures of Round 2 (picture rows 10 to 28, 37 and 39), Nov 2026.
  * 4: the final spec sheets and the EV wording of R2-12, R2-21 and R2-22, Nov 2026.
  */
-const CONTENT_VERSION = 4;
+const CONTENT_VERSION = 5;
 
 /**
  * Wraps a database read in the cross-request cache with its tag, and in React's
