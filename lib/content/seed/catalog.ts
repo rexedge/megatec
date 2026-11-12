@@ -905,7 +905,7 @@ export const SEED_CATALOG: SeedCategory[] = [
             "extras": [],
             "warranty": "1-year warranty.",
             "image": "/images/factory/mt-plus-d1-tb/mt-plus-d1-tb-6.png",
-            "sheet": "Gear_Pump_Double_Nozzle_D1.pdf"
+            "sheet": "Gear_Pump_Double_Nozzle.pdf"
           }
         ]
       },
@@ -1760,23 +1760,23 @@ export const SEED_CATALOG: SeedCategory[] = [
   {
     "slug": "ev-chargers",
     "name": "EV Chargers",
-    "title": "EV Chargers Nigeria | Commercial & Home DC Fast Chargers | MEGA-TEC",
-    "meta": "MEGA-TEC supplies and installs DC fast EV chargers across Nigeria: a 60KW commercial dual-gun charger and a 40KW home and estate charger. Professionally installed, with a warranty.",
+    "title": "EV Chargers Nigeria | Commercial & Home Chargers | MEGA-TEC",
+    "meta": "MEGA-TEC supplies and installs EV chargers across Nigeria: a 120KW commercial dual-gun DC charger and a 7KW home AC charger. Professionally installed, with a warranty.",
     "headline": "EV charging equipment for Nigerian businesses, estates and homes",
-    "intro": "Fast DC charging for hotels, estates, filling stations, fleet depots and sites with three-phase power. MEGA-TEC supplies, installs and supports the complete charger, so you can start serving EV drivers quickly.",
+    "intro": "EV charging for hotels, estates, filling stations, fleet depots and homes. MEGA-TEC supplies, installs and supports the complete charger, so you can start serving EV drivers quickly.",
     "cta": "Talk to Our Team on WhatsApp",
     "bullets": [
-      "DC Fast Charging, 60KW and 40KW",
-      "IP55 Weatherproof Units",
+      "EV Charging, 120KW DC and 7KW AC",
+      "Weatherproof Units",
       "Professional Installation & Support",
       "Comes With a Warranty"
     ],
     "subs": [
       {
         "slug": "dc-fast-chargers",
-        "name": "DC Fast Chargers",
-        "title": "DC Fast EV Chargers Nigeria | 60KW Commercial & 40KW Home | MEGA-TEC",
-        "meta": "MEGA-TEC DC fast EV chargers for Nigeria: a 60KW dual-gun commercial charger with card and QR payment, and a 40KW wall-mounted charger for homes and estates. Professionally installed.",
+        "name": "Commercial and Home Chargers",
+        "title": "EV Chargers Nigeria | 120KW Commercial & 7KW Home | MEGA-TEC",
+        "meta": "MEGA-TEC EV chargers for Nigeria: a 120KW dual-gun DC commercial charger with card and QR payment, and a 7KW wall-mounted AC charger for homes and estates. Professionally installed.",
         "h1": null,
         "intro": [],
         "form": "Thinking about EV charging? Let's talk it through.",
@@ -1784,18 +1784,18 @@ export const SEED_CATALOG: SeedCategory[] = [
           {
             "id": "mega-tec-ev-commercial-dc-fast-charger",
             "name": "MEGA-TEC EV – Commercial DC Fast Charger",
-            "blurb": "60KW dual-gun fast charger that charges two vehicles at once, with card and QR payment built in.",
+            "blurb": "120KW dual-gun fast charger that charges two vehicles at once, with card and QR payment built in.",
             "best": true,
             "tag": null,
-            "badge": "IP55 weatherproof · MEGA-TEC supply & install",
+            "badge": "IP65 weatherproof · MEGA-TEC supply & install",
             "cells": [
               [
                 "Power",
-                "60KW DC, dual gun"
+                "120KW DC, dual gun"
               ],
               [
                 "Output",
-                "200–1000V, 0–250A per gun"
+                "200–1000V, 5–250A per gun"
               ],
               [
                 "Display",
@@ -1803,38 +1803,38 @@ export const SEED_CATALOG: SeedCategory[] = [
               ],
               [
                 "Protection",
-                "IP55 weatherproof"
+                "IP65 weatherproof"
               ],
               [
                 "Size",
                 "About 70 × 60 × 170cm, floor-standing"
               ]
             ],
-            "description": "Built for high-traffic commercial sites, this 60KW dual-gun cabinet charges two vehicles at once and is ready to earn revenue from day one with built-in card and QR payment. A 7-inch LCD touchscreen, network monitoring and IP55 weatherproofing make it dependable outdoors, and it delivers fast charging that a typical EV completes in around 40 minutes to an hour. Supplied, installed and commissioned by MEGA-TEC with full technical support.",
+            "description": "Built for high-traffic commercial sites, this 120KW dual-gun cabinet charges two vehicles at once and is ready to earn revenue from day one with built-in card and QR payment. A 7-inch LCD touchscreen, network monitoring and IP65 weatherproofing make it dependable outdoors. Supplied, installed and commissioned by MEGA-TEC with full technical support.",
             "extras": [],
             "warranty": "Comes with a warranty.",
             "image": "/images/factory/commercial-ev/commercial-ev-1.png",
-            "sheet": "EV_Commercial_DC_Fast_Charger_60KW.pdf"
+            "sheet": "EV_Commercial_DC_Fast_Charger_120KW.pdf"
           },
           {
             "id": "mega-tec-ev-home-estate-dc-charger",
-            "name": "MEGA-TEC EV – Home & Estate DC Charger",
-            "blurb": "Compact 40KW wall-mounted fast charger for homes, estates and small sites with three-phase power.",
+            "name": "MEGA-TEC EV – Home AC Charger",
+            "blurb": "Compact 7KW wall-mounted AC charger for homes, estates and small sites.",
             "best": false,
             "tag": null,
-            "badge": "IP55 weatherproof · MEGA-TEC supply & install",
+            "badge": "IP54 weatherproof · MEGA-TEC supply & install",
             "cells": [
               [
                 "Power",
-                "40KW DC, single gun"
+                "7KW AC, single gun"
               ],
               [
                 "Output",
-                "200–1000VDC, 0–125A"
+                "220V AC, 32A"
               ],
               [
                 "Input",
-                "Three-phase 380V"
+                "220V AC"
               ],
               [
                 "Mounting",
@@ -1845,11 +1845,11 @@ export const SEED_CATALOG: SeedCategory[] = [
                 "About 55 × 55 × 28cm"
               ]
             ],
-            "description": "Real fast charging at home, not a slow trickle unit. This compact 40KW wall-mounted charger delivers DC fast charging that a typical EV completes in around 1 to 1.5 hours, with a 7-inch touchscreen and network connectivity built in. Its small footprint keeps installations clean and unobtrusive, and IP55 weatherproofing suits Nigerian conditions. Requires a three-phase 380V supply. Fitted and commissioned by MEGA-TEC's certified technicians.",
+            "description": "A compact, wall-mounted 7KW AC charger for your home, with a 7-inch touchscreen and network connectivity built in. Its small footprint keeps installations clean and unobtrusive, and IP54 weatherproofing suits Nigerian conditions. Fitted and commissioned by MEGA-TEC's certified technicians.",
             "extras": [],
             "warranty": "Comes with a warranty.",
             "image": "/images/factory/residential-ev/residential-ev-1.png",
-            "sheet": "EV_Home_Estate_DC_Charger_40KW.pdf"
+            "sheet": "EV_Home_AC_Charger_7KW.pdf"
           }
         ]
       }

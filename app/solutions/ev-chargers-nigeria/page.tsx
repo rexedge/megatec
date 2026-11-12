@@ -24,23 +24,23 @@ import { catalogueHref, productsIn } from "@/lib/catalogue";
 
 /** Copy is from the Landing Page Copy document, LP4 (punch list LE-01 to LE-05). */
 export const metadata: Metadata = {
-  title: "EV Chargers Nigeria | Commercial & Home Fast Charging Installation | MEGA-TEC",
+  title: "EV Chargers Nigeria | Commercial & Home Charging Installation | MEGA-TEC",
   description:
-    "MEGA-TEC supplies and installs DC fast EV charging infrastructure across Nigeria: 60KW commercial and 40KW home/estate units, professionally installed with full support.",
+    "MEGA-TEC supplies and installs EV charging infrastructure across Nigeria: a 120KW DC commercial charger and a 7KW AC home charger, professionally installed with full support.",
 };
 
 const GUIDE = "/spec-sheets/EV_Range_Comparison.pdf";
 const GUIDE_NOTE = "Both MEGA-TEC EV chargers, side by side.";
 
 const COMMERCIAL_FEATURES = [
-  { icon: <BoltIcon />, title: "60KW fast charging, two vehicles at once", text: "Dual-gun cabinet built for high-traffic sites." },
+  { icon: <BoltIcon />, title: "120KW fast charging, two vehicles at once", text: "Dual-gun cabinet built for high-traffic sites." },
   { icon: <CardIcon />, title: "Card & QR payment built in", text: "Ready to earn revenue from day one." },
   { icon: <DisplayIcon />, title: "7-inch display, network-connected", text: "Ethernet and 3G/4G monitoring." },
   { icon: <ChartIcon />, title: "Scalable installation", text: "Start with one cabinet, expand as demand grows." },
 ];
 
 const RESIDENTIAL_FEATURES = [
-  { icon: <BoltIcon />, title: "40KW DC fast charging", text: "Real fast charging, not a slow trickle unit." },
+  { icon: <BoltIcon />, title: "7KW AC charging", text: "Dependable everyday charging at home." },
   { icon: <ScaleIcon />, title: "Compact wall-mounted design", text: "Small footprint (about 55 × 55 × 28cm), clean and unobtrusive." },
   { icon: <DisplayIcon />, title: "7-inch touchscreen, network-ready", text: "Ethernet and 3G/4G connectivity built in." },
   { icon: <WrenchIcon />, title: "Professional installation", text: "Fitted and commissioned by MEGA-TEC technicians." },
@@ -77,7 +77,7 @@ export default function EvChargersPage() {
 
   return (
     <>
-      {productsJsonLd([{ name: "MEGA-TEC EV – Commercial DC Fast Charger", description: "60KW dual gun DC fast charger, floor-standing, card and QR payment, IP55 weatherproof.", image: commercial.image, path: "/solutions/ev-chargers-nigeria" }, { name: "MEGA-TEC EV – Home & Estate DC Charger", description: "40KW single gun wall-mounted DC charger, three-phase 380V, IP55 weatherproof.", image: residential.image, path: "/solutions/ev-chargers-nigeria" }], absoluteUrl).map((data) => (
+      {productsJsonLd([{ name: "MEGA-TEC EV – Commercial DC Fast Charger", description: "120KW dual gun DC fast charger, floor-standing, card and QR payment, IP65 weatherproof.", image: commercial.image, path: "/solutions/ev-chargers-nigeria" }, { name: "MEGA-TEC EV – Home AC Charger", description: "7KW single gun wall-mounted AC charger, 220V, IP54 weatherproof.", image: residential.image, path: "/solutions/ev-chargers-nigeria" }], absoluteUrl).map((data) => (
         <JsonLd key={data.name} data={data} />
       ))}
       {/* R2-17: on a phone the charger photo fills the hero behind the text, under a dark
@@ -158,9 +158,9 @@ export default function EvChargersPage() {
             image="/images/factory/commercial-ev/commercial-ev-7.png"
             title="MEGA-TEC EV – Commercial DC Fast Charger"
             specs={[
-              "60KW · dual gun · 200–1000VDC output",
+              "120KW · dual gun · 200–1000VDC output",
               "Floor-standing (about 70 × 60 × 170cm) · card/QR payment",
-              "7-inch display · IP55 weatherproof",
+              "7-inch display · IP65 weatherproof",
               "Best for: hotels, stations, fleet depots",
               "Comes with a warranty",
             ]}
@@ -177,24 +177,23 @@ export default function EvChargersPage() {
       <section className="bg-surface-soft/60 py-6 sm:py-20 lg:py-16">
         <Container>
           <h2 className="text-ink max-w-3xl text-3xl font-semibold tracking-tight text-balance lg:text-5xl sm:text-4xl">
-            Fast home and estate EV charging, compact and professionally installed
+            Home EV charging, compact and professionally installed
           </h2>
           <p className="text-body mt-6 max-w-3xl text-base leading-normal sm:text-lg sm:leading-relaxed">
-            Upscale homes · Residential estates · Small offices and commercial sites with
-            three-phase power
+            Upscale homes · Residential estates · Small offices
           </p>
           <Features items={RESIDENTIAL_FEATURES} />
           <ChargerCard
             image={residential.image}
-            title="MEGA-TEC EV – Home & Estate DC Charger"
+            title="MEGA-TEC EV – Home AC Charger"
             specs={[
-              "40KW · single gun · 200–1000VDC output",
-              "Wall-mounted · three-phase 380V input",
-              "7-inch touchscreen · IP55 weatherproof",
+              "7KW · single gun · 220V AC output",
+              "Wall-mounted · 220V AC input",
+              "7-inch touchscreen · IP54 weatherproof",
               "Best for: Upscale homes & Residential estates",
               "Comes with a warranty",
             ]}
-            message="Hi MEGA-TEC, I'd like to enquire about the MEGA-TEC EV Home & Estate DC Charger."
+            message="Hi MEGA-TEC, I'd like to enquire about the MEGA-TEC EV Home AC Charger."
             sheet={`/spec-sheets/${residential.specSheet}`}
           />
           <div className="mt-8">
