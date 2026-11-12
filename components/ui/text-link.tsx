@@ -5,17 +5,21 @@ import { cn } from "@/lib/cn";
 export function TextLink({
   href,
   className,
+  light,
   children,
 }: {
   href: string;
   className?: string;
+  /** White, for a link over a dark photo. */
+  light?: boolean;
   children: React.ReactNode;
 }) {
   return (
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center gap-3 text-base font-medium text-ink underline underline-offset-4 transition-colors hover:text-sky",
+        "inline-flex items-center gap-3 text-base font-medium underline underline-offset-4 transition-colors",
+        light ? "text-white hover:text-white/80" : "text-ink hover:text-sky",
         className
       )}
     >

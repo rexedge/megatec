@@ -67,7 +67,7 @@ export function SiteFooter({ products }: { products: NavProduct[] }) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 py-2 text-navy-text/90 hover:text-navy-text"
               >
-                <Image src={social.icon} alt="" width={24} height={24} className="h-6 w-6" />
+                <Image src={social.icon} alt="" width={24} height={24} className="h-6 w-6 object-contain" />
                 {social.label}
               </a>
             ))}

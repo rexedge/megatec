@@ -30,8 +30,12 @@ const NEEDS = [
  */
 const MESSAGE_LIMIT = 1000;
 
-/** What /api/enquiry accepts for the need; the short form's free text must fit. */
-const NEED_LIMIT = 200;
+/**
+ * The closing form's one box is where visitors type their message (About, Projects
+ * and the product pages), so it takes the same 1,000 characters as the message box
+ * above (R2-01). /api/enquiry accepts the same length for each need.
+ */
+const NEED_LIMIT = MESSAGE_LIMIT;
 
 /**
  * The standard enquiry form (punch list HM-10; the Installation page, SV-05,
@@ -52,6 +56,7 @@ export function EnquiryForm({
   variant?: "full" | "short";
 }) {
   const [message, setMessage] = useState("");
+  const [needText, setNeedText] = useState("");
   const short = variant === "short";
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -112,13 +117,18 @@ export function EnquiryForm({
 
       <Field label="What do you need?">
         {short ? (
-          <input
-            required
-            name="need"
-            maxLength={NEED_LIMIT}
-            className="form-input"
-            placeholder="e.g. two LPG dispensers for a new station"
-          />
+          <>
+            <textarea
+              required
+              name="need"
+              maxLength={NEED_LIMIT}
+              value={needText}
+              onChange={(event) => setNeedText(event.target.value)}
+              className="form-input h-28 resize-none"
+              placeholder="e.g. two LPG dispensers for a new station"
+            />
+            <p className="text-body text-sm">{NEED_LIMIT - needText.length} characters left</p>
+          </>
         ) : (
           <select required name="need" className="form-input" defaultValue="">
             <option value="" disabled>
